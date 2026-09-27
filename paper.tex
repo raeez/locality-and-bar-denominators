@@ -1,0 +1,1755 @@
+\documentclass[11pt,reqno]{amsart}
+\usepackage[localtheorems]{raeez-math-template}
+
+\usepackage{array}
+\usepackage{tikz-cd}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conditionaltheorem}[theorem]{Conditional Theorem}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{problem}[theorem]{Open Problem}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\providecommand{\Ran}{\mathrm{Ran}}
+\providecommand{\Sym}{\mathrm{Sym}}
+\providecommand{\FactD}{\mathrm{FactD}}
+\providecommand{\DMod}{\mathrm{DMod}}
+\providecommand{\Alg}{\mathrm{Alg}}
+\providecommand{\ComCoalg}{\mathrm{ComCoalg}}
+\providecommand{\Fin}{\mathrm{Fin}}
+\providecommand{\sdim}{\mathrm{sdim}}
+\providecommand{\CE}{\mathrm{CE}}
+\newcommand{\Barc}{\operatorname{Bar}}
+\providecommand{\den}{\mathrm{den}}
+\providecommand{\id}{\mathrm{id}}
+\providecommand{\unit}{\mathbf{1}}
+\providecommand{\Hd}{\boxtimes_{\mathrm{H}}}
+\providecommand{\Cy}{\boxtimes_{\mathrm{C}}}
+
+\title[Species, locality, and bar denominators]
+{Duoidal linear species, factorization locality, and bar denominator products}
+
+\author{Raeez Lorgat}
+
+\date{September 2026}
+
+\begin{document}
+
+\begin{abstract}
+The Cauchy and Hadamard products on linear species admit canonical
+braided duoidal structures in both orientations.  Their interchange
+maps are diagonal inclusion and off-diagonal-killing projection, and
+\(\iota\pi\) is the idempotent onto the common-decomposition
+summand.  These structures are globally non-strong.  Independently, a
+factorization right \(D\)-module on the reduced Ran space carries
+collision descent and coherent factorization equivalences.  An ambient
+augmented \(E_1\)-structure is factorization-local precisely when its
+entire operadic action lifts through the factorization category; the
+usual disjointness-locus multiplication square is only a necessary
+binary consequence.
+
+For a positively root-graded Lie superalgebra satisfying a
+finite-factorization condition, the completed total Euler
+supercharacter of the normalized algebraic bar of
+\(U(\mathfrak n_+)\) is the signed root product.  Under the precise
+hypotheses of a superdenominator theorem this is its product factor.
+For the Gritsenko--Nikulin algebra, a shifted formal Fourier map followed
+by a normally convergent cusp realization gives
+\(D_5(2Z)=64^{-1}\Delta_5(2Z)\).  Weightwise duality with Goncharova's
+continuous cohomology gives the two positive-Witt homology classes in
+weights \((3n^2\pm n)/2\).  The Motzkin--Riordan relation is proved
+independently by its generating functions.  A comparison between the
+factorization bar and the root-graded algebraic bar is stated
+conditionally; no such comparison is used in the proved results.
+\end{abstract}
+
+\maketitle
+
+\section{The comparison problem}
+
+Dividing a set of insertions into two groups gives an ordered
+decomposition.  Two operations can use the same decomposition or choose
+their decompositions independently.  For a singleton there are two
+ordered decompositions, so these choices give two and four possibilities,
+respectively.  Inclusion of the common choices and projection onto them
+give a retraction.  They do not give an invertible exchange.
+
+Linear species assign vector spaces to finite sets and transport them
+along bijections.  The Cauchy product distributes a set between its two
+inputs.  The Hadamard product evaluates both inputs on the whole set.
+Their interchange maps implement the preceding inclusion and projection.
+The resulting two duoidal structures retain both products and their
+coherent compatibility, with different units.  Noninvertibility is part
+of this construction and leaves its bimonoids well defined.
+
+When insertion points lie on a curve, they can also collide.  A
+factorization right \(D\)-module specifies coefficients on configurations,
+their restriction to collision diagonals, and their decomposition away
+from those diagonals.  An ordered product on it must preserve all these
+maps and their higher coherences.  Such a product defines an internal
+simplicial bar.  Its realization in the factorization category requires
+the colimit hypotheses of Theorem~\ref{thm:realized-bar}.
+
+A second calculation starts from root-graded Lie superalgebras.
+The normalized bar of their enveloping algebras has an Euler
+supercharacter determined by the even and odd root spaces.
+Finite factorization of weights makes each coefficient a finite
+calculation.  The resulting product has a precise Igusa specialization,
+including a Weyl shift and an analytic domain of convergence.
+To obtain that character from a factorization bar, one still needs a map
+between the two chain constructions.  Problem~\ref{prob:carrier-change}
+specifies its coefficients and operations, and
+Theorem~\ref{thm:conditional-comparison} gives the consequence once those
+data are constructed.
+
+\section{Conventions}
+
+Throughout, \(k\) is a field of characteristic zero.  The groupoid
+\(\Fin^{\simeq}\) contains all finite sets, including
+\(\varnothing\), and species are covariant under bijections.  By
+contrast, \(\Fin^{\mathrm{surj}}\) denotes the category of nonempty
+finite sets and surjections.  It indexes the reduced Ran space; there
+is no empty Ran configuration in this convention.
+
+Super vector spaces are \(\mathbb Z/2\)-graded and their morphisms
+preserve intrinsic parity.  Mapping complexes, dg objects, and
+\(A_\infty\)-algebras use cohomological degrees: the differential has
+degree \(+1\), \((A[d])^p=A^{p+d}\), and \(m_n\) has degree \(2-n\).
+Normalized simplicial bars and Chevalley--Eilenberg chains carry a
+separate nonnegative homological degree \(r\), whose differential lowers
+\(r\) by one.  In a total Euler supercharacter a class of this
+homological degree and intrinsic parity \(\epsilon\) has sign
+\((-1)^{r+\epsilon}\).  These two grading conventions are not
+identified.  When a cohomological degree \(p\) and a bar degree \(r\)
+occur together, the cohomological totalization has degree \(p-r\).
+
+For the geometric statements, \(X\) is a smooth separated complex
+algebraic curve.  All categories of \(D\)-modules are stable
+\(\infty\)-categories of right \(D\)-modules.  Extraordinary pullback is
+denoted by \((-)^!\), and every collision, factorization, and refinement
+equivalence is understood homotopy coherently.
+
+\section{The two duoidal structures on linear species}
+
+Let
+\[
+ \operatorname{Sp}_k
+ =\operatorname{Fun}(\Fin^{\simeq},\operatorname{Vect}_k).
+\]
+For \(F,G\in\operatorname{Sp}_k\), define the Cauchy and Hadamard
+products by
+\[
+ (F\Cy G)(I)
+ =\bigoplus_{I=I_1\sqcup I_2}F(I_1)\otimes G(I_2),
+ \qquad
+ (F\Hd G)(I)=F(I)\otimes G(I).
+\]
+The decompositions in the first sum are ordered.  Write \(\mathbb U\)
+for the Cauchy unit and \(\mathbb E\) for the Hadamard unit:
+\[
+ \mathbb U(\varnothing)=k,\qquad
+ \mathbb U(I)=0\quad(I\ne\varnothing),\qquad
+ \mathbb E(I)=k.
+\]
+
+For two ordered decompositions
+\(d=(I_1,I_2)\) and \(e=(J_1,J_2)\) of \(I\), put
+\[
+ T_{d,e}
+ =F_1(I_1)\otimes F_2(I_2)\otimes
+  G_1(J_1)\otimes G_2(J_2).
+\]
+After the evident symmetry of tensor factors,
+\[
+ \begin{split}
+ L_I&:=((F_1\Hd G_1)\Cy(F_2\Hd G_2))(I)
+      \cong\bigoplus_dT_{d,d},\\
+ R_I&:=((F_1\Cy F_2)\Hd(G_1\Cy G_2))(I)
+      \cong\bigoplus_{d,e}T_{d,e}.
+ \end{split}
+\]
+Diagonal inclusion and projection define natural transformations
+\[
+ \iota:L\longrightarrow R,\qquad
+ \pi:R\longrightarrow L.
+\]
+
+\begin{theorem}[Cauchy--Hadamard duoidality]
+\label{thm:species-duoidal}
+The transformations \(\iota\) and \(\pi\) define braided duoidal
+structures in the two respective orientations
+\[
+ (\operatorname{Sp}_k,\Cy,\mathbb U,\Hd,\mathbb E;\iota),
+ \qquad
+ (\operatorname{Sp}_k,\Hd,\mathbb E,\Cy,\mathbb U;\pi).
+\]
+For the \(\iota\)-orientation the three unit morphisms are
+\[
+ \mathbb U\longrightarrow\mathbb U\Hd\mathbb U,\qquad
+ \mathbb E\Cy\mathbb E\longrightarrow\mathbb E,\qquad
+ \mathbb U\longrightarrow\mathbb E.
+\]
+For the \(\pi\)-orientation they are
+\[
+ \mathbb E\longrightarrow\mathbb E\Cy\mathbb E,\qquad
+ \mathbb U\Hd\mathbb U\longrightarrow\mathbb U,\qquad
+ \mathbb E\longrightarrow\mathbb U.
+\]
+Moreover,
+\[
+ \pi\iota=\id_L,\qquad e:=\iota\pi,\qquad e^2=e,
+\]
+and \(e\) has image \(\bigoplus_dT_{d,d}\).
+\end{theorem}
+
+\begin{proof}
+The map \(\iota_I\) includes the summands indexed by
+\(d\mapsto(d,d)\), while \(\pi_I\) is the identity on those summands
+and zero on every \(T_{d,e}\) with \(d\ne e\).  Hence
+\(\pi_I\iota_I=\id\), and \(\iota_I\pi_I\) is the displayed
+idempotent.
+
+The unit maps contain information not visible in this retraction.  The
+map \(\mathbb E\Cy\mathbb E\to\mathbb E\) is the fold over all ordered
+decompositions, and
+\(\mathbb E\to\mathbb E\Cy\mathbb E\) is the biproduct diagonal.
+The maps \(\mathbb U\to\mathbb E\) and
+\(\mathbb E\to\mathbb U\) are the identity at \(\varnothing\) and zero
+elsewhere.  The two maps involving
+\(\mathbb U\Hd\mathbb U\) are the canonical unit identifications at
+\(\varnothing\) and the unique maps between zero spaces elsewhere.
+
+Every associativity diagram decomposes into matrix entries indexed by
+ordered decompositions into three blocks.  In the \(\iota\)-orientation
+both composites retain exactly those entries whose decomposition labels
+agree; in the \(\pi\)-orientation both composites kill exactly the
+complementary entries.  The unit and braided diagrams reduce in the
+same way to the fold, diagonal, identity, or zero maps just described.
+This proves the coherence axioms.  For vector species these two
+orientations are also the braided \(2\)-monoidal structures of
+\cite{AM10}*{Definitions 6.1 and 6.3, equations (8.73)--(8.74),
+Propositions 8.58 and 8.68};
+the three-map unit datum is the one in
+\cite{Tor25}*{Definition 2.1}.
+\end{proof}
+
+\begin{proposition}[The common-decomposition summand]
+\label{prop:common-summand}
+For fixed \(F_1,F_2,G_1,G_2\) and \(I\), the map \(\iota_I\) is an
+isomorphism if and only if every off-diagonal summand \(T_{d,e}\),
+\(d\ne e\), is zero.  This is an objectwise condition; it does not
+define a unital monoidal subcategory containing the inherited units.
+\end{proposition}
+
+\begin{proof}
+The target is the direct sum of the image of \(\iota_I\) and all
+off-diagonal summands.  Thus \(\iota_I\) is surjective exactly when the
+latter vanish.
+\end{proof}
+
+\begin{corollary}[Failure of strongness]
+\label{cor:not-strong}
+If \(k\ne0\), neither duoidal structure in
+Theorem~\ref{thm:species-duoidal} is strong.  There is no full
+subcategory containing both inherited units on which all interchange
+and unit morphisms become isomorphisms.
+\end{corollary}
+
+\begin{proof}
+Take \(I=\{*\}\) and all four inputs equal to \(\mathbb E\).  There are
+two ordered decompositions of \(I\), and therefore
+\[
+ L_I\cong k^2,\qquad R_I\cong k^4.
+\]
+In compatible coordinates,
+\[
+ \iota(a,b)=(a,0,0,b),\qquad
+ \pi(a,b,c,d)=(a,d),\qquad
+ \iota\pi=\operatorname{diag}(1,0,0,1).
+\]
+The interchange is not invertible.  Independently,
+\(\mathbb U(\{*\})=0\) and \(\mathbb E(\{*\})=k\), so neither
+cross-unit map is invertible.  Any subcategory containing the inherited
+units contains this obstruction.
+\end{proof}
+
+\begin{remark}
+Bimonoids are defined for a duoidal category without requiring strong
+interchange.  The idempotent \(e\) records a useful summand, but
+invertibility is neither part of duoidality nor needed for the
+definition of a bimonoid.
+\end{remark}
+
+\section{Factorization locality on the reduced Ran space}
+
+Species record decomposition labels but have no maps for collisions of
+points on \(X\).  Collision diagonals supply these maps.  The
+factorization condition then relates their restrictions to products on
+disjoint configurations.
+
+For a surjection \(q:I\twoheadrightarrow J\), let
+\[
+ \Delta_q:X^J\longrightarrow X^I
+\]
+be the collision diagonal.  The reduced Ran category of right
+\(D\)-modules is
+\[
+ \DMod^r(\Ran X)
+ =\lim_{I\in\Fin^{\mathrm{surj}}}\DMod^r(X^I),
+\]
+where the transition attached to \(q\) is
+\[
+ \Delta_q^!:\DMod^r(X^I)\longrightarrow\DMod^r(X^J).
+\]
+Thus a Ran object consists of objects \(A_I\in\DMod^r(X^I)\) and
+equivalences
+\[
+ \theta_q:\Delta_q^!A_I\xrightarrow{\sim}A_J,
+\]
+with coherent identity and composition data
+\[
+ \theta_{r\circ q}\simeq
+ \theta_r\circ\Delta_r^!(\theta_q)
+\]
+for composable surjections.
+
+For \(\pi:I\twoheadrightarrow J\), put \(I_j=\pi^{-1}(j)\) and
+\[
+ U(\pi)=
+ \{(x_i)\in X^I:x_i\ne x_{i'}
+       \text{ whenever }\pi(i)\ne\pi(i')\},
+ \qquad
+ j_\pi:U(\pi)\hookrightarrow X^I.
+\]
+
+\begin{definition}[Factorization right \(D\)-module]
+\label{def:factorization}
+A factorization right \(D\)-module is a Ran object \(A\) together with
+equivalences
+\[
+ \phi_\pi:
+ j_\pi^!A_I\xrightarrow{\sim}
+ j_\pi^!\left(\boxtimes_{j\in J}A_{I_j}\right)
+\]
+for every \(\pi\), compatibly with collision maps, bijections,
+refinements of surjections, and every higher refinement simplex.
+Morphisms respect all \(\theta_q,\phi_\pi\), and their coherences.
+\end{definition}
+
+We write \(\FactD(X)\) for the resulting factorization subcategory,
+equivalently the Francis--Gaitsgory category
+\[
+ \FactD(X)
+ =
+ \ComCoalg^{\mathrm{ch}}_{\mathrm{Fact}}
+   \bigl(\DMod^r(\Ran X)\bigr).
+\]
+It includes in the category of chiral commutative coalgebras, which in
+turn has a forgetful functor to \(\DMod^r(\Ran X)\).  The composite is
+not a full embedding of \(\FactD(X)\) into underlying Ran
+\(D\)-modules.  The reduced Ran limit,
+chiral convolution, and factorization condition are given in
+\cite{FG12}*{Section 2.1.1, Definition 2.1.2, Lemma 2.3.4,
+Definitions 2.4.5 and
+2.4.7}; the coherent-system interpretation is
+\cite{FG12}*{Remark 2.4.8}.
+
+\subsection{The pointwise tensor}
+
+For right \(D\)-modules define
+\[
+ (A\otimes^!B)_I=A_I\otimes^!B_I.
+\]
+The collision equivalence is the composite
+\[
+ \Delta_q^!(A_I\otimes^!B_I)
+ \simeq
+ \Delta_q^!A_I\otimes^!\Delta_q^!B_I
+ \xrightarrow{\theta_q^A\otimes\theta_q^B}
+ A_J\otimes^!B_J.
+\]
+The factorization equivalence is
+\[
+\begin{aligned}
+ j_\pi^!(A_I\otimes^!B_I)
+ &\simeq j_\pi^!A_I\otimes^!j_\pi^!B_I\\
+ &\xrightarrow{\phi_\pi^A\otimes\phi_\pi^B}
+ j_\pi^!\!\left(\boxtimes_jA_{I_j}\right)
+ \otimes^!
+ j_\pi^!\!\left(\boxtimes_jB_{I_j}\right)\\
+ &\xrightarrow{\mathrm{ex}}
+ j_\pi^!\!\left(
+   \boxtimes_j(A_{I_j}\otimes^!B_{I_j})\right).
+\end{aligned}
+\]
+The exchange map and its coherence are part of this construction.
+Symmetric monoidality of extraordinary pullback and external-product
+exchange supplies the identity, composition, permutation, and
+refinement coherences.  They give the symmetric monoidal category
+\[
+ (\FactD(X),\otimes^!,\boldsymbol\omega_{\Ran}),
+ \qquad
+ (\boldsymbol\omega_{\Ran})_I=\omega_{X^I},
+\]
+and a strong symmetric monoidal forgetful functor
+\[
+ U:\FactD(X)\longrightarrow\DMod^r(\Ran X).
+\]
+The convention remains reduced: there is no component
+\(A_\varnothing\).  An augmentation is a morphism
+\(A\to\boldsymbol\omega_{\Ran}\) for the pointwise tensor and does not
+adjoin an empty configuration to the chiral coalgebra.
+
+\begin{definition}[Ordered factorization algebra]
+\label{def:ordered-factorization}
+An ordered factorization algebra is an object
+\[
+ A\in
+ \Alg^{\mathrm{aug}}_{E_1}\bigl(\FactD(X),\otimes^!\bigr).
+\]
+\end{definition}
+
+\begin{proposition}[Locality as an operadic lift]
+\label{prop:locality-lift}
+Let \(A\in\FactD(X)\), and let \(\alpha\) be an augmented
+\(E_1\)-algebra structure on \(U(A)\).  A factorization-local structure
+on \(\alpha\) is precisely a lift of maps of \(\infty\)-operads
+\[
+\begin{tikzcd}[column sep=4.5em,row sep=3em]
+ & \FactD(X)^\otimes
+     \arrow[d,"U^\otimes"]\\
+ (E_1^{\mathrm{aug}})^\otimes
+     \arrow[r,"\alpha"']
+     \arrow[ur,dashed,"\widetilde\alpha"]
+ & \DMod^r(\Ran X)^\otimes .
+\end{tikzcd}
+\]
+Equivalently, multiplication, unit, augmentation, every higher
+operation, and all coherent homotopies lift to the mapping spaces of
+\(\FactD(X)\), with the algebra color sent to the specified object
+\(A\).
+\end{proposition}
+
+\begin{proof}
+An augmented \(E_1\)-algebra is a map from the augmented associative
+\(\infty\)-operad into the monoidal \(\infty\)-category.  Lifting that
+map along \(U^\otimes\) is exactly the definition of an augmented
+\(E_1\)-algebra structure on \(A\) whose underlying structure is
+\(\alpha\).
+\end{proof}
+
+The familiar multiplication square is a necessary arity-two
+consequence.  For an ordered bipartition \(d=(I_1,I_2)\) with
+\(I_1,I_2\ne\varnothing\), equivalently a surjection
+\(I\twoheadrightarrow\{1,2\}\), define
+\[
+\begin{aligned}
+ \lambda_d^{(2)}:
+ j_d^!(A_I\otimes^!A_I)
+ &\simeq j_d^!A_I\otimes^!j_d^!A_I\\
+ &\xrightarrow{\phi_d\otimes\phi_d}
+ j_d^!(A_{I_1}\boxtimes A_{I_2})
+ \otimes^!
+ j_d^!(A_{I_1}\boxtimes A_{I_2})\\
+ &\xrightarrow{\mathrm{ex}}
+ j_d^!\!\left(
+ (A_{I_1}\otimes^!A_{I_1})\boxtimes
+ (A_{I_2}\otimes^!A_{I_2})\right).
+\end{aligned}
+\]
+Every lift in Proposition~\ref{prop:locality-lift} makes
+\[
+\begin{tikzcd}[column sep=4.2em,row sep=3em]
+ j_d^!(A_I\otimes^!A_I)
+   \arrow[r,"j_d^!m_{2,I}"]
+   \arrow[d,"\lambda_d^{(2)}"']
+ &
+ j_d^!A_I
+   \arrow[d,"\phi_d"]
+ \\
+ j_d^!\!\left(
+ (A_{I_1}\otimes^!A_{I_1})\boxtimes
+ (A_{I_2}\otimes^!A_{I_2})\right)
+   \arrow[r,"j_d^!(m_{2,I_1}\boxtimes m_{2,I_2})"']
+ &
+ j_d^!(A_{I_1}\boxtimes A_{I_2})
+\end{tikzcd}
+\]
+commute.  It also makes every collision square commute:
+\[
+\begin{tikzcd}[column sep=4em,row sep=3em]
+ \Delta_q^!(A_I\otimes^!A_I)
+   \arrow[r,"\Delta_q^!m_{2,I}"]
+   \arrow[d,"\simeq"']
+ &
+ \Delta_q^!A_I
+   \arrow[d,"\theta_q"]
+ \\
+ A_J\otimes^!A_J
+   \arrow[r,"m_{2,J}"']
+ &
+ A_J .
+\end{tikzcd}
+\]
+The left vertical map uses the monoidality of \(\Delta_q^!\), followed
+by \(\theta_q\otimes\theta_q\).
+
+After representing the \(E_1\)-structure by a cohomologically graded
+\(A_\infty\)-algebra, analogous diagrams are required for every
+\[
+ m_n:A^{\otimes^!n}\longrightarrow A[2-n],
+\]
+as well as for the unit, augmentation, associahedral homotopies,
+arbitrary multiblock surjections, refinements, and permutations.
+
+\begin{example}[Binary compatibility is not sufficient]
+\label{ex:binary-not-sufficient}
+Assume \(\operatorname{char}k\ne2\).  In
+\(\operatorname{Fun}(BC_2,\operatorname{Ch}_k)\), let
+\[
+ A^0=k1\oplus kx,\qquad A^{-1}=ky,
+\]
+with zero differential and square-zero augmentation ideal for \(m_2\).
+Give \(A\) the strictly unital minimal \(A_\infty\)-operation
+\[
+ m_3(x,x,x)=y
+\]
+and no other nonzero higher operation.  Let the involution fix \(1,x\)
+and send \(y\) to \(-y\).  Multiplication, unit, and augmentation are
+equivariant, but \(m_3\) is not.  Thus binary equivariance does not
+imply descent of an \(E_1\)-structure.
+\end{example}
+
+\begin{remark}[The species and Ran carriers]
+\label{rem:species-ran}
+The transformations \(\iota,\pi\) take values in one fixed additive
+category.  The components of a Ran object lie in the varying categories
+\(\DMod^r(X^I)\) and are joined by extraordinary pullback, open
+restriction, and collision descent.  A geometric analogue of
+\(\iota\) or \(\pi\) therefore requires mixed pull--push functors,
+projection-formula maps, Beck--Chevalley compatibilities, collision
+squares, units, and three-block refinement coherence.
+
+There is also a first-arity discrepancy.  Reduced binary chiral
+convolution has no singleton summand, since there is no surjection
+\(\{*\}\twoheadrightarrow\{1,2\}\).  The Cauchy product of species has
+two singleton summands arising from empty blocks.  Agreement of labels
+on a fixed separated stratum consequently supplies neither a Ran
+natural transformation nor a retraction.
+\end{remark}
+
+\section{The internal bar and its realization}
+
+An augmented ordered product gives operations for composing adjacent
+insertions and for removing either endpoint.  Their compatibility is
+exactly the simplicial structure used by the bar construction.  Because
+the product is factorization-local, these operations remain morphisms
+of factorization objects before any realization is taken.
+
+\begin{proposition}[The internal simplicial bar]
+\label{prop:internal-bar}
+Let
+\(\mathcal F=(\FactD(X),\otimes^!,\boldsymbol\omega_{\Ran})\), and let
+\(A\in\Alg^{\mathrm{aug}}_{E_1}(\mathcal F)\).  Then
+\[
+ \Barc^{\mathcal F}_r(\boldsymbol\omega_{\Ran},A,
+ \boldsymbol\omega_{\Ran})
+ =
+ \boldsymbol\omega_{\Ran}\otimes^!
+ A^{\otimes^!r}\otimes^!\boldsymbol\omega_{\Ran}
+\]
+defines a functor \(\Delta^{op}\to\mathcal F\).  The inner faces are
+induced by multiplication, the two outer faces by the augmentation, and
+the degeneracies by the unit.
+\end{proposition}
+
+\begin{proof}
+Every simplicial operator is a composite of tensor products of
+morphisms in \(\mathcal F\).  The simplicial identities are the coherent
+unital associativity identities of the augmented \(E_1\)-algebra.
+\end{proof}
+
+\begin{conditionaltheorem}[Realized factorization bar]
+\label{thm:realized-bar}
+Assume the geometric realization of the simplicial object in
+Proposition~\ref{prop:internal-bar} exists in \(\mathcal F\), and assume
+the canonical map
+\[
+ \left|U\Barc^{\mathcal F}_\bullet
+   (\boldsymbol\omega_{\Ran},A,\boldsymbol\omega_{\Ran})
+ \right|_{\DMod^r(\Ran X)}
+ \longrightarrow
+ U\!\left(
+ \left|\Barc^{\mathcal F}_\bullet
+   (\boldsymbol\omega_{\Ran},A,\boldsymbol\omega_{\Ran})
+ \right|_{\mathcal F}\right)
+\]
+is an equivalence.  Then the realized object is a factorization right
+\(D\)-module whose underlying Ran object is the ambient realized bar.
+If the ambient tensor preserves geometric realizations separately, that
+underlying object computes
+\[
+ \boldsymbol\omega_{\Ran}
+ \otimes^{\mathbb L}_{U(A)}
+ \boldsymbol\omega_{\Ran}.
+\]
+\end{conditionaltheorem}
+
+\begin{remark}[Normalization and deconcatenation]
+\label{rem:deconcatenation}
+Suppose normalized reduced chains and the necessary sums exist in a
+chosen additive monoidal enhancement, and first suppose that \(A\) has
+a strict augmented dg-associative representative.  With
+\(\bar A=\operatorname{fib}(A\to\boldsymbol\omega_{\Ran})\), let
+\(s\bar A\) denote a copy of \(\bar A\) placed in independent bar
+homological degree one; \(s\) is not the cohomological shift \([1]\).
+The reduced bar is the bigraded coalgebra
+\[
+ \overline B(A)=T^c(s\bar A)
+ =\bigoplus_{r\ge0}(s\bar A)^{\otimes r}.
+\]
+Its internal differential raises cohomological degree and preserves
+\(r\); its simplicial bar differential is the coderivation induced by
+multiplication and lowers \(r\) by one.  Both have degree \(+1\) after
+the totalization \(p-r\).
+For a general cohomological \(A_\infty\)-representative, the full bar
+coderivation instead has a component induced by every operation \(m_n\);
+the component associated with \(m_n\) changes bidegree by
+\((2-n,1-n)\) and hence again has total degree \(+1\).
+Consequently
+\[
+ \Delta_{\mathrm{dec}}[a_1|\cdots|a_r]
+ =\sum_{i=0}^r
+ [a_1|\cdots|a_i]\otimes[a_{i+1}|\cdots|a_r]
+\]
+is a coassociative chain map in every word length.  To obtain this map
+inside \(\FactD(X)\), normalization and the required sums must be
+created by \(U\), tensor must preserve them, and the resulting map must
+respect collision and factorization descent.  These colimits are not
+automatic: the standard category \(\operatorname{Fact}(X)\) is not
+presentable and lacks coproducts
+\cite{FG12}*{Remark 2.4.9}.
+\end{remark}
+
+\section{The algebraic bar denominator}
+
+For an enveloping algebra, antisymmetrization compares ordered bar words
+with Chevalley--Eilenberg chains.  A positive root grading makes their
+Euler supercharacter computable one weight at a time.  We first specify
+the finiteness and sign conventions needed for this calculation.
+
+In \(\operatorname{Ch}_{\ge0}(\operatorname{sVect}_k)\), write \(sV\)
+for a super vector space \(V\) placed in homological degree one, with
+its intrinsic parity unchanged.  Thus \(s\) is a homological suspension,
+not the cohomological shift \([1]\).  On bidegrees
+\((r,\epsilon)\) and \((r',\epsilon')\), the symmetry has sign
+\((-1)^{rr'+\epsilon\epsilon'}\), while the Euler sign of one
+bidegree is \((-1)^{r+\epsilon}\).
+
+\begin{definition}[Finite-factorization monoid]
+\label{def:finite-factorization}
+A pointed commutative monoid \(Q_+\) has the
+\emph{finite-factorization property} if, for every \(\beta\in Q_+\),
+\[
+ \coprod_{r\ge0}
+ \left\{(\alpha_1,\ldots,\alpha_r)
+ \in(Q_+\setminus\{0\})^r:
+ \alpha_1+\cdots+\alpha_r=\beta\right\}
+\]
+is finite.
+\end{definition}
+
+This condition makes
+\[
+ \widehat{\mathbb Z[Q_+]}
+ =\prod_{\beta\in Q_+}\mathbb Z X^\beta,
+ \qquad
+ (ab)_\beta=\sum_{\gamma+\delta=\beta}a_\gamma b_\delta,
+\]
+a ring.  It is stronger than finite-dimensionality of the homogeneous
+pieces.  For example, the pointed monoid generated inside
+\(\mathbb Z^2\) by \((1,j)\) and \((0,-j)\), \(j\ge1\), has infinitely
+many decompositions
+\[
+ (1,0)=(1,j)+(0,-j).
+\]
+
+Let
+\[
+ \mathfrak n_+
+ =\bigoplus_{\alpha\in Q_+\setminus\{0\}}\mathfrak g_\alpha
+\]
+be a \(Q_+\)-graded Lie superalgebra with finite-dimensional
+homogeneous pieces.  Give \(k\) the trivial
+\(U(\mathfrak n_+)\)-module structure and define
+\[
+ \mathcal B(\mathfrak n_+)
+ :=
+ N\Barc_\bullet(k,U(\mathfrak n_+),k)
+ \in
+ \operatorname{Ch}_{\ge0}
+   (\operatorname{sVect}^{Q_+}_k).
+\]
+In simplicial homological degree \(r\),
+\[
+ \mathcal B_r(\mathfrak n_+)
+ \cong\overline{U(\mathfrak n_+)}^{\otimes r}.
+\]
+Equivalently, its reduced dg-bar presentation is
+\(T^c(s\overline{U(\mathfrak n_+)})\).
+Normalization is essential: for the augmented algebra \(k\), the
+normalized bar is zero in every positive degree, whereas the
+unnormalized simplicial object has a copy of \(k\) in every degree.
+
+Let
+\[
+ \widehat{\operatorname{Ch}}^{\mathrm{pf}}_{Q_+}
+   (\operatorname{sVect}_k)
+ :=
+ \prod_{\beta\in Q_+}
+   \operatorname{Perf}(\operatorname{sVect}_k)
+\]
+be the category of \(Q_+\)-graded supercomplexes that are bounded and
+finite-dimensional in each weight.  Its completed convolution is
+\[
+ (C\widehat\otimes D)_\beta
+ =\bigoplus_{\gamma+\delta=\beta}C_\gamma\otimes D_\delta,
+\]
+and its unit is \(k\) in weight zero.  Finite factorization makes every
+displayed sum finite.  Define the coefficientwise Grothendieck group
+\[
+ \widehat K_{0,s}^{Q_+}(k)
+ =\prod_{\beta\in Q_+}
+ K_0\bigl(\operatorname{Perf}(\operatorname{sVect}_k)\bigr)
+\]
+and the homomorphism
+\[
+ \begin{aligned}
+ \chi_{Q_+}^{\mathrm{tot}}:
+ \widehat K_{0,s}^{Q_+}(k)&\longrightarrow
+ \widehat{\mathbb Z[Q_+]},\\
+ (c_\beta)_\beta&\longmapsto
+ \sum_{\beta\in Q_+}\sdim(c_\beta)X^\beta.
+ \end{aligned}
+\]
+Here \(\sdim(c_\beta)\) first takes the homological Euler class and
+then subtracts intrinsic odd parity.  For a weightwise perfect
+supercomplex \(C\), write
+\(
+ \chi_{Q_+}^{\mathrm{tot}}(C)
+ :=\chi_{Q_+}^{\mathrm{tot}}([C])
+\)
+for the composite through its coefficientwise Grothendieck class.
+Then
+\[
+ \begin{split}
+ \chi_{Q_+}^{\mathrm{tot}}(C)
+ &=
+ \sum_{\beta,r}(-1)^r
+ \sdim H_r(C)_\beta\,X^\beta\\
+ &=
+ \sum_{\beta,r,\epsilon}(-1)^{r+\epsilon}
+ \dim H_r(C)_{\beta,\bar\epsilon}\,X^\beta
+ \in\widehat{\mathbb Z[Q_+]}.
+ \end{split}
+\]
+
+\begin{theorem}[The algebraic bar denominator]
+\label{thm:algebraic-denominator}
+Under the preceding hypotheses,
+\(\mathcal B(\mathfrak n_+)\) is weightwise perfect.  Super
+antisymmetrization gives a natural root-graded quasi-isomorphism
+\[
+ \operatorname{Alt}:
+ C_\bullet^{\CE}(\mathfrak n_+;k)
+ =
+ \bigl(\Sym_{\operatorname{Ch}(\operatorname{sVect}_k)}
+       (s\mathfrak n_+),d_{\CE}\bigr)
+ \xrightarrow{\ \simeq\ }
+ \mathcal B(\mathfrak n_+),
+\]
+where \(d_{\CE}\) lowers homological degree by one and preserves
+intrinsic parity.  The map \(\operatorname{Alt}\) preserves homological
+degree, intrinsic parity, and \(Q_+\)-weight.  Moreover,
+\[
+ \chi_{Q_+}^{\mathrm{tot}}\bigl(\mathcal B(\mathfrak n_+)\bigr)
+ =
+ \prod_{\alpha\in Q_+\setminus\{0\}}
+ (1-X^\alpha)^{\sdim\mathfrak g_\alpha}.
+\]
+\end{theorem}
+
+\begin{proof}
+For homogeneous \(x_1,\ldots,x_r\), the comparison is
+\[
+ x_1\wedge\cdots\wedge x_r
+ \longmapsto
+ \sum_{\sigma\in S_r}
+ \operatorname{sgn}(\sigma)\kappa(\sigma;x)
+ [x_{\sigma(1)}|\cdots|x_{\sigma(r)}],
+\]
+where \(\kappa(\sigma;x)\) is the super Koszul sign.  Compatibility with
+the differentials is the super antisymmetrization calculation.  Filter
+both sides by PBW degree.  In each fixed \(Q_+\)-weight this filtration
+is finite and exhaustive.  Super PBW gives
+\[
+ \operatorname{gr}U(\mathfrak n_+)
+ \cong
+ \Sym(\mathfrak n_{+,\bar0})
+ \otimes\Lambda(\mathfrak n_{+,\bar1}).
+\]
+Put
+\[
+ S=\Sym(\mathfrak n_{+,\bar0})
+   \otimes\Lambda(\mathfrak n_{+,\bar1}).
+\]
+The associated-graded target is \(N\Barc_\bullet(k,S,k)\), whereas the
+associated-graded source has zero differential and is
+\[
+ \Lambda(\mathfrak n_{+,\bar0})
+ \otimes\Sym(
+   \mathfrak n_{+,\bar1})
+ \cong
+ \Sym_{\operatorname{Ch}(\operatorname{sVect}_k)}(s\mathfrak n_+).
+\]
+For one even generator \(x\), the Koszul resolution of \(k\) over
+\(k[x]\) shows that the normalized bar has homology
+\(k\oplus k[sx]\), represented by \(1\) and \([x]\).  For one odd
+generator \(\theta\), the augmentation ideal of \(\Lambda(\theta)\) is
+\(k\theta\) with \(\theta^2=0\), so its normalized bar differential
+vanishes and
+\[
+ \operatorname{Alt}((s\theta)^r)
+ =r![\theta|\cdots|\theta].
+\]
+Thus both one-generator comparisons are quasi-isomorphisms in
+characteristic zero.  The shuffle Eilenberg--Zilber map and the
+K\"unneth theorem identify \(\operatorname{gr}\operatorname{Alt}\), in
+each fixed weight, with their finite tensor product.  Hence it is a
+quasi-isomorphism.  The finite exhaustive PBW filtration in each weight
+then proves that \(\operatorname{Alt}\) is a quasi-isomorphism.
+The ordinary exterior resolution inside the normalized standard
+resolution is
+\cite{CE56}*{Chapter XIII, Section 7, Theorem 7.1}; the same filtration
+argument, with the displayed Koszul signs, gives the super extension.
+The PBW and chain/cochain conventions are in
+\cite{CE56}*{Chapter XIII, Sections 3 and 8}.
+
+The finite-factorization property and finite-dimensional root spaces
+make every fixed weight a bounded finite-dimensional complex.
+Euler--Poincaré therefore reduces the character to the underlying
+superobject
+\(\Sym_{\operatorname{Ch}(\operatorname{sVect}_k)}(s\mathfrak n_+)\);
+the differential
+\(d_{\CE}\), which is generally nonzero, does not change it.  An
+intrinsically even root vector becomes total-odd after suspension and
+contributes \(1-X^\alpha\).  An intrinsically odd root vector becomes
+total-even and contributes \((1-X^\alpha)^{-1}\).  Multiplication over
+a homogeneous basis gives the stated exponent and product.
+For a one-dimensional abelian Lie superalgebra in degree \(\alpha\),
+with its generator respectively even or odd, these two cases are
+\[
+ 1-X^\alpha,\qquad
+ 1+X^\alpha+X^{2\alpha}+\cdots=(1-X^\alpha)^{-1},
+\]
+which fixes the homological and intrinsic-parity signs independently.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:algebraic-denominator} is an ordinary algebraic result.
+It has no Ran descent datum.  Its product depends only on signed root
+spaces; a generalized Cartan datum, positive system, Weyl vector, and
+imaginary-simple-root correction are additional inputs to a
+superdenominator identity.
+\end{remark}
+
+\begin{problem}[The carrier-changing comparison]
+\label{prob:carrier-change}
+For this problem set \(k=\mathbb C\); more generally, a symmetric
+monoidal change-of-coefficients functor must be included among the data.
+Given an ordered factorization algebra \(A\), construct a
+grading-preserving comparison between its realized factorization bar and
+\(\mathcal B(\mathfrak n_+)\).  One sufficient set of data is a strong
+monoidal functor
+\[
+ \Phi:
+ (\FactD(X),\otimes^!,\boldsymbol\omega_{\Ran})
+ \longrightarrow
+ \left(
+ \widehat{\operatorname{Ch}}^{\mathrm{pf}}_{Q_+}
+   (\operatorname{sVect}_{\mathbb C}),
+ \widehat\otimes,\mathbb C\right),
+ \qquad
+ \Phi(A)\simeq U(\mathfrak n_+)
+\]
+as augmented \(E_1\)-algebras, together with preservation of the chosen
+realization.  For a strict augmented dg representative, the comparison
+must already commute with the length-two bar face induced by
+multiplication.  If \(\eta:\Phi(A)\to U(\mathfrak n_+)\) denotes its
+algebra map and \(\phi_2\) the tensor comparison of \(\Phi\), this equation is
+\[
+ \eta\,\Phi(\mu_A)\,\phi_2
+ =\mu_U(\eta\otimes\eta),
+ \qquad
+ \varepsilon_U\eta=\Phi(\varepsilon_A),
+\]
+where the unit comparison identifies \(\Phi(\boldsymbol\omega_{\Ran})\)
+with \(\mathbb C\).  Here \(\mu_A,\mu_U\) are the two products and
+\(\varepsilon_A,\varepsilon_U\) their augmentations.
+For a homotopy-coherent comparison these equalities require specified
+homotopies and their higher compatibility equations.
+Alternatively, a direct construction must first map
+both bars to one named root-graded chain category and then give a
+grading-preserving quasi-isomorphism there.
+\end{problem}
+
+\begin{conditionaltheorem}[Comparison through a monoidal functor]
+\label{thm:conditional-comparison}
+Assume the first set of data in
+Problem~\ref{prob:carrier-change}, including the hypotheses of
+Theorem~\ref{thm:realized-bar}.  Then there are natural equivalences
+\[
+ \Phi\!\left(
+   \left|\Barc^{\mathcal F}_\bullet
+    (\boldsymbol\omega_{\Ran},A,\boldsymbol\omega_{\Ran})\right|
+ \right)
+ \simeq
+ \left|\Barc_\bullet(\mathbb C,\Phi(A),\mathbb C)\right|
+ \simeq
+ \mathcal B(\mathfrak n_+).
+\]
+Consequently,
+\[
+ \chi_{Q_+}^{\mathrm{tot}}\!\left(
+ \Phi\!\left(
+   \left|\Barc^{\mathcal F}_\bullet
+    (\boldsymbol\omega_{\Ran},A,\boldsymbol\omega_{\Ran})\right|
+ \right)\right)
+ =
+ \prod_{\alpha\in Q_+\setminus\{0\}}
+ (1-X^\alpha)^{\sdim\mathfrak g_\alpha}.
+\]
+\end{conditionaltheorem}
+
+\begin{proof}
+Strong monoidality identifies the unit, multiplication, and augmentation
+in every simplicial degree.  Preservation of realization gives the
+first equivalence, and the augmented-algebra equivalence gives the
+second.
+\end{proof}
+
+\section{From a bar product to a superdenominator}
+
+Let \(H\) be a real bilinear space and let
+\(G=G(H,\{h_i\}_{i\in I},\tau)\) be a Borcherds realization in the
+sense of Gritsenko--Nikulin, Section~6.  Thus
+\((h_i,h_j)\le0\) for \(i\ne j\),
+\(2(h_i,h_j)/(h_i,h_i)\) is integral whenever \((h_i,h_i)>0\), and
+\((h_i,h_i)\le0\) for every odd simple index \(i\in\tau\).  Assume the
+hypotheses of their Statement~6.8\(^{\prime}\), so in particular there
+are no odd real simple roots.  Put
+\[
+ \widetilde Q=\bigoplus_{i\in I}\mathbb Zr_i,\qquad
+ \widetilde Q_+=\sum_{i\in I}\mathbb N r_i,\qquad
+ \varpi(r_i)=h_i,
+\]
+and require the conditions (6.29)--(6.31): every fibre of
+\(\varpi|_{\widetilde Q_+}\) is finite and
+\[
+ \varpi^{-1}(0)\cap\widetilde Q_+=\{0\}.
+\]
+Let \(Q=\sum_i\mathbb Zh_i\subset H\),
+\(Q_+=\varpi(\widetilde Q_+)\), and
+\(\Delta_+=\Delta\cap(Q_+\setminus\{0\})\).  These conditions make
+\(Q_+\) pointed with the finite-factorization property: every ordered
+decomposition lifts to an ordered decomposition of one of the finitely
+many elements in its \(\varpi\)-fibre, and an element of the free monoid
+\(\widetilde Q_+\) has only finitely many such decompositions.  Roots
+\(\alpha\in\Delta_+\) below are the \(Q\)-valued roots, and
+\(G_\alpha\) denotes the total finite-dimensional root space in that
+degree.  Set
+\[
+ G_+=\bigoplus_{\alpha\in\Delta_+}G_\alpha,\qquad
+ \operatorname{mult}\alpha
+ =\dim G_{\alpha,\bar0}-\dim G_{\alpha,\bar1}.
+\]
+
+Let \(P\supset Q\) be a \(W\)-stable weight lattice containing a Weyl
+vector \(\rho_{\mathrm{alg}}\) with
+\[
+ (\rho_{\mathrm{alg}},h_i)=\frac12(h_i,h_i).
+\]
+Here \(W\) is the Weyl group of the real simple roots and
+\(\varepsilon_W(w)=(-1)^{\ell(w)}\).  Write
+\(e(\lambda)e(\mu)=e(\lambda+\mu)\) and
+\(X^\alpha=e(-\alpha)\), and define the shifted completion
+\[
+ e(\rho_{\mathrm{alg}})\widehat{\mathbb Z[Q_+]}
+ :=
+ \prod_{\beta\in Q_+}
+ \mathbb Z\,e(\rho_{\mathrm{alg}}-\beta).
+\]
+
+\begin{corollary}[Formal superdenominator comparison]
+\label{cor:formal-superdenominator}
+For
+\[
+ \mathcal B(G_+)
+ =N\Barc_\bullet\bigl(\mathbb C,U(G_+),\mathbb C\bigr),
+\]
+the unshifted bar character is
+\[
+ \chi_{Q_+}^{\mathrm{tot}}\bigl(\mathcal B(G_+)\bigr)
+ =
+ \prod_{\alpha\in\Delta_+}
+ (1-X^\alpha)^{\operatorname{mult}\alpha}.
+\]
+Its Weyl shift satisfies, coefficientwise in the shifted completion,
+\[
+ e(\rho_{\mathrm{alg}})
+ \chi_{Q_+}^{\mathrm{tot}}\bigl(\mathcal B(G_+)\bigr)
+ =
+ e(\rho_{\mathrm{alg}})
+ \prod_{\alpha\in\Delta_+}
+ (1-e(-\alpha))^{\operatorname{mult}\alpha}.
+\]
+It is the product side of
+\[
+ e(\rho_{\mathrm{alg}})
+ \prod_{\alpha\in\Delta_+}
+ (1-e(-\alpha))^{\operatorname{mult}\alpha}
+ =
+ \sum_{w\in W}\varepsilon_W(w)\,w(S),
+\]
+where
+\[
+ S=e(\rho_{\mathrm{alg}})
+   \sum_s\varepsilon_I(s)e(-\varpi(s)).
+\]
+Here \(s=0\) is included, with \(\varepsilon_I(0)=1\).  The remaining
+\(s\) range over sums of pairwise perpendicular imaginary simple
+indices.  If \(s\) contains \(n_0\) even and \(n_1\) odd imaginary
+simple indices, then \(\varepsilon_I(s)=(-1)^{n_0}\); indices outside
+the set of odd isotropic simple roots are required to be distinct, and
+\(\varepsilon_I(s)=0\) for an inadmissible sum.
+\end{corollary}
+
+\begin{proof}
+Theorem~\ref{thm:algebraic-denominator} gives the product on the left.
+The remaining identity is the superdenominator formula
+\cite{GN97}*{the paragraph before Statement 6.5 and Statement
+6.8\(^{\prime}\), with (6.29)--(6.31)}.
+\end{proof}
+
+\begin{remark}
+For ordinary generalized Kac--Moody algebras the corresponding formula
+is \cite{Bor88}*{formula (3), pp.~506--507}.  That formula does not
+contain the super sign or the odd-imaginary-root correction above.
+\end{remark}
+
+\section{The Igusa specialization}
+
+\subsection{The active root cone}
+
+Let
+\[
+ M_0=\mathbb Zf_2\oplus\mathbb Zf_3\oplus\mathbb Zf_{-2},
+ \qquad
+ (f_2,f_{-2})=-1,\qquad (f_3,f_3)=2,
+\]
+with all other basis pairings zero, and put
+\[
+ \delta_1=2f_2-f_3,\qquad
+ \delta_2=2f_{-2}-f_3,\qquad
+ \delta_3=f_3.
+\]
+Then
+\[
+ Q=M_{II}
+ =\mathbb Z\delta_1\oplus\mathbb Z\delta_2
+  \oplus\mathbb Z\delta_3,\qquad
+ Q_+=\mathbb N\delta_1+\mathbb N\delta_2+\mathbb N\delta_3.
+\]
+Thus \(Q_+\cong\mathbb N^3\) has the finite-factorization property.
+These lattice and chamber data are those of
+\cite{GN97}*{(2.1)--(2.4)}.
+
+For \(n,\ell,m\in\mathbb Z\), define
+\[
+ \alpha(n,\ell,m)=2nf_2-\ell f_3+2mf_{-2}.
+\]
+Its coordinates in \(Q\) are
+\begin{equation}
+ \alpha(n,\ell,m)
+ =n\delta_1+m\delta_2+(n+m-\ell)\delta_3.
+ \label{eq:igusa-root-coordinate}
+\end{equation}
+The positive triples satisfy \(n,m\ge0\), with arbitrary \(\ell\) if
+\(n>0\) or \(m>0\), and with \(\ell<0\) if \(n=m=0\)
+\cite{GN97}*{Theorem 4.1 and Remark 4.2}.
+
+Let
+\[
+ \phi_{0,1}(\tau,z)
+ =\sum_{N\ge0,\ \ell\in\mathbb Z}
+ f(N,\ell)e^{2\pi i(N\tau+\ell z)}
+\]
+be the weak Jacobi form normalized by
+\(f(0,0)=10\) and \(f(0,\pm1)=1\).  It has weight zero and index one,
+and its support satisfies
+\[
+ f(N,\ell)\ne0\quad\Longrightarrow\quad
+ 4N-\ell^2\ge-1.
+\]
+These assertions follow from
+\cite{GN97}*{(4.11) and the paragraph following it}.
+
+\begin{lemma}[Active positive cone]
+\label{lem:igusa-active-cone}
+If \((n,\ell,m)>0\) and \(f(nm,\ell)\ne0\), then
+\(\alpha(n,\ell,m)\in Q_+\).
+\end{lemma}
+
+\begin{proof}
+If \(n+m>0\) and \(\ell\ge n+m+1\), then
+\[
+ \ell^2\ge(n+m+1)^2>4nm+1,
+\]
+contrary to the support inequality.  Hence \(n+m-\ell\ge0\).
+If \(n=m=0\), positivity and the support inequality force
+\(\ell=-1\).  Equation~\eqref{eq:igusa-root-coordinate} gives the
+result.
+\end{proof}
+
+The restriction to active roots is essential.  The raw positive triples
+have infinitely many decompositions
+\[
+ (1,0,0)=(1,j,0)+(0,-j,0),\qquad j\ge1.
+\]
+Both summands are simultaneously active only for \(j=1\).  At the
+boundary \(n=m=0\), the cone selects
+\(\delta_3=\alpha(0,-1,0)\).  Under the analytic substitution below its
+factor is \(1-y^{-2}\); reversing the root changes it by the exact
+monomial factor
+\[
+ 1-y^2=-y^2(1-y^{-2}).
+\]
+
+Gritsenko and Nikulin construct a generalized Kac--Moody
+superalgebra \(\mathfrak g_{\Delta_5}\) with finite-dimensional root
+spaces and
+\[
+ \sdim(\mathfrak g_{\Delta_5})_{\alpha(n,\ell,m)}
+ =f(nm,\ell)
+\]
+\cite{GN97}*{Section 3 and (3.4)}.  The finite-fibre conditions ensuring
+finite-dimensional projected root spaces are
+\cite{GN97}*{(6.29)--(6.31)}.  Define
+\[
+ \mathfrak n_{\Delta_5,+}
+ =\bigoplus_{\alpha\in\Delta_+}
+   (\mathfrak g_{\Delta_5})_\alpha,\qquad
+ \mathcal B_{\Delta_5}
+ =N\Barc_\bullet\bigl(
+   \mathbb C,U(\mathfrak n_{\Delta_5,+}),\mathbb C\bigr).
+\]
+By Lemma~\ref{lem:igusa-active-cone}, this is weightwise perfect in
+\(\operatorname{Ch}_{\ge0}
+(\operatorname{sVect}_{\mathbb C}^{Q_+})\).
+
+\subsection{The Weyl shift and the formal Fourier map}
+
+The geometric Weyl vector is
+\[
+ \rho_{\mathrm{geo}}
+ =\frac12(\delta_1+\delta_2+\delta_3),\qquad
+ (\rho_{\mathrm{geo}},\delta_i)=-1.
+\]
+The algebraic convention in the superdenominator formula is
+\[
+ \rho_{\mathrm{alg}}=-\rho_{\mathrm{geo}},\qquad
+ (\rho_{\mathrm{alg}},\delta_i)=1.
+\]
+These conventions are respectively
+\cite{GN97}*{(2.3)--(2.4), (3.2)--(3.3)} and the paragraph preceding
+\cite{GN97}*{Statement 6.5, together with Statement
+6.8\(^{\prime}\)}.  In particular,
+\[
+ e(\rho_{\mathrm{alg}})=e(-\rho_{\mathrm{geo}})
+ =X^{\rho_{\mathrm{geo}}},\qquad X^\alpha:=e(-\alpha).
+\]
+Since \(\rho_{\mathrm{geo}}\) lies in the weight lattice but not in
+\(Q\), this expression belongs to the shifted module
+\[
+ X^{\rho_{\mathrm{geo}}}\widehat{\mathbb Z[Q_+]}.
+\]
+
+Let
+\[
+ \widehat{\mathscr F}_{Q_+}=\mathbb Z[[u,v,w]]
+\]
+with its \((u,v,w)\)-adic topology.  Let
+\(\omega\widehat{\mathscr F}_{Q_+}\) be the free rank-one shifted
+module obtained in the enlarged lattice algebra by imposing
+\(\omega^2=uvw\).  There is a continuous formal isomorphism
+\[
+ \mathcal F_2:\widehat{\mathbb Z[Q_+]}
+ \longrightarrow\widehat{\mathscr F}_{Q_+},
+ \qquad
+ X^{\delta_1}\mapsto u,\quad
+ X^{\delta_2}\mapsto v,\quad
+ X^{\delta_3}\mapsto w,
+\]
+and a shifted extension
+\[
+ \mathcal F_2^\rho:
+ X^{\rho_{\mathrm{geo}}}\widehat{\mathbb Z[Q_+]}
+ \longrightarrow\omega\widehat{\mathscr F}_{Q_+},
+ \qquad
+ \mathcal F_2^\rho(X^{\rho_{\mathrm{geo}}}F)
+ =\omega\,\mathcal F_2(F).
+\]
+
+\begin{proposition}[Formal Igusa character]
+\label{prop:formal-igusa-character}
+One has
+\[
+ \mathcal F_2^\rho\!\left(
+ X^{\rho_{\mathrm{geo}}}
+ \chi_{Q_+}^{\mathrm{tot}}(\mathcal B_{\Delta_5})\right)
+ =
+ \omega\prod_{\substack{(n,\ell,m)>0\\ f(nm,\ell)\ne0}}
+ \left(1-u^nv^mw^{\,n+m-\ell}\right)^{f(nm,\ell)}
+\]
+in \(\omega\widehat{\mathscr F}_{Q_+}\).
+\end{proposition}
+
+\begin{proof}
+Apply Theorem~\ref{thm:algebraic-denominator} and the signed
+multiplicity formula (3.4) of \cite{GN97}.  Equation
+\eqref{eq:igusa-root-coordinate} gives the exponent of
+\(u^nv^mw^{n+m-\ell}\), while the Weyl-vector convention gives the
+factor \(\omega\).
+\end{proof}
+
+\begin{remark}
+Proposition~\ref{prop:formal-igusa-character} is a formal equality in a
+shifted cone module.  Neither the scalar \(64\) nor analytic convergence
+can be recovered from the exponent table.
+\end{remark}
+
+\subsection{Analytic realization at the cusp}
+
+For
+\[
+ Z=\begin{pmatrix}z_1&z_2\\z_2&z_3\end{pmatrix}\in\mathbb H_2,
+ \qquad
+ q=e^{2\pi iz_1},\quad y=e^{2\pi iz_2},\quad
+ p=e^{2\pi iz_3},
+\]
+set
+\[
+ u_Z=q^2y^2,\qquad v_Z=p^2y^2,\qquad
+ w_Z=y^{-2},\qquad \omega_Z=qyp.
+\]
+Then
+\[
+ \omega_Z^2=u_Zv_Zw_Z,\qquad
+ u_Z^nv_Z^mw_Z^{\,n+m-\ell}
+ =q^{2n}y^{2\ell}p^{2m}.
+\]
+
+Writing \(y_j=\operatorname{Im}z_j\), define
+\[
+ U_T=\left\{Z\in\mathbb H_2:
+ -y_2>T,\quad y_1+y_2>T,\quad y_3+y_2>T\right\}.
+\]
+For
+\(\zeta=z_3f_2+z_2f_3+z_1f_{-2}\), these inequalities are equivalent to
+\((\operatorname{Im}\zeta,\delta_i)<-2T\).  In particular,
+\[
+ |u_Z|,|v_Z|,|w_Z|<e^{-4\pi T}.
+\]
+
+Let
+\(\widehat{\mathscr F}_{Q_+}^{\mathrm{abs}}(U_T)\) consist of the
+series \(F=\sum A_{a,b,c}u^av^bw^c\) for which
+\[
+ \|F\|_K
+ =\sum_{a,b,c\ge0}|A_{a,b,c}|
+ \sup_{Z\in K}|u_Z^av_Z^bw_Z^c|<\infty
+\]
+for every compact \(K\Subset U_T\).  Endow this algebra with the
+seminorms \(\|\cdot\|_K\), and \(\mathcal O(U_T)\) with the
+compact-open topology.  Termwise summation defines continuous maps
+\[
+ \operatorname{an}_{U_T}:
+ \widehat{\mathscr F}_{Q_+}^{\mathrm{abs}}(U_T)
+ \longrightarrow\mathcal O(U_T),
+\]
+\[
+ \operatorname{an}_{U_T}^{\rho}:
+ \omega\widehat{\mathscr F}_{Q_+}^{\mathrm{abs}}(U_T)
+ \longrightarrow\mathcal O(U_T),\qquad
+ \omega F\longmapsto(qyp)\operatorname{an}_{U_T}(F).
+\]
+There is no such termwise realization on the whole adic completion:
+\(\sum_{r\ge0}r!u^r\) has radius of convergence zero.
+
+For an active triple put
+\[
+ d=n+m+(n+m-\ell).
+\]
+The support inequality gives
+\[
+ \sqrt{\max(0,4nm-\ell^2)}\le n+m\le d,
+\]
+and only \(O(d^2)\) triples have a fixed value of \(d\).  The coefficient
+estimate in the proof of \cite{GN97}*{Theorem 4.1}, together with
+\[
+ \left|u_Z^nv_Z^mw_Z^{n+m-\ell}\right|
+ \le e^{-4\pi Td},
+\]
+therefore implies that, for sufficiently large \(T\),
+\[
+ \sum_{\substack{(n,\ell,m)>0\\ f(nm,\ell)\ne0}}
+ |f(nm,\ell)|\sup_{Z\in K}
+ \frac{|q^{2n}y^{2\ell}p^{2m}|}
+      {1-|q^{2n}y^{2\ell}p^{2m}|}<\infty
+\]
+for every compact \(K\Subset U_T\).  Consequently the formal product
+in Proposition~\ref{prop:formal-igusa-character} belongs to
+\(\omega\widehat{\mathscr F}_{Q_+}^{\mathrm{abs}}(U_T)\): for a factor
+with exponent \(a\), its absolute binomial norm is bounded by
+\(\exp(|a|r/(1-r))\) when the monomial has modulus at most \(r<1\).
+
+Let \(\Delta_5\) be the product of the ten even genus-two theta
+constants, and put \(D_5=64^{-1}\Delta_5\).
+
+\begin{theorem}[Igusa realization]
+\label{thm:igusa-realization}
+For sufficiently large \(T\),
+\[
+\begin{aligned}
+ &\operatorname{an}_{U_T}^{\rho}\!\left(
+ \mathcal F_2^\rho\!\left(
+ X^{\rho_{\mathrm{geo}}}
+ \chi_{Q_+}^{\mathrm{tot}}(\mathcal B_{\Delta_5})\right)\right)\\
+ &\qquad =
+ qyp\prod_{\substack{(n,\ell,m)>0\\ f(nm,\ell)\ne0}}
+ \left(1-q^{2n}y^{2\ell}p^{2m}\right)^{f(nm,\ell)}\\
+ &\qquad =D_5(2Z)=64^{-1}\Delta_5(2Z)
+\end{aligned}
+\]
+as holomorphic functions on \(U_T\).
+\end{theorem}
+
+\begin{proof}
+The product formula and its convergence are
+\cite{GN97}*{Theorem 4.1 and its proof, Remark 4.2}, evaluated at
+\(2Z\).  The normalization \(D_5=64^{-1}\Delta_5\) follows from the
+ten-theta product and its leading Fourier coefficient
+\cite{GN97}*{(1.2), (1.6)--(1.7)}.  The identification with the
+superdenominator is \cite{GN97}*{Proposition 3.1}; the scale
+\(Z\mapsto2Z\) is explained in \cite{GN97}*{Remark 3.2}.
+\end{proof}
+
+\begin{remark}[Automorphic descent]
+\label{rem:automorphic-descent}
+The form \(\Delta_5\) satisfies
+\[
+ \Delta_5(M\langle Z\rangle)
+ =v(M)\det(CZ+D)^5\Delta_5(Z),
+ \qquad
+ M=\begin{pmatrix}A&B\\C&D\end{pmatrix}
+ \in\operatorname{Sp}_4(\mathbb Z),
+\]
+where \(v\) is the nontrivial multiplier of
+\cite{GN97}*{(1.3)--(1.5)}.  Thus it is a section of the weight-five
+automorphic line with multiplier \(v\).
+
+Let
+\[
+ g_2=\begin{pmatrix}2I_2&0\\0&I_2\end{pmatrix}
+ \in\operatorname{GSp}_4(\mathbb Q),\qquad
+ \Gamma^{(2)}=g_2^{-1}\operatorname{Sp}_4(\mathbb Z)g_2.
+\]
+For \(\gamma\in\Gamma^{(2)}\), put
+\(M=g_2\gamma g_2^{-1}\).  Then
+\[
+ D_5\!\left(2\,\gamma\langle Z\rangle\right)
+ =
+ v(M)\det\!\left(C_M(2Z)+D_M\right)^5D_5(2Z).
+\]
+Accordingly, \(D_5(2Z)\) is the pullback of the weight-five automorphic
+section along the scaled cusp embedding.  The formal bar character has
+no equivariance datum of this kind; automorphic descent is supplied by
+the separate Gritsenko--Nikulin theorem.
+\end{remark}
+
+\section{The positive Witt algebra}
+
+Let
+\[
+ L_1^{\mathrm{poly}}=\bigoplus_{j\ge1}\mathbb Ce_j,
+ \qquad
+ \widehat L_1=\prod_{j\ge1}\mathbb Ce_j,
+ \qquad [e_i,e_j]=(j-i)e_{i+j}.
+\]
+Equip \(\widehat L_1\) with the filtration topology
+\[
+ F^N\widehat L_1=\prod_{j\ge N}\mathbb Ce_j.
+\]
+For every \(n,w\), evaluation gives a perfect pairing
+\[
+ C_n^{\CE}(L_1^{\mathrm{poly}};\mathbb C)_w
+ \otimes
+ C^n_{\mathrm{cont}}(\widehat L_1;\mathbb C)_w
+ \longrightarrow\mathbb C.
+\]
+Indeed, only finitely many strictly increasing positive indices sum to
+\(w\).  The chain and cochain differentials are adjoint, hence
+\begin{equation}
+ H_n^{\CE}(L_1^{\mathrm{poly}};\mathbb C)_w
+ \cong
+ H^n_{\mathrm{cont}}(\widehat L_1;\mathbb C)_w^\vee.
+ \label{eq:witt-duality}
+\end{equation}
+The chain--cochain pairing is the one in
+\cite{Gon73}*{equations (2)--(3)}.
+The bar and CE chain constructions are covariant; continuous cochains
+are contravariant.  The duality in \eqref{eq:witt-duality} is the
+variance-reversing bridge.
+
+\begin{theorem}[Positive Witt bar homology]
+\label{thm:witt-homology}
+For \(n\ge1\),
+\[
+ \dim H_n\mathcal B(L_1^{\mathrm{poly}})_w
+ =
+ \begin{cases}
+ 1,&w=(3n^2-n)/2\ \text{or}\ w=(3n^2+n)/2,\\
+ 0,&\text{otherwise}.
+ \end{cases}
+\]
+Thus
+\(\dim H_n\mathcal B(L_1^{\mathrm{poly}})=2\) for every \(n\ge1\).
+\end{theorem}
+
+\begin{proof}
+Theorem~\ref{thm:algebraic-denominator} identifies the normalized
+enveloping-algebra bar with the CE chain complex, weight by weight.
+Equation~\eqref{eq:witt-duality} identifies its homology with the dual
+of continuous cohomology.  Goncharova's Main Theorem and Example 1.1
+give precisely the two displayed weights and the vanishing elsewhere
+\cite{Gon73}*{Sections 1.1--1.3, pp.~8--10}.
+\end{proof}
+
+The smallest weight calculation is
+\[
+ [L_1^{\mathrm{poly}},L_1^{\mathrm{poly}}]
+ =\operatorname{span}\{e_j:j\ge3\},
+\]
+so \(H_1\) has weights \(1\) and \(2\).
+
+\begin{corollary}[Pentagonal character]
+\label{cor:pentagonal-character}
+In \(\mathbb Z[[q]]\),
+\[
+\begin{aligned}
+ \chi_q^{\mathrm{tot}}\mathcal B(L_1^{\mathrm{poly}})
+ &=\prod_{m\ge1}(1-q^m)\\
+ &=1+\sum_{n\ge1}(-1)^n
+ \left(q^{(3n^2-n)/2}+q^{(3n^2+n)/2}\right).
+\end{aligned}
+\]
+\end{corollary}
+
+\begin{proof}
+The first equality is
+Theorem~\ref{thm:algebraic-denominator}.  The second is Euler's
+pentagonal number theorem
+\cite{DLMF}*{Section 27.14(ii), equations (27.14.4)--(27.14.5)}.
+\end{proof}
+
+\begin{remark}
+The product corroborates the weights in
+Theorem~\ref{thm:witt-homology}; it does not prove the vanishing
+statement.  Euler characteristic cannot see a direct sum of
+one-dimensional zero-differential chain complexes in two adjacent
+degrees at the same weight.  The absence of additional classes comes
+from Goncharova's theorem.
+\end{remark}
+
+\section{Motzkin--Riordan identities and ordinary carriers}
+
+Let \(M_n\) count Motzkin paths of length \(n\), and let \(R_n\) count
+those with no horizontal step at height zero.  Put
+\[
+ M_0=R_0=1,\qquad R_1=0,
+\]
+and define
+\[
+ M(z)=\sum_{n\ge0}M_nz^n,\qquad
+ R(z)=\sum_{n\ge0}R_nz^n.
+\]
+
+\begin{proposition}[The Motzkin--Riordan relation]
+\label{prop:motzkin-riordan}
+The generating functions satisfy
+\[
+ M=1+zM+z^2M^2,\qquad R=1+z^2MR.
+\]
+Consequently,
+\[
+ R=\frac{M}{1+zM},\qquad
+ M=R+\frac{R-1}{z},
+\]
+and, for every \(n\ge0\),
+\[
+ M_n=R_n+R_{n+1},\qquad
+ M_{n+1}-M_n=R_{n+2}-R_n.
+\]
+Moreover,
+\[
+ M(z)=\frac{1-z-\sqrt{1-2z-3z^2}}{2z^2},
+\qquad
+ R(z)=\frac{1+z-\sqrt{1-2z-3z^2}}{2z(1+z)}.
+\]
+\end{proposition}
+
+\begin{proof}
+A nonempty Motzkin path is either a horizontal step followed by a
+Motzkin path, or has a unique first-return decomposition \(UPDQ\), with
+\(P,Q\) Motzkin paths.  This gives the first equation for \(M\).  A
+nonempty Riordan path has the same form \(UPDQ\), now with \(P\)
+Motzkin and \(Q\) Riordan, which gives the equation for \(R\).
+Algebraic elimination yields the two rational relations and coefficient
+comparison gives the identities.  Solving the quadratic equation for
+the branch with constant term \(1\) gives the displayed closed forms.
+These identities and generating equations also appear in
+\cite{Ber99}*{pp.~87, 89, 100--101}; the path convention is
+\cite{CDY08}*{Section 2}.
+\end{proof}
+
+\begin{remark}
+Splitting a Motzkin path according to whether its first step is
+horizontal does not prove \(M_n=R_n+R_{n+1}\).  At length three the
+paths
+\[
+ HHH,\qquad HUD,\qquad UDH,\qquad UHD
+\]
+split as \(2+2\), whereas \(R_3+R_4=1+3\).  The common square-root
+discriminant follows from Proposition~\ref{prop:motzkin-riordan}.  This
+scalar identity neither constructs nor rules out a
+representation-theoretic or Drinfeld--Sokolov comparison.
+\end{remark}
+
+\begin{proposition}[The ordinary \(\mathfrak{sl}_2\) calculation]
+\label{prop:sl2}
+Let \(k\) have characteristic zero and give
+\(\mathfrak{sl}_2(k)\) the trivial module \(k\).  Then
+\[
+ H^\bullet(\mathfrak{sl}_2;k)\cong\Lambda(c_3),
+ \qquad |c_3|=3,
+\]
+and the CE cochain dimensions are \((1,3,3,1)\).  In contrast, every
+positive simplicial degree of
+\[
+ N\Barc_\bullet(k,U(\mathfrak{sl}_2),k)
+\]
+is infinite-dimensional.
+\end{proposition}
+
+\begin{proof}
+Use
+\([h,e]=2e,\ [h,f]=-2f,\ [e,f]=h\).  On the dual basis,
+\[
+ de^\vee=2e^\vee\wedge h^\vee,\qquad
+ df^\vee=-2f^\vee\wedge h^\vee,\qquad
+ dh^\vee=-e^\vee\wedge f^\vee.
+\]
+Thus \(d:C^1\to C^2\) is an isomorphism and
+\(d:C^2\to C^3\) is zero.  The class
+\[
+ c_3=[e^\vee\wedge f^\vee\wedge h^\vee]
+\]
+generates \(H^3\), which proves the cohomology statement directly.
+
+For the normalized associative bar,
+\[
+ \bigl(N\Barc_\bullet(k,U(\mathfrak{sl}_2),k)\bigr)_r
+ \cong\overline{U(\mathfrak{sl}_2)}^{\otimes r}.
+\]
+PBW gives linearly independent elements
+\(e,e^2,e^3,\ldots\) in the augmentation ideal.  Length one is already
+infinite-dimensional, and hence so is every positive length.
+\end{proof}
+
+\begin{remark}[Ordinary and chiral carriers]
+\label{rem:family-carriers}
+For the standard Virasoro bracket,
+\(e_n\mapsto-L_n\) identifies \(L_1^{\mathrm{poly}}\) with the
+positive-mode Lie subalgebra, because the central cocycle vanishes on
+positive indices.  This inclusion does not identify the ordinary
+enveloping-algebra bar with a chiral bar of a Virasoro vacuum object.
+Such a comparison must specify the central charge, vacuum object,
+completion, homological and conformal gradings, and a map relating the
+two complexes.
+
+Likewise, Proposition~\ref{prop:sl2} has no implication for an affine
+or chiral \(\widehat{\mathfrak{sl}}_2\) object without a specified
+level, vacuum module, completion, grading, and comparison.  A
+grading-preserving quasi-isomorphism would suffice.  A spectral-sequence
+argument additionally requires an identified abutment, strong
+convergence, and control of all relevant differentials.
+\end{remark}
+
+For the ordinary carriers, consider the two proposed scalar assignments
+\[
+ \dim H_n\mathcal B(L_1^{\mathrm{poly}})=M_{n+1}-M_n,
+ \qquad
+ \dim H^n(\mathfrak{sl}_2;k)=R_{n+3}.
+\]
+Their first discrepancies are decisive:
+\[
+ M_2-M_1=1\ne2=\dim H_1\mathcal B(L_1^{\mathrm{poly}}),
+\qquad
+ R_4=3\ne0=\dim H^1(\mathfrak{sl}_2;k).
+\]
+A finite total Betti number in each degree is a meaningful invariant;
+the issue is not its scalar type but the absence of a comparison with
+the proposed chiral or affine carrier.
+
+\section{From operations to the cusp product}
+
+The algebraic product follows from a chain comparison and finite
+weightwise Euler characteristics.  Its analytic realization then uses
+the specified Fourier map and cusp domain.  The following functors make
+these successive operations explicit and identify where a geometric
+factorization comparison would enter.
+
+Fix a finite-factorization monoid \(Q_+\).  Let
+\(\operatorname{LieSup}^{Q_+,\mathrm{fd},+}_k\) denote the category of
+positively \(Q_+\)-graded Lie superalgebras with finite-dimensional
+pieces.  Let
+\(\operatorname{Alg}^{\mathrm{aug},Q_+,\mathrm{fd},+}_{E_1}\)
+denote augmented \(Q_+\)-graded superalgebras \(B\) with \(B_0=k\),
+augmentation ideal supported away from zero, and finite-dimensional
+homogeneous pieces.  Enveloping algebra and normalized bar are functors
+\[
+\begin{tikzcd}[column sep=3.2em]
+ \operatorname{LieSup}^{Q_+,\mathrm{fd},+}_k
+   \arrow[r,"U"]
+ & \operatorname{Alg}^{\mathrm{aug},Q_+,\mathrm{fd},+}_{E_1}
+   (\operatorname{sVect}_k)
+   \arrow[r,"{N\Barc_\bullet(k,-,k)}"]
+ & \widehat{\operatorname{Ch}}^{\mathrm{pf}}_{Q_+}
+   (\operatorname{sVect}_k).
+\end{tikzcd}
+\]
+Finite factorization makes the last functor land in its stated target.
+Theorem~\ref{thm:algebraic-denominator} supplies the natural
+bar--CE quasi-isomorphism on the first category.
+
+For the geometric branch, the typed arrows are
+\[
+\begin{tikzcd}[column sep=2.5em]
+ \Alg^{\mathrm{aug}}_{E_1}(\FactD(X),\otimes^!)
+   \arrow[r,"\Barc^{\mathcal F}_\bullet"]
+ & \operatorname{Fun}(\Delta^{op},\FactD(X))
+   \arrow[r,dashed,"\lvert-\rvert"]
+ & \FactD(X)
+   \arrow[r,dashed,"\Phi"]
+ & \widehat{\operatorname{Ch}}^{\mathrm{pf}}_{Q_+}
+   (\operatorname{sVect}_{\mathbb C}).
+\end{tikzcd}
+\]
+The upper realization arrow is conditional on
+Theorem~\ref{thm:realized-bar}; \(\Phi\) is the open construction in
+Problem~\ref{prob:carrier-change}.  Neither dashed arrow is used in the
+algebraic theorem.
+
+For an object \(C\) of the completed chain category, passage to its
+coefficientwise class and then to its total character is the typed
+sequence
+\[
+ \operatorname{Obj}\!\left(
+   \widehat{\operatorname{Ch}}^{\mathrm{pf}}_{Q_+}
+   (\operatorname{sVect}_k)\right)\big/\simeq
+ \xrightarrow{[-]}
+ \widehat K_{0,s}^{Q_+}(k)
+ \xrightarrow{\chi_{Q_+}^{\mathrm{tot}}}
+ \widehat{\mathbb Z[Q_+]}.
+\]
+The second arrow is a group homomorphism, not a chain functor.  The
+Igusa specialization continues from the final ring by the shifted
+formal map \(\mathcal F_2^\rho\), then by the restricted analytic
+realization on \(U_T\).  Neither map constructs \(\Phi\).
+
+\begin{thebibliography}{99}
+
+\bibitem{AM10}
+M.~Aguiar and S.~Mahajan,
+\emph{Monoidal Functors, Species and Hopf Algebras},
+CRM Monograph Series 29, American Mathematical Society, Providence,
+RI, 2010.
+
+\bibitem{Ber99}
+F.\,R.~Bernhart,
+\emph{Catalan, Motzkin, and Riordan numbers},
+Discrete Math. \textbf{204} (1999), 73--112.
+
+\bibitem{Bor88}
+R.\,E.~Borcherds,
+\emph{Generalized Kac--Moody algebras},
+J. Algebra \textbf{115} (1988), 501--512.
+
+\bibitem{CE56}
+H.~Cartan and S.~Eilenberg,
+\emph{Homological Algebra},
+Princeton University Press, Princeton, NJ, 1956.
+
+\bibitem{CDY08}
+W.\,Y.\,C.~Chen, E.\,Y.\,P.~Deng, and L.\,L.\,M.~Yang,
+\emph{Riordan paths and derangements},
+Discrete Math. \textbf{308} (2008), 2222--2227.
+
+\bibitem{DLMF}
+NIST Digital Library of Mathematical Functions,
+\emph{Chapter 27: Functions of number theory},
+Section 27.14, \url{https://dlmf.nist.gov/27.14}.
+
+\bibitem{FG12}
+J.~Francis and D.~Gaitsgory,
+\emph{Chiral Koszul duality},
+Selecta Math. (N.S.) \textbf{18} (2012), 27--87.
+
+\bibitem{Gon73}
+L.\,V.~Goncharova,
+\emph{The cohomologies of Lie algebras of formal vector fields on the
+line},
+Funktsional. Anal. i Prilozhen. \textbf{7} (1973), no.~2, 6--14;
+English transl., Funct. Anal. Appl. \textbf{7} (1973), 91--97.
+
+\bibitem{GN97}
+V.\,A.~Gritsenko and V.\,V.~Nikulin,
+\emph{Siegel automorphic form corrections of some Lorentzian
+Kac--Moody Lie algebras},
+Amer. J. Math. \textbf{119} (1997), 181--224.
+
+\bibitem{Tor25}
+T.~Torii,
+\emph{On duoidal \(\infty\)-categories},
+J. Homotopy Relat. Struct. \textbf{20} (2025), no.~1, 125--162.
+
+\end{thebibliography}
+
+\end{document}
