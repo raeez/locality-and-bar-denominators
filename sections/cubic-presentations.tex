@@ -1,0 +1,994 @@
+\section{Cubic presentations of interacting coefficient operations}
+\label{cp:sec}
+
+The first-pole obstruction of Theorem~\ref{nl:thm:obstruction}
+concerns a specified coefficient comparison over the normal base.
+The formal order-atlas theory admits a different positive construction:
+polynomial interactions can be resolved by cubic ones, and certain
+changes of cubic presentation leave all transferred operations
+unchanged.  The distinction between the coefficient systems remains
+essential.
+
+The simplest example is the quartic potential \(W=x^4\).  Over
+\(k[\kappa]\), with \(|\kappa|=2\), its state differential is
+\(d\eta=4\kappa x^3\).  The cubic potential
+\[
+ S_{\mathrm{small}}(x,u,p)=\kappa u^2+p(u-x^2),
+ \qquad |x|=|u|=0,\quad |p|=2,
+\]
+replaces the quartic term by a quadratic constraint.  A canonical
+construction uses three auxiliary pairs instead of one.  The two
+contractions have the same original state complex as target, but
+this fact alone compares no coefficient operation.  We will construct
+a strict coefficient quotient and prove that it intertwines the
+normalized homotopies.  It will identify every transferred tree map,
+including its homotopy edges, on that original complex.
+
+\subsection{Polynomial states and the coefficient domain}
+
+Let \(R\) be a commutative, even-graded \(\mathbb Q\)-algebra with
+zero differential.  Give finitely many even coordinates \(y_a\)
+even integer degrees, and give their odd partners degree
+\(|\eta^a|=1-|y_a|\).  A potential \(S(y)\) will have
+cohomological degree two and ordinary polynomial degree at most three.
+Its polynomial jet algebra is
+\begin{equation}\label{cp:eq:states}
+ E(S)=R[y_{a,r}:r\geq0]\otimes
+                  \Lambda(\eta^a_r:r\geq0),
+ \qquad
+ dy_{a,r}=0,\qquad
+ d\eta^a_r=\frac{T^r S_a}{r!},
+\end{equation}
+where \(S_a=\partial_aS(y_{1,0},\ldots,y_{N,0})\), and
+\[
+ Ty_{a,r}=(r+1)y_{a,r+1},\qquad
+ T\eta^a_r=(r+1)\eta^a_{r+1},\qquad T|_R=0.
+\]
+The differential has degree one, squares to zero and commutes with
+\(T\).  These assertions follow on generators because every \(S_a\)
+contains only even closed coordinates.  Inputs are finite polynomials;
+no completion of the input algebra is taken.
+
+We use the coefficient algebra \(C_I\) of
+Section~\ref{sec:free-state-trees}, extended to \(R\).
+Explicitly, for a nonempty set \(J\) of total orders on a finite
+label set \(I\), put
+\[
+ R_J=R[z_i:i\in I]
+ \big[(z_i-z_j)^{-1}:
+       \text{the comparison of \(i,j\) varies on \(J\)}\big].
+\]
+A coefficient is a face-compatible family in
+\[
+ R_J\otimes
+ \mathbb Q[t_\sigma,dt_\sigma:\sigma\in J]/
+       \bigl(\textstyle\sum t_\sigma-1,\sum dt_\sigma\bigr).
+\]
+The differential \(d_c\) sends \(t_\sigma\) to \(dt_\sigma\)
+and kills \(R_J\).  Equivalently, one may use the full order simplex
+and require each face restriction to lie in its stated overlap ring.
+For distinct labels define
+\begin{equation}\label{cp:eq:kernels}
+ q_{ij}=\sum_\sigma t_\sigma\,1_{i<_\sigma j},
+ \qquad
+ c_{ij}=\frac{d_cq_{ij}}{z_i-z_j},
+ \qquad
+ c_{ij}^{r,s}=
+ \frac{\partial_{z_i}^r\partial_{z_j}^s c_{ij}}{r!s!}.
+\end{equation}
+On a face with fixed comparison the fraction means zero without
+inverting its denominator.  Otherwise that denominator is a unit.
+Thus \(c_{ij}=c_{ji}\) is a closed degree-one coefficient, with
+the same normalized jet kernels as
+\eqref{fs:eq:order-kernel}.  Forgetting labels \(I\setminus J\)
+gives the coefficient pullback \(C_J\to C_I\), not a specialization
+of the omitted coordinates.
+
+Write \(\mathcal T\) for a finite rooted insertion tree, reserving
+\(T\) for translation.  At each vertex choose child positions and
+an order simplex.  With internal scales \(\epsilon_e\), a leaf
+coordinate is the sum of the successive displacements multiplied
+by their ancestor scales.  Its order coordinates pull back by
+\begin{equation}\label{cp:eq:flatten}
+ t_\sigma\longmapsto
+ \sum_{\operatorname{flat}(\sigma_v)=\sigma}
+                     \prod_v t_{v,\sigma_v}.
+\end{equation}
+For fixed vertex faces, let \(B_{\mathcal T}\) be the tensor product
+of their overlap rings and simplex-form algebras.  The scale ring is
+\[
+ B_{\mathcal T}[[\epsilon_e]]
+                 [(\textstyle\prod_e\epsilon_e)^{-1}],
+\]
+as in \eqref{fs:eq:tree-ring}.  The admissible target
+\(C_{\mathcal T}^{\mathrm{adm}}\widehat\otimes E(S)\) consists
+of the coefficientwise expansions generated from a fixed polynomial
+input, with one finite lower bound in every scale and finite
+coefficients at each scale multiindex and auxiliary state weight.
+For the latter weight give every state generator of jet index \(r\)
+weight \(r+1\); this is separate from its cohomological degree.
+
+The reason for the common pole bound is concrete.  If leaves \(i,j\)
+first meet at a vertex \(v\), then
+\begin{equation}\label{cp:eq:lca}
+ Z_i-Z_j=s_v(u_a-u_b+r_{ij}),
+\end{equation}
+where \(s_v\) is the ancestor-scale monomial and \(r_{ij}\) has
+positive descendant-scale degree.  Whenever the comparison varies,
+\(u_a-u_b\) is inverted on the corresponding vertex overlap.
+A pole \((z_i-z_j)^{-m_{ij}}\) therefore contributes only the
+finite negative scale factor \(s_v^{-m_{ij}}\), followed by a
+power series.  In particular, the lower bound at an edge \(e\) is
+\[
+ -\sum_{\{i,j\}:\ e\text{ lies above their first common vertex}}
+                                                     m_{ij}.
+\]
+Refinement composes these substitutions on rational representatives:
+the coordinate substitutions agree, and the inverse of each specified
+unit is unique.  Expanding afterwards gives the same series.
+There is no substitution on arbitrary unrelated negative Laurent
+tails, nor an evaluation of every formal scale series at one.
+
+\subsection{The cubic contacts and their strict insertion law}
+
+The interaction needs an actual coefficient primitive.  For three
+labels put \(\alpha=z_1-z_2\), \(\beta=z_2-z_3\) and
+\(\gamma=z_1-z_3=\alpha+\beta\).  Enumerate the order vertices
+as \(123,213,231,321,312,132\), and put
+\(w_{ij}=t_i\,dt_j-t_j\,dt_i\).  Use
+\begin{equation}\label{cp:eq:theta}
+ \theta_{123}=
+ -\frac{w_{02}+w_{35}}{2\alpha\gamma}
+ +\frac{w_{04}-w_{13}}{2\beta\gamma}
+ +\frac{w_{24}-w_{15}}{2\alpha\beta}.
+\end{equation}
+Each fraction is supported on a pair of orders which disagree on
+its denominator pairs.  Its restriction to any other face is zero.
+The formula is consequently a compatible form on the original atlas.
+The transposition of labels \(1,2\) exchanges the first and third
+summands with a minus sign and negates the second; the transposition
+of \(2,3\) negates the first and exchanges the other two with a
+minus sign.  Thus the formula is alternating, and equals its
+normalized alternation.  Differentiating the Whitney forms gives
+\begin{equation}\label{cp:eq:theta-d}
+ d_c\theta_{123}
+       =c_{12}c_{13}-c_{12}c_{23}+c_{13}c_{23}.
+\end{equation}
+Indeed \(d_cw_{ij}=2dt_i\,dt_j\); eliminating one \(dt_i\) with
+\(\sum dt_i=0\) reduces the coefficient comparison to
+\[
+ \frac1{\alpha\gamma}-\frac1{\alpha\beta}
+                       +\frac1{\beta\gamma}=0.
+\]
+Deletion defines the same primitive on any three labels of a larger
+configuration.
+
+One identity beyond \eqref{cp:eq:theta-d} controls insertion.
+Insert \(1,2\) into one child and \(3\) into another.  If \(p\)
+is the inner order coordinate and \(t\) the outer one, then
+\[
+ (t_0,t_1,t_2,t_3,t_4,t_5)
+   =(pt,(1-p)t,0,(1-p)(1-t),p(1-t),0).
+\]
+Substitution in \eqref{cp:eq:theta} gives
+\begin{equation}\label{cp:eq:theta-tree}
+ \theta_{123}\longmapsto
+ -\frac{(p-\tfrac12)\,dt}{(z_1-z_3)(z_2-z_3)}
+ =(p-\tfrac12)\frac{c_{13}-c_{23}}{z_1-z_2}.
+\end{equation}
+For the first equality, \(w_{02}+w_{35}\) and \(w_{24}-w_{15}\)
+pull back to zero, while \(w_{04}-w_{13}\) pulls back to
+\((1-2p)\,dt\).  The second equality is the difference of the two
+Cauchy kernels.  All normalized coordinate derivatives satisfy the
+same identity.
+
+Put \(Y_a(z)=e^{zT}y_{a,0}\).  For any translated even polynomial
+\(H(z)=\sum_{n\geq0}H_nz^n\), its divided difference is the regular
+series
+\begin{equation}\label{cp:eq:divided}
+ \frac{H(z)-H(w)}{z-w}
+ =\sum_{n\geq1}H_n\sum_{\ell=0}^{n-1}z^{n-1-\ell}w^\ell.
+\end{equation}
+It introduces no inverse on an individual order chart.
+The two cubic contact coefficients, before taking jet derivatives,
+are
+\begin{equation}\label{cp:eq:contacts}
+ \begin{split}
+ P^{(2)}_{ij;ab}
+   &=(q_{ij}-\tfrac12)
+       \frac{S_{ab}(Y(z_i))-S_{ab}(Y(z_j))}{z_i-z_j},\\
+ P^{(3)}_{ijk;abc}&=S_{abc}\theta_{ijk}.
+ \end{split}
+\end{equation}
+Here \(S_{ab}=\partial_a\partial_bS\) is affine linear, and
+\(S_{abc}\) is a coefficient in \(R\).  Define
+\(P^{(m)}_{i_1\cdots i_m;\mathbf a,\mathbf r}\) by applying
+\(\prod_\nu\partial_{z_{i_\nu}}^{r_\nu}/r_\nu!\) to the corresponding
+formula.  These derivatives act on the translated Hessian as well
+as on the rational kernels.
+
+All odd derivatives are left derivatives, and coefficient forms
+are placed before state factors.  On distinct input copies set
+\begin{equation}\label{cp:eq:wick}
+ D_I=\sum_{i<j}\sum_{a,r,s}c_{ij}^{r,s}
+ \left(
+ \partial_{y_{a,r}^{(i)}}\partial_{\eta_s^{a(j)}}
+ +\partial_{\eta_r^{a(i)}}\partial_{y_{a,s}^{(j)}}
+ \right),
+ \qquad
+ \mathcal Y_I^0=\mathsf E_{\mathbf z}e^{D_I},
+\end{equation}
+where \(\mathsf E_{\mathbf z}\) translates each input by \(e^{z_iT}\)
+and multiplies the results.  In characteristic zero this is precisely
+the free product \(\mathsf E_{\mathbf z}\prod_{i<j}(1+D_{ij})\)
+of \eqref{fs:eq:free-operation}: the pair operators commute and
+each \(D_{ij}^2=0\).
+
+For \(i_1<\cdots<i_m\) let
+\[
+ U_{i_1\cdots i_m;\mathbf a,\mathbf r}
+ =\partial_{\eta_{r_m}^{a_m(i_m)}}\cdots
+                  \partial_{\eta_{r_1}^{a_1(i_1)}}.
+\]
+This reversed derivative order sends the correspondingly ordered
+product of odd generators to one.  On a homogeneous
+coefficient-valued map \(F\), define
+\begin{equation}\label{cp:eq:contact-operator}
+ \mathscr A_m(F)=
+ \sum_{\substack{i_1<\cdots<i_m\\\mathbf a,\mathbf r}}
+ (-1)^{m|F|}
+ P^{(m)}_{i_1\cdots i_m;\mathbf a,\mathbf r}
+ F\,U_{i_1\cdots i_m;\mathbf a,\mathbf r},
+ \qquad m=2,3.
+\end{equation}
+The coefficient multiplies the output of \(F\); the odd derivatives
+act on its inputs.  They never differentiate a coefficient inserted
+at the output by another application of \(\mathscr A_m\).
+The full operation is
+\begin{equation}\label{cp:eq:operation}
+ \mathcal Y_I^S
+      =\exp(\mathscr A_2+\mathscr A_3)
+                         \mathsf E_{\mathbf z}\exp(D_I).
+\end{equation}
+Every exponential is finite on a polynomial input: a free contraction
+removes one odd factor, and the two contacts remove two or three.
+The remaining translations use the stated coefficientwise target.
+
+\begin{proposition}[Strict cubic coefficient operations]
+\label{cp:prop:cubic}
+The maps \eqref{cp:eq:operation} are degree-zero chain maps on
+\(E(S)\), and satisfy every finite rooted affine insertion identity
+in \(C_{\mathcal T}^{\mathrm{adm}}\widehat\otimes E(S)\).
+They preserve the unit, deletion, translations and relabellings.
+If the even coordinates have spin \(s_a\), their odd partners spin
+\(1-s_a\), and \(S\) has spin one, they are covariant for the
+corresponding semilinear dilations.  A jet adds its index to spin.
+\end{proposition}
+
+\begin{proof}
+The free pair has coefficient degree one and state-derivative degree
+minus one.  In an \(m\)-contact the coefficient has degree
+\(m-\sum_\nu|y_{a_\nu}|\), and the input derivatives have the
+opposite degree.  Thus every term has total degree zero.
+
+Let \(d_{\mathrm{Hom}}\) include both the coefficient differential
+and the input and output state differentials.  Replacing each
+\(P^{(m)}\) in \eqref{cp:eq:contact-operator} by \(d_cP^{(m)}\)
+defines an operator \(\mathscr B_m\) of degree one.  The Gaussian
+defect is
+\[
+ d_{\mathrm{Hom}}\mathcal Y_I^0
+        =-(\mathscr B_2+\mathscr B_3)(\mathcal Y_I^0).
+\]
+To see every term, commute \(D_I\) with an even input coordinate.
+The result is a constant odd-input derivative with an odd
+coefficient, hence an even operator commuting with \(D_I\).
+Conjugation therefore replaces that coordinate by itself plus this
+operator in \(S_a\).  Taylor expansion of the quadratic polynomial
+\(S_a\) gives only two- and three-input stars.  Their coefficients
+are respectively
+\[
+ (S_{ab}(Y(z_i))-S_{ab}(Y(z_j)))c_{ij},
+ \qquad
+ S_{abc}(c_{ij}c_{ik}-c_{ij}c_{jk}+c_{ik}c_{jk}).
+\]
+Two edges from one centre to the same site have a repeated
+\(d_cq\) and vanish.  Reversing the odd derivative order gives
+the displayed star signs; the Taylor factorial cancels the orders
+of its commuting contractions.  Remaining factors give
+\(\mathcal Y_I^0U\).  Normalized coordinate differentiation gives
+the same calculation for every jet, including derivatives of the
+translated potential.
+
+Equations \eqref{cp:eq:theta-d} and \eqref{cp:eq:divided} identify
+these star coefficients with \(d_cP^{(m)}\).
+The output coefficients involve only closed even fields, and \(U\)
+supercommutes with the input differential.  The sign in
+\eqref{cp:eq:contact-operator} consequently gives
+\[
+ [d_{\mathrm{Hom}},\mathscr A_2+\mathscr A_3]
+       =\mathscr B_2+\mathscr B_3,
+ \qquad
+ [\mathscr A_2+\mathscr A_3,\mathscr B_2+\mathscr B_3]=0.
+\]
+The contact operators commute among themselves: exchanging their
+coefficients and their odd derivative products contributes the same
+sign twice.  Differentiating the finite exponential now cancels
+the Gaussian defect.
+
+For insertion, expand on a monomial input and distinguish repeated
+factors temporarily.  A free contraction pairs one original even
+factor with one original odd factor.  A binary contact consumes two
+odd factors and creates at most one even output factor.  A ternary
+contact consumes three odd factors and has scalar state output.
+An outer free contraction can differentiate the even output of an
+inner binary contact once.  It cannot differentiate that linear
+output twice, and no contact creates an odd output.  Consequently
+the connected contributions are exactly a free pair, an uncontracted
+binary contact, and a ternary contact which may arise from one
+binary contact followed by one free contraction.
+
+Free pairs agree by the kernel Taylor identity
+\eqref{fs:eq:kernel-translation}.  Binary contacts agree by regular
+substitution in \eqref{cp:eq:divided}.  For a ternary contribution,
+three leaves either lie in one child, lie in three different children
+of their first common vertex, or split as two and one.  The first
+case is decided in the child, and the second uses the three-flag
+marginal of \eqref{cp:eq:flatten}.  In the last case the contracted
+even output gives
+\[
+ S_{abc}(p-\tfrac12)
+             \frac{c_{13}-c_{23}}{z_1-z_2},
+\]
+which is the direct ternary coefficient by
+\eqref{cp:eq:theta-tree}.  These cases exhaust the connected
+contributions in every finite tree.
+
+Disjoint contributions exchange with two cancelling signs whenever
+both the coefficient and the input operator are odd.  The exponential
+factorials remove their possible orderings.  Restoring repeated
+factors gives their polynomial derivative multiplicities in both
+expansions.  Thus the entire coefficient-valued operations agree.
+Normalized coordinate derivatives and the least-common-ancestor
+bound \eqref{cp:eq:lca} justify every jet and pole expansion.
+The order pullback is associative by flattening, so the identities
+persist under every finite refinement.
+
+A unit input is killed by every derivative, leaving the coefficient
+deletion pullback.  The empty operation is \(1\), and the unary
+operation is \(e^{zT}\), with identity at zero displacement.
+Translation uses the exponential law.  The specified spin assignments
+make the pole orders, contact coefficients and removed state factors
+have the same dilation weights; normalized derivatives add their
+jet indices on both sides.  Coefficients of nonzero spin transform
+semilinearly.  Permutations preserve the kernels and the symmetric
+potential derivatives, with the already specified tensor signs.
+\end{proof}
+
+\subsection{Polynomial cubic resolutions and normalized transfer}
+
+Let \(k\) have characteristic zero, \(V\) be a finite-dimensional
+species space, and \(W\) a polynomial on \(V\).  Retain the
+integer-graded parameter ring \(k[\kappa]\), \(|\kappa|=2\), and
+the original state complex
+\begin{equation}\label{cp:eq:physical}
+ A_W=k[\kappa,x_{a,r}:r\geq0]\otimes
+                    \Lambda(\eta^a_r:r\geq0),
+ \qquad
+ d\eta^a_r=\frac{\kappa}{r!}T^r\partial_aW,\quad dx_{a,r}=0.
+\end{equation}
+Here \(|x|=0\), \(|\eta|=1\), and \(T\kappa=0\).
+The parameter is neither inverted nor set to one.
+
+Choose \(D\geq\max(2,\deg W)\), write
+\(W(x)=\sum_{m=0}^D\langle W_m,x^m\rangle\), and normalize the
+evaluation pairing by this equality.  Put \(u_0=1,u_1=x\).
+For \(2\leq m\leq D\), introduce
+\(u_m\in\Sym^mV\) of degree zero and
+\(p_m\in(\Sym^mV)^*\) of degree two.  The potential
+\begin{equation}\label{cp:eq:canonical}
+ S_D=
+ \kappa\sum_{m=0}^D\langle W_m,u_m\rangle
+ +\sum_{m=2}^D\langle p_m,u_m-xu_{m-1}\rangle
+\end{equation}
+is cubic in the state coordinates.  Multiplication \(xu_{m-1}\)
+is the symmetric product.  Define
+\[
+ v_m=u_m-xu_{m-1},\qquad
+ u_m=x^m+\sum_{r=2}^m x^{m-r}v_r,
+\]
+and define \(H_r(x)\) by
+\[
+ \langle H_r(x),v\rangle
+       =\kappa\sum_{m=r}^D\langle W_m,x^{m-r}v\rangle.
+\]
+With \(p'_r=p_r+H_r(x)\), direct substitution gives
+\begin{equation}\label{cp:eq:split}
+ S_D=\kappa W(x)+\sum_{r=2}^D\langle p'_r,v_r\rangle.
+\end{equation}
+The displayed triangular changes and their inverses are polynomial.
+Every operation is symmetric multiplication or evaluation, so they
+are natural under linear changes of species and coefficient extension.
+
+Odd coordinates must be changed with them.  For an even coordinate
+change \(y=y(z)\), use the full inverse Jacobian
+\begin{equation}\label{cp:eq:odd-change}
+ \eta'_b=\sum_a\frac{\partial y_a}{\partial z_b}\eta^a.
+\end{equation}
+Then \(d\eta'_b=\partial_{z_b}S\) by the chain rule.  Extend this
+formula to jets by \(T^r/r!\).  The nonlinear changes used in
+\eqref{cp:eq:split} are isomorphisms of state complexes.  The
+coefficient operations on the split complex are defined by conjugating
+the already specified operations on \(E(S_D)\); no nonlinear
+normal-order covariance is assumed.
+
+Each split auxiliary coordinate contributes a quartet
+\[
+ d\eta_{v,j}=p'_j,\qquad d\eta_{p',j}=v_j,\qquad
+ dp'_j=dv_j=0.
+\]
+Let \(I:A_W\to E\) include the original split variables, and let
+\(P:E\to A_W\) kill every auxiliary variable.  If \(N\) counts
+the total polynomial and exterior degree in all auxiliary jets, put
+\begin{equation}\label{cp:eq:homotopy}
+ h=\frac1N\sum_{\mathrm{aux},j}
+       \left(\eta_{v,j}\partial_{p'_j}
+                    +\eta_{p',j}\partial_{v_j}\right)
+ \quad(N>0),\qquad h=0\quad(N=0).
+\end{equation}
+The anticommutator of the auxiliary differential with the numerator
+is its Euler operator \(N\); cross terms cancel by the odd signs.
+The numerator squares to zero and preserves \(N\).  Hence
+\begin{equation}\label{cp:eq:contraction}
+ PI=1,\qquad dh+hd=1-IP,\qquad h^2=hI=Ph=0.
+\end{equation}
+Translation commutes with the numerator: in, for example,
+\(\sum_j\eta_{v,j}\partial_{p'_j}\), the two translation
+commutators cancel after shifting \(j\) by one.  It preserves \(N\),
+so \(I,P,h\) commute with \(T\).  Only positive integers are
+divided out.  Although \(I,P\) are unital state algebra maps,
+they are not thereby strict coefficient maps.  Even the canonical
+odd bracket detects this distinction: \(P\) kills an auxiliary
+canonical pair whose bracket is one.
+
+The normalized homotopy fixes all insertion coherences.
+Let \(J\) be the dg algebra with basis \(e_0,e_1\) in degree zero
+and \(a\) in degree minus one, and relations
+\begin{equation}\label{cp:eq:interval}
+ \begin{gathered}
+ da=e_1-e_0,\qquad de_0=de_1=0,\\
+ e_0^2=e_0,\qquad e_0e_1=e_1e_0=e_1^2=e_1,\\
+ e_0a=ae_0=a,\qquad e_1a=ae_1=a^2=0.
+ \end{gathered}
+\end{equation}
+The unit is \(e_0\).  The assignment
+\begin{equation}\label{cp:eq:edge}
+ \rho(e_0)=1_E,\qquad \rho(e_1)=IP,\qquad \rho(a)=-h
+\end{equation}
+is a dg algebra map to \(\operatorname{End}(E)\), by
+\eqref{cp:eq:contraction}.  In particular
+\(d_{\operatorname{End}}(-h)=IP-1_E\).
+
+For a finite rooted tree \(\mathcal T\), put the strict cubic
+operation at each vertex, \(I\) at each leaf, \(P\) at the root,
+and \(\rho(\lambda_e)\) on each internal edge.  Use the coefficient
+pullbacks \eqref{cp:eq:flatten} and the usual graded tensor rule.
+This defines
+\begin{equation}\label{cp:eq:tree-map}
+ \mathcal M_{\mathcal T}:
+ J^{\otimes E_{\mathrm{int}}(\mathcal T)}
+     \otimes A_W^{\otimes L(\mathcal T)}
+ \longrightarrow
+ C_{\mathcal T}^{\mathrm{adm}}\widehat\otimes A_W.
+\end{equation}
+For a corolla it is \(P\mathcal Y_I^E I^{\otimes I}\).
+Order the internal edges and put
+\(\epsilon(e,\lambda)=\sum_{f<e}|\lambda_f|\).
+Composition of the vertex, edge and leaf chain maps gives
+\begin{equation}\label{cp:eq:cube}
+ d_{\mathrm{Hom}}\mathcal M_{\mathcal T}(\lambda)
+ =\sum_{\lambda_e=a}(-1)^{\epsilon(e,\lambda)}
+ \left[
+ \mathcal M_{\mathcal T}(\lambda[e:e_1])
+ -\mathcal M_{\mathcal T}(\lambda[e:e_0])
+ \right].
+\end{equation}
+An \(e_0\) face collapses its edge by strict cubic insertion.
+An \(e_1\) face cuts that edge and composes the two transferred
+trees, since its state operator is \(IP\).  Every face intersection
+is an evaluation of this one tensor product of interval complexes;
+its differential squares to zero with the displayed signs.
+Deleting a unary identity vertex multiplies its adjacent decorations
+in \(J\).  Grafting inserts an \(e_1\) edge.
+
+These formulas are defined throughout the admissible target.
+A polynomial leaf inclusion has finitely many factors.  Each vertex
+removes odd factors, while each homotopy edge inserts at most one.
+Thus a fixed tree and input permit finitely many contractions before
+translation.  The coordinate changes have bounded polynomial degree,
+and \(I,P,h\) commute with translation.  The normalized product rule
+and \eqref{cp:eq:lca} therefore retain one finite pole bound
+after every intermediate operation.  A homotopy divides no
+coefficient parameter and introduces no new pole.
+
+\subsection{A strict quotient for a quadratic constraint}
+
+Return to a cubic \(S(y)\) over \(R\).  Let \(f_\alpha(y)\)
+be finitely many degree-zero polynomials of ordinary degree at most
+two.  Adjoin even \(u_\alpha,p_\alpha\) of degrees zero and two,
+with odd partners \(\eta_u^\alpha,\eta_p^\alpha\), and put
+\begin{equation}\label{cp:eq:extension}
+ S^+(y,u,p)
+   =S(y)+\sum_\alpha p_\alpha(u_\alpha-f_\alpha(y)).
+\end{equation}
+Let \(B\subset E(S^+)\) be generated by every jet of
+\(y,\eta,p,\eta_u\), omitting every jet of \(u,\eta_p\).
+On zero jets,
+\[
+ d\eta^a=S_a-\sum_\alpha p_\alpha\partial_a f_\alpha,
+ \qquad d\eta_u^\alpha=p_\alpha.
+\]
+Thus \(B\) is a subcomplex.  Define \(q:B\to E(S)\) by killing
+every jet of \(p,\eta_u\) and fixing the old coordinates.
+
+\begin{theorem}[The strict constraint quotient]\label{cp:thm:quotient}
+The inclusion \(B\hookrightarrow E(S^+)\) and the quotient
+\(q:B\to E(S)\) are strict unital coefficient maps for the complete
+operations \eqref{cp:eq:operation}.  They are quasi-isomorphisms
+of their underlying state complexes, over \(R\) without localization.
+\end{theorem}
+
+\begin{proof}
+Neither new free contraction acts on \(B\): the pairs
+\(u_\alpha,\eta_u^\alpha\) and \(p_\alpha,\eta_p^\alpha\)
+each require an omitted input generator.  Translation preserves the
+omission.  In a nonzero contact, an input derivative can involve
+only old \(\eta\)'s or \(\eta_u\)'s.  A potential derivative
+involving \(p_\alpha\) requires an absent \(\eta_p^\alpha\)
+input.  A derivative involving \(u_\alpha\) and no multiplier
+vanishes beyond order one.  Hence the only additional Hessian
+which contributes is
+\[
+ -\sum_\alpha p_\alpha\partial_a\partial_bf_\alpha
+\]
+on old coordinates.  Since each \(\partial_a\partial_bf_\alpha\)
+is scalar, its binary divided difference and every normalized
+coordinate derivative lie in the ideal of the \(p_\alpha\) jets.
+The additional third derivatives on old coordinates vanish.
+
+These facts show that each output stays in \(B\) and reduces
+modulo \((p,\eta_u)\) to its old coefficient.  Crucially,
+\eqref{cp:eq:contact-operator} differentiates inputs and multiplies
+outputs.  Repeated contacts do not differentiate another inserted
+output coefficient, so the same ideal argument applies term by
+term to the entire finite exponential, including its free factors.
+Consequently
+\begin{equation}\label{cp:eq:strict}
+ q\mathcal Y_I^{S^+}\big|_{B^{\otimes I}}
+          =\mathcal Y_I^S q^{\otimes I}.
+\end{equation}
+The inclusion is strict because \(B\) carries the restricted
+operation.  This proves strictness before any passage to cohomology.
+
+For the state comparison set
+\[
+ v_\alpha=u_\alpha-f_\alpha(y),\qquad
+ \xi_a=\eta^a+\sum_\alpha(\partial_a f_\alpha)\eta_u^\alpha.
+\]
+Then \(d\xi_a=S_a\), \(d\eta_u^\alpha=p_\alpha\), and
+\(d\eta_p^\alpha=v_\alpha\).
+The map \(j:E(S)\to B\) fixes \(y\) and sends \(\eta^a\)
+to \(\xi_a\), with normalized jet extension; it is a chain
+section of \(q\).  In these coordinates \(B\) is the old complex
+tensored with the polynomial/exterior pairs \((p,\eta_u)\).
+Their positive-count ideal is contracted by the corresponding
+Euler homotopy.  The full \(E(S^+)\) has in addition the
+contractible pairs \((v,\eta_p)\).  These explicit \(R\)-linear
+splittings prove both quasi-isomorphisms, and survive arbitrary
+coefficient extension.  No strictness of the section \(j\) is
+asserted or needed.
+\end{proof}
+
+An invertible affine change of even coordinates, homogeneous for
+the given degrees, is also strict after the inverse-transpose odd
+change.  Its Jacobian and inverse are constant in the differentiated
+state coordinates.  The free identity pairing is unchanged, while
+the Hessian and third derivative transform by the cancelling
+constant tensor powers.  Affine shifts cancel from Hessian
+divided differences.  These statements hold after every normalized
+jet derivative and prove strictness of \eqref{cp:eq:operation}.
+They give no corresponding assertion for a nonlinear coordinate
+change.
+
+\begin{theorem}[Equality after normalized transfer]
+\label{cp:thm:transfer}
+Suppose \(E(S)\) is split as a state complex \(A\) with finitely
+many auxiliary coordinate pairs and all their jets, and uses the normalized contraction
+\eqref{cp:eq:homotopy}.  Split \eqref{cp:eq:extension} after that
+old split, and normalize the contraction over all old and new
+quartets together.  The transferred maps on \(A\) then satisfy
+\[
+ \mathcal M^+_{\mathcal T}(\lambda)
+       =\mathcal M_{\mathcal T}(\lambda)
+\]
+for every finite rooted tree, every \(J\)-decoration, and every
+polynomial input, as maps into the same admissible coefficient target.
+\end{theorem}
+
+\begin{proof}
+In the split coordinates, \(B\) contains the old complex and the
+new pairs \((p,\eta_u)\), while \(v,\eta_p\) are absent.
+Let \(N_0\) be the old auxiliary count and \(N_1\) the new count.
+The total homotopy preserves \(B\): its permitted new numerator
+is \(\sum\eta_u\partial_p\), which never creates an omitted
+variable.  Its old and new numerators preserve both counts.
+
+If \(N_1>0\), \(q\) kills the input and the output of that
+homotopy, so both \(qh^+\) and \(hq\) vanish.
+If \(N_1=0<N_0\), the total denominator is \(N_0\), and
+the homotopy is precisely the old one.  If both counts are zero,
+both homotopies vanish.  Thus, in all cases,
+\begin{equation}\label{cp:eq:intertwine}
+ qh^+=hq,\qquad qI^+=I,\qquad P^+|_B=Pq,\qquad
+ qI^+P^+|_B=IPq.
+\end{equation}
+For example \(h^+(p_{\alpha,j})=\eta_{u,j}^\alpha\) can be
+nonzero when \(N_0=0\); it is the quotient of this output which
+vanishes.  The count distinction is necessary.
+
+Every leaf \(I^+\) lands in \(B\), every vertex preserves \(B\)
+by Theorem~\ref{cp:thm:quotient}, and every edge operator
+\(1,I^+P^+,-h^+\) preserves \(B\).  Starting with
+\(P^+=Pq\) at the root, move \(q\) through each vertex using
+\eqref{cp:eq:strict}, through each edge using
+\eqref{cp:eq:intertwine}, and remove it at the leaves using
+\(qI^+=I\).  The resulting expression is exactly the old
+decorated-tree map.  The quotient has degree zero, so this
+procedure changes no tensor sign.  It precedes all face evaluations,
+and hence proves equality on every face intersection as well.
+The quotient creates neither factors nor poles; the polynomial
+sections and the old finite-tree bounds give the same admissible
+completion throughout.
+\end{proof}
+
+\subsection{Canonical degree bounds and the quartic comparison}
+
+Write \(\mathcal M^D\) for the transferred operations obtained
+from \eqref{cp:eq:canonical} with its full split
+\eqref{cp:eq:split} and normalized contraction.
+
+\begin{corollary}[Independence of the canonical degree bound]
+\label{cp:cor:degree}
+For a fixed polynomial \(W\), integers
+\(D'\geq D\geq\max(2,\deg W)\), and every decorated finite tree,
+\[
+ \mathcal M^{D'}_{\mathcal T}(\lambda)
+                =\mathcal M^D_{\mathcal T}(\lambda)
+\]
+on \(A_W\).  The comparison and its inverse are identities.
+All transition compositions for longer chains of degree bounds
+are identities.  The equalities are natural under linear changes
+of species and extension of the characteristic-zero coefficient
+algebra, including specializations which lower the degree of \(W\).
+\end{corollary}
+
+\begin{proof}
+Since \(W_{D+1}=0\), the next potential is exactly
+\[
+ S_{D+1}=S_D+
+       \langle p_{D+1},u_{D+1}-xu_D\rangle.
+\]
+The symmetric-product constraint \(f=xu_D\) is quadratic and has
+degree zero.  The old \(H_r\)'s are unchanged and \(H_{D+1}=0\).
+Thus its graph split after the old split is the full canonical
+triangular split, including its inverse-Jacobian odd change.
+Its normalized total homotopy is the one used in
+Theorem~\ref{cp:thm:transfer}.  That theorem gives equality for
+one increase, and iteration gives every stated equality.
+Symmetric multiplication, evaluation, normalized translation and
+Euler counts commute with the specified coefficient and species
+maps.  No exactness of an arbitrary tensor product is needed:
+the identities and contractions themselves extend.
+\end{proof}
+
+The smaller quartic presentation requires two explicit steps.
+Write \(u=u_2\), and compare
+\begin{equation}\label{cp:eq:quartic-presentations}
+ \begin{split}
+ S_{\mathrm{can}}={}&\kappa u_4+
+ p_2(u-x^2)+p_3(u_3-xu)+p_4(u_4-xu_3),\\
+ S_{\mathrm{small}}={}&\kappa u^2+p(u-x^2).
+ \end{split}
+\end{equation}
+First set \(q_4=p_4+\kappa\) and define
+\[
+ S_3=\kappa xu_3+p_2(u-x^2)+p_3(u_3-xu).
+\]
+Then make the invertible linear change
+\(p=p_2-\kappa u,\ q_3=p_3+\kappa x\).
+The exact potential identities are
+\begin{equation}\label{cp:eq:quartic-steps}
+ S_{\mathrm{can}}=S_3+q_4(u_4-xu_3),
+ \qquad
+ S_3=S_{\mathrm{small}}+q_3(u_3-xu).
+\end{equation}
+The inverse substitutions are
+\[
+ p_4=q_4-\kappa,\qquad
+ p_2=p+\kappa u,\qquad p_3=q_3-\kappa x.
+\]
+Both are affine in the differentiated even coordinates over
+\(k[\kappa]\), so they strictly identify the coefficient operations
+by the affine argument above.  Each remaining step is a quadratic
+constraint extension.
+
+It remains to check the contractions; equality of the potentials
+would not suffice.  For the small presentation put
+\[
+ v_2=u-x^2,\qquad
+ p'_{\mathrm{small}}=p+2\kappa x^2+\kappa v_2.
+\]
+Then \(S_{\mathrm{small}}=\kappa x^4+p'_{\mathrm{small}}v_2\).
+Its exact odd split is
+\begin{equation}\label{cp:eq:small-odd}
+ e_x=\eta_x+2x\eta_u-4\kappa x\eta_p,\qquad
+ e_{v_2}=\eta_u-\kappa\eta_p,\qquad e_{p'}=\eta_p.
+\end{equation}
+The original differentials
+\[
+ d\eta_x=-2px,\qquad d\eta_u=2\kappa u+p,\qquad
+ d\eta_p=u-x^2
+\]
+give \(de_x=4\kappa x^3,\ de_{v_2}=p'_{\mathrm{small}}\),
+and \(de_{p'}=v_2\).  The small inclusion sends \(\eta\) to
+\(e_x\).  Its projection sends
+\[
+ u\mapsto x^2,\qquad p\mapsto-2\kappa x^2,\qquad
+ \eta_u,\eta_p\mapsto0,\qquad \eta_x\mapsto\eta.
+\]
+All jet components are their normalized translation extensions.
+
+After the two graph splittings in \eqref{cp:eq:quartic-steps},
+the full even coordinates are
+\begin{equation}\label{cp:eq:quartic-full-split}
+ \begin{gathered}
+ v_2=u-x^2,\qquad v_3=u_3-xu,\qquad v_4=u_4-xu_3,\\
+ p'_2=p_2+\kappa x^2,\qquad
+ p'_3=p_3+\kappa x,\qquad p'_4=p_4+\kappa.
+ \end{gathered}
+\end{equation}
+Indeed
+\[
+ p'_{\mathrm{small}}
+ =p_2-\kappa u+2\kappa x^2+\kappa(u-x^2)
+ =p_2+\kappa x^2.
+\]
+These are exactly the canonical coordinates of
+\eqref{cp:eq:split}.  Their inverse is
+\[
+ \begin{gathered}
+ u=x^2+v_2,\qquad
+ u_3=x^3+xv_2+v_3,\qquad
+ u_4=x^4+x^2v_2+xv_3+v_4,\\
+ p_2=p'_2-\kappa x^2,\qquad
+ p_3=p'_3-\kappa x,\qquad
+ p_4=p'_4-\kappa.
+ \end{gathered}
+\]
+Differentiating this entire inverse gives the physical odd coordinate
+\begin{equation}\label{cp:eq:canonical-odd}
+ \begin{split}
+ e_x^{\mathrm{can}}={}&
+ \eta_x+2x\eta_u+(u+2x^2)\eta_{u_3}
+ +(u_3+xu+2x^3)\eta_{u_4}\\
+ &-2\kappa x\eta_{p_2}-\kappa\eta_{p_3},
+ \end{split}
+\end{equation}
+and the six auxiliary odd coordinates
+\begin{equation}\label{cp:eq:canonical-aux-odd}
+ \begin{aligned}
+ e_{v_2}&=\eta_u+x\eta_{u_3}+x^2\eta_{u_4},
+ &e_{p'_2}&=\eta_{p_2},\\
+ e_{v_3}&=\eta_{u_3}+x\eta_{u_4},
+ &e_{p'_3}&=\eta_{p_3},\\
+ e_{v_4}&=\eta_{u_4},
+ &e_{p'_4}&=\eta_{p_4}.
+ \end{aligned}
+\end{equation}
+Their differentials are \(4\kappa x^3,p'_r,v_r\), respectively,
+by the inverse-Jacobian chain rule.  The canonical inclusion sends
+\(\eta\) to \eqref{cp:eq:canonical-odd}.  Its projection sends
+\(u_r\) to \(x^r\), sends
+\((p_2,p_3,p_4)\) to \((-\kappa x^2,-\kappa x,-\kappa)\),
+kills the auxiliary odd coordinates, and sends \(\eta_x\) to \(\eta\).
+
+The intermediate physical odd coordinate can also be followed through
+the two steps.  The affine change from \(S_3\) to the second
+expression in \eqref{cp:eq:quartic-steps} sends the odd coordinates
+for \(x,u,p\) to
+\[
+ \eta_x-\kappa\eta_{p_3},\qquad
+ \eta_u+\kappa\eta_{p_2},\qquad \eta_{p_2}.
+\]
+The graph section for \(u_3=xu\) adds
+\(u\eta_{u_3}\) and \(x\eta_{u_3}\) to its first two entries.
+Applying this section to \eqref{cp:eq:small-odd} gives
+\begin{equation}\label{cp:eq:intermediate-odd}
+ e_x^{(3)}=
+ \eta_x+2x\eta_u+(u+2x^2)\eta_{u_3}
+               -2\kappa x\eta_{p_2}-\kappa\eta_{p_3}.
+\end{equation}
+The next graph section, for \(u_4=xu_3\), adds
+\((u_3+xu+2x^3)\eta_{u_4}\).  It gives exactly
+\eqref{cp:eq:canonical-odd}, not a second choice of representatives.
+The same calculation gives \eqref{cp:eq:canonical-aux-odd}.
+It follows that both routes use the same full auxiliary counts
+and the same normalized total Euler homotopy.
+
+\begin{corollary}[The canonical and one-pair quartic theories]
+\label{cp:cor:quartic}
+With the coordinate maps and contractions just specified,
+\[
+ \mathcal M_{\mathcal T}^{\mathrm{can}}(\lambda)
+       =\mathcal M_{\mathcal T}^{\mathrm{small}}(\lambda)
+\]
+on the original integer-graded \(A_{x^4}\), for every finite
+decorated tree and every polynomial jet input.  The comparison and
+inverse are the identity of \(A_{x^4}\).
+\end{corollary}
+
+\begin{proof}
+Apply Theorem~\ref{cp:thm:transfer} first to the fourth constraint
+and then to the third, using the strict affine identifications
+\eqref{cp:eq:quartic-steps}.  Equations
+\eqref{cp:eq:quartic-full-split}--\eqref{cp:eq:intermediate-odd}
+identify the required normalized contractions with the original
+ones in both presentations.  The two equalities of tree maps
+therefore compose to the asserted equality.
+\end{proof}
+
+There are also strict structured arrows before transfer.
+Let \(B_4\subset E(S_{\mathrm{can}})\) be the first constraint
+subtheory, with strict quotient \(\pi_4:B_4\to E(S_3)\), and
+let \(B_3\subset E(S_3)\) be the second, with quotient
+\(\pi_3:B_3\to E(S_{\mathrm{small}})\).
+The coefficient subtheory
+\[
+ C=\pi_4^{-1}(B_3)\subset B_4
+\]
+has strict maps
+\[
+ E(S_{\mathrm{can}})\longleftarrow C
+                       \xrightarrow{\ \pi_3\pi_4\ }
+                         E(S_{\mathrm{small}}).
+\]
+In split coordinates, \(C\) is \(B_3\) together with the ideal
+generated by the fourth passive pair, with arbitrary \(E(S_3)\)
+coefficients on that ideal.  Its positive fourth count is
+contractible by \(\eta_{u_4}\partial_{q_4}/N_4\).
+Together with the third passive-pair contraction and the omitted
+quartet pairs, this proves that both displayed maps are
+quasi-isomorphisms of state complexes.  Their strict coefficient
+property follows from \(\pi_4\)'s strictness and the closure of
+\(B_3\).  The normalized total homotopy preserves \(C\), because
+it preserves each auxiliary group count and preserves \(B_3\).
+
+\subsection{Presentation colours, the parameter and the remaining maps}
+
+The equality of tree maps makes the coherent comparison explicit.
+Put either presentation colour at each vertex, use the same
+\(C_{\mathcal T}^{\mathrm{adm}}\) and the same insertion-edge
+factors \(J^{\otimes E_{\mathrm{int}}(\mathcal T)}\), and assign
+the common map \(\mathcal M_{\mathcal T}\), independently of
+the colours.  A colour-changing unary vertex has state map
+\(\id_{A_W}\).  Deleting such a vertex multiplies its adjacent
+insertion-edge decorations in \(J\).
+
+If an additional interval records a change of presentation, use a
+separate copy \(J_{\mathrm{col}}\) with augmentation
+\[
+ \varepsilon_{\mathrm{col}}(e_0)
+   =\varepsilon_{\mathrm{col}}(e_1)=1,\qquad
+ \varepsilon_{\mathrm{col}}(a)=0.
+\]
+This respects the differential and multiplication of
+\eqref{cp:eq:interval}.  Apply it to every added colour interval.
+Both colour endpoints give the same map, and every positive-dimensional
+colour cell gives zero.  The insertion-edge operator remains
+\(\rho(a)=-h\); it is not replaced by zero.
+Equation~\eqref{cp:eq:cube} still gives its complete signed
+differential.  Edge collapse, grafting and all face intersections
+therefore agree in both colours, as do all longer compositions of
+the identity comparison and its identity inverse.
+
+Units are retained throughout: the strict quotient fixes \(1\),
+\(I(1)=1\), \(P(1)=1\) and \(h(1)=0\).
+Derivatives at a unit input vanish, leaving exactly the existing
+coefficient deletion map.  Relabelling permutes the same tensor
+factors with the same Koszul signs.  Every coordinate map uses
+normalized translation, and the Euler homotopies commute with it.
+For the canonical and quartic presentations give \(x,u\) spin zero,
+\(p,\kappa\) spin one, and the odd partners complementary spin.
+All displayed affine and constraint formulas preserve these spins.
+The dilation therefore retains its semilinear action
+\(\kappa\mapsto s\kappa\); it is not asserted to be
+\(k[\kappa]\)-linear at a fixed numerical coupling.
+
+Parameter torsion is an immediate example of what this comparison
+preserves.  At zero jets the quartic state complex has differential
+\(d\eta=4\kappa x^3\).  Multiplication by \(4\kappa x^3\)
+is injective on \(k[\kappa,x]\), so its cohomology is
+\[
+ k[\kappa,x]/(\kappa x^3)
+\]
+in even degrees and zero in odd degrees.
+The class \(x^3\) is nonzero and killed by \(\kappa\).
+Specializing the complex at \(\kappa=0\) restores the odd
+generator.  Underived specialization of the cohomology ring alone
+does not recover that generator.  The comparison and its contractions
+use no inverse of \(\kappa\), so they preserve the original complex
+and this distinction.
+
+The equalities do not change the strict quartic defect of a different
+primitive prescription.  To specify that defect, put
+\[
+ \Theta_{1234}=\operatorname{Alt}_{S_4}
+ \bigl[(\theta_{123}-\theta_{124})c_{34}
+             +(\theta_{134}-\theta_{234})c_{12}\bigr],
+\]
+where normalized alternation includes \(1/24\).  On the
+disjoint-pair tree \(12\mid34\), let \(p,q\) be the two inner
+order coordinates and \(r\) the outer one.  Set
+\[
+ F(\mathbf z)=
+ \frac{z_1+z_2-z_3-z_4}
+ {6(z_1-z_3)(z_1-z_4)(z_2-z_3)(z_2-z_4)}.
+\]
+The coefficient pullback is
+\begin{equation}\label{cp:eq:old-quartic}
+ \Theta_{1234}\longmapsto
+ F(\mathbf z)\bigl((2q-1)\,dp+(2p-1)\,dq\bigr)\wedge dr.
+\end{equation}
+For example, grouping the alternating terms whose remaining edge
+is \(12\) gives the \(dp\wedge dr\) coefficient
+\[
+ \frac{2q-1}{6(z_1-z_2)}
+ \left[
+ \frac1{(z_2-z_3)(z_2-z_4)}
+ -\frac1{(z_1-z_3)(z_1-z_4)}
+ \right]=(2q-1)F(\mathbf z).
+\]
+Exchanging the pairs gives the other coefficient.  A remaining
+cross edge would contribute \(dr\wedge dr=0\), so these exhaust
+the pullback.  It is nonzero, with allowed cross-pair poles, and
+has primitive \(2F(\mathbf z)(p-\tfrac12)(q-\tfrac12)\,dr\).
+
+For the quartic prescription with fourth contact
+\(24\kappa\Theta_{1234}\), take four zero-jet odd inputs and
+extract the coefficient linear in \(\kappa\), scalar in the state
+variables, and of coefficient-form degree two.  The direct value
+is \(24\kappa\Theta_{1234}\); the iterated binary value on
+\(12\mid34\) is zero.  An inner binary contact would require two
+outer free contractions to remove its quadratic even output, and
+those contractions have the same outer \(dr\), whose square is
+zero.  Two inner contacts have order \(\kappa^2\), while a root
+binary contact leaves odd state factors.  There are no other terms
+in that sector.  Thus the nonzero difference
+\(24\kappa\Theta_{1234}\) and its allowed scalar primitive remain.
+They are statements about this strict prescription, not the
+transferred operations of Corollary~\ref{cp:cor:quartic}.
+
+The comparison proved here covers canonical increases of \(D\),
+the specified one-pair quartic presentation, and chains of the
+verified quadratic extensions and compatible affine identifications
+with their stated contractions.  It makes no assertion for an
+arbitrary cubic presentation without such a chain.
+Its operations are formal closed coefficient operations.
+A supported action retaining the normal principal-part class of
+Theorem~\ref{nl:thm:obstruction}, open-colour and module operations,
+an associative chiral Koszul equivalence, analytic completion and
+a physical state comparison still require their own maps.
+The balanced-vacuum and Lie--chiral comparison of
+Section~\ref{bv:sec} concerns a different state object and tensor.
+Neither theorem identifies the coefficient construction here with
+that vertex comparison.

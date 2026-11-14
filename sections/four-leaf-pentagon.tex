@@ -1,0 +1,1027 @@
+\section{Four-input comparisons and the pentagon}
+\label{sec:four-leaf-pentagon}
+
+\subsection{Six divisors and five bracketings}
+\label{fp:sec:four-divisors}
+
+Four positions have six pairwise collision divisors.  A binary tree
+selects three of them when each merger retains its rightmost position.
+The five selections admit a single coefficient diagram.  Its maps
+satisfy a pentagon, but its projections are equivalences only on
+specified open subsets.  The distinction is detected by a single pole
+class at the generic point of each omitted divisor.
+
+In this section \(k\) is any field.  Put
+\[
+ a=z_1-z_2,\quad b=z_2-z_3,\quad c=z_3-z_4,\qquad R=k[a,b,c],
+\]
+\[
+ d=a+b=z_1-z_3,\qquad e=b+c=z_2-z_4,\qquad
+ f=a+b+c=z_1-z_4.
+\]
+Write \(\mathcal D=\{a,b,c,d,e,f\}\).
+The symbol \(d\) denotes the spatial function in this display.
+Write \(\partial\) for the differential of a complex.
+The six functions are pairwise nonassociate irreducible polynomials,
+including in characteristics two and three.  Fix the factor order
+\(a,b,c,d,e,f\).  All permutations of tensor factors below use the
+Koszul sign.  State coefficients are placed after interval coefficients.
+
+For \(\delta\in\mathcal D\), use the interval algebra
+\(A_\delta=\mathcal I_R(\delta)\) of
+\eqref{sb:eq:general-interval}, with augmentation \(p_\delta\)
+and unit map \(i_\delta:R\to A_\delta\).
+The differential is denoted by \(\partial\).
+
+Let \(D_R\) be a unital dg \(R\)-algebra.  Its multiplication
+may be noncommutative.  For \(J\subseteq\mathcal D\), define
+\begin{equation}\label{fp:eq:four-common-carrier}
+ R_J=R[\delta^{-1}:\delta\in J],\qquad
+ \mathcal C_J(D_R)=R_J\otimes_R
+       \left(\bigotimes_{\delta\in\mathcal D}A_\delta\right)
+       \otimes_R D_R.
+\end{equation}
+The inclusions \(J\subseteq J'\) give scalar-extension maps.
+They compose strictly.  Thus \(\mathcal C_\bullet(D_R)\)
+is a diagram indexed by the subsets of the six divisors.
+Its initial object keeps the endpoint ring \(R\).
+In coefficient degree \(r\), its summands have overlap ring
+\[
+ R_J[\delta^{-1}:\delta\in I],\qquad
+ I\subseteq\mathcal D,\quad |I|=r,
+\]
+with one endpoint choice for each \(\delta\notin I\).
+This specifies every module, including simultaneous overlaps.
+No completion or intersection of Laurent-series fields is used.
+
+Number the bracketings and their selected sets as follows:
+\begin{equation}\label{fp:eq:four-tree-sets}
+\begin{array}{c|c|c}
+ T&\text{bracketing}&B_T\\\hline
+ 0&(((1,2),3),4)&\{a,b,c\}\\
+ 1&((1,(2,3)),4)&\{b,c,d\}\\
+ 2&(1,((2,3),4))&\{b,c,f\}\\
+ 3&(1,(2,(3,4)))&\{c,e,f\}\\
+ 4&((1,2),(3,4))&\{a,c,e\}
+\end{array}
+\end{equation}
+Set \(E_T(D_R)=\bigotimes_{\delta\in B_T}A_\delta
+\otimes_R D_R\), in the fixed order.
+There are strict dg algebra maps
+\[
+ j_T:E_T(D_R)\longrightarrow\mathcal C_\varnothing(D_R),
+ \qquad
+ q_T:\mathcal C_\varnothing(D_R)\longrightarrow E_T(D_R).
+\]
+The map \(j_T\) inserts units in missing factors.  The map
+\(q_T\) evaluates those factors at their first endpoints.
+They preserve the state factor and satisfy \(q_Tj_T=1\).
+The same formulas commute with every scalar extension in
+\eqref{fp:eq:four-common-carrier}.
+
+\begin{proposition}[The retained divisors and the tree projections]
+\label{fp:prop:four-full-carrier}
+For every \(\delta\in\mathcal D\), the initial scalar carrier
+\(\mathcal C_\varnothing(R)\) has a nonzero degree-one class
+at the prime \((\delta)\).  That class is represented by
+\(\theta_\delta/\delta\), with units in the other factors.
+For \(J_T=\mathcal D\setminus B_T\), the maps \(j_T,q_T\)
+become mutually inverse chain homotopy equivalences over \(R_{J_T}\),
+for arbitrary \(D_R\).  They need not be equivalences over \(R\).
+\end{proposition}
+
+\begin{proof}
+At \((\delta)\), every other collision function is a unit.
+For an invertible \(\gamma\), set
+\[
+ h_\gamma(\ell\theta_\gamma)=\ell e_1^\gamma,
+ \qquad h_\gamma(A_\gamma^0)=0,\qquad
+ F_\gamma=i_\gamma p_\gamma.
+\]
+A direct calculation gives
+\(\partial h_\gamma+h_\gamma\partial=1-F_\gamma\),
+\(h_\gamma^2=0\), and
+\(p_\gamma h_\gamma=h_\gamma i_\gamma=0\).
+Tensor these maps with the other factors, with the tensor signs.
+Contracting the five invertible intervals identifies the local
+cohomology with that of \(A_\delta\).  In degree one it is
+\[
+ R_{(\delta)}[\delta^{-1}]/R_{(\delta)}.
+\]
+The indicated pole class is nonzero.
+
+More generally, to remove invertible intervals
+\(\gamma_1,\ldots,\gamma_m\) in a specified order, use
+\begin{equation}\label{fp:eq:four-tensor-contraction}
+ h=h_{\gamma_1}+F_{\gamma_1}h_{\gamma_2}
+       +\cdots+F_{\gamma_1}\cdots F_{\gamma_{m-1}}h_{\gamma_m}.
+\end{equation}
+Each \(h_\gamma\) includes its tensor sign and acts trivially
+on \(D_R\).  Differentiation telescopes to
+\(1-F_{\gamma_1}\cdots F_{\gamma_m}\).
+For \(\gamma_i\in J_T\), the last product is \(j_Tq_T\).
+Together with \(q_Tj_T=1\), this proves the second assertion.
+The construction is an explicit chain contraction and needs no
+flatness assumption on \(D_R\).
+\end{proof}
+
+The initial carrier retains all six generic collisions.  The whole
+diagram records exactly where a projection discards their pole classes.
+Replacing the diagram by its last object would discard this information.
+The proposition asserts retention for the scalar coefficient carrier.
+For an arbitrary state algebra, tensoring can annihilate classes.
+
+\subsection{The maximal common open and its pentagon}
+\label{fp:sec:four-coefficient-pentagon}
+
+The adjacent rotations are
+\[
+ 0\longrightarrow1\longrightarrow2\longrightarrow3,
+ \qquad 0\longrightarrow4\longrightarrow3.
+\]
+For any arrow \(T\to U\) in these two paths define
+\[
+ r_{UT}=q_Uj_T:E_T(D_R)\longrightarrow E_U(D_R).
+\]
+The displayed maps are defined over \(R\).  On adjacent trees
+they preserve the two common intervals, remove one interval by
+first-endpoint evaluation, and insert one unit:
+\begin{equation}\label{fp:eq:four-adjacent-maps}
+\begin{array}{c|cc|c}
+ r_{UT}&\text{removed}&\text{inserted}&\text{preserved}\\\hline
+ r_{10}&a&d&b,c\\
+ r_{21}&d&f&b,c\\
+ r_{32}&b&e&c,f\\
+ r_{40}&b&e&a,c\\
+ r_{34}&a&f&c,e
+\end{array}
+\end{equation}
+They are the endpoint rotations of the actual subtree coordinates.
+For example, \(1\to2\) uses the three block representatives
+\(z_1,z_3,z_4\), with differences \(d,c,f=d+c\).
+The map \(4\to3\) uses \(z_1,z_2,z_4\), with differences
+\(a,e,f=a+e\).
+
+\begin{theorem}[The coefficient pentagon and its exact domain]
+\label{fp:thm:four-coefficient-pentagon}
+For every dg \(R\)-algebra \(D_R\), there is an equality
+of strict algebra chain maps over \(R\):
+\begin{equation}\label{fp:eq:four-pentagon-coefficients}
+ r_{32}r_{21}r_{10}=r_{34}r_{40}:E_0(D_R)\longrightarrow E_3(D_R).
+\end{equation}
+Both sides preserve \(A_c\) and \(D_R\), evaluate \(A_a,A_b\),
+and insert the units of \(A_e,A_f\).
+
+Put
+\begin{equation}\label{fp:eq:four-maximal-open}
+ S=R[a^{-1},b^{-1},d^{-1},e^{-1},f^{-1}].
+\end{equation}
+Over \(S\), each adjacent map is a chain homotopy equivalence.
+Among nonzero localizations of \(R\), this is the least localization
+on which all five scalar tree complexes can be quasi-isomorphic.
+In particular, no such common-open equivalence retains any of the
+five generic divisors \(a,b,d,e,f\).  It retains \(c=0\).
+\end{theorem}
+
+\begin{proof}
+Follow each original tensor factor through either path.  The long
+path removes \(a\), inserts and then removes \(d\), and removes
+\(b\).  The short path removes \(b\) and then \(a\).
+In both cases the only surviving original interval is \(c\), and
+the final \(e,f\) factors are units.  Endpoint evaluation after
+unit insertion is the identity on scalars.  The fixed factor order
+and the Koszul convention give identical maps, proving
+\eqref{fp:eq:four-pentagon-coefficients}.
+
+For one adjacent pair, write its complexes as the tensor of their
+common factors, the changed factor, and the state algebra.  The
+removed and inserted coordinates are units over \(S\).
+Their explicit homotopies in Proposition~\ref{fp:prop:four-full-carrier}
+show that the reverse endpoint rotation is a homotopy inverse.
+
+For necessity, let \(R'\) be a nonzero localization of \(R\).
+If a function \(\delta\) in \(\{a,b,d,e,f\}\) is not a unit
+in \(R'\), its prime ideal survives.  Indeed, a multiplicative
+set meeting \((\delta)\) would invert a multiple of \(\delta\)
+and hence \(\delta\) itself.  Some \(B_T\) contains \(\delta\)
+and another \(B_U\) omits it, by \eqref{fp:eq:four-tree-sets}.
+Localizing further at \((\delta)\), the first tree has
+\(H^1=R_{(\delta)}[\delta^{-1}]/R_{(\delta)}\ne0\).
+Every interval of the second tree contracts, so its \(H^1\) is zero.
+Localization preserves cycles and boundaries, since denominators
+can be cleared.  Thus the two scalar complexes cannot be
+quasi-isomorphic over \(R'\).  All five functions must be units,
+so the map \(R\to R'\) factors through \(S\).
+Conversely, the preceding contractions work over \(S\).
+Finally \(c^{-1}\notin S\), so the class
+\(\theta_c/c\) survives in \(H^1(A_c\otimes_R S)\).
+\end{proof}
+
+For an explicit obstruction, compare \(T=0\) and \(T=1\)
+at \((a)\).  The class \(\theta_a/a\) in the first tree
+is nonzero.  The intervals \(b,c,d\) in the second tree
+all contract.  Any equivalence preserving this generic boundary
+would have to preserve a class in a zero cohomology group.
+Adding state factors or further comparison maps cannot remove this
+contradiction while retaining the scalar complexes as equivalent fibers.
+
+\subsection{Four polynomial state inputs}
+\label{fp:sec:four-state-pentagon}
+
+The state operation uses all six pair distances, even when a tree
+selects only three interval factors.  This fact fixes its domain.
+Let \(\mathsf V\) be the one-species algebra
+\eqref{fs:eq:state-algebra}, with its auxiliary weight and Hasse
+translation.  Write \(P_{rs}^{ij}=P_{ij}^{rs}\) and, in this section,
+\(D_{ij}=\mathsf D_{ij}\) for the rational odd operator of
+\eqref{fs:eq:rational-pair-operator}.  These operators act on the
+original ordered tensor product of polynomial states.  They anticommute
+and square to zero, by the left odd derivative relations, also in
+characteristic two.
+
+For two inputs at separation \(v\), the binary operation is
+\[
+ Y_v=E_v(1+\theta_v D_{12}),\qquad
+ E_v(\alpha\otimes\beta)=(\tau_v\alpha)\beta.
+\]
+In this formula \(D_{12}\) uses separation \(v\).
+Set \(z_4=0,z_3=c,z_2=e,z_1=f\), and write
+\[
+ E(\alpha_1\otimes\alpha_2\otimes\alpha_3\otimes\alpha_4)
+  =(\tau_f\alpha_1)(\tau_e\alpha_2)(\tau_c\alpha_3)\alpha_4.
+\]
+Products of coefficient operators use the graded tensor rule.
+Thus moving an odd \(D_{ij}\) across an interval form changes
+its sign.  These conventions retain multiple contractions.
+
+For a state algebra \(V\) over \(k\), write
+\(\mathcal C_J(V)=\mathcal C_J(R\otimes_kV)\).
+For a fixed tree, extend the endpoint ring to \(R_{J_T}\),
+where \(J_T=\mathcal D\setminus B_T\).  The state output is
+understood weightwise in
+\[
+ \bigcup_{N\in\mathbb N^{\mathcal D}}
+ \prod_{w\ge0}F_N\bigl(E_T(R_{J_T})\otimes_k\mathsf V_w\bigr).
+\]
+Here \(F_N\) uses the intersection of each coefficient module
+with \(\prod_{\delta\in\mathcal D}\delta^{-N_\delta}R\).
+The same pole tuple bounds every output weight.  The input states
+are polynomials, not arbitrary elements of the product of weights.
+
+\begin{proposition}[The actual four-input operations]
+\label{fp:prop:four-state-formulas}
+The five binary iterations have the following rational representatives:
+\begin{equation}\label{fp:eq:four-state-formulas}
+\begin{aligned}
+ Y_0&=E(1+\theta_c(D_{14}+D_{24}+D_{34}))
+         (1+\theta_b(D_{13}+D_{23}))(1+\theta_aD_{12}),\\
+ Y_1&=E(1+\theta_c(D_{14}+D_{24}+D_{34}))
+         (1+\theta_d(D_{12}+D_{13}))(1+\theta_bD_{23}),\\
+ Y_2&=E(1+\theta_f(D_{12}+D_{13}+D_{14}))
+         (1+\theta_c(D_{24}+D_{34}))(1+\theta_bD_{23}),\\
+ Y_3&=E(1+\theta_f(D_{12}+D_{13}+D_{14}))
+         (1+\theta_e(D_{23}+D_{24}))(1+\theta_cD_{34}),\\
+ Y_4&=E(1+\theta_e(D_{13}+D_{14}+D_{23}+D_{24}))
+         (1+\theta_cD_{34})(1+\theta_aD_{12}).
+\end{aligned}
+\end{equation}
+Each is a degree-zero chain map on \(\mathsf V^{\otimes4}\),
+with the stated output domain over \(R_{J_T}\).
+There are at most three contractions.
+For every tree, \(R_{J_T}\) is the least endpoint localization
+supporting these rational representatives for all polynomial inputs.
+\end{proposition}
+
+\begin{proof}
+At an internal vertex, the derivative of each merged state is the
+sum of derivatives on its original input factors.  A contraction
+across the two children therefore sums over pairs with one leaf
+in each child.  A fixed pair occurs at its unique lowest common
+ancestor.  The sets at the three vertices give precisely the three
+operator factors in each line of \eqref{fp:eq:four-state-formulas}.
+
+The separation in each coefficient must be the original leaf distance.
+The identities that transport it through a merger are
+\[
+ \sum_{m\ge0}\binom{r+m}{r}t^mK_{r+m,s}(x)=K_{rs}(x+t),
+\]
+\[
+ \sum_{m\ge0}\binom{s+m}{s}x^mK_{r,s+m}(u)=K_{rs}(u-x).
+\]
+For the first, use
+\(\binom{r+m}{r}\binom{r+m+s}{r+m}
+=\binom{r+s}{r}\binom{r+s+m}{m}\).
+The negative-binomial expansion then gives the equality, including
+its sign.  The second identity follows from the same equality
+without the alternating power of the translating variable.
+They hold over the integers in the respective formal domains.
+Applying them at each of the three vertices and using the translation
+law proves the formulas, with all double and triple terms.
+For the two disjoint inner vertices of \(T=4\), the even operators
+\(\theta_aD_{12}\) and \(\theta_cD_{34}\) commute.
+The exchange of forms cancels the exchange of odd derivatives.
+
+Only finitely many derivative indices act nontrivially on polynomial
+inputs before translation.  Each vertex contributes at most one
+contraction.  Each fixed output weight has finitely many translation
+terms, and translation adds only polynomial spatial coefficients.
+The denominators of a contraction are powers of its leaf distance.
+A distance in \(J_T\) is already invertible at every endpoint.
+A distance in \(B_T\) labels its own vertex, so its denominator
+appears only together with that vertex's form.  Products belong to
+the corresponding simultaneous-overlap module.  This proves the
+output and pole assertions.  All terms are closed.
+
+To prove minimality, take inputs \(x_0\) and \(\eta_0\)
+at a chosen pair \(i<j\), with units at the other leaves.
+The only contraction is
+\(\theta_\gamma/(z_i-z_j)\), where \(\gamma\in B_T\)
+is the coordinate of the pair's lowest common ancestor.
+If \(z_i-z_j\notin B_T\), its inverse can belong to the
+\(\gamma\)-overlap ring of an endpoint localization only if
+that leaf distance is already a unit there.  Indeed, its prime
+ideal survives every inversion of the distinct irreducible
+\(\gamma\).  Varying the pair forces every member of \(J_T\)
+to be a unit.  The preceding construction proves sufficiency.
+\end{proof}
+
+\begin{example}[Three simultaneous contractions]
+For inputs \((x_0,x_0\eta_0,x_0\eta_0,\eta_0)\), the fully
+contracted terms, in the fixed interval order, are
+\[
+ \begin{array}{c|c}
+ T&\text{coefficient of the scalar state}\\\hline
+ 0&\theta_a\theta_b\theta_c/(abc)\\
+ 1&f\theta_b\theta_c\theta_d/(acde)\\
+ 2&f\theta_b\theta_c\theta_f/(acde)\\
+ 3&-\theta_c\theta_e\theta_f/(abc)\\
+ 4&-\theta_a\theta_c\theta_e/(abc)
+ \end{array}
+\]
+For \(T=0\), the successive nonzero contractions are
+\(P^{12}_{00},P^{23}_{00},P^{34}_{00}\), each with coefficient
+\(+1\) on the remaining polynomial.  For \(T=1,2\), the
+signed sum is \(1/(abc)-1/(bde)=f/(acde)\).
+For \(T=3,4\), left differentiation of the two odd factors
+remaining at the last inner vertex gives the minus sign.
+Hasse translation acts trivially on the final scalar state.
+These integer identities retain their meanings in every characteristic.
+\end{example}
+
+Here are explicit formal targets for these rational representatives.
+In each row, list the root variable first, followed by internal
+variables from the root toward the leaves:
+\[
+ \begin{array}{c|c}
+ T&\text{iterated Laurent field}\\\hline
+ 0&k((c))((b))((a))\\
+ 1&k((c))((d))((b))\\
+ 2&k((f))((c))((b))\\
+ 3&k((f))((e))((c))\\
+ 4&k((e))((c))((a))
+ \end{array}
+\]
+For each row the three displayed variables are algebraically independent.
+Every leaf distance is a nonzero linear expression in them, so its
+inverse has a unique Laurent expansion in that field.  For example,
+in row 2, \(a=f-c-b\), \(d=f-c\), and \(e=b+c\).
+At every ancestor, descendants are expanded as the smaller variables.
+The two disjoint inner operations in row 4 admit the stated order
+because they commute as proved above.  Each rational embedding is
+injective.  These targets are kept distinct, and comparisons below
+are made before expansion.
+
+\subsubsection{A common state operation before localization}
+
+The complete coefficient carrier supports the closed degree-zero map
+\begin{equation}\label{fp:eq:four-universal-state}
+ \mathcal U=E\prod_{1\le i<j\le4}
+       (1+\theta_{z_i-z_j}D_{ij})
+ :\mathsf V^{\otimes4}\longrightarrow
+       \widehat{\mathcal C_\varnothing(\mathsf V)}.
+\end{equation}
+The hat means the uniformly pole-bounded product of output weights
+specified above.  There are at most six contractions.  The factors
+commute: exchanging their forms and their odd derivatives gives two
+opposite signs.  Thus any fixed order of the six pairs gives the
+same map.  A contraction denominator lies in its own pair-overlap
+module, so the operation is defined over \(R\) with all six
+divisors retained.
+
+For each tree, let \(v_T(i,j)\in B_T\) be the coordinate
+of the lowest common ancestor of leaves \(i,j\).  Over \(R_{J_T}\),
+define an algebra chain map from a single pair interval to that vertex
+interval by
+\[
+ e_\nu^{z_i-z_j}\longmapsto e_\nu^{v_T(i,j)},\qquad
+ \ell\theta_{z_i-z_j}\longmapsto\ell\theta_{v_T(i,j)}.
+\]
+It fixes every spatial scalar.  If the pair interval is selected by
+the tree, then \(z_i-z_j=v_T(i,j)\) and this is the identity.
+Otherwise its distance is inverted in \(R_{J_T}\), so all its
+coefficients already belong to that endpoint ring.
+Regroup the six factors by vertex, using the Koszul signs, and
+multiply each group in the original order of \(a,b,c,d,e,f\).
+This defines a degree-zero chain map
+\begin{equation}\label{fp:eq:four-grouping-map}
+ \mu_T:\mathcal C_{J_T}(D_R)\longrightarrow
+             E_T(D_R)\otimes_R R_{J_T}.
+\end{equation}
+It acts identically on \(D_R\).  Multiplication in a dg algebra
+is a chain map, so every stage of this definition is a chain map.
+It preserves the unit and first-endpoint evaluation, and
+\(\mu_Tj_T=1\).
+
+The map \(\mu_T\) is generally not multiplicative.  Two
+source factors supercommute.  If both map to a vertex \(v\),
+one may choose \(e_1\) in the first and \(\theta\) in
+the second.  Their images satisfy \(e_1^v\theta_v=0\) but
+\(\theta_ve_1^v=\theta_v\).  A multiplicative map could
+not preserve their source commutation relation.
+
+\begin{theorem}[The state carrier with all six divisors]
+\label{fp:thm:four-common-state}
+Over every field, \(\mu_T\mathcal U=Y_T\) over \(R_{J_T}\).
+The map \(\mu_T\) is a chain homotopy equivalence with inverse
+\(j_T\).  It preserves the full rational coefficient and its
+six-component pole tuple.
+
+Let \(\widetilde E_T(D_R)\) be the tensor of the selected
+intervals, followed by all missing intervals, followed by \(D_R\).
+The signed reordering
+\(\Phi_T:\widetilde E_T(D_R)\to\mathcal C_\varnothing(D_R)\)
+is a strict dg algebra isomorphism.  The maps
+\[
+ \rho_{UT}=\Phi_U^{-1}\Phi_T,\qquad
+ \widetilde Y_T=\Phi_T^{-1}\mathcal U
+\]
+satisfy a strict pentagon over \(R\), with all six divisors retained,
+and \(\rho_{UT}\widetilde Y_T=\widetilde Y_U\).
+Their comparisons to the native operations are
+\(\mu_T\Phi_T\) over the stated \(R_{J_T}\).
+\end{theorem}
+
+\begin{proof}
+Regroup \eqref{fp:eq:four-universal-state} by lowest common ancestor.
+In the image of \(\mu_T\), two contraction forms at the same
+vertex multiply to zero.  The terms at that vertex therefore reduce to
+\(1+\theta_v\sum_{v_T(i,j)=v}D_{ij}\).
+The products over the three vertices give precisely
+\eqref{fp:eq:four-state-formulas}.  Regrouping introduces the same
+Koszul signs on both sides.  This proves the operation identity
+on the actual polynomial state tensors.
+
+Let \(h\) be \eqref{fp:eq:four-tensor-contraction} on the common
+carrier, removing the factors in \(J_T\), and let \(q=q_T\),
+\(j=j_T\), \(\mu=\mu_T\).  Its side identities are
+\(h^2=hj=qh=0\).  For example, two distinct summands in
+\(h^2\) contain either \(h_\gamma F_\gamma\) or
+\(F_\gamma h_\gamma\), both zero.
+Define
+\begin{equation}\label{fp:eq:four-grouping-contraction}
+ H=(1-j\mu)h.
+\end{equation}
+Since \(\mu j=1\), direct multiplication gives
+\[
+ \partial H+H\partial=(1-j\mu)(1-jq)=1-j\mu,
+ \qquad H^2=Hj=\mu H=0.
+\]
+For the square, use \(h^2=hj=0\) in
+\((h-j\mu h)^2\).  Thus \((j,\mu,H)\) is an explicit
+chain contraction.  Every factor map, multiplication, and homotopy
+leaves spatial scalars fixed.  Products add their pole tuples.
+This proves the assertions about domains and poles.
+
+Finally \(\Phi_U\rho_{UT}=\Phi_T\).  Along any path the
+successive reorderings cancel, proving the pentagon and the equality
+of state operations.  The initial coefficient carrier retains the
+six generic classes by Proposition~\ref{fp:prop:four-full-carrier}.
+No endpoint localization is used for these enriched presentations.
+The comparison to a native tree uses exactly the localization already
+required to define \(\mu_T\).
+\end{proof}
+
+The enriched presentations contain the three additional interval
+factors.  Their maps to the native trees are not equivalences over
+\(R\).  The generic-divisor obstruction proves this distinction.
+
+Over \(S\), let \(p_T:E_T(S)\to A_c\otimes_R S\)
+evaluate all intervals other than \(c\), and let \(i_T\)
+insert their units.  Define
+\[
+ C_0=C_1=D_{14}+D_{24}+D_{34},\qquad
+ C_2=D_{24}+D_{34},\qquad C_3=C_4=D_{34},
+\]
+\[
+ Z=E(1+\theta_cD_{34}).
+\]
+Then \(p_TY_T=E(1+\theta_cC_T)\).
+All coefficients of \(C_T-D_{34}\) lie in \(S\), since
+the only remaining denominators are powers of \(e\) and \(f\).
+Let \(h_T\) be \eqref{fp:eq:four-tensor-contraction}, removing
+\(B_T\setminus\{c\}\) in the fixed order.  It acts on the
+interval coefficients and leaves the state map unchanged.
+Set
+\begin{equation}\label{fp:eq:four-state-potentials}
+ G_T=h_TY_T+i_T\bigl(e_1^cE(C_T-D_{34})\bigr),\qquad
+ H_{UT}=r_{UT}G_T-G_U.
+\end{equation}
+These are fully specified finite operator formulas.  The map \(G_T\)
+has degree minus one into the \(T\)-output.  The map \(H_{UT}\)
+has degree minus one into the \(U\)-output.
+
+\begin{theorem}[A pentagon of state homotopies]
+\label{fp:thm:four-state-pentagon}
+For polynomial inputs over every field, the maps in
+\eqref{fp:eq:four-state-potentials} satisfy
+\[
+ \partial G_T=Y_T-i_TZ,\qquad
+ \partial H_{UT}=r_{UT}Y_T-Y_U.
+\]
+Their pentagon boundary is zero as an actual degree-minus-one map:
+\begin{equation}\label{fp:eq:four-state-pentagon}
+ r_{32}r_{21}H_{10}+r_{32}H_{21}+H_{32}
+       =r_{34}H_{40}+H_{34}.
+\end{equation}
+All maps retain the \(c\)-collision and preserve the total
+six-component pole bound.  No scalar-state quotient is used.
+\end{theorem}
+
+\begin{proof}
+Every \(Y_T\) is closed, and
+\(\partial h_T+h_T\partial=1-i_Tp_T\).
+Also
+\(\partial(e_1^cE(C_T-D_{34}))=\theta_cE(C_T-D_{34})\).
+The latter primitive is legal because its coefficients lie in \(S\).
+Combining these identities gives
+\[
+ \partial G_T=Y_T-i_Tp_TY_T+i_T(p_TY_T-Z)=Y_T-i_TZ.
+\]
+Each adjacent map preserves \(c\), the unit factors, and the
+state coefficients, so \(r_{UT}i_T=i_U\).
+Applying \(\partial\) to \(H_{UT}\) proves its chain equation.
+
+The left side of \eqref{fp:eq:four-state-pentagon} telescopes to
+\(r_{32}r_{21}r_{10}G_0-G_3\).
+The right side telescopes to \(r_{34}r_{40}G_0-G_3\).
+The coefficient pentagon identifies these expressions before applying
+them to any input.  Thus the boundary is exactly zero; a
+degree-minus-two filling can be chosen to be zero for this choice
+of edge homotopies.
+
+The contractions \(h_T\) move a scalar from an overlap into
+an endpoint module in which it is allowed.  They do not change it.
+The extra primitive replaces \(\theta_c\) by \(e_1^c\)
+only for coefficients already regular at \(c=0\) over \(S\).
+All remaining operations evaluate components or insert units.
+They introduce neither a new divisor nor a larger pole exponent.
+The uniform output bounds therefore persist in the homotopies.
+\end{proof}
+
+The choice of \(G_T\) is part of this theorem.  Arbitrarily
+chosen homotopies for the five edges need not satisfy
+\eqref{fp:eq:four-state-pentagon}.  For the isolated three-leaf
+rotation, this construction gives the explicit homotopy
+\(i_R(e_1^xED_{13})-h_RY_R\): the left contraction is
+annihilated by its first-endpoint projection.  Thus the same
+normalization agrees with that three-input formula.
+
+\subsubsection{The local ternary homotopies and a pentagon filling}
+
+The local three-input homotopies admit a direct comparison with
+\eqref{fp:eq:four-state-potentials}.  In the following table,
+\(v\) is the retained local interval, \(w\) the inserted interval,
+\(s\) the spectator interval, and \(X,L\) are odd state operators:
+\[
+\begin{array}{c|ccc|c|c}
+ T\to U&v&w&s&X&L\\\hline
+ 0\to1&b&d&c&D_{13}&D_{14}+D_{24}+D_{34}\\
+ 1\to2&c&f&b&D_{14}&D_{23}\\
+ 2\to3&c&e&f&D_{24}&D_{12}+D_{13}+D_{14}\\
+ 0\to4&c&e&a&D_{14}+D_{24}&D_{12}\\
+ 4\to3&e&f&c&D_{13}+D_{14}&D_{34}
+\end{array}
+\]
+Let \(h_w\) contract only the inserted interval, with its tensor
+sign, and define
+\[
+ H^{\mathrm{loc}}_{UT}=e_1^vEX(1+\theta_sL)-h_wY_U.
+\]
+The placement of coefficients and operators follows the same graded
+rule as \eqref{fp:eq:four-state-formulas}.  Deleting the old interval
+from \(Y_T\) and the new interval from \(Y_U\) leaves the
+difference \(\theta_vEX(1+\theta_sL)\).  The table verifies
+this directly in each of its five rows.  Every coefficient of \(X\)
+is in \(S\), so the displayed primitive is legal.  Hence
+\[
+ \partial H^{\mathrm{loc}}_{UT}=r_{UT}Y_T-Y_U.
+\]
+These are the local ternary homotopies with their unchanged spectator.
+Their comparison with the coherent choices is explicit.  Set
+\[
+ Z_{UT}=H^{\mathrm{loc}}_{UT}-H_{UT},\qquad
+ B_{UT}=h_UZ_{UT}.
+\]
+The map \(Z_{UT}\) is closed.  Full first-endpoint projection
+of \(H^{\mathrm{loc}}_{UT}\) is, in the table's order,
+\[
+ 0,\quad e_1^cED_{14},\quad e_1^cED_{24},\quad
+ e_1^cE(D_{14}+D_{24}),\quad0.
+\]
+These values equal \(p_UH_{UT}\), by the formulas for \(C_T\).
+Thus \(p_UZ_{UT}=0\), and the contraction gives
+\(\partial B_{UT}=Z_{UT}\).
+The degree-minus-two map
+\[
+ \mathcal K=r_{32}r_{21}B_{10}+r_{32}B_{21}+B_{32}
+                -r_{34}B_{40}-B_{34}
+\]
+therefore satisfies the pentagon boundary identity
+\begin{equation}\label{fp:eq:four-local-pentagon-filling}
+ \partial\mathcal K=
+ r_{32}r_{21}H^{\mathrm{loc}}_{10}+r_{32}H^{\mathrm{loc}}_{21}
+       +H^{\mathrm{loc}}_{32}-r_{34}H^{\mathrm{loc}}_{40}-H^{\mathrm{loc}}_{34}.
+\end{equation}
+Indeed, substitute \(\partial B=H^{\mathrm{loc}}-H\) and use
+\eqref{fp:eq:four-state-pentagon} to cancel the coherent terms.
+This filling preserves the same pole tuples.  It proves coherence
+for the specified local ternary homotopies, without assuming that
+their two path sums are equal as degree-minus-one maps.
+
+\begin{example}[A nonzero local pentagon boundary]
+Take \(k=\mathbb Q\), \(a=2,b=3,c=5\), and inputs
+\((x_0,x_0,\eta_0,\eta_0)\).  Thus \(d=5,e=8,f=10\).
+The oriented local boundary on the right of
+\eqref{fp:eq:four-local-pentagon-filling} is
+\[
+ -\frac{\theta_ce_1^f+e_1^c\theta_f}{40}
+ -\frac{e_1^e\theta_f+\theta_ee_1^f}{120}.
+\]
+Its four summands are distinct interval-basis tensors, so the
+boundary is nonzero.  The filling on these inputs is
+\[
+ \mathcal K=-\frac{e_1^ce_1^f}{40}-\frac{e_1^ee_1^f}{120}.
+\]
+Differentiating gives the displayed boundary.  Both contractions
+consume all four generators, so the output state is \(1\).
+This example distinguishes equality of local edge sums from the
+chain-homotopy boundary identity.
+\end{example}
+
+\subsection{Mode coefficients and finite bars}
+\label{fp:sec:four-mode-bars}
+
+The coefficient diagram and its pentagon also act on associative
+operator algebras.  This statement does not require their normal
+products to be associative.  Define the finite mode algebra
+\(\mathscr W_\kappa\) over \(k\) by
+\[
+ [p_m,q_n]=\kappa m\delta_{mn}1,\qquad
+ [p_m,p_n]=[q_m,q_n]=0,\qquad m,n\ge1.
+\]
+Elements are finite linear combinations of finite words.  On
+\(\mathsf F=k[h_0,h_1,\ldots]\), let
+\(q_m=h_{m-1}\cdot\) and
+\(p_m=\kappa m\partial_{h_{m-1}}\).
+These actions satisfy the relations in every characteristic.
+Ordered monomials \(q^\alpha p^\beta\) are linearly independent:
+represent them on \(k[Q_m,P_m:m\ge1]\) with
+\(q_m=Q_m\cdot\) and
+\(p_m=\kappa m\partial_{Q_m}+P_m\cdot\).
+Their values on \(1\) are the distinct monomials
+\(Q^\alpha P^\beta\).  Commuting adjacent generators proves
+spanning.  Thus a mode remains an algebra element even if its
+particular Fock action vanishes in positive characteristic.
+
+Give \(h_j\) weight \(j+1\) and let
+\(\mathsf M=\bigoplus_w\mathsf F_w^\vee\).
+The right action is \((\lambda A)(v)=\lambda(Av)\).
+Every finite mode word has a fixed weight shift, so this action
+preserves \(\mathsf M\).  Set
+\(D_R=R\otimes_k\mathscr W_\kappa\) and extend these
+module ends to each endpoint ring.  Each coefficient algebra acts
+on the ends through first-endpoint evaluation of every interval.
+No character of \(\mathscr W_\kappa\) is used.
+For \(\kappa\ne0\), the relation
+\([p_1,q_1]=\kappa1\) forbids such a character.
+
+There is also an actual endomorphism carrier.  Let
+\[
+ \mathscr E=\bigoplus_{r\in\mathbb Z}
+       \prod_{w\ge0}\operatorname{Hom}_k(\mathsf F_w,\mathsf F_{w+r}),
+ \qquad\mathsf F_v=0\ (v<0).
+\]
+An element has finitely many weight shifts.  Composition makes
+\(\mathscr E\) an associative algebra, since finite sets of
+shifts add.  It acts on \(\mathsf F\) and preserves the
+restricted dual \(\mathsf M\).  The mode representation maps
+\(\mathscr W_\kappa\to\mathscr E\).  The constructions below
+are natural under this map and keep each action unchanged.
+If the full algebra \(\operatorname{End}_k(\mathsf F)\) is
+used instead, its natural right end is the full algebraic dual
+\(\mathsf F^*\); arbitrary endomorphisms need not preserve
+\(\mathsf M\).
+
+For an augmented dg algebra \(E\) over a current endpoint ring
+\(L\), put \(\bar E=\ker\varepsilon_E\) and
+\[
+ B_L(E)=\bigoplus_{n\ge0}(s\bar E)^{\otimes_L n},
+ \qquad |sv|=|v|-1.
+\]
+The bar differential has local components
+\(b_1[v]=[\partial v]\) and
+\(b_2[v|w]=(-1)^{|v|+1}[vw]\).
+An operation starting at position \(j\) carries the prefix sign
+\((-1)^{\sum_{i<j}(|v_i|-1)}\).
+For genuine degree-zero module ends \(M,N\), use instead
+\[
+ B_L(M,E,N)=\bigoplus_{n\ge0}
+ M\otimes_L(sE)^{\otimes_L n}\otimes_LN.
+\]
+The left outer face has positive sign.  The right outer face has
+sign \((-1)^{\sum_i(|v_i|-1)}\).  The ends act through the
+specified augmentations of the coefficient factors and the actual
+state actions.  The state algebra itself needs no augmentation.
+Associativity, the product rule, and the module identities cancel
+the pairs of faces in \(b^2\).
+
+\begin{theorem}[The pentagon with operator coefficients and module ends]
+\label{fp:thm:four-bar-pentagon}
+The coefficient pentagon induces a strict pentagon on reduced bars
+when the state algebra is augmented.  It also induces a strict
+pentagon on the two-sided bars with the stated mode or endomorphism
+ends.  All maps act identically on state factors and module ends.
+Over \(S\), each edge is a chain homotopy equivalence on these
+finite-word bars.  The maps preserve cuts, word length, and total
+spatial pole bounds.  Reduced bars use deconcatenation.  Two-sided
+bars use balanced cuts through the regular state module.
+\end{theorem}
+
+\begin{proof}
+A strict algebra chain map acts entry by entry and commutes with
+all internal and multiplication faces.  Its preservation of the
+endpoint action gives the same assertion for outer faces.
+Consequently \eqref{fp:eq:four-pentagon-coefficients} gives the strict
+bar pentagon in every length, with the identity on both ends.
+
+For one deleted invertible interval, its tensor homotopy \(h\)
+and projection \(F\) satisfy
+\[
+ h(vw)=h(v)w+(-1)^{|v|}F(v)h(w).
+\]
+For one interval this follows from the four endpoint actions.
+Tensoring with the other factors gives the displayed Koszul sign.
+A homotopy on words is
+\[
+ K[v_1|\cdots|v_n]=
+ \sum_{j=1}^n(-1)^{\sum_{i<j}(|v_i|-1)}
+ [Fv_1|\cdots|Fv_{j-1}|hv_j|v_{j+1}|\cdots|v_n].
+\]
+The internal terms of \(bK+Kb\) telescope to \(1-B(F)\).
+The adjacent multiplication terms reduce to
+\[
+ (-1)^{|v|}[h(v)w]+[F(v)h(w)]
+       +(-1)^{|v|+1}[h(vw)]=0.
+\]
+The outer terms cancel because \(h\) has zero first endpoint
+and \(F\) preserves endpoint evaluation.  This proves the
+homotopy-equivalence assertion for each edge and its reverse.
+
+A cut before or after an entrywise map gives the same two
+subwords.  For two-sided bars, insert the regular state module \(D\)
+at a cut and balance over \(D\):
+\[
+ \lambda[v_1|\cdots|v_n]w\longmapsto
+ \sum_j\lambda[v_1|\cdots|v_j]1
+ \otimes_D1[v_{j+1}|\cdots|v_n]w.
+\]
+The two adjacent middle faces cancel after balancing, with opposite
+prefix signs.  All other faces belong to one side of the cut.
+Endpoint rotations preserve these actions and the inserted unit.
+Hence they commute with balanced cuts.  Two successive cuts choose
+three consecutive subwords, independently of their order.
+
+For pole filtrations, use the scalar lattices
+\(\prod_\delta\delta^{-N_\delta}R\), intersected with each
+coefficient module, and a specified regular state lattice.  On words
+take the linear span of tensors whose tuples sum to at most the
+stated bound.  Multiplication adds tuples.  The maps and the displayed
+homotopy preserve every scalar coefficient, proving the assertion.
+\end{proof}
+
+This proof contracts one changed interval at each edge.  The tensor
+homotopy \eqref{fp:eq:four-tensor-contraction} used for state outputs
+is only a chain homotopy; no multiplicative property of that sum
+is required.  For a projection deleting several intervals on bars,
+one may compose the single-interval contractions just proved.
+All words remain finite.  No evaluation of an infinite distribution
+of mode words is part of the construction.
+
+\subsubsection{The grouping comparison on every finite word}
+
+The nonmultiplicative map \(\mu_T\) also has explicit higher
+bar components.  The following construction applies to a fixed tree
+over \(L=R_{J_T}\).  Write \(C=\mathcal C_{J_T}(D_R)\)
+and \(E=E_T(D_R)\otimes_RL\).  Use the contraction
+\((j,\mu,H)\) from \eqref{fp:eq:four-grouping-contraction}.
+On tensor words set \(I_0=B(j)\), let \(P_0\) apply
+\(\mu\) to each entry, and put \(F_0=I_0P_0\).
+For the internal differentials alone, the tensor homotopy is
+\[
+ H_0[v_1|\cdots|v_n]=
+ \sum_{r=1}^n(-1)^{\sum_{i<r}(|v_i|-1)}
+ [j\mu v_1|\cdots|j\mu v_{r-1}|Hv_r|v_{r+1}|\cdots|v_n].
+\]
+It satisfies
+\[
+ b_1H_0+H_0b_1=1-F_0,\qquad
+ H_0^2=H_0I_0=P_0H_0=0.
+\]
+Let \(\delta\) be the multiplication part of the source bar
+differential.  For two-sided bars include the two outer faces in
+\(\delta\).  In either case \(\delta\) lowers length.
+Define, on a word of length \(n\),
+\begin{equation}\label{fp:eq:four-grouping-bar}
+ P=P_0\sum_{r=0}^{n}(-\delta H_0)^r,
+ \qquad
+ \mathcal H=H_0\sum_{r=0}^{n}(-\delta H_0)^r.
+\end{equation}
+These are finite formulas with no convergence requirement.
+
+\begin{theorem}[Higher corrections for grouping intervals]
+\label{fp:thm:four-grouping-bar}
+The map \(P\) in \eqref{fp:eq:four-grouping-bar} is a chain
+homotopy inverse to the strict bar inclusion \(I_0\).
+Its length-one component is \(\mu_T\), and its target has the
+ordinary algebra bar differential, with the stated module ends
+when present.  On reduced bars, \(P\) is a coaugmented dg
+coalgebra map.  The two-sided maps commute with balanced cuts.
+The construction preserves maximal word length and total pole tuples.
+It applies to the actual mode and endomorphism coefficients above.
+\end{theorem}
+
+\begin{proof}
+Write \(d=b_1\), \(Q=1+\delta H_0\), and let \(\delta_E\)
+be the multiplication and applicable outer faces of the target.
+The strict algebra inclusion preserves endpoint actions, so
+\(\delta I_0=I_0\delta_E\).  Consequently
+\(H_0\delta I_0=0\), and no higher target multiplication is needed.
+The inverse \(Q^{-1}\) is the finite series in
+\eqref{fp:eq:four-grouping-bar}.  The equations
+\(d\delta+\delta d=0\), \(\delta^2=0\), and
+\(dH_0+H_0d=1-F_0\) give
+\[
+ dQ-Qd=-\delta(1-F_0),\qquad
+ dQ^{-1}-Q^{-1}d=Q^{-1}\delta(1-F_0)Q^{-1}.
+\]
+It follows that
+\[
+ \begin{aligned}
+ (d+\delta)\mathcal H+\mathcal H(d+\delta)
+ &=1-I_0P+H_0Q^{-1}\delta(\delta H_0+F_0)Q^{-1}\\
+ &=1-I_0P.
+ \end{aligned}
+\]
+The last term is zero: \(\delta^2=0\) and
+\(\delta F_0=I_0\delta_EP_0\), while
+\(H_0Q^{-1}I_0=H_0I_0=0\).
+Also \(PI_0=1\).  Commuting the last homotopy identity with
+the source differential shows that \(I_0P\) is a chain map.
+Since \(I_0\) is a split injection and a chain map to the
+ordinary target bar, \(P\) is a chain map to that bar.
+This proves the homotopy-equivalence assertion.
+The same identities hold with the two outer faces: their square
+and their commutation with the internal differential follow from
+the module identities, and \(I_0\) preserves their actions.
+
+Here is a direct check of the coalgebra assertion.  The tensor formula
+has
+\[
+ \Delta H_0=(F_0\otimes H_0+H_0\otimes1)\Delta,
+ \qquad \Delta\delta=(\delta\otimes1+1\otimes\delta)\Delta.
+\]
+Moreover \(PH_0=0\), \(PF_0=P_0\), and
+\(P=P_0-P\delta H_0\).  Induct on input length.
+The induction applies to \(\delta H_0\), since it lowers
+length.  The two terms containing \(PH_0\) vanish, leaving
+\[
+ \begin{aligned}
+ \Delta P
+ &=\bigl(P_0\otimes P_0-P_0\otimes P\delta H_0
+                  -P\delta H_0\otimes P\bigr)\Delta\\
+ &=(P\otimes P)\Delta.
+ \end{aligned}
+\]
+The empty word gives the base case.  For module ends, use this
+same calculation for the family of bars \(B(M,C,N)\), with
+\(B(M,C,D)\otimes_D B(D,C,N)\) at a cut.  The middle-face
+cancellation proved above gives the displayed differential identity
+for that balanced cut.  The tensor-homotopy identity separates terms
+according to the side on which the homotopy acts, with its original prefix sign.
+All maps are \(D\)-linear at the inserted ends and preserve
+their units, so the calculation descends to the balanced tensor.
+
+The linear component is \(\mu\): internal multiplication
+cannot act on one reduced entry.  For a length-one two-sided
+bar, each outer face of \(H_0[v]\) is zero because \(H\)
+has zero first-endpoint value.  Thus the same statement holds there.
+Finally every factor in the finite series changes only interval
+coordinates or multiplies existing spatial coefficients in order.
+Word length decreases under \(\delta\), and multiplication
+adds the original pole bounds.  This proves the filtration assertions.
+\end{proof}
+
+The strict reorderings \(\rho\) give the full-divisor bar pentagon.
+The maps \(P\) compare its vertices with the native mode and
+coefficient bars on their exact localization domains.  On the linear
+state component they give \(\mu_T\mathcal U=Y_T\).
+Thus the common state map and the native bar multiplication have an
+explicit comparison, including the higher terms forced by grouping.
+
+\subsubsection{Compatibility of the comparison maps around the pentagon}
+
+Over \(S\), identify all enriched source bars with the common
+bar \(\mathcal B\) of \(\mathcal C(D_R)\).
+Let \(\Pi:\mathcal B\to B(A_c\otimes D_R)\) evaluate
+the five other intervals, and let \(I_c\) insert their units.
+Use the corresponding two-sided notation when module ends are present.
+The single-interval bar contractions above give an explicit
+\(K_c\) with \(bK_c+K_cb=1-I_c\Pi\).
+For example, if their order is \(a,b,d,e,f\), take
+\[
+ K_c=K_a+B(F_a)K_b+B(F_aF_b)K_d
+       +B(F_aF_bF_d)K_e+B(F_aF_bF_dF_e)K_f.
+\]
+The chain equations telescope.  Each \(P_T\) from
+\eqref{fp:eq:four-grouping-bar} satisfies
+\(P_TI_c=B(i_T)\): indeed, \(I_c=B(j_T)B(i_T)\)
+and \(P_TB(j_T)=1\).
+Define comparison homotopies
+\[
+ L_T=P_TK_c,\qquad
+ A_{UT}=B(r_{UT})L_T-L_U.
+\]
+Their chain equations are
+\[
+ bL_T+L_Tb=P_T-B(i_T)\Pi,
+ \qquad bA_{UT}+A_{UT}b=B(r_{UT})P_T-P_U.
+\]
+The terms through \(\Pi\) cancel because
+\(r_{UT}i_T=i_U\).  Transporting the \(A_{UT}\) around
+the two pentagon paths gives respectively
+\(B(r_{32}r_{21}r_{10})L_0-L_3\) and
+\(B(r_{34}r_{40})L_0-L_3\).  They are identical by
+\eqref{fp:eq:four-pentagon-coefficients}.
+Thus the native bars, the common enriched bar, and their explicit
+comparison maps have compatible pentagon homotopies on the common open.
+All homotopies are finite on every word and preserve pole tuples.
+
+\subsection{Boundary and completion limits}
+\label{fp:sec:four-boundary-limits}
+
+There is a common formal domain retaining the same \(c\)-collision.
+Introduce variables \(A,B,\lambda,\epsilon\) and put
+\[
+ U=k[A,B,(AB(A+B))^{-1}][[\epsilon,\lambda]][\lambda^{-1}],
+\]
+\[
+ a=A\lambda,\qquad b=B\lambda,\qquad c=\epsilon\lambda.
+\]
+Then \(d=(A+B)\lambda\), \(e=(B+\epsilon)\lambda\),
+and \(f=(A+B+\epsilon)\lambda\).
+The constant terms \(B\) and \(A+B\) are units in the
+coefficient ring, so these formulas define
+\(S\to U\) and \(S[c^{-1}]\to U[\epsilon^{-1}]\).
+The polynomial substitution is injective.  Localization preserves
+this injectivity because all named denominators become units.
+A pole tuple \(N\) maps into
+\[
+ \epsilon^{-N_c}\lambda^{-\sum_{\delta\in\mathcal D}N_\delta}
+ k[A,B,(AB(A+B))^{-1}][[\epsilon,\lambda]].
+\]
+The numerator-one monomial attains both lower exponents.
+The weightwise state formulas and their homotopies therefore extend
+to this specified domain for polynomial inputs.
+
+An arbitrary Laurent series in a tree target need not admit this
+substitution.  For example,
+\(\sum_{n\ge0}a^nc^{-n^2}\) belongs to
+\(k((c))((b))((a))\), but its substituted terms have
+unbounded negative \(\epsilon\)- and \(\lambda\)-orders.
+There is no element of \(U[\epsilon^{-1}]\) with that expansion.
+Likewise, in the product of state weights, \(\eta_j\to0\),
+but the scalar coefficient of \(Y_c(x_0,\eta_j)\) is
+\(\theta_c/c^{j+1}\).  It does not tend to zero in a discrete
+scalar-state coefficient space.  Thus completed inputs require
+additional topology and continuity statements.
+
+The all-divisor diagram \eqref{fp:eq:four-common-carrier} retains
+the original boundary data.  Its localized tree equivalences and
+its state homotopies have the precise domains proved above.
+The coefficient pentagon holds on the original ring as an identity
+of maps; its edges are not equivalences there.
+A common geometric factorization object with equivalences across
+all six collision divisors would require different fibers and a
+proved comparison to this diagram.  The nonzero local class in
+Theorem~\ref{fp:thm:four-coefficient-pentagon} rules out obtaining
+such an object by identifying the five unchanged scalar trees.

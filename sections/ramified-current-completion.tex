@@ -1,0 +1,760 @@
+\section{Energy completion of a ramified current family}
+\label{rc:sec}
+
+A denominator which suffices in each finite energy range need not
+suffice for an infinite state.  For a parameter \(\varpi\) and a
+positive integer \(r\), the sequence \(\varpi^{-rE}\), indexed by
+\(E\geq1\), has a Laurent polynomial
+in every coordinate, but no common bound on its negative powers.
+This elementary distinction changes the generic cokernel of a
+current comparison.  It also separates that comparison from a
+relative complex which admits one uniform contracting denominator.
+
+Throughout this section, \(k\) is a characteristic-zero field and
+\[
+ R=k[\varpi],\qquad R_\varpi=k[\varpi,\varpi^{-1}],
+ \qquad K=k(\varpi).
+\]
+The parameter \(\varpi\) is independent of the normal
+coordinates of Section~\ref{ns:sec} and of the field coordinates
+used below.  We introduce energy products explicitly here.
+The algebraic sums in Sections~\ref{wo:sec} and~\ref{ns:sec}
+retain their original meaning.
+
+\subsection{The algebraic current map}
+
+Fix integers \(a>b\geq1\), put \(r=a-b\), and choose \(d\geq1\)
+current pairs.  Let \(V_R^A\) be the free vacuum current vertex
+algebra on even fields \(U_i,V_i\), with generating products
+\begin{equation}\label{rc:eq:source-ope}
+ U_i(x)V_j(y)\sim\frac{\varpi^a\delta_{ij}}{(x-y)^2}.
+\end{equation}
+All other generating singular products vanish.  Let \(V_R^B\)
+have pairs \(u_i,v_i\), with first level \(\varpi^b\) and remaining
+levels \(\varpi^a\).  Coefficients in \(R\) are translation-constant.
+
+These algebras have a direct vacuum description, valid even where
+the levels vanish.  For a pair of level \(q\in R\), the modes obey
+\[
+ [U_m,V_n]=m q\,\delta_{m+n,0},\qquad
+ [U_m,U_n]=[V_m,V_n]=0.
+\]
+All nonnegative modes kill the vacuum.  Negative modes act freely
+by multiplication on the polynomial module in their symbols.
+For \(m>0\), the remaining actions are
+\begin{equation}\label{rc:eq:positive-modes}
+ U_m=mq\,\partial_{V_{-m}},\qquad
+ V_m=mq\,\partial_{U_{-m}}.
+\end{equation}
+The translation satisfies
+\(T(U_{-m})=mU_{-m-1}\) and \(T(V_{-m})=mV_{-m-1}\).
+The current fields are mutually local of order two.
+Their normally ordered products and derivatives reconstruct the
+fields of polynomial states: a creator \(U_{-m}\) contributes
+\(\partial_x^{m-1}U(x)/(m-1)!\), and likewise for \(V\).
+Each such field acts with ordinary lower truncation on polynomial
+states.  This is the algebraic vacuum construction; no state
+completion is used in it.
+
+Define
+\begin{equation}\label{rc:eq:current-map}
+ j(U_1)=\varpi^r u_1,\qquad j(V_1)=v_1,\qquad
+ j(U_i)=u_i,\quad j(V_i)=v_i\quad(i\geq2).
+\end{equation}
+The source pairing is preserved because
+\(\varpi^r\varpi^b=\varpi^a\).  The mode relations and
+normally ordered reconstruction therefore extend \(j\) to a map
+preserving the vacuum, translation and every vertex product.
+
+Index monomials in negative modes by finite exponent arrays
+\(\lambda=(p_{i,m},q_{i,m})\).  Write \(e_\lambda,f_\lambda\)
+for the corresponding source and target monomials, and set
+\begin{equation}\label{rc:eq:energy}
+ E(\lambda)=\sum_{i,m\geq1}m(p_{i,m}+q_{i,m}),\qquad
+ \ell(\lambda)=\sum_{m\geq1}p_{1,m}.
+\end{equation}
+Thus \(E\) is energy and \(\ell\) counts active \(U_1\)-creators.
+Every energy piece is finite free over \(R\), since only modes
+\(m\leq E\) and finitely many exponent arrays can occur.  Moreover
+\(0\leq\ell\leq E\); the monomial \(U_{1,-1}^E\mathbf1\)
+attains \(\ell=E\).  This grading uses no conformal vector or
+positive invariant form.
+
+\begin{proposition}[The algebraic diagonal]\label{rc:prop:diagonal}
+The map \(j\) is injective and satisfies
+\begin{equation}\label{rc:eq:diagonal}
+ j(e_\lambda)=\varpi^{r\ell(\lambda)}f_\lambda.
+\end{equation}
+Its cokernel as an \(R\)-module is
+\begin{equation}\label{rc:eq:sum-cokernel}
+ \bigoplus_{\ell(\lambda)>0}
+       R/(\varpi^{r\ell(\lambda)})f_\lambda.
+\end{equation}
+After inverting \(\varpi\), it is an isomorphism of the algebraic
+current vertex algebras.
+\end{proposition}
+\begin{proof}
+Each occurrence of an active creator contributes the factor in
+\eqref{rc:eq:current-map}; the other creators contribute one.
+This proves \eqref{rc:eq:diagonal}.  The monomial bases are free,
+and their diagonal entries are nonzero in the domain \(R\).
+Coordinatewise quotient gives \eqref{rc:eq:sum-cokernel}.
+Each vector in that direct sum has finite support, hence is
+annihilated by some power of \(\varpi\).  Its localization is zero.
+The inverse on localized generators sends \(u_1\) to
+\(\varpi^{-r}U_1\) and leaves the other generators unchanged.
+It preserves the generating pairings and therefore every
+algebraic vertex product.
+\end{proof}
+
+\subsection{Two orders of completion and localization}
+
+Give every coefficient module the discrete topology.  For
+\(\bullet=A,B\), define
+\begin{equation}\label{rc:eq:three-carriers}
+ \widehat V_R^\bullet=\prod_{E\geq0}V_{R,E}^\bullet,\qquad
+ L^\bullet=\widehat V_R^\bullet[1/\varpi],\qquad
+ P^\bullet=\prod_{E\geq0}(V_{R,E}^\bullet[1/\varpi]).
+\end{equation}
+The first and third products have their product topologies.
+The localization defining \(L^\bullet\) is algebraic.
+It is not a completed localization.
+
+\begin{lemma}[Common denominators]\label{rc:lem:denominators}
+The natural map \(c^\bullet:L^\bullet\to P^\bullet\) is injective.
+Its image consists precisely of the sequences whose Laurent
+coordinates have a common bound on their negative powers of
+\(\varpi\).
+\end{lemma}
+\begin{proof}
+A localized product element is \(\varpi^{-N}v\) for one integer
+\(N\geq0\) and one product vector \(v\).  This gives the asserted
+bound.  Conversely, a common bound lets all coordinates be
+multiplied by the same \(\varpi^N\), giving an element of
+\(\widehat V_R^\bullet\).  If the image of
+\(\varpi^{-N}v\) is zero, every coordinate of \(v\) is zero,
+because the finite free energy modules are torsion-free.
+\end{proof}
+
+The diagonal gives a commutative diagram
+\begin{equation}\label{rc:eq:comparison-square}
+\begin{tikzcd}
+ L^A \arrow[r,"j_L"] \arrow[d,"c^A"']&
+ L^B \arrow[d,"c^B"]\\
+ P^A \arrow[r,"j_P"']&P^B.
+\end{tikzcd}
+\end{equation}
+The map \(j_P\) is a product-topological isomorphism.  Its inverse
+divides the \(\lambda\)-coordinate by
+\(\varpi^{r\ell(\lambda)}\), so each output coordinate depends
+only on the corresponding input coordinate.
+
+To compute the top arrow, put
+\begin{equation}\label{rc:eq:product-cokernel}
+ \mathcal T=
+ \prod_{E\geq0}
+ \bigoplus_{\substack{E(\lambda)=E\\\ell(\lambda)>0}}
+       R/(\varpi^{r\ell(\lambda)})f_\lambda,\qquad
+ \mathcal Q=\mathcal T[1/\varpi].
+\end{equation}
+The inner sums are finite.  These symbols denote module
+cokernels; no quotient vertex algebra is implicit.
+
+\begin{theorem}[A nonzero generic cokernel]\label{rc:thm:cokernel}
+There are exact sequences
+\begin{equation}\label{rc:eq:exact}
+\begin{aligned}
+ 0&\longrightarrow\widehat V_R^A
+   \xrightarrow{\widehat j}\widehat V_R^B
+   \longrightarrow\mathcal T\longrightarrow0,\\
+ 0&\longrightarrow L^A\xrightarrow{j_L}L^B
+   \longrightarrow\mathcal Q\longrightarrow0.
+\end{aligned}
+\end{equation}
+The module \(\mathcal Q\) is a nonzero \(K\)-vector space.
+In particular \(j_L\) is not surjective, although \(j_P\) is
+an isomorphism.
+\end{theorem}
+\begin{proof}
+Reduce every active coordinate modulo its displayed power of
+\(\varpi\).  This is onto: polynomial representatives can be
+chosen independently in each finite energy piece.  Its kernel
+consists of the coordinatewise multiples of
+\(\varpi^{r\ell(\lambda)}\).  Dividing each such coordinate
+gives a source product vector, proving the first sequence.
+Exactness of localization gives the second sequence.
+
+Let \(w\in\widehat V_R^B\) have coefficient one on
+\(f_E=u_{1,-1}^E\mathbf1\), for every \(E\geq1\), and zero
+on all other monomials.  Its quotient class has coordinates
+\begin{equation}\label{rc:eq:witness}
+ q_E=1\bmod\varpi^{rE}.
+\end{equation}
+For each \(N\geq0\), choose \(E\) with \(rE>N\).
+Then \(\varpi^Nq_E\ne0\), so \(q\) survives in \(\mathcal Q\).
+Equivalently, the unique inverse of \(c^B(w)\) in \(P^A\)
+has coordinates \(\varpi^{-rE}e_E\), with no common denominator.
+
+If \(g\in k[\varpi]\) has \(g(0)\ne0\), multiplication by
+\(g\) is an automorphism of every ring
+\(R/(\varpi^{r\ell})\).  The coordinatewise inverses give
+an automorphism of \(\mathcal T\), and then of \(\mathcal Q\).
+Every nonzero polynomial is \(\varpi^Ng\) of this form.
+Since \(\varpi\) is already invertible on \(\mathcal Q\),
+every nonzero polynomial acts invertibly.  The universal
+property of localization supplies the \(K\)-vector-space
+structure.  The class \eqref{rc:eq:witness} proves it is nonzero.
+No finite-dimensionality assertion is made.
+\end{proof}
+
+Unbounded torsion exponents alone would not prove this theorem:
+the direct sum \eqref{rc:eq:sum-cokernel} has the same unbounded
+exponents and zero localization.  The single product vector
+\eqref{rc:eq:witness} is what defeats every exponent at once.
+On the finite window \(E\leq M\), the cokernel is killed by
+\(\varpi^{rM}\).  For any proposed uniform exponent \(N\),
+the energy \(\lfloor N/r\rfloor+1\) disproves that bound in the
+full product.
+
+\begin{proposition}[Derived fibres away from the branch]
+\label{rc:prop:fibres}
+For every nonzero \(f\in R_\varpi\),
+\begin{equation}\label{rc:eq:derived-fibre}
+ \mathcal Q\otimes^{\mathbb L}_{R_\varpi}
+                    R_\varpi/(f)=0.
+\end{equation}
+Thus derived base change of \(j_L\) is a quasi-isomorphism over
+every such quotient.  Its generic base change still has the
+nonzero cokernel \(\mathcal Q\).
+\end{proposition}
+\begin{proof}
+For a nonunit \(f\), use the free resolution
+\[
+ [R_\varpi\xrightarrow{\ f\ }R_\varpi]
+\]
+in degrees \(-1,0\).  Tensoring gives
+\([\mathcal Q\xrightarrow{f}\mathcal Q]\), whose differential
+is invertible by Theorem~\ref{rc:thm:cokernel}.  An explicit
+contraction sends the degree-zero term to the degree-minus-one
+term by \(f^{-1}\).  For a unit \(f\) the quotient is zero.
+Apply the derived tensor functor to the second exact sequence
+in \eqref{rc:eq:exact}.  Finally
+\(\mathcal Q\otimes_{R_\varpi}K=\mathcal Q\ne0\).
+\end{proof}
+
+Over \(k=\mathbb C\), this includes every nonzero closed fibre
+\(\varpi=c\) and every finite thickening
+\(f=(\varpi-c)^s\), \(s\geq1\).
+The ordinary fibre has the expected product description:
+\begin{equation}\label{rc:eq:ordinary-fibre}
+ L^\bullet/(\varpi-c)L^\bullet
+ \cong\prod_{E\geq0}
+       \bigl(V_{R,E}^\bullet/(\varpi-c)V_{R,E}^\bullet\bigr).
+\end{equation}
+Indeed, coordinatewise evaluation is onto by constant
+representatives.  Its kernel on the unlocalized product is
+\((\varpi-c)\widehat V_R^\bullet\), by polynomial division
+in each coordinate.  Since \(c\ne0\), localization changes
+neither the quotient nor this assertion.  The specialized
+diagonal has inverse \(c^{-r\ell(\lambda)}\) in every coordinate.
+Thus the ordinary fibre statement and the derived assertion
+both hold, without a finite-generation hypothesis on the family.
+
+\begin{proposition}[The induced product topology]\label{rc:prop:dense}
+Give \(L^\bullet\) the subspace topology from \(P^\bullet\)
+through \(c^\bullet\).  Then \(j_L(L^A)\) is dense in \(L^B\).
+The quotient topology on its nonzero algebraic cokernel
+\(\mathcal Q\) is indiscrete, and its Hausdorff quotient is zero.
+\end{proposition}
+\begin{proof}
+Every finite-energy-support target vector lifts under \(j_L\):
+only finitely many extra powers of \(\varpi\) have to be
+divided out.  Such vectors are dense in \(L^B\), since they
+can match any prescribed finite set of coordinates.
+
+More explicitly, let \(U\) be a basic neighbourhood of zero
+requiring finitely many energy coordinates to vanish.
+For each \(v\in L^B\), lift its finite truncation on those
+coordinates.  The difference belongs to \(U\), so
+\(U+j_L(L^A)=L^B\).  Therefore every nonempty open saturated
+subset is all of \(L^B\), which proves the quotient-topology
+claim.  Its Hausdorffization is zero.
+\end{proof}
+
+The topology in this proposition is part of its hypotheses.
+The algebraic cokernel in Theorem~\ref{rc:thm:cokernel}
+does not become a nonzero Hausdorff cokernel for this topology.
+A different topology on algebraic localization would require
+a separate definition and comparison.
+
+\subsection{A relative complex with a uniform contraction}
+
+Consider now the different polynomial and ghost complexes
+\begin{equation}\label{rc:eq:relative-complexes}
+\begin{aligned}
+ A&=R[Q_1,\ldots,Q_d]\otimes\Lambda(\Theta_1,\ldots,\Theta_d),
+ &\mathrm d_AQ_j&=\varpi^a\Theta_j,\\
+ B&=R[q]\otimes\Lambda(\theta),
+ &\mathrm d_Bq&=\varpi^b\theta.
+\end{aligned}
+\end{equation}
+Polynomials have cohomological degree zero and ghosts degree
+one.  All generators have auxiliary weight one; the
+differentials preserve that weight.  For integers \(w_j\geq0\)
+with \(w_1=0\), define a dg-algebra map
+\begin{equation}\label{rc:eq:relative-map}
+ \Phi(Q_j)=\varpi^{r+w_j}q,\qquad
+ \Phi(\Theta_j)=\varpi^{w_j}\theta.
+\end{equation}
+It is a chain map because \(r+b=a\).
+Its auxiliary weight \(n\) is distinct from the current energy
+\(E\), and its target has one polynomial/ghost pair.
+
+Use the cohomological cone
+\begin{equation}\label{rc:eq:cone}
+ C^i=B^i\oplus A^{i+1},\qquad
+ \mathrm d_C(u,v)=(\mathrm d_Bu+\Phi v,-\mathrm d_Av).
+\end{equation}
+This is a complex.  No multiplication on its underlying
+direct sum is presumed.
+
+\begin{theorem}[A single contracting denominator]\label{rc:thm:cone}
+There is a weight-preserving degree-minus-one operator \(H\)
+on \(C\) such that
+\begin{equation}\label{rc:eq:homotopy}
+ \mathrm d_CH+H\mathrm d_C=\varpi^a\id,\qquad H^2=0.
+\end{equation}
+The same identities hold on
+\(\widehat C=\prod_{n\geq0}C_n\).
+Consequently \(\widehat C[1/\varpi]\) is contracted by
+\(\varpi^{-a}H\).
+\end{theorem}
+\begin{proof}
+For \(n>0\), let
+\[
+ \iota_A=\sum_jQ_j\iota_{\Theta_j},\qquad
+ \iota_B=q\iota_\theta,\qquad
+ h_A=\frac{\iota_A}{n},\qquad
+ h_B=\frac{\varpi^r\iota_B}{n}.
+\]
+The polynomial Euler identity
+\(\mathrm d_{\mathrm{pol}}\iota+\iota\mathrm d_{\mathrm{pol}}=n\)
+gives
+\[
+ \mathrm d_Ah_A+h_A\mathrm d_A=\varpi^a\id,\qquad
+ \mathrm d_Bh_B+h_B\mathrm d_B=\varpi^a\id.
+\]
+Division by \(n\) is valid in characteristic zero.
+On generators, and then by the graded Leibniz rule,
+\(\Phi\iota_A=\varpi^r\iota_B\Phi\).  Thus
+\(\Phi h_A=h_B\Phi\).  Set
+\[
+ H(u,v)=(h_Bu,-h_Av).
+\]
+The off-diagonal term in \(\mathrm d_CH+H\mathrm d_C\)
+is \(h_B\Phi-\Phi h_A=0\), and its diagonal terms are the
+two Euler identities.  The contractions square to zero.
+
+At weight zero the map is the identity of \(R\), and its
+cone is \([R\xrightarrow{1}R]\) in degrees \(-1,0\).
+Take \(H=\varpi^a\) times its elementary contraction.
+All formulas preserve weight, so the identities extend
+coordinatewise to the product.  The one denominator
+\(\varpi^a\) suffices in every weight.
+\end{proof}
+
+In particular \(C\) is a dg module over
+\(R[\epsilon]\), where \(|\epsilon|=-1\),
+\(\epsilon^2=0\), and \(\mathrm d\epsilon=\varpi^a\):
+let \(\epsilon\) act by \(H\).
+This is a module over a derived thickening, not an asserted
+algebra structure on the cone.  The resulting generic
+acyclicity concerns \eqref{rc:eq:relative-complexes};
+it does not annihilate the different current cokernel
+\(\mathcal Q\).
+
+\begin{proposition}[Auxiliary Hilbert bound for the cone]
+\label{rc:prop:cone-norm}
+Specialize \(\varpi=c\in\mathbb C\) with \(0<|c|\leq1\).
+Give the polynomial/exterior spaces the auxiliary norm in which
+\(Q^\alpha/\sqrt{\alpha!}\), respectively
+\(q^j/\sqrt{j!}\), and the exterior monomials are orthonormal.
+Use the orthogonal sum on the cone.  On positive weight \(n\),
+\[
+ \|c^{-a}H\|_{C_n}\leq |c|^{-a}n^{-1/2}.
+\]
+On the Hilbert sum of all weights, the contraction is bounded
+by \(|c|^{-a}\) and preserves the domain of the closed
+blockwise differential.  For \(d\geq2\), every bounded
+contraction has norm at least \(|c|^{-a}\).
+\end{proposition}
+\begin{proof}
+In the stated norm, \(\iota\) is the adjoint of
+\(\mathrm d_{\mathrm{pol}}\), and their anticommutator is total
+occupation \(n\).  Therefore
+\(\|\iota/n\|\leq n^{-1/2}\).
+The additional target factor has magnitude \(|c|^r\leq1\).
+At weight zero the localized contraction has norm one.
+Taking the orthogonal sum gives the bound.
+
+Define the closed differential to have domain
+\[
+ \left\{(v_n)\in\bigoplus_{n\geq0}^{\ell^2}C_n:
+                  \sum_n\|\mathrm d_Cv_n\|^2<\infty\right\}.
+\]
+It is the closed direct sum of its finite-dimensional blocks.
+For the bounded blockwise homotopy \(S=c^{-a}H\),
+the identity \(\mathrm d_CS v=v-S\mathrm d_Cv\) proves that
+\(S\) maps this domain to itself.
+
+For the lower bound, choose a unit weight-one ghost vector
+\(v=\sum_jv_j\Theta_j\) in the kernel of
+\((c^{w_1},\ldots,c^{w_d})\).  Such a vector exists if \(d\geq2\).
+The cone vector \((0,v)\) is closed of degree zero.
+Every degree-minus-one preimage has source linear-polynomial
+part \(-c^{-a}\sum_jv_jQ_j\), forced by its source differential.
+Orthogonal projection to this part has norm one.  Applying
+any contraction to the closed vector therefore has norm at
+least \(|c|^{-a}\).  Mixing other weights cannot change the
+forced weight-one coefficient.
+\end{proof}
+
+This positive norm is a chosen estimate on a specified complex.
+It does not assert positivity of an invariant current state.
+Its uniform pole order will differ from the energy-dependent
+inverse bound for the full current map.
+
+\subsection{Fixed modes on the formal energy products}
+
+A completed state need not define an ordinary vertex field.
+Nevertheless, each specified mode has a finite contribution
+to each output energy.  This supplies concrete operations on
+the formal products.
+
+For homogeneous algebraic states, the mode convention is
+\begin{equation}\label{rc:eq:mode-energy}
+ \mu_m(V_{R,p}\otimes_RV_{R,q})
+       \subset V_{R,p+q-m-1},\qquad
+ \mu_m(a,b)=a_{(m)}b.
+\end{equation}
+A negative output energy means zero.
+To verify \eqref{rc:eq:mode-energy}, give each current state
+energy one.  A current mode with index \(m\) changes energy
+by \(-m\), as follows from multiplication and
+\eqref{rc:eq:positive-modes}.  Translation raises energy by
+one.  Normally ordered reconstruction then gives the formula
+for every polynomial state.
+
+For either current family, define the completed coefficient tensor
+by finite energy truncations:
+\begin{equation}\label{rc:eq:completed-tensor}
+\begin{split}
+ \widehat V_R\widehat\otimes_R\widehat V_R
+ &:=
+ \varprojlim_{M,N}
+ \left(\bigoplus_{p\leq M}V_{R,p}\right)
+ \otimes_R
+ \left(\bigoplus_{q\leq N}V_{R,q}\right)\\
+ &\cong\prod_{p,q\geq0}(V_{R,p}\otimes_RV_{R,q}).
+\end{split}
+\end{equation}
+Every finite truncation has the discrete topology.
+For \(P\), use the same construction over \(R_\varpi\),
+replacing each \(V_{R,p}\) by \(V_{R,p}[1/\varpi]\).
+
+\begin{proposition}[Continuous fixed-mode operations]
+\label{rc:prop:modes}
+For every integer \(m\), \(\mu_m\) extends to a continuous
+linear map from \eqref{rc:eq:completed-tensor} to
+\(\widehat V_R\), and to the analogous map for \(P\).
+The induced bilinear operations are jointly continuous.
+They restrict to \(L\), with its topology from
+Proposition~\ref{rc:prop:dense}.
+The maps \(\widehat j,j_P,j_L\) intertwine every such fixed
+mode, translation and the vacuum.
+\end{proposition}
+\begin{proof}
+At output energy \(E\), only the pairs
+\[
+ p,q\geq0,\qquad p+q=E+m+1
+\]
+can contribute.  There are finitely many, or none if the
+right side is negative.  Each coefficient map is between
+finite free modules.  Thus an output coordinate is a finite
+sum of coefficient maps, and depends on finitely many input
+coordinates.  This defines the continuous linear map on the
+product tensor, without an infinite sum in the coefficient
+ring.  The canonical map from two product vectors to their
+pairwise tensors is jointly continuous, giving the bilinear
+assertion.  The argument over \(R_\varpi\) is identical.
+
+For \(L\), write the two inputs as \(\varpi^{-N}a\) and
+\(\varpi^{-M}b\), with \(a,b\) in the unlocalized product.
+Bilinearity gives
+\[
+ \mu_m(\varpi^{-N}a,\varpi^{-M}b)
+     =\varpi^{-N-M}\mu_m(a,b)\in L.
+\]
+Thus the operation restricts, and continuity follows from
+the subspace topology.  No additional tensor completion
+of \(L\) is needed for this assertion.
+Translation sends energy \(E\) to \(E+1\), so it extends
+continuously as well.  The algebraic intertwining identities
+hold in each of the finitely many contributions to any
+output coordinate.  The vacuum identity is unchanged.
+\end{proof}
+
+These operations make the products into a system of
+integer-indexed bilinear modes with translation and vacuum
+at the stated scope.  No infinite sum of mode identities,
+ordinary lower truncation on completed states, or convergence
+of analytic fields is asserted.  The lower-truncation
+failure will be explicit below.
+
+There is already a precise obstruction to making the
+cokernel a vertex quotient.  The proper image \(j_L(L^A)\)
+contains the vacuum and is closed under its source mode
+operations.  It is not an ideal for all target-state modes:
+an ideal containing the vacuum would contain
+\(v_{(-1)}\mathbf1=v\) for every \(v\in L^B\), including
+the vector \(w\) of Theorem~\ref{rc:thm:cokernel}.
+This argument uses the valid fixed-mode vacuum identity;
+it does not require the completed target to be an ordinary
+vertex algebra.
+
+\subsection{A logarithmic parameter connection}
+
+The diagonal current map is also compatible with a specified
+connection in the parameter.  Let \(N_{U_i}\) count occurrences
+of negative \(U_i\)-modes in a monomial, and similarly define
+\(N_{u_i}\).  Let \(\delta=\varpi\partial_\varpi\) differentiate
+only coefficients.  Define
+\begin{equation}\label{rc:eq:connections}
+ \mathcal D_A=\delta+a\sum_{i=1}^dN_{U_i},\qquad
+ \mathcal D_B=\delta+bN_{u_1}
+                      +a\sum_{i=2}^dN_{u_i}.
+\end{equation}
+Each satisfies
+\(\mathcal D(fv)=\delta(f)v+f\mathcal D(v)\) for \(f\in R\).
+This is a logarithmic parameter connection with respect to
+the displayed regular monomial lattice.
+
+\begin{theorem}[Horizontality of all fixed modes]
+\label{rc:thm:connection}
+On the algebraic current families,
+\begin{equation}\label{rc:eq:connection-mode}
+ \mathcal D(a_{(m)}b)
+       =(\mathcal Da)_{(m)}b+a_{(m)}\mathcal Db
+       \quad(m\in\mathbb Z).
+\end{equation}
+The vacuum is horizontal, \(\mathcal D\) commutes with
+translation, and
+\begin{equation}\label{rc:eq:horizontal-map}
+ \mathcal D_Bj=j\mathcal D_A.
+\end{equation}
+The identities extend to every fixed mode on
+\(\widehat V_R,L,P\).
+The module cokernels \(\mathcal T,\mathcal Q\) inherit the
+corresponding parameter connection.  After inverting
+\(\varpi\), the operators \(\varpi^{-1}\mathcal D\) are
+ordinary connection operators.
+\end{theorem}
+\begin{proof}
+For a single pair of level \(\varpi^h\), put
+\(\mathcal D=\delta+hN_U\).
+A negative \(U\)-mode increases the occupation count by one,
+while a negative \(V\)-mode leaves it unchanged.  For \(m>0\),
+formula \eqref{rc:eq:positive-modes} gives
+\[
+ [\delta,U_m]=hU_m,\qquad [N_U,U_m]=0,
+\]
+and
+\[
+ [\delta,V_m]=hV_m,\qquad [N_U,V_m]=-V_m.
+\]
+Zero modes vanish.  Hence for every integer \(m\),
+\[
+ [\mathcal D,U_m]=hU_m,\qquad
+ [\mathcal D,V_m]=0.
+\]
+The same calculation applies independently to all pairs.
+Translation changes mode indices but not their occupation
+counts, and the vacuum has count zero.
+Applying the commutator Leibniz rule to the normally ordered
+reconstruction proves \eqref{rc:eq:connection-mode} for
+all algebraic states.  The central term has the correct
+derivative as well:
+\(\delta(\varpi^h)=h\varpi^h\).
+
+On the \(\lambda\)-coordinate, differentiating
+\(\varpi^{r\ell(\lambda)}\) contributes \(r\ell(\lambda)\).
+This compensates the change from \(a\ell(\lambda)\) to
+\(b\ell(\lambda)\), since \(b+r=a\).
+The transverse counts agree, proving
+\eqref{rc:eq:horizontal-map}.
+
+These operators preserve energy.  They act coordinatewise
+on products, and extend to a localization by the usual
+coefficient differentiation rule.  Formula
+\eqref{rc:eq:connection-mode} then extends using the finite
+contributions of Proposition~\ref{rc:prop:modes}.
+The ideals \((\varpi^{r\ell})\) are stable under
+\(\delta\), so the diagonal quotient inherits the connection.
+Finally \(\varpi^{-1}\delta=\partial_\varpi\) after localization.
+\end{proof}
+
+The bare coefficient derivative would fail on the first
+active creator:
+\begin{equation}\label{rc:eq:bare-defect}
+ \delta j(U_{1,-1}\mathbf1)-j\delta(U_{1,-1}\mathbf1)
+      =r\varpi^r u_{1,-1}\mathbf1\ne0.
+\end{equation}
+The occupation residues in \eqref{rc:eq:connections}
+cancel exactly this defect.  This is differentiation of the
+level parameter, not of a normal coordinate or a field
+position.  It supplies no identification with the
+position-Weyl objects of Section~\ref{ns:sec}.
+
+\subsection{Hilbert norms and rapid energy decay}
+
+Fix \(k=\mathbb C\) and \(c\ne0\), and write \(\rho=|c|\).
+On each specialized energy piece, declare the monomials
+\[
+ \frac{e_\lambda}
+ {\sqrt{\prod_{i,m}p_{i,m}!\,q_{i,m}!}},
+ \qquad
+ \frac{f_\lambda}
+ {\sqrt{\prod_{i,m}p_{i,m}!\,q_{i,m}!}}
+\]
+orthonormal.  These are auxiliary positive norms.  No
+invariance, current adjoint relation, or physical positivity
+is imposed.
+
+\begin{proposition}[Exact energywise bounds]\label{rc:prop:norms}
+For every \(E\geq0\),
+\begin{equation}\label{rc:eq:energy-norms}
+ \|j_c\|_E=\max\{1,\rho^{rE}\},\qquad
+ \|j_c^{-1}\|_E=\max\{1,\rho^{-rE}\}.
+\end{equation}
+In particular \(j_c^{-1}\) is unbounded on the unweighted
+Hilbert sum if \(0<\rho<1\); \(j_c\) is unbounded if
+\(\rho>1\).
+\end{proposition}
+\begin{proof}
+The normalized monomial bases retain the diagonal
+\(c^{r\ell(\lambda)}\).  Since \(0\leq\ell\leq E\),
+the asserted maxima bound every diagonal entry.
+The pure active state attains \(\ell=E\), and
+\(V_{1,-1}^E\mathbf1\) attains \(\ell=0\).
+These prove both equalities, including \(E=0\).
+Taking the supremum over energy proves the assertions
+about the Hilbert sum.
+\end{proof}
+
+For \(0<\rho<1\), the full-current inverse already exceeds
+the relative-cone bound \(\rho^{-a}\) in every energy
+\(E>a/r\).  Thus Proposition~\ref{rc:prop:cone-norm}
+cannot be used as an inverse estimate for the current map.
+
+Define the rapid-energy space in either monomial frame by
+\begin{equation}\label{rc:eq:rapid-space}
+ \mathscr S=
+ \left\{v=(v_E):
+ p_s(v)^2=\sum_{E\geq0}e^{2sE}\|v_E\|^2<\infty
+                       \text{ for every }s>0\right\}.
+\end{equation}
+The positive-integer seminorms are cofinal.  They give a
+complete Fr\'echet space: a Cauchy sequence converges in
+each weighted Hilbert space, and the limits agree under
+their continuous inclusions.
+
+\begin{theorem}[Rapid comparison at every nonzero parameter]
+\label{rc:thm:rapid}
+For every \(c\in\mathbb C^\times\), \(j_c\) is a continuous
+isomorphism between the two rapid-energy spaces.  More
+precisely,
+\begin{equation}\label{rc:eq:rapid-shifts}
+\begin{aligned}
+ p_s(j_cv)&\leq
+ p_{s+r\max\{\log|c|,0\}}(v),\\
+ p_s(j_c^{-1}v)&\leq
+ p_{s+r\max\{-\log|c|,0\}}(v).
+\end{aligned}
+\end{equation}
+Both shifts are uniform on a fixed compact annulus in
+\(\mathbb C^\times\).  No fixed inverse shift, even with
+a finite multiplicative norm constant, works for all
+sufficiently small nonzero parameters.
+Every fixed generator mode is a continuous linear
+operator on \(\mathscr S\).
+\end{theorem}
+\begin{proof}
+Square the bounds \eqref{rc:eq:energy-norms}, multiply
+by \(e^{2sE}\), and sum over \(E\).  This gives
+\eqref{rc:eq:rapid-shifts}, hence continuous inverse maps.
+On an annulus, both logarithmic shifts are bounded.
+
+For the last uniformity assertion, prescribe a shift
+\(M\geq0\) and choose \(c\) such that
+\(r\log(1/|c|)>M\).
+For a normalized pure active state of energy \(E\),
+the ratio of \(p_s(j_c^{-1}v)\) to \(p_{s+M}(v)\) is
+\[
+ \exp\bigl((r\log(1/|c|)-M)E\bigr).
+\]
+It is unbounded as \(E\to\infty\).  Thus no finite norm
+constant repairs that shift at this chosen parameter.
+
+A fixed generator mode changes energy by its fixed
+integer index.  On normalized monomials its coefficient
+has magnitude at most \(C_m\sqrt{E+1}\), by multiplication
+or differentiation in \eqref{rc:eq:positive-modes}.
+For every \(\varepsilon>0\),
+\(\sqrt{E+1}e^{-\varepsilon E}\) is bounded.
+The fixed energy shift contributes only another constant
+to \(p_s\), proving
+\[
+ p_s(J_mv)\leq C_{m,s,\varepsilon,c}\,
+                    p_{s+\varepsilon}(v).
+\]
+This proves continuity for each generator mode individually.
+\end{proof}
+
+These estimates concern a fixed coefficient value and a
+specified topology.  They do not remove the family module
+\(\mathcal Q\), and they do not assert that products of
+arbitrary rapid states remain rapid.
+
+\begin{example}[Failure of lower truncation]\label{rc:ex:truncation}
+In the target at \(c\ne0\), let
+\[
+ v_\infty=\sum_{m\geq1}e^{-m^2}v_{1,-m}\mathbf1,\qquad
+ u=u_{1,-1}\mathbf1.
+\]
+The sum belongs to every seminorm in
+\eqref{rc:eq:rapid-space}, since
+\(\sum_{m\geq1}e^{-2m^2+2sm}<\infty\).
+Nevertheless,
+\begin{equation}\label{rc:eq:truncation}
+ u_{(m)}v_\infty=mc^b e^{-m^2}\mathbf1\ne0
+                       \qquad(m\geq1).
+\end{equation}
+Indeed, only the creator \(v_{1,-m}\) contributes to the
+positive current mode \(u_m\).
+Thus ordinary vertex-algebra lower truncation fails even
+for one algebraic generator acting on a rapid state.
+Over \(R\), the formal energy product has the same
+counterexample with coefficient one instead of \(e^{-m^2}\);
+the output is \(m\varpi^b\mathbf1\ne0\).
+\end{example}
+
+The finite-energy-support subspace retains the original
+algebraic vertex algebra.  The formal products retain the
+continuous fixed-mode operations of
+Proposition~\ref{rc:prop:modes}, and the rapid space
+retains the stated generator-mode bounds.
+A different analytic field recipient requires its own
+convergence and multiplication theorems.
+None of these coefficient constructions identifies
+geometric collision operations or constructs an ordered
+associative chiral duality.

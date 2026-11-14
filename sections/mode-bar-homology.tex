@@ -1,0 +1,560 @@
+\subsubsection{Evaluation on the Fock-module ends}
+\label{mbh:sec}
+
+The derived tensor product in Theorem~\ref{mb:thm:mode-bar} can be
+evaluated without changing either module end.  Its differential reduces
+to the right action of the annihilation operators on the restricted
+dual.  An explicit comparison works over an arbitrary commutative base;
+the homology of the resulting complex then depends on the level and
+the characteristic.
+
+For the comparison, let \(S\) be a commutative ring and fix
+\(c_m\in S\), \(m\ge1\).  Let \(W\) be the unital \(S\)-algebra
+with relations
+\[
+ [p_m,q_n]=c_m\delta_{mn},\qquad
+ [p_m,p_n]=[q_m,q_n]=0,
+\]
+and put \(V_S=S[q_1,q_2,\ldots]\), with
+\(q_m=q_m\cdot\) and \(p_m=c_m\partial_{q_m}\).
+The preceding mode algebra is obtained by taking \(S=k\) and
+\(c_m=\kappa m\), with \(q_m=h_{m-1}\).
+All words, polynomials, exterior tensors and sums here have finite
+algebraic support.
+
+The ordered-monomial argument above is valid over \(S\).
+Indeed, \(q_m=Q_m\cdot\) and
+\(p_m=c_m\partial_{Q_m}+P_m\cdot\) act on
+\(S[Q_m,P_m:m\ge1]\).  The represented ordered monomial
+\(q^\alpha p^\beta\) sends \(1\) to \(Q^\alpha P^\beta\).
+Together with reordering, this proves that
+the \(q^\alpha p^\beta\) form an \(S\)-basis of \(W\), including
+when some \(c_m\) vanish.
+
+Let \(E_S=\bigoplus_{m\ge1}S\epsilon_m\), with each
+\(\epsilon_m\) in homological degree one.  For a finite ordered set
+\(I=\{i_1<\cdots<i_n\}\), write
+\(\epsilon_I=\epsilon_{i_1}\wedge\cdots\wedge\epsilon_{i_n}\).
+Define a complex of free left \(W\)-modules by
+\begin{equation}\label{mbh:eq:free-koszul}
+ \begin{aligned}
+ K^W_n&=W\otimes_S\Lambda^n E_S,\\
+ d_K(w\epsilon_I)
+   &=\sum_{a=1}^n(-1)^{a-1}
+       wp_{i_a}\epsilon_{I\setminus\{i_a\}},&
+ \pi_K(w)&=w1\in V_S.
+ \end{aligned}
+\end{equation}
+Commutation of the \(p_m\) gives \(d_K^2=0\).
+For comparison, write
+\[
+ P^W_n=W\otimes_S W^{\otimes_S n}\otimes_S V_S
+\]
+for the unnormalized left bar resolution.  Its differential \(d_P\)
+has the faces of Theorem~\ref{mb:thm:mode-bar}, with the first
+coefficient in the regular left module \(W\), and its augmentation is
+\(\pi_P(a[]v)=av\).  It is free as a left \(W\)-module on the basis
+\begin{equation}\label{mbh:eq:bar-basis}
+ e=1[a_1|\cdots|a_n]q^\alpha,
+\end{equation}
+where every \(a_j\) is an ordered monomial.
+
+\begin{lemma}[A contraction over the coefficient ring]
+\label{mbh:lem:integral-contraction}
+For an ordered basis vector \(q^\alpha p^\beta\epsilon_I\),
+put \(J=\operatorname{supp}\beta\cup I\).
+If \(J=\varnothing\), set \(h_K(q^\alpha)=0\).
+Otherwise let \(m=\min J\) and set
+\begin{equation}\label{mbh:eq:least-index}
+ h_K(q^\alpha p^\beta\epsilon_I)=
+ \begin{cases}
+ 0,&m\in I,\\
+ q^\alpha p^{\beta-e_m}\epsilon_m\wedge\epsilon_I,&m\notin I.
+ \end{cases}
+\end{equation}
+Here \(e_m\) is the multi-index with \(1\) in position \(m\)
+and \(0\) elsewhere.  Extend this map by \(S\)-linearity, and let
+\(i_K:V_S\to K^W_0\) be the polynomial inclusion.  Then
+\begin{equation}\label{mbh:eq:koszul-contraction}
+ d_Kh_K+h_Kd_K=1-i_K\pi_K,\qquad h_K^2=0,
+\end{equation}
+where \(i_K\pi_K\) acts only in degree zero.  In particular,
+\(K^W_\bullet\to V_S\) is a free resolution.
+\end{lemma}
+
+\begin{proof}
+If \(J=\varnothing\), the input is a polynomial in the \(q_m\)
+in degree zero, and both sides of the first identity vanish.
+If \(m\in I\), the homotopy vanishes on the input.  In its
+differential, only the term removing \(\epsilon_m\) has nonzero
+image under \(h_K\).  Since \(m\) is the first exterior index,
+this term has positive sign and recovers the input.
+
+If \(m\notin I\), then \(\beta_m>0\) and \(m<i\) for every
+\(i\in I\).  Thus the exterior word in
+\eqref{mbh:eq:least-index} is already ordered.  The differential
+term removing its initial \(\epsilon_m\) recovers the input.
+Every other term cancels the term obtained by first removing the
+same exterior generator and then applying \(h_K\): the insertion
+of the initial generator changes its sign once.  This proves the
+first identity.  After a nonzero application of \(h_K\), the least
+occupied index belongs to the exterior set, so a second application
+is zero.  Taking \(h_{K,-1}=i_K\) contracts the augmented complex.
+\end{proof}
+
+The bar contraction from the proof of
+Theorem~\ref{mb:thm:mode-bar} also works over \(S\):
+\begin{equation}\label{mbh:eq:bar-contraction}
+ h_{P,-1}(v)=1[]v,\qquad
+ h_{P,n}\bigl(a_0[a_1|\cdots|a_n]v\bigr)
+       =1[a_0|a_1|\cdots|a_n]v.
+\end{equation}
+Its first face is the input and the other faces cancel those in
+\(h_Pd_P\), so \(d_Ph_P+h_Pd_P=1\) on the augmented complex.
+Both \(h_K\) and \(h_P\) are only \(S\)-linear.
+For example, \(h_K(p_m)=\epsilon_m\), whereas
+\(p_mh_K(1)=0\).  The module-linear comparison must therefore be
+defined on free bases and then extended by \(W\)-linearity.
+
+Define \(F:K^W\to P^W\) by antisymmetrization:
+\begin{equation}\label{mbh:eq:antisymmetrization}
+ F_n(w\epsilon_I)=
+ \sum_{\sigma\in\mathfrak S_n}\operatorname{sgn}(\sigma)\,
+ w[p_{i_{\sigma(1)}}|\cdots|p_{i_{\sigma(n)}}]1,
+ \qquad F_0(w)=w[]1.
+\end{equation}
+Here \(\mathfrak S_n\) is the permutation group of \(\{1,\ldots,n\}\).
+For the reverse map, prescribe
+\(G_0(1[]q^\alpha)=q^\alpha\), and, for \(n>0\), prescribe
+on each basis element \(e\) of \eqref{mbh:eq:bar-basis}
+\begin{equation}\label{mbh:eq:reverse-recursion}
+ G_n(e)=h_{K,n-1}\bigl(G_{n-1}(d_Pe)\bigr).
+\end{equation}
+Expand the argument in ordered monomials before applying \(h_K\),
+and extend each \(G_n\) by left \(W\)-linearity.
+Finally put \(D=1_{P^W}-FG\), set \(H_{-1}=0\), and define
+on the same free basis
+\begin{equation}\label{mbh:eq:bar-homotopy-recursion}
+ H_n(e)=h_{P,n}\bigl(D_n(e)-H_{n-1}d_Pe\bigr),
+ \qquad n\ge0,
+\end{equation}
+with the second term omitted for \(n=0\).
+Again extend by left \(W\)-linearity.  These prescriptions apply
+to the displayed free basis; they do not apply the \(S\)-linear
+contractions to an arbitrary left multiple of a basis element.
+
+\begin{theorem}[An integral retraction of the oscillator bar]
+\label{mbh:thm:retraction}
+The maps \(F\) and \(G\) are left \(W\)-linear chain maps lifting
+the identity of \(V_S\), and
+\begin{equation}\label{mbh:eq:retraction-identities}
+ GF=1_{K^W},\qquad d_PH+Hd_P=1_{P^W}-FG.
+\end{equation}
+All formulas terminate on each element, introduce no new oscillator
+index, and commute with every base change \(S\to S'\), with each
+\(c_m\) replaced by its image in \(S'\).  They use no division.
+\end{theorem}
+
+\begin{proof}
+For \(F\), the first bar faces give \(Fd_K\).
+The last faces vanish since \(p_m1=0\), and the interior faces
+cancel in pairs by interchanging two adjacent commuting \(p_m\).
+The signs in each pair are opposite, also in characteristic two.
+Thus \(d_PF=Fd_K\), and the augmentations agree.
+
+The identity \(\pi_KG_0=\pi_P\) follows on the free basis.
+Assume the chain identity for \(G\) in lower degrees, and let
+\(e\in P^W_n\) be a free basis element.  Put
+\(z=G_{n-1}d_Pe\).  If \(n=1\), then
+\(\pi_Kz=\pi_Pd_Pe=0\).  If \(n>1\), then
+\(d_Kz=G_{n-2}d_P^2e=0\).  In either case,
+\eqref{mbh:eq:koszul-contraction} gives \(d_Kh_Kz=z\).
+This proves \(d_KG_n(e)=G_{n-1}d_Pe\).
+Both sides are \(W\)-linear, so the identity holds everywhere.
+
+In degree zero, \(G_0F_0=1\).  Suppose \(GF=1\) in degree
+\(n-1\), and take \(n>0\).
+The vector \(F_n(\epsilon_I)\) is an \(S\)-linear combination
+of free basis elements of \(P^W_n\).  Applying
+\eqref{mbh:eq:reverse-recursion} term by term therefore gives
+\[
+ G_nF_n(\epsilon_I)
+   =h_KG_{n-1}d_PF_n(\epsilon_I)
+   =h_Kd_K(\epsilon_I)=\epsilon_I.
+\]
+For the last equality, \(h_K(\epsilon_I)=0\) and
+\eqref{mbh:eq:koszul-contraction} applies in positive degree.
+Left \(W\)-linearity proves the first identity in
+\eqref{mbh:eq:retraction-identities}.
+
+For the second identity, \(\pi_PD_0=0\), since \(F\) and \(G\)
+lift the identity of \(V_S\).  Thus
+\(d_PH_0(e)=D_0(e)\) by \eqref{mbh:eq:bar-contraction}.
+Assume the homotopy identity below degree \(n\), and put
+\(z=D_n(e)-H_{n-1}d_Pe\).
+Since \(D\) is a chain map, the preceding degree gives
+\[
+ d_Pz
+  =D_{n-1}d_Pe
+    -(D_{n-1}-H_{n-2}d_P)d_Pe=0.
+\]
+The bar contraction yields \(d_Ph_Pz=z\), proving the required
+identity on the free basis and hence on all left multiples.
+
+Each recursion lowers homological degree.  Reordering a finite
+product gives finitely many ordered monomials, and none of the
+contractions introduces an index absent from the input.  Thus the
+maps are compatible with inclusions of finite sets of modes, with
+their order inherited from the positive integers.
+Their coefficients use only addition, multiplication and signs in
+the \(c_m\).  The same free-basis formulas after any scalar change
+satisfy the same identities; no flatness assumption on that change
+is required.
+\end{proof}
+
+In particular, antisymmetrization does not require division by a
+factorial.  For \(i<j\), the recursion gives
+\[
+ \begin{aligned}
+ G_1(1[p_i]1)&=\epsilon_i,&
+ G_1(1[p_ip_j]1)&=p_j\epsilon_i,\\
+ G_2(1[p_i|p_j]1)&=\epsilon_i\wedge\epsilon_j,&
+ G_2(1[p_j|p_i]1)&=0.
+ \end{aligned}
+\]
+Their antisymmetric difference maps to
+\(\epsilon_i\wedge\epsilon_j\), including in characteristic two.
+
+For any right \(W\)-module \(L\), tensoring the maps and homotopy
+over \(W\) gives a chain homotopy equivalence
+\begin{equation}\label{mbh:eq:module-comparison}
+ B_S(L,W,V_S)
+ \ \underset{F_L}{\stackrel{G_L}{\rightleftarrows}}\
+ K(L),\qquad
+ K(L)_n=L\otimes_S\Lambda^n E_S,
+\end{equation}
+where \(F_L=1_L\otimes_WF\) goes from \(K(L)\) to the bar,
+\(G_L=1_L\otimes_WG\) goes from the bar to \(K(L)\), and
+\begin{equation}\label{mbh:eq:annihilator-differential}
+ d(\lambda\epsilon_I)=
+ \sum_{a=1}^n(-1)^{a-1}
+       (\lambda p_{i_a})\epsilon_{I\setminus\{i_a\}}.
+\end{equation}
+The identities \(G_LF_L=1\) and
+\(dH_L+H_Ld=1-F_LG_L\), with \(H_L=1_L\otimes_WH\),
+follow by tensoring \eqref{mbh:eq:retraction-identities}.
+This requires no flatness of \(L\) over \(W\).
+
+We now use the actual restricted-dual end.  Give \(q_m\) weight
+\(m\), write \((V_S)_a\) for the weight-\(a\) component, and put
+\[
+ M_S=\bigoplus_{a\ge0}\operatorname{Hom}_S((V_S)_a,S).
+\]
+Each weight component is finite free.  Its monomial duals form a
+basis \(\lambda_\alpha\), characterized by
+\(\lambda_\alpha(q^\beta)=\delta_{\alpha,\beta}\).
+The right action \((\lambda a)(v)=\lambda(av)\) gives
+\begin{equation}\label{mbh:eq:dual-actions}
+ \lambda_\alpha p_m
+     =c_m(\alpha_m+1)\lambda_{\alpha+e_m},
+ \qquad
+ \lambda_\alpha q_m=
+ \begin{cases}
+ \lambda_{\alpha-e_m},&\alpha_m>0,\\
+ 0,&\alpha_m=0.
+ \end{cases}
+\end{equation}
+Thus \eqref{mbh:eq:annihilator-differential} computes the
+derived tensor product on the stated Fock-module ends over \(S\).
+The evaluation of the bar, \(\lambda[]v\mapsto\lambda(v)\)
+in degree zero, becomes
+\begin{equation}\label{mbh:eq:evaluation}
+ \pi(\lambda_\alpha)=\delta_{\alpha,0}
+\end{equation}
+on \(K(M_S)_0\), with zero value in positive degrees.
+For \(F_0\) this follows from \(F_0(w)=w[]1\).
+For \(G_0\) it follows from
+\((\lambda aq^\alpha)(1)=\lambda(aq^\alpha1)\).
+The map is a chain map because \((\lambda p_m)(1)=0\).
+
+\begin{theorem}[Evaluation at nonzero level]
+\label{mbh:thm:nonzero}
+Let \(k\) be a field of characteristic zero and \(c\in k^\times\).
+For \(\mathscr W_c\), \(V=k[q_1,q_2,\ldots]\) and its
+restricted dual \(M\), the evaluation
+\[
+ B_k(M,\mathscr W_c,V)\longrightarrow k
+\]
+is a quasi-isomorphism.  Equivalently,
+\[
+ \operatorname{Tor}^{\mathscr W_c}_j(M,V)=
+ \begin{cases}k,&j=0,\\0,&j>0.\end{cases}
+\]
+\end{theorem}
+
+\begin{proof}
+All factors in
+\begin{equation}\label{mbh:eq:fixed-normalization}
+ k[x_1,x_2,\ldots]\longrightarrow M,\qquad
+ x^\alpha\longmapsto
+ \left(\prod_m(cm)^{\alpha_m}\alpha_m!\right)\lambda_\alpha
+\end{equation}
+are invertible.  This is a vector-space isomorphism, and
+\eqref{mbh:eq:dual-actions} identifies right multiplication by
+\(p_m\) with multiplication by \(x_m\).
+The complex \(K(M)\) becomes
+\[
+ K=k[x_1,x_2,\ldots]\otimes_k\Lambda(\epsilon_m:m\ge1),
+ \qquad
+ \delta=\sum_m x_m\iota_m,
+\]
+where \(\iota_m\) is exterior contraction:
+\(\iota_m(\epsilon_I)=(-1)^{a-1}
+\epsilon_{I\setminus\{m\}}\) when \(m=i_a\), and zero
+when \(m\notin I\).
+
+Give both \(x_m\) and \(\epsilon_m\) auxiliary weight one.
+This is separate from the state weight and homological degree.
+On auxiliary weight \(w>0\), define
+\begin{equation}\label{mbh:eq:euler-homotopy}
+ h=\frac1w\sum_m\epsilon_m\wedge\partial_{x_m},
+ \qquad h(1)=0.
+\end{equation}
+The relations
+\(\iota_i(\epsilon_j\wedge-)+\epsilon_j\wedge\iota_i
+=\delta_{ij}\) and the polynomial product rule give
+\[
+ \delta\Bigl(\sum_m\epsilon_m\wedge\partial_{x_m}\Bigr)
+ +\Bigl(\sum_m\epsilon_m\wedge\partial_{x_m}\Bigr)\delta
+ =\sum_m x_m\partial_{x_m}+\sum_m\epsilon_m\wedge\iota_m.
+\]
+The last operator is multiplication by \(w\).
+Thus \(\delta h+h\delta=1-i\pi\), where \(i(1)=1\) and
+\(\pi\) is the constant coefficient in degree zero.
+Every sum is finite on its input.  This contracts \(K\) onto
+\(k\), with exactly the evaluation \eqref{mbh:eq:evaluation}.
+The equivalence \eqref{mbh:eq:module-comparison} proves the claim.
+\end{proof}
+
+This scalar homology uses the two module actions.
+It supplies no character of \(\mathscr W_c\), which remains
+excluded by \([p_1,q_1]=c1\).
+Over a parameter ring, division by the level would lose homology.
+
+\begin{theorem}[The level family and derived specialization]
+\label{mbh:thm:family}
+Let \(k\) be a field of characteristic zero, put \(S=k[\kappa]\),
+and take \(c_m=\kappa m\).  The bar on \(V_S\) and \(M_S\)
+is chain homotopy equivalent to
+\begin{equation}\label{mbh:eq:family-complex}
+ K_S=S[x_1,x_2,\ldots]\otimes_S\Lambda(\epsilon_m:m\ge1),
+ \qquad d_\kappa=\kappa\delta,\qquad
+ \delta=\sum_m x_m\iota_m.
+\end{equation}
+Set \(B_j=\operatorname{im}(\delta:K_{S,j+1}\to K_{S,j})\)
+and \(B_{-1}=0\).  Then
+\begin{equation}\label{mbh:eq:family-homology}
+ H_j(K_S)=
+ \begin{cases}
+ S\oplus B_0/\kappa B_0,&j=0,\\
+ B_j/\kappa B_j,&j>0,
+ \end{cases}
+ \qquad
+ B_0=(x_1,x_2,\ldots)S[x_1,x_2,\ldots].
+\end{equation}
+The kernel of evaluation on homology,
+\(H_\bullet(K_S)\to S\) with \(S\) in degree zero, is
+annihilated by \(\kappa\).  It is nonzero in every positive
+homological degree.
+The derived zero fibre is
+\begin{equation}\label{mbh:eq:derived-zero}
+ H_j(K_S\otimes_S^{\mathbb L}k)
+   =k[x_1,x_2,\ldots]\otimes_k\Lambda^j(\epsilon_m:m\ge1),
+ \qquad k=S/(\kappa).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Normalize the monomial duals by
+\[
+ x^\alpha\longmapsto
+ \left(\prod_m m^{\alpha_m}\alpha_m!\right)\lambda_\alpha.
+\]
+The factors are units in \(k\), so this is an invertible
+\(S\)-linear change of basis.  It introduces no inverse of
+\(\kappa\).  Formula~\eqref{mbh:eq:dual-actions} then gives
+\eqref{mbh:eq:family-complex}.
+The homotopy \eqref{mbh:eq:euler-homotopy} is \(S\)-linear and
+satisfies
+\begin{equation}\label{mbh:eq:family-homotopy}
+ d_\kappa h+hd_\kappa=\kappa(1-i\pi).
+\end{equation}
+Here \(\pi\) takes the constant coefficient in the variables
+\(x_m\), with values in \(S\), and \(i\) is the scalar inclusion.
+
+Let \(K_{S,j}^+\) denote the part of positive auxiliary weight;
+only the scalar summand \(S\cdot1\) in degree zero is removed.
+The identity \(\delta h+h\delta=1\) on this part gives
+\begin{equation}\label{mbh:eq:family-splitting}
+ K_{S,j}^+=B_j\oplus hB_{j-1},\qquad
+ d_\kappa(hb)=\kappa b,\qquad d_\kappa(B_j)=0.
+\end{equation}
+Indeed, every \(z\) is
+\(\delta hz+h\delta z\), which lies in the stated sum.
+If \(hb\in B_j\) with \(b\in B_{j-1}\), applying
+\(\delta\) gives \(b=0\), proving directness.
+Since \(\delta\) and \(h\) are defined over \(k\), each \(B_j\)
+is \(S\) tensored with a \(k\)-vector space and hence is
+\(S\)-free.  Multiplication by \(\kappa\) is injective on it.
+The kernels and images in \eqref{mbh:eq:family-splitting}
+now give \eqref{mbh:eq:family-homology}.
+
+For \(j>0\), the cycle
+\begin{equation}\label{mbh:eq:torsion-cycle}
+ z_j=\delta(\epsilon_1\wedge\cdots\wedge\epsilon_{j+1})
+   =\sum_{a=1}^{j+1}(-1)^{a-1}x_a\,
+      \epsilon_1\wedge\cdots\wedge
+      \widehat{\epsilon_a}\wedge\cdots\wedge\epsilon_{j+1}
+\end{equation}
+lies in \(B_j\) and has nonzero coefficients independent of
+\(\kappa\).  It cannot lie in \(\kappa B_j\), so its class is
+nonzero.  The equality
+\(d_\kappa(\epsilon_1\wedge\cdots\wedge\epsilon_{j+1})
+=\kappa z_j\) also displays its annihilation.
+
+The splitting \eqref{mbh:eq:family-splitting} expresses \(K_S\)
+as the scalar \(S\) and a direct sum of two-term free complexes
+\[
+ hB_j\xrightarrow{\ \kappa\ }B_j,
+\]
+in degrees \(j+1\) and \(j\).  A two-term complex of free
+modules is \(K\)-flat: tensoring it with an acyclic complex is
+the cone of a map between acyclic direct sums of that complex.
+Direct sums preserve exactness.  The same is therefore true of
+\(K_S\), so its ordinary tensor product with \(k=S/(\kappa)\)
+computes the derived tensor product.  Its differential becomes zero,
+proving \eqref{mbh:eq:derived-zero}.
+\end{proof}
+
+The extra specialization classes can be identified without a
+convergence argument.  For \(j\ge1\), the preceding splitting gives
+the exact sequence
+\begin{equation}\label{mbh:eq:base-change}
+ \begin{aligned}
+ 0\longrightarrow H_j(K_S)\otimes_S k
+ &\longrightarrow H_j(K_S\otimes_S^{\mathbb L}k)\\
+ &\longrightarrow
+ \operatorname{Tor}_1^S(H_{j-1}(K_S),k)
+ \longrightarrow0.
+ \end{aligned}
+\end{equation}
+Its first term is represented by \(B_j\otimes_Sk\), and its
+last term by \(hB_{j-1}\otimes_Sk\), using
+\(h:B_{j-1}\to hB_{j-1}\).
+Indeed, \(0\to B_{j-1}\xrightarrow{\kappa}B_{j-1}
+\to B_{j-1}/\kappa B_{j-1}\to0\) is a free resolution,
+and the scalar summand of \(H_0\) has zero \(\operatorname{Tor}_1\).
+For a single oscillator, \(B_1=0\): the family has \(H_1=0\),
+whereas its zero fibre has
+\(H_1=k[x_1]\epsilon_1\).  These classes come entirely from
+the last term of \eqref{mbh:eq:base-change}.
+With infinitely many oscillators,
+\eqref{mbh:eq:torsion-cycle} gives family torsion in every
+positive degree.  Inverting \(\kappa\) instead gives the
+contraction \(\kappa^{-1}h\) and recovers
+Theorem~\ref{mbh:thm:nonzero}.
+
+At zero level over any field, every right \(p_m\)-action on
+the restricted dual vanishes.  Thus
+\eqref{mbh:eq:annihilator-differential} gives
+\begin{equation}\label{mbh:eq:zero-level}
+ \operatorname{Tor}^{\mathscr W_0}_j(M,V)
+   =M\otimes_k\Lambda^j(\epsilon_m:m\ge1).
+\end{equation}
+The algebra \(\mathscr W_0\) still contains every \(p_m\);
+its zero action on these module ends does not remove the
+corresponding exterior generator.
+
+\begin{theorem}[The positive-characteristic basis]
+\label{mbh:thm:positive-characteristic}
+Let \(k\) be a field of characteristic \(\ell>0\), let \(c\in k^\times\),
+and use the polynomial Fock module and its restricted dual.
+Put
+\[
+ G=\{m\ge1:\ell\nmid m\},\qquad
+ Z=\{m\ge1:\ell\mid m\}.
+\]
+For every \(j\ge0\), a basis of
+\(\operatorname{Tor}^{\mathscr W_c}_j(M,V)\) is represented
+in \(K(M)\) by
+\begin{equation}\label{mbh:eq:characteristic-basis}
+ \lambda_{\alpha(b,I)}\epsilon_I,\qquad
+ |I|=j,\qquad
+ \alpha(b,I)_m=
+ \begin{cases}
+ \ell b_m+(\ell-1)\mathbf1_{m\in I},&m\in G,\\
+ b_m,&m\in Z,
+ \end{cases}
+\end{equation}
+where \(I\) is a finite set and \(b=(b_m)\) is a finite-support
+multi-index of nonnegative integers.
+This is a basis of graded vector spaces; no multiplication on
+these Tor groups is asserted.
+\end{theorem}
+
+\begin{proof}
+For a single mode \(m\), let
+\(M_m=\bigoplus_{n\ge0}k\lambda_n\).
+Its factor in the annihilator complex is
+\begin{equation}\label{mbh:eq:one-mode}
+ M_m\epsilon_m\longrightarrow M_m,\qquad
+ \lambda_n\epsilon_m\longmapsto cm(n+1)\lambda_{n+1}.
+\end{equation}
+If \(m\in G\), its degree-zero cokernel has basis
+\(\lambda_{\ell b}\), \(b\ge0\), and its degree-one kernel
+has basis \(\lambda_{\ell b+\ell-1}\epsilon_m\).
+Every other degree-zero basis vector is the image of exactly one
+basis vector with nonzero coefficient, and every remaining
+degree-one vector belongs to such a pair.
+If \(m\in Z\), the differential is zero and both copies of
+\(M_m\) survive.
+
+The full complex is the algebraic restricted tensor product of
+\eqref{mbh:eq:one-mode} over all \(m\), using \(\lambda_0\)
+in degree zero at each new index.  For a finite set of indices,
+split each factor into the displayed kernel and cokernel
+representatives and its two-term pairs with nonzero differential.
+Those pairs are contractible over the field \(k\).  Tensoring their
+contractions with the other factors proves that the homology of the
+finite tensor product is the tensor product of the displayed
+homologies.  This splitting preserves the distinguished
+degree-zero vector \(\lambda_0\), so it is compatible with
+inclusions of finite index sets.  Their union is the full
+algebraic complex, and filtered unions of vector spaces preserve
+exactness.  Selecting the degree-one factor exactly at the indices
+of \(I\) gives precisely \eqref{mbh:eq:characteristic-basis}.
+\end{proof}
+
+For example,
+\[
+ [\,\lambda_{\ell-1}[p_1]1\,]
+   \in H_1\bigl(B_k(M,\mathscr W_c,V)\bigr)
+\]
+is nonzero.  Both bar faces vanish: the first has coefficient
+\(c\ell=0\), and the last contains \(p_1 1=0\).
+Under \(F_M\), it is the image of
+\(\lambda_{\ell-1}\epsilon_1\), whose class is nonzero by
+Theorem~\ref{mbh:thm:positive-characteristic};
+\(G_MF_M=1\) proves that it is not a boundary.
+Thus the evaluation to \(k\) fails to be a quasi-isomorphism
+in every positive characteristic, including at nonzero level.
+Modes in \(Z\) supply further independent classes.
+Changing the polynomial Fock module to a divided-power module
+would change the input action in \eqref{mbh:eq:dual-actions}.
+
+These evaluations retain the two module ends and concern ordinary
+algebraic complexes.  The balanced cuts of
+\eqref{mb:eq:module-cuts} retain their stated target; the
+retraction \eqref{mbh:eq:module-comparison} makes no assertion
+of a coproduct equivalence.  A geometric collision comparison
+or an extension to completed states requires additional maps.

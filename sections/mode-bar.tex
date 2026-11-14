@@ -1,0 +1,209 @@
+\subsection{A two-sided bar retaining the Heisenberg modes}
+\label{sec:mode-bar}
+
+There is an actual associative carrier for the mode operators, with
+module ends in place of a character.  Let
+\(V=k[h_0,h_1,\ldots]\) be the polynomial Heisenberg Fock space
+defined above, with \(\operatorname{wt}(h_j)=j+1\).
+Let \(\mathscr W_\kappa\)
+be the unital associative \(k\)-algebra on generators
+\(p_m,q_m\), \(m\ge1\), with
+\[
+ [p_m,q_n]=\kappa m\delta_{mn},\qquad
+ [p_m,p_n]=[q_m,q_n]=0.
+\]
+All elements are finite linear combinations of finite words.
+The actions \(q_m=h_{m-1}\cdot\) and
+\(p_m=\kappa m\partial_{h_{m-1}}\) make \(V\) a left
+\(\mathscr W_\kappa\)-module over every field.
+
+Ordered monomials \(q^\alpha p^\beta\), with finite-support
+multiindices, form a basis.  The commutation relations first put every
+word into that order.  To prove independence, represent the algebra
+on \(k[Q_m,P_m:m\ge1]\) by
+\(q_m=Q_m\cdot\) and \(p_m=\kappa m\partial_{Q_m}+P_m\cdot\).
+These operators satisfy the relations, and
+\(q^\alpha p^\beta(1)=Q^\alpha P^\beta\).
+Distinct ordered monomials therefore cannot have a linear relation.
+This proof also shows that modes remain elements of the algebra when
+their action on the particular Fock module vanishes in positive characteristic.
+
+Write \(V=\bigoplus_{E\ge0}V_E\) for its positive weight grading
+and define the restricted dual
+\(M=\bigoplus_{E\ge0}\operatorname{Hom}_k(V_E,k)\).
+The right action is
+\((\lambda a)(v)=\lambda(av)\).
+A mode shifts weight by a fixed integer, and a finite word has a fixed
+total shift.  Thus the right action preserves the restricted dual.
+All tensor products in the following complex are algebraic:
+\begin{equation}\label{mb:eq:mode-bar}
+ \mathcal B_r=M\otimes_k\mathscr W_\kappa^{\otimes_k r}\otimes_k V,
+ \qquad |\mathcal B_r|=-r.
+\end{equation}
+
+\begin{theorem}[The mode bar and its cuts]\label{mb:thm:mode-bar}
+Over every field, the differential
+\[
+ \begin{aligned}
+ d\bigl(\lambda[a_1|\cdots|a_r]v\bigr)
+ &=\lambda a_1[a_2|\cdots|a_r]v\\
+ &\quad+\sum_{j=1}^{r-1}(-1)^j
+   \lambda[a_1|\cdots|a_ja_{j+1}|\cdots|a_r]v\\
+ &\quad+(-1)^r\lambda[a_1|\cdots|a_{r-1}]a_rv
+ \end{aligned}
+\]
+squares to zero.  Pairing in length zero and zero in positive lengths
+defines a chain map \(\mathcal B_\bullet\to k\).
+Its homology is \(\operatorname{Tor}^{\mathscr W_\kappa}_r(M,V)\).
+There is a chain cut map
+\begin{equation}\label{mb:eq:module-cuts}
+ \lambda[a_1|\cdots|a_r]v\longmapsto
+ \sum_{i=0}^r
+ \lambda[a_1|\cdots|a_i]1
+   \otimes_{\mathscr W_\kappa}
+ 1[a_{i+1}|\cdots|a_r]v
+\end{equation}
+to the total complex
+\(B(M,\mathscr W_\kappa,\mathscr W_\kappa)
+ \otimes_{\mathscr W_\kappa}
+ B(\mathscr W_\kappa,\mathscr W_\kappa,V)\).
+Successive cuts agree after the canonical associativity identification
+of the balanced tensor products.
+\end{theorem}
+
+\begin{proof}
+Denote the unsigned faces by \(d_i\).
+For \(i<j\), the identity \(d_id_j=d_{j-1}d_i\)
+is associativity when two multiplications meet, the right or left
+module identity at an end, and commutation of operations on disjoint
+positions otherwise.  In the square of \(\sum(-1)^i d_i\),
+these two occurrences have opposite signs.  This proves \(d^2=0\).
+Pairing kills the length-one differential because
+\((\lambda a)(v)=\lambda(av)\); higher lengths cannot map
+nontrivially to length zero in one step.
+
+To identify the homology, use
+\(P_r=\mathscr W_\kappa\otimes_k
+\mathscr W_\kappa^{\otimes_k r}\otimes_kV\), with the same
+faces and augmentation \(P_0\to V\) given by the action.
+Each \(P_r\) is a free left \(\mathscr W_\kappa\)-module:
+choose a \(k\)-basis for its remaining tensor factors.
+The maps \(v\mapsto1[]v\) and
+\(a_0[a_1|\cdots|a_r]v\mapsto1[a_0|a_1|\cdots|a_r]v\)
+contract the augmented complex as a complex of vector spaces.
+Its first face is the original element, and every other face cancels
+the corresponding term obtained by first applying the differential.
+Thus \(P_\bullet\to V\) is a free module resolution.
+Tensoring it on the left with \(M\) gives exactly
+\eqref{mb:eq:mode-bar}, proving the Tor assertion.  The contracting map
+need not be module-linear; exactness is the property required here.
+
+For the cut map, faces wholly on one side of a cut match the
+corresponding tensor differential, with sign \((-1)^i\) when
+the differential acts on a second factor following length \(i\).
+At the middle, the last face on the left of cut \(i\) gives
+\[
+ (-1)^i\lambda[a_1|\cdots|a_{i-1}]a_i
+            \otimes 1[a_{i+1}|\cdots|a_r]v.
+\]
+Balancing over \(\mathscr W_\kappa\) moves \(a_i\) to
+the initial coefficient of the right factor.  This cancels the first
+face on the right of cut \(i-1\), whose sign is \((-1)^{i-1}\).
+All middle terms cancel this way.  Two cuts merely choose three
+consecutive subwords and insert two copies of the regular module,
+so their two orders give the same balanced tensor.
+\end{proof}
+
+These cuts pass through the regular module; they do not make
+\(M\otimes\mathscr W_\kappa^{\otimes r}\otimes V\)
+into a coalgebra by silently identifying its two ends with \(k\).
+For \(\kappa\ne0\), the algebra \(\mathscr W_\kappa\)
+has no character to \(k\): a character would send
+\([p_1,q_1]=\kappa1\) to zero.  The two-sided bar needs no character.
+
+For a concrete calculation, let \(\lambda_n\) take the coefficient
+of \(h_0^n\) and kill all other monomials.  Then
+\(\lambda_0p_1=\kappa\lambda_1\),
+\(\lambda_1q_1=\lambda_0\), and \(p_1h_0=\kappa1\).
+The length-two differential is
+\[
+ d\bigl(\lambda_0[p_1|q_1]1\bigr)
+ =\kappa\lambda_1[q_1]1-\lambda_0[p_1q_1]1
+       +\lambda_0[p_1]h_0.
+\]
+Differentiating the middle term gives zero, since
+\(\lambda_0p_1q_1=\kappa\lambda_0\) and
+\(p_1q_1(1)=\kappa1\).  The other two terms have opposite
+differentials
+\(\kappa\lambda_0[]1-\kappa\lambda_1[]h_0\).
+The central vacuum contribution is retained in the cancellation.
+It is not set to zero by an algebra augmentation.
+
+\input{sections/mode-bar-homology}
+
+\subsubsection{Coefficient comparison with the same module ends}
+
+The coefficient comparison also has a two-sided version.
+Work in characteristic zero and extend scalars to \(R\).
+Put \(W=R\otimes_k\mathscr W_\kappa\),
+\(M_R=R\otimes_kM\), and \(V_R=R\otimes_kV\).
+The algebras \(C\otimes_R W\) and \(A\otimes_R W\)
+act on their module ends through their first-endpoint augmentations
+and the stated mode actions.  No augmentation of \(W\) is used.
+
+\begin{theorem}[The state-valued two-sided coefficient comparison]
+\label{mb:thm:two-sided-comparison}
+Assume \(\operatorname{char}k=0\).  The consecutive-partition formula, with
+\[
+ [g_1ds\otimes a_1|\cdots|g_nds\otimes a_n]
+ \longmapsto
+ [J_n(g_1,\ldots,g_n)\theta\otimes a_1\cdots a_n]
+\]
+for its higher components, defines a chain quasi-isomorphism
+\[
+ B_R(M_R,C\otimes_R W,V_R)
+    \longrightarrow B_R(M_R,A\otimes_R W,V_R).
+\]
+Its linear component preserves every mode and its action on either
+Fock-module end.  It preserves the total spatial pole bound, and its
+higher components use only consecutive middle blocks.
+\end{theorem}
+
+\begin{proof}
+For a differential graded algebra \(E\) acting on these degree-zero
+module ends, its two-sided bar has middle suspension signs
+\eqref{sb:eq:bar-signs}.  Its left outer face has positive sign.
+Its right outer face has sign
+\((-1)^{\sum_j(|a_j|-1)}\).  Nonzero end actions require
+degree-zero coefficients, so these conventions reduce exactly to
+Theorem~\ref{mb:thm:mode-bar} when all middle entries have degree zero.
+The algebra and module product rules verify its square in the same
+way as Lemma~\ref{sb:lem:bar} and Theorem~\ref{mb:thm:mode-bar}.
+
+The internal chain calculation in Lemma~\ref{sb:lem:state-extension}
+uses only the differential and multiplication of the state algebra;
+it does not use its augmentation.  It therefore applies to \(W\).
+For the outer faces, a higher block has coefficient \(\theta\)
+and acts by zero at the first endpoint.  Only a singleton block can
+act on a module end.  Its action is unchanged by \(I\), because
+\(\varepsilon_A I=\varepsilon_C\).
+Thus the outer terms agree as well, proving the chain equation.
+
+The filtration by middle word length has associated map
+\(\id_{M_R}\otimes(s(I\otimes\id_W))^{\otimes_R r}
+ \otimes\id_{V_R}\).
+The explicit coefficient contraction proves that this is a chain
+homotopy equivalence, even after these tensor products.
+Finite filtration induction and passage to the union prove the
+quasi-isomorphism.  Products of modes do not introduce spatial poles,
+so the proof of the pole bound is unchanged.
+\end{proof}
+
+This bar retains all the finite mode words that define the fields.
+It does not authorize substitution of a collision variable into an
+arbitrary formal distribution of mode words.  For example, the formal
+middle entry \(\sum_{m\ge1}(q_mz^{m-1}+p_mz^{-m-1})\) has two unbounded
+tails in the mode algebra, even when sufficiently large annihilation
+modes kill a fixed right-end state.  Its matrix coefficients and the
+specific rational collision representatives must be expanded in their
+stated domains before a diagonal substitution is made.

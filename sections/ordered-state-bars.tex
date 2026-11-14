@@ -1,0 +1,998 @@
+\section{Coefficient comparisons and state-valued bars}
+\label{sec:ordered-state-bars}
+
+\subsection{State coefficients and multiplication faces}
+\label{sb:sec:state-coefficient-bars}
+
+A collision expansion determines state coefficients.  To use one
+of them as a bar face, it must satisfy the multiplication identity
+required by the bar differential.
+
+Let \(k\) be a field and \(V\) a \(k\)-vector space.
+Write \(V((t))\) for formal Laurent series in a variable \(t\)
+with coefficients in \(V\) and a finite lower bound on the powers
+of \(t\).  A formal state field is a bilinear rule, written as a
+linear map \(Y:V\otimes_kV\to V((t))\); write its value as \(Y(a,t)b\).
+For \(a,b\in V\), define the normal product
+\(a\cdot b=[t^0]Y(a,t)b\), where \([t^0]\) extracts the
+constant coefficient.
+
+For the initial test put \(V\) in degree zero.  Denote a tensor
+\(a_1\otimes\cdots\otimes a_n\) by the word
+\([a_1|\cdots|a_n]\).  On words of lengths one, two and three,
+define a length-lowering operator \(\beta\) by
+\[
+ \beta[a]=0,\qquad
+ \beta[a|b]=-[a\cdot b],\qquad
+ \beta[a|b|c]=-[a\cdot b|c]+[a|b\cdot c].
+\]
+Applying it twice gives
+\[
+ \beta^2[a|b|c]=[(a\cdot b)\cdot c-a\cdot(b\cdot c)].
+\]
+Thus associativity is necessary before this operator can be a
+differential.  The oscillator calculation below gives a nonzero
+associator in every characteristic, including characteristic two.
+
+There is a separate comparison between two ways of recording the
+coefficients of an order interval.  The first uses polynomial
+differential forms with regular endpoint values.  The second records
+two endpoint values and one overlap value.  Integration compares these
+complexes in characteristic zero but does not preserve multiplication.
+We construct its higher corrections on words.  A cut splits a word
+into two consecutive subwords; the resulting map preserves these cuts
+and the word differential.  With their cut coproducts the bars are
+differential graded coalgebras.  No multiplication on the bars is
+assumed.  Identifying such a bar with one in a geometric category
+requires additional maps, including the appropriate module ends or
+augmentation.
+
+We retain the cohomological signs, exterior-square convention and
+finite-polynomial state domain of Section~\ref{sec:free-states}.
+The field is arbitrary except where polynomial integration is used.
+Every formal expansion below has the specified algebraic domain.
+
+\subsection{The two-chart coefficient complex}
+\label{sb:sec:two-chart}
+
+Let \(R=k[u]\), \(L=k[u,u^{-1}]\).  The two order charts have
+coordinate ring \(R\), and their overlap has ring \(L\).
+The coordinate \(s\) records passage from the first chart to the second.
+Polynomial forms with regular endpoints form the differential graded algebra
+\[
+ C^0=\{f(s)\in L[s]:f(0),f(1)\in R\},\qquad
+ C^1=L[s]ds,\qquad df=f'(s)ds.
+\]
+There are no other degrees.  Multiplication is ordinary multiplication
+of forms, so \((ds)^2=0\).
+
+For later changes of the spatial base, define the interval algebra
+\(\mathcal I_T(v)\) for a commutative ring \(T\) and a
+nonzerodivisor \(v\in T\):
+\begin{equation}\label{sb:eq:general-interval}
+ \mathcal I_T(v)^0=Te_0\oplus Te_1,\qquad
+ \mathcal I_T(v)^1=T[v^{-1}]\theta_v,\qquad
+ de_0=-\theta_v,\quad de_1=\theta_v.
+\end{equation}
+There are no other degrees.  The two endpoint actions below define
+its multiplication; its unit is \(e_0+e_1\), and its augmentation
+is evaluation at the first endpoint.  In the present comparison write
+\(A=\mathcal I_R(u)\) and \(\theta=\theta_u\).  Thus
+\begin{equation}\label{sb:eq:two-chart}
+ A^0=R\oplus R,\qquad A^1=L\theta,\qquad
+ d(a_0,a_1)=(a_1-a_0)\theta.
+\end{equation}
+Its product is
+\[
+ \begin{aligned}
+ (a_0,a_1)(b_0,b_1)&=(a_0b_0,a_1b_1),\\
+ (a_0,a_1)(\ell\theta)&=a_0\ell\theta,&
+ (\ell\theta)(b_0,b_1)&=\ell b_1\theta,&
+ (\ell\theta)(m\theta)&=0.
+ \end{aligned}
+\]
+The endpoint actions prove associativity.  The product rule follows from
+\[
+ a_1b_1-a_0b_0=(a_1-a_0)b_1+a_0(b_1-b_0).
+\]
+Products of two degree-one elements vanish, so this is the only
+nonzero product-rule calculation.  The unit is \((1,1)\).
+The algebra need not be commutative.
+
+Both algebras are augmented over the spatial ring \(R\):
+\(\varepsilon_C(f)=f(0)\) and
+\(\varepsilon_A(a_0,a_1)=a_0\), with degree-one elements
+sent to zero.  These augmentations concern coefficient multiplication.
+They do not assert that a vacuum projection preserves collision operations.
+
+\begin{proposition}[The coefficient comparison and its characteristic]
+\label{sb:prop:coefficient-comparison}
+Over every field,
+\(H^0(A)=R\) and \(H^1(A)=L/R\).
+In characteristic zero, the map
+\[
+ I(f)=(f(0),f(1)),\qquad
+ I(g(s)ds)=\left(\int_0^1g(s)ds\right)\theta
+\]
+is an augmentation-preserving quasi-isomorphism of complexes.
+In characteristic \(p>0\), the class \(u^{-1}ds\) is exact
+in \(C\), while \([u^{-1}\theta]\ne0\) in \(H^1(A)\).
+Consequently no chain map in that characteristic can preserve this pole class.
+The element \(u^{-1}(s^{p^2}-s^p)\) is also a nonzero closed
+degree-zero element of \(C\) with zero endpoint values.
+\end{proposition}
+
+\begin{proof}
+The kernel of \((a_0,a_1)\mapsto a_1-a_0\) is the diagonal
+copy of \(R\); its image is \(R\subset L\).  This proves
+the asserted cohomology and the nonzero pole class.
+
+In characteristic zero every positive integer is invertible in \(k\).
+Integration means polynomial antiderivation, performed in \(L[s]\).
+The identity \(\int_0^1 f'=f(1)-f(0)\) proves the chain equation.
+Define a reverse chain map and a degree-minus-one map by
+\[
+ \begin{aligned}
+ W(a_0,a_1)&=(1-s)a_0+sa_1,& W(\ell\theta)&=\ell ds,\\
+ h(f)&=0,&
+ h(g(s)ds)&=\int_0^s g(t)dt-s\int_0^1g(t)dt.
+ \end{aligned}
+\]
+The last polynomial vanishes at both endpoints, hence belongs to
+\(C^0\).  Direct differentiation gives
+\(IW=\id\) and \(dh+hd=\id-WI\).
+On a function the latter identity is
+\(f(s)-f(0)-s(f(1)-f(0))\); on a one-form it is
+\((g(s)-\int_0^1g)ds\).  This proves the quasi-isomorphism.
+
+In characteristic \(p\), the polynomial \(s-s^p\) vanishes
+at both endpoints and has derivative one.  Thus
+\begin{equation}\label{sb:eq:exact-pole}
+ u^{-1}ds=d\bigl(u^{-1}(s-s^p)\bigr).
+\end{equation}
+A chain map takes boundaries to boundaries, proving the obstruction.
+Both exponents in \(s^{p^2}-s^p\) are divisible by \(p\), so
+its derivative is zero.  Its two monomials are distinct and its
+endpoint values vanish, proving the final assertion.
+\end{proof}
+
+The map \(I\) is not multiplicative, even in characteristic zero.
+For example \(I(s\,ds)=\tfrac12\theta\), but
+\(I(s)I(ds)=(0,1)\theta=0\).  The next construction retains
+this defect and supplies its higher chain corrections.
+
+\subsection{Suspensions, multiplication signs, and cuts}
+
+For an augmented differential graded algebra \(D\) over a spatial
+ring \(R\), write
+\(\bar D=\ker\varepsilon_D\).  Let \(s\bar D\) have
+\(|sa|=|a|-1\), and put
+\[
+ B_R(D)=\bigoplus_{n\ge0}(s\bar D)^{\otimes_R n}.
+\]
+Here a word \([a_1|\cdots|a_n]\) has total degree
+\(\sum|a_i|-n\).  Equivalently, the independent bar homological
+degree is \(n\), and the total degree is internal degree minus
+bar degree.  All words have finite length.  We use the coderivation
+determined by
+\begin{equation}\label{sb:eq:bar-signs}
+ b_1[a]=[da],\qquad
+ b_2[a|b]=(-1)^{|a|+1}[ab].
+\end{equation}
+In a longer word, a degree-one operator applied after the first
+\(j-1\) entries carries sign
+\((-1)^{\sum_{i<j}(|a_i|-1)}\).
+Thus, for degree-zero inputs,
+\[
+ b[a|b|c]=-[ab|c]+[a|bc].
+\]
+The augmentation makes the outer faces vanish on these reduced words.
+The ground ring is retained under spatial substitutions: a map
+\(R\to R'\) must be accompanied by an augmentation-preserving
+map to the corresponding \(R'\)-algebra, with its explicit scalar extension.
+
+\begin{lemma}[The bar differential and its cuts]\label{sb:lem:bar}
+The operator \(b=b_1+b_2\) has degree one and satisfies \(b^2=0\).
+The map
+\[
+ \Delta_{\mathrm{dec}}[a_1|\cdots|a_n]
+ =\sum_{j=0}^n[a_1|\cdots|a_j]\otimes[a_{j+1}|\cdots|a_n]
+\]
+is coassociative and commutes with \(b\), using the tensor differential.
+\end{lemma}
+
+\begin{proof}
+The square of \(b_1\) vanishes because \(d^2=0\).
+On two entries, the terms in \(b_1b_2+b_2b_1\) are
+\[
+ (-1)^{|a|+1}[da\,b]-[a\,db]
+ +(-1)^{|a|}[da\,b]+[a\,db]=0.
+\]
+On three entries, the two terms of \(b_2^2\) are
+\((-1)^{|b|}[(ab)c]\) and
+\(-(-1)^{|b|}[a(bc)]\); they cancel by associativity.
+Terms on disjoint positions cancel because the two local operators
+have degree one.  These cases exhaust \(b^2\).
+
+Two successive cuts choose three consecutive subwords, independent
+of which cut is made first.  This proves coassociativity.
+For the chain equation, a differential or multiplication wholly on
+one side of a cut occurs on that tensor factor.  Its prefix sign is
+the same as in the original word, including the total degree of the
+first factor when the operation is on the second.  A multiplication
+across a proposed cut leaves no cut between its merged entries and
+therefore contributes on neither side.  This accounts for every term.
+\end{proof}
+
+If the coefficients of the \(j\)-th input have pole bounds
+\(N^{(j)}_\delta\) on a finite list of spatial divisors, multiplication
+has bound \(N^{(j)}_\delta+N^{(j+1)}_\delta\).
+The linear span of tensors with
+\(\sum_jN^{(j)}_\delta\le P_\delta\) is therefore a subcomplex.
+The span is part of this definition.  A nonlinear condition on the
+sum of separately measured divisorial orders need not define a vector space.
+
+\subsection{A comparison on every bar word}
+
+For this section assume \(\operatorname{char}k=0\).
+For polynomials \(g_i\in L[s]\), define
+\begin{equation}\label{sb:eq:iterated-integral}
+ J_n(g_1,\ldots,g_n)=
+ \int_{0\le s_1\le\cdots\le s_n\le1}
+       g_1(s_1)\cdots g_n(s_n)\,ds_1\cdots ds_n.
+\end{equation}
+This is an algebraic instruction: integrate \(s_1\) from zero to
+\(s_2\), then \(s_2\) to \(s_3\), and so on.
+For a monomial it is explicitly
+\[
+ J_n(s^{r_1},\ldots,s^{r_n})
+ =\prod_{j=1}^n(r_1+\cdots+r_j+j)^{-1}.
+\]
+The formula follows by successive antiderivatives and defines the
+integral over any characteristic-zero field.
+
+Define maps from words to length-one words by
+\[
+ \mathcal I_1[a]=[I(a)],\qquad
+ \mathcal I_n[g_1ds|\cdots|g_nds]
+       =[J_n(g_1,\ldots,g_n)\theta]\quad(n>1),
+\]
+and set \(\mathcal I_n=0\) for \(n>1\) if one input is a
+degree-zero function.  Extend linearly.  A word of one-forms has total
+degree zero, as does its length-one image, so these maps have degree zero.
+
+The map on full bars sums over consecutive partitions:
+\begin{equation}\label{sb:eq:bar-map}
+ \mathcal I[a_1|\cdots|a_n]
+ =\sum_{0=i_0<i_1<\cdots<i_r=n}
+   [\mathcal I_{i_1-i_0}(a_1,\ldots,a_{i_1})|\cdots|
+    \mathcal I_{i_r-i_{r-1}}(a_{i_{r-1}+1},\ldots,a_n)].
+\end{equation}
+Inside the brackets on the right, \(\mathcal I_m(\cdots)\)
+means its underlying element of \(\bar A\), without an extra suspension.
+The empty word maps to the empty word.  The sum is finite.
+
+Write \(b_C\) and \(b_A\) for the differentials of
+\(B_R(C)\) and \(B_R(A)\), defined by \eqref{sb:eq:bar-signs}.
+On either bar let \(\Delta_{\mathrm{dec}}\) be the cut coproduct
+of Lemma~\ref{sb:lem:bar}.  The two required identities are
+\begin{equation}\label{sb:eq:spine}
+ b_A\mathcal I=\mathcal I b_C,
+ \qquad
+ \Delta_{\mathrm{dec}}\mathcal I
+       =(\mathcal I\otimes\mathcal I)\Delta_{\mathrm{dec}}.
+\end{equation}
+
+\begin{theorem}[The two-chart bar comparison]\label{sb:thm:bar-comparison}
+Over a field of characteristic zero, formula~\eqref{sb:eq:bar-map}
+is a quasi-isomorphism of coaugmented
+differential graded \(R\)-coalgebras \(B_R(C)\to B_R(A)\).
+It preserves the filtration by maximal word length and the total
+pole tuple.  Its component from length \(n\) to length one has
+pole bound \(\sum_iN^{(i)}_\delta\) on each divisor.
+\end{theorem}
+
+\begin{proof}
+Cutting a consecutive partition at a boundary between its blocks is
+the same as first cutting the original word and then partitioning
+the two resulting words.  This bijection proves the coalgebra equation
+in \eqref{sb:eq:spine}, including the empty subwords.
+
+It remains to check the chain equation after projection to length one.
+That check suffices: the difference \(b_A\mathcal I-\mathcal I b_C\)
+is a coderivation relative to \(\mathcal I\).  If its length-one
+projection vanishes, induction on the input length makes every proper
+cut of its value zero.  A tensor-coalgebra element with every proper
+cut zero has length one.  Its zero projection then makes it zero.
+
+For a word of one-forms, all differentials and all adjacent products
+vanish in both coefficient algebras.  For a word containing at least
+two functions and of length greater than two, every relevant higher
+component is zero: differentiating or multiplying once leaves a function
+in a block of length greater than one.  On two functions the remaining
+identity is endpoint evaluation of their product.  Length one is
+Proposition~\ref{sb:prop:coefficient-comparison}.
+
+Consider a word with exactly one function \(f\), in position \(j\),
+and one-forms elsewhere.  Every preceding suspended one-form has degree
+zero.  In \(\mathcal I b_C\), differentiating \(f\) gives a
+positive \(J_n(\ldots,f',\ldots)\).  Merging the preceding
+one-form with \(f\) gives a positive term; merging \(f\) with the
+following one-form gives a negative term, by \eqref{sb:eq:bar-signs}.
+For \(1<j<n\), integration in its one variable gives
+\[
+ \int_{s_{j-1}}^{s_{j+1}}f'(s_j)ds_j
+       =f(s_{j+1})-f(s_{j-1}).
+\]
+This cancels the two multiplication terms.  The length-one projection
+of \(b_A\mathcal I\) is also zero, because a nonzero higher block
+cannot contain \(f\), and an interior singleton cannot be an endpoint
+of a partition into two blocks.
+
+If \(j=1\), the same computation leaves
+\(-f(0)J_{n-1}(g_2,\ldots,g_n)\theta\), exactly the left
+endpoint action with the negative multiplication sign in \(A\).
+If \(j=n\), it leaves
+\(J_{n-1}(g_1,\ldots,g_{n-1})f(1)\theta\), exactly the right
+endpoint action with its positive sign.  These cases prove the chain
+equation in all lengths.
+
+Filter both bars by words of length at most \(n\).
+On the length-\(n\) associated quotient, the map is
+\((sI)^{\otimes n}\), with only the internal differential.
+The explicit \(R\)-linear contraction in Proposition~\ref{sb:prop:coefficient-comparison}
+restricts to the augmentation ideals and proves that \(I\) is a
+chain homotopy equivalence there.  Tensoring a chain homotopy
+equivalence with any complex preserves its homotopy inverse: tensor
+the two inverse maps and the homotopy with the identity, using the
+graded tensor signs.  Applying this one factor at a time proves
+that \((sI)^{\otimes_R n}\) is a chain homotopy equivalence.
+Induction on the finite word filtration gives a quasi-isomorphism
+on every filtered piece.  Taking their union preserves kernels modulo
+images, since each element and each equation involve finite words.
+This proves the assertion for the direct-sum bars.
+
+Integration changes only order coordinates.  Every integrand in
+\(J_n\) is a product of the original spatial coefficients; it has
+pole bound \(\sum_iN^{(i)}_\delta\).  Antiderivation multiplies
+by scalars of \(k\) and adds such coefficients.  It introduces no
+new spatial divisor.  The same argument applies separately to every
+block in \eqref{sb:eq:bar-map}, proving both filtration statements.
+\end{proof}
+
+\begin{example}[Three poles and all cuts]\label{sb:ex:three-pole-bar}
+Put \(c=ds/u\) and \(e_N=\theta/u^N\).  Then
+\[
+ \begin{aligned}
+ \mathcal I[c|c]&=[e_1|e_1]+\tfrac12[e_2],\\
+ \mathcal I[c|c|c]&=[e_1|e_1|e_1]
+    +\tfrac12[e_2|e_1]+\tfrac12[e_1|e_2]+\tfrac16[e_3].
+ \end{aligned}
+\]
+All displayed elements are cycles.  The proper cuts of the second
+line are
+\[
+ [e_1]\otimes[e_1|e_1]
+ +[e_1|e_1]\otimes[e_1]
+ +\tfrac12[e_2]\otimes[e_1]
+ +\tfrac12[e_1]\otimes[e_2],
+\]
+which equal \((\mathcal I\otimes\mathcal I)\) applied to the
+two proper cuts of \([c|c|c]\).  Each summand has total pole
+bound three.  The length-one correction has exact pole order three.
+The fractions \(1/2\) and \(1/6\) belong to the coefficient
+comparison; the free-state Hasse normalization above uses no such divisions.
+\end{example}
+
+\subsection{State coefficients and the binary operation}
+
+First assume that \(k\) has characteristic zero, and let \(D\)
+be any augmented differential graded \(R\)-algebra.
+The construction above extends to \(C\otimes_R D\) and
+\(A\otimes_R D\), with coefficient factors first.  Its linear
+part is \(I\otimes\id_D\).  For \(n>1\), its higher
+component is zero unless every \(C\)-factor is a one-form, and then
+\begin{equation}\label{sb:eq:extension}
+ [g_1ds\otimes v_1|\cdots|g_nds\otimes v_n]
+ \longmapsto
+ [J_n(g_1,\ldots,g_n)\theta\otimes v_1\cdots v_n].
+\end{equation}
+There is no extra sign in this formula.  A suspended one-form with
+state \(v_i\) has degree \(|v_i|\).
+
+\begin{lemma}[Extension to state coefficients]\label{sb:lem:state-extension}
+Over a field of characteristic zero, formula~\eqref{sb:eq:extension},
+summed over consecutive partitions,
+is an augmentation-preserving coalgebra chain quasi-isomorphism
+\(B_R(C\otimes_R D)\to B_R(A\otimes_R D)\).
+It is natural in strict maps of augmented differential graded algebras
+\(D\) and in augmentation-preserving spatial coefficient substitutions,
+after the stated scalar extension, for which all displayed expansions
+are defined.
+\end{lemma}
+
+\begin{proof}
+For a word of one-form coefficients, differentiating its state product
+on the right gives sign \(-(-1)^{\sum_{i<j}|v_i|}\) on
+\(dv_j\).  The minus is from the leading \(\theta\).
+The same sign occurs on the left: the prefix suspended degree is
+\(\sum_{i<j}|v_i|\), and
+\(d(g_jds\otimes v_j)=-g_jds\otimes dv_j\).
+These terms agree.
+
+For a word with one function coefficient in position \(j\),
+the three terms in the one-variable integration argument have the
+common sign \((-1)^{\sum_{i<j}|v_i|}\).
+Indeed, the multiplication of that function-state with the next
+one-form-state contributes both the bar sign and the sign for moving
+\(v_j\) across \(ds\); together these give the required minus.
+The preceding multiplication gives the required plus.  State products
+stay in their original order, so associativity of \(D\) suffices;
+commutativity of \(D\) is not needed.  Terms differentiating
+\(D\)-factors when a function coefficient remains have zero higher
+component.  With two or more function coefficients the same vanishing
+argument and the length-two algebra identity complete the check.
+
+The consecutive-partition proof gives the coalgebra identity.
+The filtration proof of Theorem~\ref{sb:thm:bar-comparison} applies
+to \(I\otimes\id_D\), since tensoring the explicit coefficient
+contraction over \(R\) preserves its chain homotopy.
+All formulas commute with the stated maps by linearity, multiplication,
+and coefficientwise antiderivation.
+\end{proof}
+
+\begin{proposition}[The length-one obstruction in positive characteristic]
+\label{sb:prop:length-one-obstruction}
+Suppose \(\operatorname{char}k=p>0\).  The endpoint rule
+\(I(f)=(f(0),f(1))\) on functions and the constant-form rule
+\(I(\ell ds)=\ell\theta\), \(\ell\in L\), cannot be the
+length-one component of a coaugmented coalgebra chain map
+\(B_R(C)\to B_R(A)\).  Consequently the extension of
+Lemma~\ref{sb:lem:state-extension} does not hold over arbitrary fields,
+even for \(D=R\).
+\end{proposition}
+
+\begin{proof}
+The polynomial
+\[
+ f(s)=\frac{s-s^p}{u}
+\]
+has zero endpoint values, so it belongs to the augmentation ideal
+of \(C^0\).  Its differential is \(df=ds/u\).
+The two prescribed values would therefore be
+\[
+ I(f)=0,\qquad I(df)=\frac{\theta}{u}.
+\]
+If \(\mathcal I\) were such a map, these prescribed values on
+the length-one word \([f]\) would give
+\[
+ b_A[I(f)]=0,
+ \qquad
+ \mathcal I b_C[f]=[I(df)]=[\theta/u]\ne0.
+\]
+The last inequality is a statement about chains: \(s\bar A\)
+is a direct summand of \(B_R(A)\), and \(\theta/u\ne0\)
+in \(A^1\).  A coaugmented coalgebra map sends a length-one word,
+which has no proper cut, to a length-one word.  Higher components
+act on at least two inputs and cannot change this failure.
+Taking \(D=R\) leaves the same coefficient complex and proves
+the assertion about state extension.  The rational normalization
+\(J_2(1,1)=1/2\) also cannot be specialized to characteristic two.
+\end{proof}
+
+For the direct binary operation, take the one-species instance of
+the free state algebra \(S\) in \eqref{fs:eq:state-algebra} over any
+field.  Use its auxiliary weight, Hasse translation and kernels from
+\eqref{fs:eq:hasse-translation}--\eqref{fs:eq:kernel-translation}.
+Write \(P_{rs}=P_{12}^{rs}\) for the operator in
+\eqref{fs:eq:pair-operators}.  All sums act on finite polynomial inputs.
+Write \(E_u(a\otimes b)=(\tau_u a)b\).  The binary form operation is
+\[
+ Y_C=E_u\left(1+\sum_{r,s}ds\,K_{rs}(u)\otimes P_{rs}\right).
+\]
+The sum is finite on a polynomial input.  Its values lie in the
+product over state weights, with one finite common spatial pole bound.
+Its coefficient differential is zero, and each contraction has total
+degree zero.
+
+\begin{proposition}[The binary operation on the actual overlap complex]
+\label{sb:prop:binary-transfer}
+Over every field the formula
+\[
+ Y_A(a,b)=((\tau_u a)b,(\tau_u a)b)
+    +\sum_{r,s}\theta K_{rs}(u)\otimes E_uP_{rs}(a\otimes b)
+\]
+is a degree-zero chain map to the weight-completed \(A\otimes S\).
+In characteristic zero it equals \((I\otimes\id)Y_C\).
+Its pole bounds are exactly those of its displayed contraction terms,
+subject to cancellation or vanishing of their integer coefficients.
+\end{proposition}
+
+\begin{proof}
+The uncontracted coefficient has equal endpoint values and is closed
+in \(A\).  Each contracted coefficient lies in \(A^1\), whose
+differential is zero.  The state differential is zero.  The form or
+overlap generator has degree one and the derivative has degree minus
+one, proving the total degree assertion.  The equality in characteristic
+zero is integration of a constant one-form.  Translation has polynomial
+coefficients in each fixed state weight and adds no spatial poles.
+\end{proof}
+
+For instance
+\[
+ Y_A(x_0,\eta_0)=((\tau_u x_0)\eta_0,(\tau_u x_0)\eta_0)
+                         +\frac{\theta}{u}\,1.
+\]
+The class of its scalar-state term is nonzero in every characteristic.
+The state augmentation \(S\to k\) kills both inputs but sends
+that output to \(\theta/u\).  Therefore this augmentation cannot
+preserve the binary collision operation, even up to a chain homotopy.
+This obstruction uses \(A\); using \(C\) in characteristic
+\(p\) would erase it by \eqref{sb:eq:exact-pole}.
+
+When \(k\) has characteristic zero,
+Lemma~\ref{sb:lem:state-extension} applies with state algebra
+\(D=R\otimes_k S\).  This bar comparison concerns the
+ordinary multiplication of \(C\otimes S\) and \(A\otimes S\).
+Proposition~\ref{sb:prop:binary-transfer} separately identifies their binary
+collision maps.  It does not make a collision map into that multiplication.
+
+\subsection{Heisenberg fields with integral jets}
+
+Fix \(\kappa\in k\) and let
+\(V=k[h_0,h_1,h_2,\ldots]\), in cohomological degree zero,
+with vacuum \(1\) and differential zero.  Define creation and
+annihilation operators by
+\[
+ a_{-m}=h_{m-1}\cdot,\qquad
+ a_m=\kappa m\partial_{h_{m-1}}\quad(m\ge1),\qquad a_0=0.
+\]
+They satisfy
+\([a_m,a_n]=\kappa m\delta_{m,-n}\id\).
+This follows by differentiating one polynomial variable; all other
+operator pairs commute.  The field and its two parts are
+\[
+ h(z)=H(z)+h_+(z),\qquad
+ H(z)=\sum_{r\ge0}h_rz^r,\qquad
+ h_+(z)=\kappa\sum_{m\ge1}m\partial_{h_{m-1}}z^{-m-1}.
+\]
+Every polynomial state is killed by all sufficiently large annihilation
+modes.  The auxiliary weight is \(\operatorname{wt}(h_r)=r+1\); fixed
+weight spaces are finite-dimensional.
+
+For an integer \(r\ge0\), let
+\(\partial_z^{[r]}z^n=\binom nr z^{n-r}\), also for negative
+integers \(n\).  Put
+\(h^{[r]}(z)=\partial_z^{[r]}h(z)\).
+For a polynomial state \(h_{r_1}\cdots h_{r_m}\), its field
+is the normally ordered product of these jet fields: expand each
+field into creation and annihilation parts and move every creation
+operator to the left without adding commutators.  Operators within
+each part commute, so this prescription is independent of the order
+of the factors.  It uses integer coefficients only.
+On the vacuum this field gives \(\tau_z(h_{r_1}\cdots h_{r_m})\), where
+\[
+ \tau_z h_r=\sum_{m\ge0}\binom{r+m}{r}h_{r+m}z^m.
+\]
+We shall use only the displayed fields of one and two generators and their
+action on a one-generator state; these operators are already completely defined.
+
+The basic commutator is
+\begin{equation}\label{sb:eq:heisenberg-contraction}
+ [h_+(z),H(w)]
+ =\kappa\sum_{m\ge1}m w^{m-1}z^{-m-1}
+ =\kappa\,\iota_{z,w}(z-w)^{-2}.
+\end{equation}
+Here \(\iota_{z,w}\) expands in nonnegative powers of \(w/z\).
+The second equality follows by multiplying the geometric series by
+itself, whose coefficient of degree \(m-1\) is \(m\).
+It therefore holds over every field.
+
+\begin{lemma}[Jet contractions]\label{sb:lem:heisenberg-jets}
+The contraction of \(h_r\) with \(h_s\) has rational coefficient
+\begin{equation}\label{sb:eq:heisenberg-kernel}
+ B_{rs}(u)=\kappa(-1)^r(r+s+1)\binom{r+s}{r}u^{-r-s-2}.
+\end{equation}
+Moreover,
+\[
+ Y(h_rh_s,z)h_t
+ =\tau_z(h_rh_s)h_t
+   +B_{rt}(z)\tau_z h_s+B_{st}(z)\tau_z h_r.
+\]
+\end{lemma}
+
+\begin{proof}
+The coefficient of \(v^rw^s\) in \((u+v-w)^{-2}\) is
+\((-1)^r(r+s+1)\binom{r+s}{r}u^{-r-s-2}\): choose the
+\(r\) positive and \(s\) negative displacements in the
+geometric-square expansion.  Applying Hasse derivatives to
+\eqref{sb:eq:heisenberg-contraction} gives this coefficient.
+In the normally ordered two-generator field acting on \(h_t\),
+the term with two annihilators vanishes.  Either one annihilator
+contracts with \(h_t\), leaving the other creation field, or both
+factors are creation fields.  These are exactly the three displayed terms.
+\end{proof}
+
+\subsection{Three-input collisions and their exact poles}
+
+Apply \(h(z_1)h(z_2)h(z_3)\) to the vacuum in the ordered
+expansion domain.  Moving the annihilators to the right using
+\eqref{sb:eq:heisenberg-contraction} gives the rational representative
+\[
+ \mathcal H_3(z_1,z_2,z_3)
+ =H(z_1)H(z_2)H(z_3)
+  +\sum_{i<j}\frac{\kappa H(z_k)}{(z_i-z_j)^2},
+ \quad \{k\}=\{1,2,3\}\setminus\{i,j\}.
+\]
+There can be at most one contraction among three one-generator inputs.
+Thus the commutator calculation proves this identity, with no infinite
+sum of contractions or factorial normalization.
+
+Set \(z_1=x+t,z_2=x,z_3=0\), and work first in
+\[
+ Q=k[t,x,t^{-1},x^{-1},(x+t)^{-1}].
+\]
+The two collision expansions have different targets:
+\[
+ \begin{aligned}
+ \iota_L:Q&\longrightarrow k[x,x^{-1}]((t)),&
+ (x+t)^{-2}&\longmapsto\sum_{m\ge0}(-1)^m(m+1)x^{-m-2}t^m,\\
+ \iota_R:Q&\longrightarrow k[u,u^{-1}]((s)),&
+ x&\longmapsto s,\quad t\longmapsto u-s.
+ \end{aligned}
+\]
+For \(\iota_R\), expand \((u-s)^{-2}\) in nonnegative
+powers of \(s/u\).  These maps are injective: each sends the
+specified denominators to units, and a polynomial mapping to zero
+would have every coefficient zero.  They do not identify their two
+Laurent targets.  State coefficients are taken weight by weight.
+
+\begin{proposition}[The two three-input expansions]\label{sb:prop:heisenberg-three}
+Writing \(h=h_0\), the common rational representative is
+\begin{equation}\label{sb:eq:heisenberg-three}
+ H(x+t)H(x)h+\frac{\kappa h}{t^2}
+       +\frac{\kappa H(x)}{(x+t)^2}
+       +\frac{\kappa H(x+t)}{x^2}.
+\end{equation}
+Its left expansion equals
+\(Y(Y(h,t)h,x)h\), with
+\[
+ Y(h,t)h=\kappa t^{-2}1+\sum_{m\ge0}h_mh\,t^m.
+\]
+Its right expansion equals \(Y(h,u)Y(h,s)h\), with
+\(u=x+t,s=x\).
+For every \(m\ge0\), its left coefficient of \(t^m\) is
+\begin{equation}\label{sb:eq:heisenberg-coefficient}
+ \tau_x(h_mh)h
+   +\kappa(-1)^m(m+1)x^{-m-2}H(x)
+   +\kappa x^{-2}\tau_xh_m.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The rational representative was obtained by the three possible pair
+contractions.  On the left, insert the binary expansion just displayed
+and apply Lemma~\ref{sb:lem:heisenberg-jets} to \(Y(h_mh,x)h\).
+Since \(B_{m0}=\kappa(-1)^m(m+1)x^{-m-2}\) and
+\(B_{00}=\kappa x^{-2}\), its coefficients are
+\eqref{sb:eq:heisenberg-coefficient}.  The uncontracted sum is
+\(H(x+t)H(x)h\), by the Hasse translation law.
+The negative inner coefficient contributes \(\kappa t^{-2}h\).
+This proves the left equality coefficient by coefficient.
+
+On the right, \(Y(h,s)h=H(s)h+\kappa s^{-2}\).
+The creation part of \(Y(h,u)\) gives
+\(H(u)H(s)h+\kappa s^{-2}H(u)\).
+Its annihilation part gives
+\(\kappa\iota_{u,s}(u-s)^{-2}h+\kappa u^{-2}H(s)\).
+Substitution of \(u=x+t,s=x\) yields exactly the right expansion
+of \eqref{sb:eq:heisenberg-three}.
+\end{proof}
+
+Assume \(\kappa\ne0\).  The exact outer pole of
+\eqref{sb:eq:heisenberg-coefficient} can be read from its one-generator
+state component.  For \(m>0\), if \(m+1\ne0\) in \(k\),
+its \(h_0\)-coefficient is
+\(\kappa(-1)^m(m+1)x^{-m-2}\), so the exact order is \(m+2\).
+If \(m+1=0\) in \(k\), that entire term vanishes, leaving a
+pole of exact order two detected by \(h_m\).
+For \(m=0\), the singular part is
+\(2\kappa x^{-2}H(x)\): its order is two if
+\(\operatorname{char}k\ne2\), and the whole coefficient is
+regular in characteristic two.  The first cases are
+\[
+ \begin{array}{c|ccc}
+ &m=0&m=1&m=2\\\hline
+ \operatorname{char}k=0&2&3&4\\
+ \operatorname{char}k=2&0&2&4\\
+ \operatorname{char}k=3&2&3&2.
+ \end{array}
+\]
+Order zero means absence of a pole.  These are actual state coefficients;
+neither a scalar common-denominator estimate nor a sum of separate
+divisorial maxima determines the table.
+
+\subsection{The length-three bar obstruction}
+
+Define \(a\cdot b=[z^0]Y(a,z)b\) on the specified polynomial
+states.  For single-generator states, \(h_r\cdot h_s=h_rh_s\).
+The product is unital, but the following calculation rules out using
+it as an associative bar face.
+
+\begin{theorem}[A characteristic-independent associator]
+\label{sb:thm:heisenberg-associator}
+Over every field,
+\begin{equation}\label{sb:eq:heisenberg-associator}
+ (h_0\cdot h_1)\cdot h_0-h_0\cdot(h_1\cdot h_0)
+       =\kappa h_3.
+\end{equation}
+For \(\kappa\ne0\), the proposed reduced bar face
+\(b[a|b]=-[a\cdot b]\) has
+\(b^2[h_0|h_1|h_0]=[\kappa h_3]\ne0\).
+No higher multiplication can make this product into an
+\(A_\infty\)-algebra on the same zero-differential state complex.
+\end{theorem}
+
+\begin{proof}
+Lemma~\ref{sb:lem:heisenberg-jets} gives
+\[
+ Y(h_0h_1,z)h_0
+ =\tau_z(h_0h_1)h_0
+  +\kappa z^{-2}\tau_z h_1-2\kappa z^{-3}H(z).
+\]
+The constant coefficients of the last two terms are
+\(3\kappa h_3\) and \(-2\kappa h_3\), respectively.
+Their sum is \(\kappa h_3\) over the integers and hence over
+every field.  The uncontracted constant coefficient is \(h_0^2h_1\).
+In \(Y(h_0,z)(h_1h_0)\), all annihilation terms have strictly
+negative powers of \(z\), and the creation constant is
+\(h_0^2h_1\).  This proves \eqref{sb:eq:heisenberg-associator}.
+
+Applying the two adjacent faces with \eqref{sb:eq:bar-signs} gives
+\[
+ b^2[a|b|c]=[(a\cdot b)\cdot c-a\cdot(b\cdot c)].
+\]
+The resulting nonzero vector proves the failure.  In a bar coderivation
+with a higher component from \(m_3\), the length-three,
+length-one component of its square is
+\(b_2^2+b_1b_3+b_3b_1\).  Here \(b_1=0\), so the associator
+would still have to vanish.  No choice of \(m_3\), or of components
+of greater arity, can alter this equation.
+\end{proof}
+
+For comparison, the unjetted triple has associator
+\((h_0\cdot h_0)\cdot h_0-h_0\cdot(h_0\cdot h_0)
+=2\kappa h_2\), which vanishes in characteristic two.
+The jet in \eqref{sb:eq:heisenberg-associator} is needed to detect the
+failure uniformly in the characteristic.
+
+Deconcatenation still makes any binary operation into a coderivation
+on tensor words.  Thus checking only that cuts commute with the proposed
+face operator would not detect this failure.  A bar complex needs both
+the cut identity and \(b^2=0\).
+
+\subsection{The augmentation and the native carrier}
+
+A collision-preserving map of state objects is required to commute
+with every coefficient operation
+\(a_{(n)}b=[z^{-n-1}]Y(a,z)b\) and to preserve the vacuum.
+The one-dimensional vacuum object \(k1\) has
+\(Y(1,z)1=1\); all its products with \(n\ge0\) vanish.
+
+\begin{proposition}[No vacuum augmentation at nonzero level]
+\label{sb:prop:augmentation-obstruction}
+If \(\kappa\ne0\), there is no vacuum-preserving,
+collision-preserving linear map \(V\to k1\).
+There is also no unital multiplication \(V\otimes V\to V\)
+preserving the tensor-product field operations and restricting to
+the identity on \(V\otimes1\) and \(1\otimes V\).
+These obstructions persist for compatibility up to chain homotopy
+on the zero-differential state complexes.
+\end{proposition}
+
+\begin{proof}
+The binary field gives \((h_0)_{(1)}h_0=\kappa1\).
+A proposed augmentation would send its left side to a nonnegative
+product of two elements of \(k1\), hence to zero, and its right
+side to \(\kappa1\ne0\).
+
+For the second assertion, the tensor-product field satisfies
+\[
+ Y_{V\otimes V}(h_0\otimes1,z)(1\otimes h_0)
+       =H(z)\otimes h_0.
+\]
+It is regular, so its coefficient of \(z^{-2}\) is zero.
+The two unit restrictions send its two inputs to \(h_0,h_0\),
+whose coefficient of \(z^{-2}\) is \(\kappa1\).
+This contradicts collision preservation.  Chain homotopies induce
+equal maps on cohomology.  Since the state differentials are zero,
+the same nonzero classes give the same contradictions there.
+\end{proof}
+
+The internal bar with two unit ends in a monoidal category
+\((\mathcal F,\otimes,\mathbf1)\) starts with an augmented associative algebra object
+\(\mathbf1\to A\to\mathbf1\).
+Its degree-\(n\) term is \(A^{\otimes n}\); multiplication,
+augmentation and unit give its faces and degeneracies.
+If \(\mathcal F\) consists of factorization objects, each of
+these maps must also preserve their collision structure.
+Consequently, any state realization preserving the tensor product,
+vacuum and collision coefficients must pass the two tests in
+Proposition~\ref{sb:prop:augmentation-obstruction}.
+The nonzero-level Heisenberg states with the stated field operations
+cannot furnish those data.  This is an obstruction to that specified
+realization, not a nonexistence theorem for every geometric bar.
+
+An augmentation of the ordinary polynomial algebra \(V\), obtained
+by killing all \(h_r\), is well defined.  Its ordinary associative
+bar also exists.  Proposition~\ref{sb:prop:augmentation-obstruction}
+proves precisely why that augmentation cannot be substituted for a
+collision-preserving one.  Likewise, an ordinary coefficient-bar
+comparison does not supply the missing geometric multiplication.
+
+\input{sections/mode-bar}
+
+\subsection{Induction over a fixed binary tree}
+
+In characteristic zero the coefficient comparison extends through any prescribed finite
+sequence of binary order intervals.  We state its domain and the
+extent of its coherence explicitly.
+
+Let a binary tree have internal vertices \(v_1,\ldots,v_m\),
+in a chosen processing order.  At vertex \(v\), choose a local
+child difference \(u_v\) and form the two algebras \(C_v,A_v\)
+of \eqref{sb:eq:two-chart} with \(u,s,\theta\) replaced by
+\(u_v,s_v,\theta_v\).
+For an augmented differential graded state algebra \(D\) over \(k\),
+put \(R_T=k[u_v:v\text{ internal}]\) and define
+\[
+ D_T^C=\left(\bigotimes_{v}C_v\right)\otimes D,
+ \qquad
+ D_T^A=\left(\bigotimes_{v}A_v\right)\otimes D.
+\]
+Tensor products are graded tensor products of algebras; their order is fixed.
+Their augmentations take the first endpoint at every vertex and the
+state augmentation in \(D\), with values in \(R_T\).
+All bars in this section are relative to \(R_T\).  Each local
+coefficient algebra is first extended from \(k[u_v]\) to \(R_T\).
+At step \(j\), move the factor \(C_{v_j}\) to the first
+position by the graded tensor permutation, apply
+Lemma~\ref{sb:lem:state-extension} with all other factors as its state
+algebra, and move \(A_{v_j}\) back.  Compose these coalgebra maps
+for \(j=1,\ldots,m\).  Call the result \(\mathcal I_T\).
+
+\begin{theorem}[Finite-tree coefficient bars]\label{sb:thm:tree-bars}
+In characteristic zero this recursion gives an explicit coalgebra
+chain quasi-isomorphism
+\[
+ \mathcal I_T:B_{R_T}(D_T^C)\longrightarrow B_{R_T}(D_T^A).
+\]
+It preserves cuts and the total spatial pole tuple in every word length.
+Every component is a finite sum of iterated polynomial integrals and
+products.  It commutes with spatial substitutions and formal collision
+expansions on the fixed-input domains described below.
+The assertion is for the specified processing order; it does not assert
+independence of that order or compatibility with every tree rotation.
+\end{theorem}
+
+\begin{proof}
+Each step is a coalgebra chain quasi-isomorphism by
+Lemma~\ref{sb:lem:state-extension}; the graded tensor permutations are
+strict algebra isomorphisms.  Their finite composite has the same
+properties.  Each higher component groups consecutive input words,
+so the recursion never increases word length and has finitely many
+terms on a fixed word.  A spatial coefficient of an original entry
+appears exactly once in each final product, so its pole contribution
+is added once.  This proves the bound by induction on the processed
+vertices.  The same recursion proves the cut identity, since it holds
+at each step.
+
+For a collision expansion, place one child of each vertex at coordinate
+zero and the other at \(u_v\).  Attach a scale \(\epsilon_v\)
+to each nonroot internal vertex.  A leaf coordinate is the sum of
+local displacements multiplied by the scales above them.  At the
+lowest common ancestor of two leaves their difference is
+\[
+ z_i-z_j=\lambda_v(u_v+h),
+\]
+up to a fixed sign, where \(\lambda_v\) is an ancestor-scale
+monomial and \(h\) has positive descendant-scale degree.
+On an overlap where the comparison varies, \(u_v\) is invertible.
+Its rational inverse expands geometrically after the finite factor
+\(\lambda_v^{-1}\).
+
+For fixed polynomial inputs and finitely many original denominators,
+these expansions lie in
+\[
+ B_T[[\epsilon_v]][(\prod_v\epsilon_v)^{-1}],
+\]
+where \(B_T\) is the specified tensor product of coordinate overlap
+rings.  First-endpoint evaluation commutes with these substitutions,
+since they change spatial coordinates only.  Thus the relative
+augmentations agree after extension to the formal spatial base.
+The negative exponent of each scale has a common finite lower
+bound.  A fixed scale coefficient and state weight uses finitely many
+terms.  Order-coordinate integration and each finite consecutive
+partition therefore commute with coefficient extraction.  Neither
+operation changes spatial variables.  This proves the asserted
+naturality on these domains.
+\end{proof}
+
+When a prescribed grafting procedure orders the new vertices, the
+recursion applies to that procedure and supplies all bar components
+at every step.  It supplies actual higher corrections to coefficient
+multiplication.  An operadic comparison would additionally identify
+different processing orders and tree rotations by homotopies that
+respect their boundary faces.  Such data are not implied by composing
+chain quasi-isomorphisms.
+
+The three-leaf comparison in Theorem~\ref{tr:thm:bar-rotation} constructs
+such homotopies on a specified localization, with its polynomial-form
+comparison in Proposition~\ref{tr:prop:form-square}.  That localization
+retains one collision divisor.  Proposition~\ref{tr:prop:global-obstruction}
+shows why the same equivalence cannot hold for the two whole
+coefficient complexes over their original spatial ring.  A comparison
+retaining every boundary and compatible with successive rotations
+requires further constructions.
+
+The completion restriction is necessary.  The series
+\[
+ \sum_{n\ge0}\epsilon^n u^{-n^2}
+\]
+is valid in \(k[u,u^{-1}][[\epsilon]]\), but replacing \(u\)
+by a second collision scale gives no lower bound in that scale.
+It does not lie in the simultaneous Laurent ring just displayed.
+The state operations have another restriction: in the free state
+completion, \(\eta_r\to0\), while the scalar component of
+\(Y_A(x_0,\eta_r)\) is \(\theta/u^{r+1}\), which does not
+tend to zero in its discrete weight-zero coefficient space.
+Neither arbitrary intermediate substitutions nor arbitrary completed
+state inputs are covered by the finite-tree construction.
+
+\subsection{From coefficient bars to geometric collisions}
+\label{sb:sec:state-native-boundary}
+
+The proved comparison has a precise boundary.  Polynomial-form
+coefficients and ordered overlap coefficients have quasi-isomorphic
+bars in characteristic zero, with every higher component explicitly
+given.  Their binary free-state operations agree under the linear
+component.  In positive characteristic the direct overlap operation
+retains the pole class, while any comparison from the same polynomial-form
+complex preserving it is impossible.
+
+The native bar with two unit ends requires further data:
+an actual augmented algebra object whose multiplication and augmentation
+are collision-preserving maps.  The normal product and vacuum projection
+of nonzero-level Heisenberg states fail these requirements by the
+computed length-three associator and binary pole class.
+A comparison retaining those Heisenberg collisions must therefore
+change the proposed augmented carrier or change the type of bar.
+Such a change must include an explicit map on states and coefficients;
+it cannot be achieved by reinterpreting the displayed constant product.
+The mode bar supplies one such change of algebraic carrier: it uses
+the actual Fock-module actions and computes their derived tensor product,
+with the stated balanced cuts.  The integral retraction of
+Theorem~\ref{mbh:thm:retraction} evaluates that tensor product on the
+same module ends.  For a characteristic-zero field \(k\), its
+evaluation at nonzero level is a quasi-isomorphism to \(k\).
+Over \(k[\kappa]\), the kernel of evaluation on homology is
+annihilated by \(\kappa\).  Positive characteristic has the
+explicit classes of
+Theorem~\ref{mbh:thm:positive-characteristic}.
+The two-sided coefficient comparison preserves every finite mode word
+in characteristic zero.  Neither comparison constructs a map to the
+geometric collision carrier or identifies the balanced cuts with a
+coproduct on a scalar-ended bar.
+
+\begin{problem}[A collision-preserving bar carrier]
+Construct a geometric chain carrier for Heisenberg collisions whose
+faces retain the singular coefficients and their central vacuum term.
+Specify its unit or augmentation data, collision pullbacks, state
+realization, and total grading.  Give a chain map from a stated
+coefficient presentation, and compare the two arity-three collision
+domains before constructing homotopies for their higher refinements.
+If an internal augmented associative bar is used, identify the added
+states or changed target that evade
+Proposition~\ref{sb:prop:augmentation-obstruction}; if another type of
+bar is used, define its differential and cuts directly.
+\end{problem}

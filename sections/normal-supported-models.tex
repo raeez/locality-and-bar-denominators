@@ -1,0 +1,637 @@
+\section{Normal Koszul models and supported direct image}
+\label{ns:sec}
+
+The principal parts in Section~\ref{sec:normal-locality} have a second
+description: they form a polynomial module for the normal derivative.
+For example, differentiating the class of \(t^{-1}\) generates every
+finite principal part.  To extend this observation to several normal
+operators, one must retain their action on the entire complex.  A chain
+homotopy between two coordinate operators alone does not specify an
+equivalence of complexes with all coordinates marked.  We construct
+such an equivalence, identify its supported recipient, and then give
+finite mutually inverse maps to a normal direct image.
+
+All sums below are algebraic direct sums, and the number \(r\) of
+normal directions is finite.  The first comparison holds over an
+arbitrary commutative ring.  The subsequent polynomial homotopies and
+Weyl-module comparisons require a commutative \(\mathbb Q\)-algebra.
+In this section differential modules are \emph{left} modules over the
+explicit relative Weyl algebra.  The normal restriction and direct
+image defined below use their displayed degrees; no identification
+with a differently normalized geometric adjunction is assumed.
+
+\subsection{Finite cutoffs and the supported complex}
+
+Let \(R\) be a commutative ring, let \(W\) be an \(R\)-module, and
+let \(N_1,\ldots,N_r\) be commuting \(R\)-linear endomorphisms.
+Give \(W\) the structure of a module over
+\(S=R[u_1,\ldots,u_r]\) by \(u_iw=N_iw\).
+The divided-power algebra \(\Gamma_R(\boldsymbol\tau)\) has basis
+\(p_{\boldsymbol n}\), for \(\boldsymbol n\in\mathbb N^r\), and
+operations
+\[
+ p_{\boldsymbol a}p_{\boldsymbol b}
+   =\binom{\boldsymbol a+\boldsymbol b}{\boldsymbol a}
+      p_{\boldsymbol a+\boldsymbol b},\qquad
+ \delta_i p_{\boldsymbol n}=p_{\boldsymbol n-\boldsymbol e_i}.
+\]
+The binomial coefficient is a product over the coordinates; a basis
+element with a negative index is zero.  Each \(\delta_i\) is a
+derivation.  Put
+\begin{equation}\label{ns:eq:normal-complex}
+ C(W)=\Gamma_R(\boldsymbol\tau)\otimes_R
+       \Lambda_R(\epsilon_1,\ldots,\epsilon_r)\otimes_R W,
+ \qquad
+ d=\sum_i\epsilon_i\wedge(N_i-\delta_i),
+ \qquad |\epsilon_i|=1.
+\end{equation}
+The commuting operators and the exterior signs give \(d^2=0\).
+Write \(C_N(W)\) for this complex with \(u_i=N_i\) acting on its
+last factor.
+
+For \(I=\{i_1<\cdots<i_q\}\), let
+\(W_{u_I}=W[(\prod_{i\in I}u_i)^{-1}]\), with
+\(W_{u_\varnothing}=W\), and put
+\(\epsilon_I=\epsilon_{i_1}\cdots\epsilon_{i_q}\).
+The extended \v{C}ech complex
+\(\check C_{\boldsymbol u}(W)\) has the summand
+\(W_{u_I}\epsilon_I\) in degree \(q\).
+Its differential is the sum of localization maps with left exterior
+multiplication by \(\epsilon_i\).  This fixes the signs in the
+following comparison.
+
+\begin{theorem}[The finite-cutoff comparison]\label{ns:thm:cech}
+There is a natural strict \(S\)-linear quasi-isomorphism
+\begin{equation}\label{ns:eq:cech-map}
+ F:C_N(W)\longrightarrow\check C_{\boldsymbol u}(W),\qquad
+ F(p_{\boldsymbol n}\epsilon_I w)=
+ \begin{cases}
+  \displaystyle\left(\prod_{i\in I}u_i^{-n_i-1}\right)w\epsilon_I,
+       &n_j=0\text{ for every }j\notin I,\\[2pt]
+  0,&\text{otherwise}.
+ \end{cases}
+\end{equation}
+No flatness, finite-generation, nilpotence or Noetherian hypothesis
+on \(W\) or \(R\) is required.
+\end{theorem}
+
+\begin{proof}
+First take \(r=1\).  For \(d_0\geq0\), the summands with
+divided-power index at most \(d_0\) form a two-term subcomplex
+\(C_{\leq d_0}\).  Its cohomology is
+\begin{equation}\label{ns:eq:cutoff-cohomology}
+ \begin{aligned}
+ H^0(C_{\leq d_0})&=\ker N^{d_0+1},&
+ w&\longmapsto\sum_{n=0}^{d_0}p_nN^nw,\\
+ H^1(C_{\leq d_0})&=W/N^{d_0+1}W,&
+ \sum_{n=0}^{d_0}p_nb_n\epsilon
+   &\longmapsto\sum_{n=0}^{d_0}N^{d_0-n}b_n.
+ \end{aligned}
+\end{equation}
+Indeed, the cycle equations are \(a_{n+1}=Na_n\) and
+\(Na_{d_0}=0\).  For a boundary \(b_n=Na_n-a_{n+1}\), where
+\(a_{d_0+1}=0\), the second sum telescopes to \(N^{d_0+1}a_0\).
+Conversely, if that sum is \(N^{d_0+1}a_0\), the recurrence
+\(a_{n+1}=Na_n-b_n\) ends in \(a_{d_0+1}=0\), and constructs
+a primitive.  Every cokernel class is represented by \(p_{d_0}w\epsilon\).
+
+The inclusion from cutoff \(d_0\) to cutoff \(d_0+1\) induces
+inclusion on the kernels and multiplication by \(N\) on the
+cokernels.  Exactness of filtered colimits therefore gives
+\[
+ H^0(C(W))=\ker(W\longrightarrow W_u),\qquad
+ H^1(C(W))=W_u/\operatorname{im}W.
+\]
+For the second equality the map on the colimit is
+\([w]_{d_0}\mapsto[u^{-d_0-1}w]\).  It is surjective.
+If this fraction is the image of \(a\in W\), then
+\(N^k(w-N^{d_0+1}a)=0\) for some \(k\).
+At stage \(d_0+k\), its representative is
+\(N^kw=N^{d_0+k+1}a\), so its cokernel class is zero.
+This proves injectivity.
+
+In these coordinates, \(F^0(\sum p_na_n)=a_0\) and
+\(F^1(\sum p_nb_n\epsilon)=\sum u^{-n-1}b_n\epsilon\).
+Its chain equation is the finite telescoping identity
+\[
+ \sum_{n\geq0}u^{-n-1}(Na_n-a_{n+1})=a_0
+ \quad\text{in }W_u.
+\]
+It induces exactly the two cohomology isomorphisms just proved.
+
+For finite \(r\), apply this comparison successively in each
+direction.  All remaining operators commute with the one-variable
+map.  Filter the total complex by the exterior degrees in those
+remaining directions.  This filtration is finite, and on each
+associated piece the one-variable comparison is a quasi-isomorphism.
+Induction proves the assertion.  Left exterior multiplication gives
+precisely the signs in \eqref{ns:eq:cech-map}.
+\end{proof}
+
+Let \(Z=V(u_1,\ldots,u_r)\subset\operatorname{Spec}S\).
+The extended \v{C}ech complex represents the supported localization
+object \(R\Gamma_Z(W)\); see \cite{stacks-supported}*{Lemma 47.9.1}.
+Here this notation means the right adjoint to the inclusion of the
+derived category with cohomology supported on \(Z\).
+Over a general ring it need not be the right-derived functor of the
+ordinary ideal-torsion functor.  The explicit complex and map above
+are the comparisons used in this section.
+
+\subsection{A coherent change of coordinate marking}
+
+Now assume that \(R\) is a \(\mathbb Q\)-algebra.  The same complex
+\eqref{ns:eq:normal-complex} has another strict \(S\)-action,
+\(u_i=\delta_i\); denote it by \(C_\delta(W)\).
+Left contraction \(h_i=\iota_{\epsilon_i}\) satisfies
+\begin{equation}\label{ns:eq:marking-homotopy}
+ dh_i+h_id=N_i-\delta_i.
+\end{equation}
+To compare all the markings simultaneously, use the polynomial
+differential graded algebra
+\[
+ \Omega=R[s,ds],\qquad |s|=0,\quad |ds|=1,
+ \qquad (ds)^2=0,\quad d_\Omega s=ds.
+\]
+On \(A=\Omega\otimes_R C(W)\), the tensor differential is
+\(d_A(\omega\otimes c)=d_\Omega\omega\otimes c+
+(-1)^{|\omega|}\omega\otimes dc\).
+
+\begin{theorem}[The marked polynomial roof]\label{ns:thm:roof}
+The degree-zero operators
+\begin{equation}\label{ns:eq:path-marking}
+ U_i=N_i-s(N_i-\delta_i)-ds\,h_i
+\end{equation}
+define a strict \(S\)-module structure on \(A\).
+The last term uses the Koszul tensor sign: on \(f(s)\otimes c\)
+it is \(-ds\,f(s)\otimes h_ic\), and it vanishes on
+\(ds\,f(s)\otimes c\).
+Evaluation at the two endpoints gives a natural roof of strict
+\(S\)-linear quasi-isomorphisms
+\begin{equation}\label{ns:eq:roof}
+ C_N(W)\xleftarrow{\ e_0\ }A
+             \xrightarrow{\ e_1\ }C_\delta(W).
+\end{equation}
+Thus both marked complexes represent the supported object of
+Theorem~\ref{ns:thm:cech} in \(D(S)\).
+\end{theorem}
+
+\begin{proof}
+Write \(L_i=N_i-\delta_i\).  All \(N_i,\delta_i\) commute with
+the contractions, and products of two \(ds\,h_i\) terms vanish.
+Hence \([U_i,U_j]=0\).  The differential commutators are
+\[
+ [d_A,N_i-sL_i]=-ds\,L_i,\qquad
+ [d_A,-ds\,h_i]=ds\,(dh_i+h_id)=ds\,L_i.
+\]
+They cancel.  Evaluation \(s=a,ds=0\) gives the claimed coordinate
+action at \(a=0,1\), so both endpoint maps are \(S\)-linear chain maps.
+
+On \(\Omega\), define a degree-minus-one map by
+\[
+ H_a(f(s))=0,\qquad
+ H_a(ds\,f(s))=\int_a^s f(v)\,dv.
+\]
+Polynomial integration exists over \(R\), and
+\(d_\Omega H_a+H_ad_\Omega=1-j e_a\), where \(j\) includes
+constants.  Tensoring this contraction with \(C(W)\) proves that
+each \(e_a\) is a quasi-isomorphism, without any flatness assumption.
+The contraction is used as an \(R\)-linear contraction; it is not
+asserted to preserve the \(S\)-action.
+The inverse derived equivalence is the same roof read in reverse.
+\end{proof}
+
+\subsection{Normal derivatives and finite triangular maps}
+
+Let \(\mathcal D_R\) be the relative polynomial Weyl algebra generated
+by \(u_i,\partial_i\), with
+\[
+ [\partial_i,u_j]=\delta_{ij},\qquad
+ [u_i,u_j]=[\partial_i,\partial_j]=0,
+\]
+and with \(R\) central.  Suppose \(W\) is a left
+\(\mathcal D_R\)-module, and write \(N_i=u_i|_W\) and
+\(D_i=\partial_i|_W\).  Let \(m_i\) be multiplication by
+\(p_{\boldsymbol e_i}\) on the divided-power factor.
+
+\begin{lemma}[The derivative correction]\label{ns:lem:derivative}
+On \(C_N(W)\) and \(C_\delta(W)\), the derivatives
+\begin{equation}\label{ns:eq:corrected-derivative}
+ \partial_i^C=D_i-m_i
+\end{equation}
+give left \(\mathcal D_R\)-module structures compatible with the
+differential.  On \(A\), use the same derivatives, acting trivially
+on \(\Omega\), and the coordinates \(U_i\).
+Every arrow of \eqref{ns:eq:roof} and the map \(F\) is then
+\(\mathcal D_R\)-linear.  On localizations of \(W\), derivatives
+act by the quotient rule.
+\end{lemma}
+
+\begin{proof}
+The identity \([\delta_i,m_j]=\delta_{ij}\) gives
+\[
+ [d,D_i-m_i]=0,\qquad
+ [D_i-m_i,N_j]=[D_i-m_i,\delta_j]=\delta_{ij}.
+\]
+The derivatives commute with one another and with every \(h_j\).
+Consequently \([\partial_i^C,U_j]=\delta_{ij}\) and
+\([d_A,\partial_i^C]=0\).  Endpoint evaluation preserves them.
+
+If \(i\in I\), the image under \(F\) of the \(-m_i\) term is
+\[
+ -(n_i+1)u_i^{-n_i-2}
+       \prod_{j\in I\setminus\{i\}}u_j^{-n_j-1}w\epsilon_I.
+\]
+This is the derivative of the denominator in
+\eqref{ns:eq:cech-map}; the \(D_i\) term differentiates \(w\).
+If \(i\notin I\), \(F\) kills the raised divided-power term and
+there is no \(u_i\)-denominator to differentiate.  This proves the
+claim on every summand.  Without the term \(-m_i\), the residual
+commutator would be \([d,D_i]=-\epsilon_i\wedge\).
+\end{proof}
+
+Define the left \(\mathcal D_R\)-module
+\[
+ \mathcal B_R=\mathcal D_R\big/\sum_i\mathcal D_Ru_i.
+\]
+Normal ordering identifies it with \(R[z_1,\ldots,z_r]\), where
+\(\partial_i\) multiplies by \(z_i\) and
+\(u_i=-\partial/\partial z_i\).  It is also a free right
+\(R\)-module.  For a complex \(V\) of \(R\)-modules define the
+normal direct image by
+\[
+ i_+V=\mathcal B_R\otimes_R V.
+\]
+Define the normal restriction by
+\(i^!W=R\operatorname{Hom}_{\mathcal D_R}(\mathcal B_R,W)\).
+Its explicit representative is
+\begin{equation}\label{ns:eq:normal-restriction}
+ K(W,N)=\left(\Lambda_R(\epsilon_1,\ldots,\epsilon_r)
+               \otimes_R W,\ \sum_i\epsilon_i\wedge N_i\right),
+\end{equation}
+in degrees zero through \(r\).
+
+\begin{theorem}[The supported direct-image comparison]
+\label{ns:thm:pushforward}
+Put \(z^{[\boldsymbol n]}=\prod_i z_i^{n_i}/n_i!\), and use
+multiindex inequalities and factorials componentwise.
+There is a strict \(\mathcal D_R\)-linear chain isomorphism
+\(\Phi:i_+K(W,N)\to C_\delta(W)\), with inverse \(\Psi\), given by
+\begin{align}
+ \Phi(z^{[\boldsymbol n]}\epsilon_Iw)
+  &=\sum_{\boldsymbol j\leq\boldsymbol n}(-1)^{|\boldsymbol j|}
+       p_{\boldsymbol j}\epsilon_I
+       \frac{D^{\boldsymbol n-\boldsymbol j}}
+            {(\boldsymbol n-\boldsymbol j)!}w,
+       \label{ns:eq:phi}\\
+ \Psi(p_{\boldsymbol n}\epsilon_Iw)
+  &=\sum_{\boldsymbol j\leq\boldsymbol n}(-1)^{|\boldsymbol j|}
+       z^{[\boldsymbol j]}\epsilon_I
+       \frac{D^{\boldsymbol n-\boldsymbol j}}
+            {(\boldsymbol n-\boldsymbol j)!}w.
+       \label{ns:eq:psi}
+\end{align}
+Together with \eqref{ns:eq:roof} and \eqref{ns:eq:cech-map}, these
+maps give a natural equivalence on the ambient normal space,
+\begin{equation}\label{ns:eq:supported-equivalence}
+ i_+i^!W\simeq R\Gamma_Z(W)\quad\text{in }D(\mathcal D_R).
+\end{equation}
+Every sum defining a map on an element is finite, independently of
+the derivative action on \(W\).
+\end{theorem}
+
+\begin{proof}
+Normal ordering makes \(\mathcal D_R\) free as a right
+\(R[\boldsymbol u]\)-module, with derivative monomials as basis.
+The Koszul resolution of the coordinate quotient over
+\(R[\boldsymbol u]\) is exact over every \(R\): multiplication
+by the next polynomial variable is injective after the preceding
+variables have been set to zero.  Extension by the free right
+module \(\mathcal D_R\) gives a finite free left
+\(\mathcal D_R\)-resolution of \(\mathcal B_R\); its maps are
+right multiplications by the coordinates, with Koszul signs.
+Applying \(\operatorname{Hom}_{\mathcal D_R}(-,W)\) gives
+\eqref{ns:eq:normal-restriction}.  Freeness of \(\mathcal B_R\)
+over \(R\) also justifies the ordinary tensor in \(i_+\).
+
+Write \(L_i=D_i-m_i\).  Formula~\eqref{ns:eq:phi} is equivalently
+\[
+ \Phi(z^{[\boldsymbol n]}\epsilon_Iw)
+       =\frac{L^{\boldsymbol n}}{\boldsymbol n!}(p_0\epsilon_Iw).
+\]
+Indeed, \(m_i^jp_0=j!p_{j\boldsymbol e_i}\).
+This expression intertwines \(\partial_i\) with \(L_i\).
+The identity \([\delta_i,L_j]=-\delta_{ij}\) intertwines the
+coordinate actions \(-\partial/\partial z_i\) and \(\delta_i\).
+The differential on \(p_0\epsilon_Iw\) is the Koszul differential
+of \(K(W,N)\), and it commutes with every \(L_i\).
+Thus \(\Phi\) is a \(\mathcal D_R\)-linear chain map.
+
+The inverse formulas are finite triangular substitutions
+\(z_i=D_i-m_i\) and \(m_i=D_i-z_i\).
+More explicitly, in either composite the coefficient indexed by
+\(\boldsymbol\ell\leq\boldsymbol n\) contains, for each coordinate,
+the factor
+\[
+ \frac{D_i^{n_i-\ell_i}}{(n_i-\ell_i)!}
+ \sum_{j=\ell_i}^{n_i}(-1)^{j+\ell_i}
+          \binom{n_i-\ell_i}{j-\ell_i}.
+\]
+It is zero if \(\ell_i<n_i\), and is one if \(\ell_i=n_i\).
+This proves both inverse identities, without an infinite series.
+Finally the actual chain of comparisons is
+\[
+ i_+K(W,N)\xrightarrow{\ \Phi\ }C_\delta(W)
+     \xleftarrow{\ e_1\ }A
+     \xrightarrow{\ e_0\ }C_N(W)
+     \xrightarrow{\ F\ }\check C_{\boldsymbol u}(W).
+\]
+Each arrow is a strict \(\mathcal D_R\)-linear quasi-isomorphism.
+Their inverses in the derived category give the inverse of
+\eqref{ns:eq:supported-equivalence}.
+\end{proof}
+
+\subsection{Cohomology maps and the first normal pole}
+
+In one direction, put
+\(T=\ker(W\to W_u)\) and \(Q=W_u/\operatorname{im}W\).
+The preceding comparison identifies both cohomology modules and
+their derivative actions.
+
+\begin{proposition}[Explicit cohomology and inverse maps]
+\label{ns:prop:cohomology}
+There are isomorphisms of left Weyl modules
+\begin{align}
+ R[z]\otimes_R\ker N&\longrightarrow T,&
+ z^n\otimes w&\longmapsto D^nw,\label{ns:eq:torsion-map}\\
+ \Theta:R[z]\otimes_R\operatorname{coker}N&\longrightarrow Q,&
+ z^n\otimes[w]&\longmapsto D^n[u^{-1}w].\label{ns:eq:quotient-map}
+\end{align}
+On their sources \(u=-\partial_z\) and \(\partial_u=z\).
+Both inverses are finite on each element.
+\end{proposition}
+
+\begin{proof}
+After forgetting the coordinate markings, the maps \(e_0\) and
+\(e_1\) are chain homotopic: integration of the \(ds\)-coefficient
+from zero to one gives a homotopy from \(e_0\) to \(e_1\).
+They therefore induce the same map on the common underlying
+\(R\)-cohomology.  Thus the cohomology maps of the full roof can
+be computed by the composite of underlying \(R\)-chain maps
+\(F\Phi\).  The strict Weyl-linear comparison remains the roof
+in Theorem~\ref{ns:thm:pushforward}.
+In degree one the quotient rule expands \(D^n[u^{-1}w]\) into
+exactly the triangular sum.
+Replacing \(w\) by \(w+Nv\) adds derivatives of the image of
+\(v\in W\), so the second formula is well defined.
+Theorem~\ref{ns:thm:pushforward} already proves that these maps are
+isomorphisms.  We give the inverses explicitly.
+
+For any Weyl module \(V\) on which \(u\) is locally nilpotent, set
+\begin{equation}\label{ns:eq:projector}
+ E_V(v)=\sum_{j\geq0}\frac{D^ju^jv}{j!}.
+\end{equation}
+The sum is finite.  From
+\(uD^j=D^ju-jD^{j-1}\), one obtains \(uE_V=0\) and
+\(E_V|_{\ker u}=1\).  The reconstruction identity is
+\begin{equation}\label{ns:eq:finite-reconstruction}
+ v=\sum_{n\geq0}\frac{(-1)^n}{n!}D^nE_V(u^nv).
+\end{equation}
+After expansion, the coefficient of \(D^ku^k\) is
+\(\sum_{n=0}^k(-1)^n/(n!(k-n)!)\), which is zero for \(k>0\).
+All double sums are finite because \(u^kv=0\) for large \(k\).
+For \(a\in\ker u\), the same binomial identity gives
+\(E_VD^ma=0\) when \(m>0\).  Applying \(E_Vu^n\) to a finite
+sum \(\sum_mD^ma_m\) therefore recovers \((-1)^nn!a_n\).
+The decomposition is unique, with inverse
+\begin{equation}\label{ns:eq:inverse-reconstruction}
+ v\longmapsto\sum_{n\geq0}\frac{(-1)^n}{n!}
+       z^n\otimes E_V(u^nv).
+\end{equation}
+
+Both \(T\) and \(Q\) have locally nilpotent coordinate action.
+For \(T\), \(\ker u=\ker N\), giving the inverse to
+\eqref{ns:eq:torsion-map}.  For \(Q\), the map
+\[
+ \theta_0:\operatorname{coker}N\longrightarrow\ker(u:Q\to Q),
+ \qquad [w]\longmapsto[u^{-1}w]
+\]
+is surjective: if \(uv\) is the image of \(w\in W\), then
+\(v=u^{-1}w\) in \(W_u\).  Its kernel is represented by
+\(NW+T\).  Formula~\eqref{ns:eq:finite-reconstruction} on \(T\)
+gives \(uT=T\), since for \(a\in\ker u\)
+\[
+ D^na=u\left(-\frac{D^{n+1}a}{n+1}\right).
+\]
+Hence \(T\subset NW\), and \(\theta_0\) is injective.
+The inverse of \(\Theta\) is
+\[
+ q\longmapsto\sum_{n\geq0}\frac{(-1)^n}{n!}z^n\otimes
+              \theta_0^{-1}\bigl(E_Q(u^nq)\bigr).
+\]
+\end{proof}
+
+Return to the coefficient ring \(F\) and power-series module
+\(B=F[[t]]\) of Section~\ref{sec:normal-locality}.
+In the preceding results take the base ring to be \(R=F\), take
+\(W=B\), and let \(u\) act by multiplication by \(t\) and
+\(D=\partial_t\).  These are \(F\)-linear operators with
+\([\partial_t,t]=1\); the derivative is not \(B\)-linear.
+Multiplication by \(t\) is injective and has cokernel \(F\).
+Thus the supported complex \([B\to B[t^{-1}]]\), which is the
+augmentation ideal of \(\A(B)\) as a complex, has
+\begin{equation}\label{ns:eq:principal-part-weyl}
+ H^1\cong F[z],\qquad
+ z^n\longmapsto\partial_t^n[t^{-1}]
+          =(-1)^nn![t^{-n-1}].
+\end{equation}
+The polynomial \(1\) represents the first nonzero pole.
+This is a polynomial Weyl-module comparison.  It specifies no
+augmented \(F[[t]]\)-algebra structure on the polynomial endpoint,
+no coefficient-bar map, and no vertex comparison.
+In particular it does not supply a primitive for
+\(\theta_b/t-\theta_c/t\) in the independent interval carriers of
+Theorem~\ref{nl:thm:obstruction}.  The pole retained by
+\eqref{ns:eq:principal-part-weyl} is precisely the class used there.
+
+\subsection{A level family and its derived special fibre}
+
+The point-valued restriction and its ambient direct image also
+distinguish two specializations of a parameter family.
+Take
+\begin{equation}\label{ns:eq:level-family}
+ R=\mathbb C[\kappa],\qquad W=R[t],\qquad
+ N=\kappa t-\partial_t,\qquad D=t.
+\end{equation}
+Here \([D,N]=1\), so \(u=N\), \(\partial_u=D\) defines a
+left relative Weyl module.  Write \(G=\operatorname{coker}N\).
+
+\begin{theorem}[The ambient special fibre]\label{ns:thm:level}
+For \eqref{ns:eq:level-family}, the map \(N\) is injective and
+\begin{equation}\label{ns:eq:level-cokernel}
+ G\cong R[\kappa^{-1}]\oplus R[\kappa^{-1}]/R.
+\end{equation}
+Under the second summand, \([t]\) corresponds to
+\(\kappa^{-1}\bmod R\).  The supported complex has only
+degree-one cohomology
+\[
+ Q=W_u/W\cong R[z]\otimes_R G.
+\]
+There is an exact sequence
+\begin{equation}\label{ns:eq:level-exact}
+ 0\longrightarrow\mathbb C[z]\xrightarrow{\ \beta\ }Q
+       \xrightarrow{\ \kappa\ }Q\longrightarrow0,
+ \qquad
+ \beta(v)=v(\partial_u)[u^{-1}t].
+\end{equation}
+Consequently \(Q/\kappa Q=0\), whereas
+\(\operatorname{Tor}_1^R(Q,R/(\kappa))\cong\mathbb C[z]\).
+The derived special fibre of the supported complex is
+\(\mathbb C[z]\) in degree zero.  It is the normal direct image
+of the degree-zero point-valued restriction \(\mathbb C\).
+\end{theorem}
+
+\begin{proof}
+For a nonzero polynomial with leading term \(a_n(\kappa)t^n\),
+the leading term of its image under \(N\) is
+\(\kappa a_n(\kappa)t^{n+1}\), which is nonzero.
+Thus \(N\) and all its powers are injective, and \(W\to W_u\)
+is injective.  The relations in \(G\) are
+\[
+ \kappa[t^{n+1}]=n[t^{n-1}]\quad(n\geq0).
+\]
+They involve even and odd powers separately.  With
+\((-1)!!=0!!=1\), put
+\[
+ a_m=\frac{[t^{2m}]}{(2m-1)!!},\qquad
+ b_m=\frac{[t^{2m+1}]}{(2m)!!}.
+\]
+Their presentations are \(\kappa a_{m+1}=a_m\), and
+\(\kappa b_0=0,\ \kappa b_{m+1}=b_m\), respectively.
+The maps \(a_m\mapsto\kappa^{-m}\) and
+\(b_m\mapsto\kappa^{-m-1}\bmod R\) identify these presentations
+with the two summands of \eqref{ns:eq:level-cokernel}.
+Both are \(\kappa\)-divisible, and
+\(G[\kappa]=\mathbb C\cdot[t]\), the one-dimensional span of the
+class \([t]\).  Applying the exact functor \(R[z]\otimes_R-\)
+and Proposition~\ref{ns:prop:cohomology} proves
+\eqref{ns:eq:level-exact} and the assertions about kernel and cokernel
+of \(\kappa\).  The two-term free resolution of \(R/(\kappa)\)
+identifies that kernel with the stated \(\operatorname{Tor}_1\).
+
+The connecting class can also be seen before taking supported
+cohomology.  For \(v(t)\in\mathbb C[t]\), its horizontal cycle
+at \(\kappa=0\) is \(\sum_{j\geq0}p_j(-\partial_t)^jv\).
+Lifting this finite sum to \(R[t]\), applying the differential
+and dividing by \(\kappa\) gives
+\begin{equation}\label{ns:eq:beta}
+ \beta(v)=\left[t\sum_{j\geq0}p_j(-\partial_t)^jv\,\epsilon\right]
+       \quad\text{in }H^1(C(W)).
+\end{equation}
+For \(v=t^n\), its image under \(F\) is
+\[
+ \sum_{j=0}^n(-1)^j\frac{n!}{(n-j)!}
+          u^{-j-1}t^{n-j+1}
+       =\partial_u^n(u^{-1}t)\quad\bmod W.
+\]
+The equality is the quotient rule with \(D=t\).
+It identifies \eqref{ns:eq:beta} with the injection in
+\eqref{ns:eq:level-exact}, under \(v(t)\leftrightarrow v(z)\).
+
+The two terms of \(C(W)\) are \(R\)-free, so ordinary reduction
+of this complex computes its derived reduction.  At \(\kappa=0\),
+\(N=-\partial_t\) is locally nilpotent.  The kernel and cokernel
+calculation in \eqref{ns:eq:cutoff-cohomology}, followed by the
+colimit, gives \(H^0(C(W)/\kappa)=\mathbb C[t]\) and
+\(H^1(C(W)/\kappa)=0\).  Under \eqref{ns:eq:torsion-map} this is
+\(\mathbb C[z]\), with \(z\) corresponding to multiplication by
+\(t\).  On the point, the normal restriction at \(\kappa=0\) is
+\[
+ [\mathbb C[t]\xrightarrow{-\partial_t}\mathbb C[t]],
+\]
+whose cohomology is \(\mathbb C\) in degree zero, since
+differentiation is surjective and has the constants as kernel.
+Its direct image is exactly \(\mathbb C[z]\).
+Over \(R\), the supported complex is \(Q[-1]\); the
+\(\operatorname{Tor}_1\) term therefore supplies its degree-zero
+derived special fibre.  Taking only \(Q/\kappa Q\) loses this class.
+\end{proof}
+
+\subsection{When the marking roof preserves all vertex products}
+
+The Weyl-module comparison has used linear operators.  A comparison
+of fields requires an additional hypothesis on every product.
+Let \(R\) again be a commutative \(\mathbb Q\)-algebra, and let
+\(W\) be a differential graded vertex superalgebra over \(R\).
+Suppose the commuting degree-zero operators \(N_i\) differentiate
+every integer-indexed product, commute with the internal differential
+and every translation, and kill the vacuum.  Give
+\(\Gamma_R(\boldsymbol\tau)\), \(\Lambda_R(\boldsymbol\epsilon)\)
+and \(\Omega\) their regular scalar vertex structures with zero
+vertex translations.  Include the internal differential of \(W\)
+in \eqref{ns:eq:normal-complex}, with the usual tensor signs.
+
+\begin{proposition}[Every-product compatibility]\label{ns:prop:vertex}
+Under these hypotheses, \eqref{ns:eq:roof} is a roof of
+quasi-isomorphisms of differential graded vertex superalgebras with
+commuting marked derivations.  Its maps preserve every integer-indexed
+product, the vacuum and all translations.  No local nilpotence is
+needed for this roof.
+
+If each \(N_i\) is locally nilpotent, there is in addition a strict
+quasi-isomorphism to either endpoint,
+\begin{equation}\label{ns:eq:horizontal}
+ I:W\longrightarrow C(W),\qquad
+ I(w)=\sum_{\boldsymbol n\in\mathbb N^r}
+               p_{\boldsymbol n}N^{\boldsymbol n}w.
+\end{equation}
+It preserves all the same vertex structure and intertwines the
+markings \(N_i\) on \(W\) with either \(N_i\) or \(\delta_i\)
+on \(C(W)\).
+\end{proposition}
+
+\begin{proof}
+Each \(N_i\) and \(\delta_i\) is a derivation of every
+scalar-extended product.  The contraction \(h_i\) is an odd
+derivation of the exterior scalar algebra.  Multiplying it by the
+odd scalar \(ds\), with the tensor sign, makes an even derivation.
+Thus every \(U_i\) in \eqref{ns:eq:path-marking} differentiates
+every product.  It kills the vacuum and commutes with translations.
+The contraction supercommutes with the internal differential, so
+the commutator proof of Theorem~\ref{ns:thm:roof} still applies.
+Endpoint evaluation is a unital differential graded scalar-algebra
+map.  It therefore preserves all vertex products and translations;
+its underlying quasi-isomorphism is the polynomial contraction
+already proved.
+
+For the second assertion, commutation and local nilpotence give,
+for each \(w\), a finite rectangular bound on
+\(N^{\boldsymbol n}w\).  Hence \eqref{ns:eq:horizontal} is a
+finite sum and satisfies \(dI=I d_W\), by cancellation of
+\(N_i\) against the index shift \(\delta_i\).
+It intertwines both markings by the same shift.
+For every product index \(k\), iterated Leibniz gives
+\[
+ N^{\boldsymbol n}(a_{(k)}b)
+   =\sum_{\boldsymbol p+\boldsymbol q=\boldsymbol n}
+        \binom{\boldsymbol n}{\boldsymbol p}
+        (N^{\boldsymbol p}a)_{(k)}(N^{\boldsymbol q}b).
+\]
+The divided-power multiplication gives precisely these coefficients
+in \(I(a)_{(k)}I(b)\).  Vacuum and translation compatibility follow
+from the corresponding hypotheses on \(N_i\).
+For a locally nilpotent coordinate, localization is zero.
+Thus the extended \v{C}ech complex is just \(W\), and
+\(FI=\id_W\).  The proof of Theorem~\ref{ns:thm:cech} applies
+degreewise to the internal complex: its finite exterior filtration
+still proves that \(F\) is a quasi-isomorphism.
+It follows that \(I\) is a quasi-isomorphism as well.
+\end{proof}
+
+This proposition applies to the normal vertex complex with its
+stated derivations.  It assigns no vertex structure to a general
+\v{C}ech localization or to \(i_+K(W,N)\), and the triangular
+map \(\Phi\) is not asserted to be multiplicative.
+The supported module equivalence and the marked vertex roof are
+therefore separate inputs to a possible collision comparison.
+Neither changes the coefficient multiplication or supplies the
+missing ternary primitive in Section~\ref{sec:normal-locality}.

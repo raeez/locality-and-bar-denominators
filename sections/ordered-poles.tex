@@ -1,0 +1,658 @@
+\section{Pole bounds for bar faces and ordered collisions}
+\label{op:sec:ordered-poles}
+
+The multiplication faces of an internal bar compose adjacent inputs.
+For coefficient operations with poles, this requires a filtration
+preserved by the actual multiplication.  A collision expansion has its
+own bound.  Already three
+points give
+\begin{equation}\label{op:eq:three-simple-poles}
+ [t^{-1}]\frac{1}{t(x+t)x}=\frac{1}{x^2},
+ \qquad z_1=z_2+t,\quad x=z_2-z_3.
+\end{equation}
+Thus a residue can merge three simple poles into a double pole.
+Multiplication in an associative bar has a different, additive bound.
+We first describe that bound, then calculate the collision coefficients.
+All coordinates and series in this section are algebraic or formal.
+
+\subsection{The filtration preserved by multiplication faces}
+
+Let \(I\) be a finite labelled set, with an auxiliary total order used
+to write each unordered difference once.  Put
+\[
+ R_I=k[z_i:i\in I],\qquad
+ L_I=R_I[(z_i-z_j)^{-1}:i<j].
+\]
+For a tuple \(N=(N_{ij})_{i<j}\) of nonnegative integers define
+\[
+ D_I(N)=\left(\prod_{i<j}(z_i-z_j)^{-N_{ij}}\right)R_I.
+\]
+This is a vector subspace of \(L_I\), rather than a subalgebra.
+It consists of rational functions with pole order at most \(N_{ij}\)
+along each diagonal.  Distinct unordered differences are nonassociated
+prime elements of the polynomial ring.  The pole bounds therefore have
+their usual valuation meaning, independently of the chosen ordering.
+
+Choose distinct \(\lambda_i\in k\).  Evaluation at \(z_i=\lambda_i\)
+defines an augmentation \(\varepsilon:L_I\to k\).  Let
+\(\bar L_I=\ker\varepsilon\) and
+\(\bar D_I(N)=D_I(N)\cap\bar L_I\).  The normalized bar has
+\(B_r=\bar L_I^{\otimes r}\), with homological differential
+\begin{equation}\label{op:eq:pole-bar-differential}
+ b[f_1|\cdots|f_r]
+ =\sum_{i=1}^{r-1}(-1)^i
+ [f_1|\cdots|f_if_{i+1}|\cdots|f_r].
+\end{equation}
+Here all algebra elements are in degree zero and have even parity.
+Associativity makes \(b^2=0\), and the outer faces vanish on the
+augmentation ideal.
+
+\begin{proposition}[Total pole bounds in the normalized bar]
+\label{op:prop:bar-pole-budget}
+For a nonnegative tuple \(P\), set
+\[
+ F_PB_r=
+ \sum_{N^{(1)}+\cdots+N^{(r)}\le P}
+ \bar D_I(N^{(1)})\otimes\cdots\otimes\bar D_I(N^{(r)}),
+ \qquad F_PB_0=k.
+\]
+The inequalities are componentwise.  These spaces form an exhaustive
+increasing filtration by subcomplexes.  The multiplication bound
+\[
+ D_I(N)D_I(M)\subseteq D_I(N+M)
+\]
+is sharp on every diagonal.  A bound imposed separately on every bar
+entry need not define a subcomplex.
+\end{proposition}
+
+\begin{proof}
+Write the two factors with the displayed denominators.  Multiplication
+adds their exponent tuples, and a product of augmentation-ideal
+elements remains in that ideal.  In each term of
+\eqref{op:eq:pole-bar-differential}, replace
+\(N^{(i)},N^{(i+1)}\) by \(N^{(i)}+N^{(i+1)}\).
+The total tuple does not change.  This proves preservation of \(F_P\).
+Every tensor is a finite sum of pure tensors whose rational entries
+have finite pole bounds, proving exhaustivity.
+
+For sharpness it suffices to use
+\(L=k[d,d^{-1}]\), with \(\varepsilon(d)=1\).
+For any \(N\ge1\), the element \(u_N=d^{-N}-1\) belongs to
+\(\ker\varepsilon\) and has exact pole order \(N\) at \(d=0\).
+The only inner face of \([u_N|u_N]\) is
+\(-[u_N^2]\), and
+\[
+ u_N^2=d^{-2N}-2d^{-N}+1
+\]
+has exact pole order \(2N\).  More generally \(u_Nu_M\) has exact
+order \(N+M\).  Thus a uniform positive bound on individual entries
+fails under an actual bar face.
+\end{proof}
+
+\begin{remark}[Linear filtrations with several divisors]
+\label{op:rem:linear-pole-filtration}
+For a coordinate divisor \(E\), let \(v_E\) be its discrete valuation,
+normalized to take value one on a local equation.  Put
+\(p_E(f)=\max(0,-v_E(f))\) for \(f\ne0\), and \(p_E(0)=0\).
+The valuation identity gives
+\[
+ p_E(fg)\le p_E(f)+p_E(g).
+\]
+Equality holds when both valuations are nonpositive.  A zero of one
+factor can reduce the pole of their product.
+
+A single integer bound for several divisors gives a linear bar
+filtration by taking
+\[
+ F_m^{\mathrm{tot}}B_r=\sum_{\sum_{i<j}P_{ij}\le m}F_PB_r,
+ \qquad m\ge0.
+\]
+Each summand is a subcomplex by
+Proposition~\ref{op:prop:bar-pole-budget}, so their sum is a subcomplex.
+The linear span is necessary.  In \(k[x^{\pm1},y^{\pm1}]\),
+augmented by evaluation at \((1,1)\), let
+\[
+ u=x^{-1}-1,\qquad v=y^{-1}-1.
+\]
+Each has total pole order one along the coordinate divisors.
+Their sum has order one along each divisor, hence total order two.
+The respective leading coefficients are one, so this remains true
+in characteristic two.  Thus the literal set of functions with
+bounded sum of divisor pole orders need not be a vector subspace.
+The filtration above takes sums of the separately bounded spaces.
+\end{remark}
+
+The two-sided simplicial bar of
+Proposition~\ref{prop:internal-bar} uses multiplication at fixed Ran
+arity.  Its geometric definition supplies no rational-coordinate
+presentation or pole lattice.  Proposition~\ref{op:prop:bar-pole-budget}
+applies to such a presentation when multiplication respects the stated
+filtration.  A collision of configuration labels is a separate map.
+
+\subsection{An exact bound for a collision coefficient}
+
+Relabel the colliding pair as \(1,2\), retaining label \(2\).
+For \(j\ge3\) put
+\[
+ A=N_{12},\qquad B_j=N_{1j},\qquad C_j=N_{2j},\qquad
+ x_j=z_2-z_j.
+\]
+Substitute \(z_1=z_2+t\) and expand at \(t=0\), with every
+\(x_j\) invertible before completion.  This defines a ring map
+\[
+ \operatorname{Exp}_{12}:L_I\longrightarrow
+ L_{I\setminus\{1\}}[[t]][t^{-1}].
+\]
+Indeed, \(z_1-z_2\) maps to \(t\), and
+\(z_1-z_j\) maps to the unit \(x_j+t\) in the power-series ring.
+Let \(C_{12}^q=[t^q]\operatorname{Exp}_{12}\).  This is a linear
+coefficient map, not a ring map.  Its residue convention is
+\(\operatorname{Res}_{t=0}f(t)\,dt=C_{12}^{-1}(f)\).
+
+\begin{theorem}[Sharp collision denominator bound]
+\label{op:thm:collision-poles}
+Let \(f\in D_I(N)\).  Then \(C_{12}^q(f)=0\) for \(q<-A\).
+For \(r=q+A\ge0\), put \(S=\{j\ge3:B_j>0\}\).  The
+coefficient \(C_{12}^q(f)\) belongs to the finite sum
+\begin{equation}\label{op:eq:collision-budget}
+ \sum_{\substack{h\in\mathbb N^S\\\sum_{j\in S}h_j\le r}}
+ \left(\prod_{3\le i<j}(z_i-z_j)^{-N_{ij}}\right)
+ \left(\prod_{j\ge3}x_j^{-(B_j+C_j+h_j)}\right)
+ k[z_2,\ldots,z_{|I|}],
+\end{equation}
+where \(h_j=0\) outside \(S\).  In particular, the pole order
+against the surviving point \(j\) is at most
+\begin{equation}\label{op:eq:pair-collision-bound}
+ M_{2j}=
+ \begin{cases}
+ B_j+C_j+r,&B_j>0,\\
+ C_j,&B_j=0.
+ \end{cases}
+\end{equation}
+All other pair bounds remain \(N_{ij}\).  Each bound in
+\eqref{op:eq:pair-collision-bound} is the least bound valid for every
+polynomial numerator with the specified denominator tuple.
+\end{theorem}
+
+\begin{proof}
+Write
+\[
+ f=\frac{P(z)}{\prod_{i<j}(z_i-z_j)^{N_{ij}}},\qquad
+ P(z_2+t,z_2,z_3,\ldots)=\sum_{\ell\ge0}P_\ell(z_2,z_3,\ldots)t^\ell.
+\]
+The second sum is finite.  For \(B>0\), formal inversion gives
+\begin{equation}\label{op:eq:binomial-pole}
+ (x+t)^{-B}
+ =\sum_{h\ge0}(-1)^h\binom{B+h-1}{h}x^{-B-h}t^h.
+\end{equation}
+For \(B=0\) the series is \(1\), with only its constant term.
+After substitution the sole negative power of \(t\) outside these
+power series is \(t^{-A}\).  A contribution to \(t^q\) therefore
+satisfies
+\(\ell+\sum h_j=q+A=r\).
+There are finitely many such tuples.  Their denominators are exactly
+those in \eqref{op:eq:collision-budget}.  This proves both the vanishing
+and the upper bounds.
+
+Fix \(j\) with \(B_j>0\), and take \(P=1\).  The term with
+\(h_j=r\) and every other \(h_i=0\) has pole order
+\(B_j+C_j+r\) along \(x_j=0\).  Its coefficient
+\((-1)^r\binom{B_j+r-1}{r}\) is nonzero in characteristic zero.
+Every other term has smaller order on that diagonal.  At its generic
+point all the remaining differences are units, so cancellation of
+this leading pole is impossible.  If \(B_j=0\), use instead
+\(P=(z_1-z_2)^r\).  Only the constant terms of all the binomial
+series contribute, giving exact order \(C_j\).  This proves the
+minimality assertion, including zero exponents.
+\end{proof}
+
+For three points the coefficient realizing the positive case is
+\begin{equation}\label{op:eq:sharp-three-point}
+ [t^{r-A}]\,t^{-A}(x+t)^{-B}x^{-C}
+ =(-1)^r\binom{B+r-1}{r}x^{-(B+C+r)},
+ \qquad B>0.
+\end{equation}
+When \(A\ge1\), a residue uses \(r=A-1\).  When \(A=0\),
+the residue is zero.  In the constant-term operation \(q=0\), the
+extra budget is \(r=A\).  Formula~\eqref{op:eq:collision-budget} also
+shows that different remaining diagonals share this budget.
+Replacing it by independent maxima loses that information.
+
+The proof of the upper bound uses integer binomial coefficients and
+works over every field.  Sharpness can fail in positive characteristic.
+For example, if \(\operatorname{char}k=p>0\), then
+\[
+ (x+t)^{-p}=(x^p+t^p)^{-1},
+\]
+so its coefficients at \(t^r\), \(1\le r<p\), vanish.
+
+\subsection{Exact coefficient support in positive characteristic}
+\label{op:subsec:positive-characteristic-poles}
+
+In this subsection only, \(k\) may be a field of arbitrary
+characteristic.  Fix \(n\ge3\) and algebraically independent
+variables \(x_3,\ldots,x_n\) over \(k\).  Put
+\(K=k(x_3,\ldots,x_n)\).  For nonnegative integers
+\(a,b_j,c_j\), consider the monomial rational model
+\begin{equation}\label{op:eq:monomial-collision-model}
+ f(t)=t^{-a}\prod_{j=3}^n(x_j+t)^{-b_j}x_j^{-c_j}
+ \in K((t)),\qquad d_j=b_j+c_j,\quad D=\sum_{j=3}^nd_j.
+\end{equation}
+Every \(x_j+t\) is inverted in \(K[[t]]\) before the factor
+\(t^{-a}\) is applied.  No completion in the \(x_j\) variables
+is used.  This model has polynomial numerator one and no
+denominator between two remaining labels.  Write
+\(\mathcal C_m=[t^{-a+m}]f(t)\) for \(m\ge0\).
+
+Define integers
+\[
+ H_b(r)=
+ \begin{cases}
+ \binom{b+r-1}{r},&b>0,\\
+ 1,&b=0,\ r=0,\\
+ 0,&b=0,\ r>0.
+ \end{cases}
+\]
+Their use as coefficients means reduction under \(\mathbb Z\to k\).
+This definition requires no factorial denominator in \(k\).
+Let
+\[
+ T_b(k)=\{r\ge0:H_b(r)\ne0\text{ in }k\}.
+\]
+
+\begin{lemma}[The digit criterion]
+\label{op:lem:pole-no-carry}
+Suppose \(\operatorname{char}k=p>0\) and \(b>0\).
+Then \(r\in T_b(k)\) if and only if the addition of \(r\)
+and \(b-1\) in base \(p\) has no carry.  In all
+characteristics, \(T_0(k)=\{0\}\).  In characteristic zero,
+\(T_b(k)=\mathbb N\) for \(b>0\).
+\end{lemma}
+
+\begin{proof}
+For \(0<i<p\), the integer \(\binom pi\) is divisible by
+\(p\).  Hence \((1+z)^p=1+z^p\) over \(k\).
+If \(N=\sum_\ell N_\ell p^\ell\) is the base-\(p\)
+expansion of a nonnegative integer, repeated Frobenius gives
+\[
+ (1+z)^N=\prod_\ell(1+z^{p^\ell})^{N_\ell}.
+\]
+Every exponent chosen from the \(\ell\)-th factor is
+\(s_\ell p^\ell\), with \(0\le s_\ell\le N_\ell<p\).
+These choices have a unique base-\(p\) sum.  Thus, for
+\(r=\sum_\ell r_\ell p^\ell\), the coefficient of \(z^r\)
+is zero unless \(r_\ell\le N_\ell\) for all \(\ell\).
+When these inequalities hold, the coefficient is
+\(\prod_\ell\binom{N_\ell}{r_\ell}\), which is nonzero.
+Indeed, the factorial arguments in these digit binomials are less
+than \(p\), so all their factors are invertible in \(k\).
+
+Apply this result to \(N=r+b-1\).  If the addition has no
+carry, then \(N_\ell=r_\ell+(b-1)_\ell\ge r_\ell\)
+in every digit.  If a carry occurs, let \(\ell\) be its first
+position.  There is no incoming carry there, so
+\[
+ N_\ell=r_\ell+(b-1)_\ell-p<r_\ell.
+\]
+The corresponding binomial coefficient vanishes.  This proves the
+criterion for \(H_b(r)=\binom{r+b-1}{r}\).
+The assertions for \(b=0\) and characteristic zero follow from
+the defining integers.
+\end{proof}
+
+\begin{theorem}[Exact support and divisor orders]
+\label{op:thm:monomial-pole-support}
+For the model \eqref{op:eq:monomial-collision-model}, all coefficients
+below \(t^{-a}\) vanish, and
+\begin{equation}\label{op:eq:exact-monomial-coefficient}
+ \mathcal C_m=(-1)^m
+ \sum_{\substack{r_3,\ldots,r_n\ge0\\\sum_jr_j=m}}
+ \left(\prod_{j=3}^nH_{b_j}(r_j)\right)
+ \prod_{j=3}^nx_j^{-(d_j+r_j)}.
+\end{equation}
+Define the finite set
+\[
+ \mathcal R_m=
+ \{(r_3,\ldots,r_n):\textstyle\sum_jr_j=m,
+                    \ r_j\in T_{b_j}(k)\}.
+\]
+Then
+\begin{equation}\label{op:eq:exact-coefficient-support}
+ \mathcal C_m\ne0
+ \quad\Longleftrightarrow\quad
+ \mathcal R_m\ne\varnothing
+ \quad\Longleftrightarrow\quad
+ m\in T_{b_3}(k)+\cdots+T_{b_n}(k).
+\end{equation}
+The last expression is a sum of sets.
+For a nonzero coefficient, its pole order \(p_j\) along
+\(x_j=0\) is exactly
+\begin{equation}\label{op:eq:exact-divisorial-pole}
+ p_j(\mathcal C_m)=d_j+\max_{\mathbf r\in\mathcal R_m}r_j.
+\end{equation}
+If \(b_j=0\), this order is \(c_j\).
+If \(b_j>0\), the bound \(d_j+m\) is attained if and
+only if \(m\in T_{b_j}(k)\).  In characteristic \(p\),
+this is precisely the no-carry criterion of
+Lemma~\ref{op:lem:pole-no-carry} with \(r=m\).
+
+Finally, every nonzero \(\mathcal C_m\) is homogeneous of degree
+\(D+m\) in the polynomial variables \(\xi_j=x_j^{-1}\).
+This common degree of the surviving monomials is distinct from
+the sum of their separate divisor pole maxima.
+\end{theorem}
+
+\begin{proof}
+The geometric series for \((1+z)^{-1}\), multiplied \(b\)
+times, gives
+\[
+ (1+z)^{-b}=\sum_{r\ge0}(-1)^rH_b(r)z^r.
+\]
+For \(b>0\), the coefficient counts weak compositions of
+\(r\) into \(b\) parts.  The same formula for \(b=0\)
+is the constant series one.  This proves the identity first over
+the integers and then over \(k\).  Multiplying the finitely many
+factors in \eqref{op:eq:monomial-collision-model} proves
+\eqref{op:eq:exact-monomial-coefficient}.  At fixed \(m\), only
+finitely many tuples occur.
+
+Different tuples give different Laurent monomials in the independent
+variables \(x_j\).  A tuple survives exactly when every scalar
+factor \(H_{b_j}(r_j)\) is nonzero.  Distinct surviving
+monomials are linearly independent, proving
+\eqref{op:eq:exact-coefficient-support}.
+
+Fix \(j\) and put \(R=\max_{\mathbf r\in\mathcal R_m}r_j\).
+View the coefficient as a Laurent polynomial in \(x_j\) over
+\(k(x_i:i\ne j)\).  The terms with \(r_j=R\) have lowest
+exponent \(-d_j-R\).  Their coefficient is a nonzero Laurent
+polynomial in the remaining independent variables.  Thus they
+cannot cancel, proving \eqref{op:eq:exact-divisorial-pole}.
+When \(b_j=0\), only \(r_j=0\) is allowed.
+When \(b_j>0\), equality \(r_j=m\) forces all other
+\(r_i\) to be zero.  This tuple survives exactly when
+\(H_{b_j}(m)\ne0\), since \(H_{b_i}(0)=1\) for every
+\(i\).  This proves the saturation criterion.
+
+Each surviving monomial has degree
+\(\sum_j(d_j+r_j)=D+m\) in the \(\xi_j\).
+Their sum is nonzero and homogeneous of that degree.
+\end{proof}
+
+In characteristic zero, if \(s\) of the \(b_j\) are positive,
+then every nonzero coefficient satisfies
+\begin{equation}\label{op:eq:sum-divisor-maxima}
+ \sum_jp_j(\mathcal C_m)=D+s\,m.
+\end{equation}
+For \(s=0\), only \(m=0\) occurs.
+In characteristic \(p\), a positive \(b_j\) still gives
+infinitely many nonzero coefficients and unbounded pole orders.
+Choose \(P=p^L>b_j-1\).  Every multiple \(m\) of \(P\)
+adds to \(b_j-1\) without a carry.  The tuple \(r_j=m\),
+\(r_i=0\) for \(i\ne j\), therefore survives and attains
+pole order \(d_j+m\).
+
+\begin{example}[Four points and the two degree counts]
+\label{op:ex:four-point-degree-counts}
+Let \(n=4\), \(x=x_3\), \(y=x_4\),
+\(b_3=b_4=1\), and \(c_3=c_4=0\).  Over every field,
+\[
+ \mathcal C_1=-x^{-2}y^{-1}-x^{-1}y^{-2}
+             =-\frac{x+y}{x^2y^2}.
+\]
+Its pole orders are two along each coordinate divisor.
+Their sum is four, although both Laurent monomials have degree
+three in \(x^{-1},y^{-1}\).  Thus \(D+m\) does not bound
+the sum of the separate divisor maxima.
+Algebraic independence is essential: after setting \(y=x\),
+this coefficient becomes \(-2x^{-3}\) and vanishes in
+characteristic two.
+\end{example}
+
+\begin{example}[Four points in characteristic two]
+\label{op:ex:four-point-characteristic-two}
+Let \(n=4\), \(b_3=b_4=3\), and \(c_3=c_4=0\).
+In characteristic two, the digit criterion gives
+\(T_3(k)=\{r\ge0:r\equiv0,1\pmod4\}\), since \(3-1\)
+has binary digits \(10\).  Equivalently,
+\[
+ (1+z)^{-3}=\frac{1+z}{1+z^4}
+           =\sum_{h\ge0}(z^{4h}+z^{4h+1}).
+\]
+With \(x=x_3\) and \(y=x_4\), the coefficient formula gives
+\[
+ \begin{aligned}
+ \mathcal C_1&=x^{-4}y^{-3}+x^{-3}y^{-4},\\
+ \mathcal C_2&=x^{-4}y^{-4},\\
+ \mathcal C_3&=0.
+ \end{aligned}
+\]
+At \(m=2\), the only surviving allocation is \((1,1)\).
+Both pole orders drop from the bound five to four, while the
+degree \(D+m=8\) remains exact.  At \(m=3\), no allocation
+survives.  The set \(T_3(k)\) is not closed under addition:
+it contains one but not two.  The set sums in
+\eqref{op:eq:exact-coefficient-support} require no such closure.
+\end{example}
+
+\begin{example}[A pole drops while every coefficient survives]
+\label{op:ex:four-point-prime-staircase}
+Let \(\operatorname{char}k=p>0\), \(n=4\),
+\(b_3=p\), \(b_4=1\), and \(c_3=c_4=0\).
+Here \(T_p(k)=p\mathbb N\) and \(T_1(k)=\mathbb N\).
+Every \(m\ge0\) is supported.  Among the surviving pairs,
+the largest first entry is \(p\lfloor m/p\rfloor\),
+and the largest second entry is \(m\).  Hence
+\[
+ p_3(\mathcal C_m)=p+p\left\lfloor\frac mp\right\rfloor,
+ \qquad p_4(\mathcal C_m)=1+m.
+\]
+The first divisor attains its bound \(p+m\) exactly when
+\(p\mid m\).  Failure of one saturation criterion therefore
+need not make the whole coefficient vanish.
+\end{example}
+
+These exact support statements concern the monomial input
+\eqref{op:eq:monomial-collision-model}.  Polynomial numerators, sums
+of rational inputs, and variable specializations require their own
+cancellation checks.  The characteristic-zero hypotheses on the
+simplex-form and lattice constructions below remain in force.
+
+\subsection{Order faces and the completion domain}
+
+Let \(\operatorname{Ord}(I)\) be the finite set of total orders of
+\(I\).  For a nonempty subset \(\Sigma\), let \(R_\Sigma\)
+invert exactly the differences whose comparisons vary among the
+orders in \(\Sigma\).  Define \(C_I\) to consist of polynomial
+forms on the simplex with vertices \(\operatorname{Ord}(I)\), with
+coefficients in \(L_I\), whose restriction to each face \(\Sigma\)
+has coefficients in \(R_\Sigma\).  The differential acts only on
+simplex coordinates.
+
+\begin{lemma}[Pair faces detect permitted poles]
+\label{op:lem:pair-face-poles}
+A polynomial simplex form belongs to \(C_I\) if and only if its
+restriction to the face of orders putting \(i\) before \(j\) has
+no pole along \(z_i=z_j\), for every ordered pair \(i,j\).
+\end{lemma}
+
+\begin{proof}
+Necessity is part of the definition.  For sufficiency, suppose all
+orders in \(\Sigma\) put \(i\) before \(j\).  This face lies
+inside the specified pair face, so restriction excludes that pole.
+Write each coefficient in reduced form in the polynomial fraction
+field.  The nonassociated prime differences in its denominator are
+precisely its possible diagonal poles.  Excluding each forbidden
+difference therefore excludes them simultaneously, giving
+coefficients in \(R_\Sigma\).
+\end{proof}
+
+For a consecutive block \(\{1,2\}\), the substitution
+\(z_1=z_2+t\) is available on the associated order overlaps.
+An order \(\sigma\) of the merged labels and an inner order \(\tau\)
+give a leaf order \(\operatorname{lex}(\sigma,\tau)\) by replacing
+the merged label with the consecutive ordered pair.  This map is
+injective.  If \(s_\rho\), \(v_\sigma\), and \(w_\tau\)
+are the respective barycentric coordinates, the simplex pullback is
+\[
+ s_{\operatorname{lex}(\sigma,\tau)}\longmapsto v_\sigma w_\tau,
+ \qquad s_\rho\longmapsto0
+ \quad\text{for nonconsecutive leaf orders}.
+\]
+Send differentials to differentials of these expressions.
+The images sum to \((\sum v_\sigma)(\sum w_\tau)=1\), so this
+defines a map of polynomial differential-form algebras.
+An inverted internal difference requires the two inner orders and
+maps to \(t\).  An inverted cross difference requires varying outer
+orders, so its constant term \(x_j\) is already a unit.
+Thus Theorem~\ref{op:thm:collision-poles} applies coefficientwise on
+each such overlap.  Pullback of polynomial simplex forms adds no
+spatial denominator.  On a face that fixes an outer comparison,
+Lemma~\ref{op:lem:pair-face-poles} removes the corresponding cross poles
+before substitution.  This is a bound for the permitted coefficient
+maps on those faces.
+
+The order of localization and completion matters even for one cross
+difference.  There is a strict inclusion
+\begin{equation}\label{op:eq:pole-completion-inclusion}
+ k[x][[t]][x^{-1}]
+ \;\subsetneq\;
+ k[x,x^{-1}][[t]].
+\end{equation}
+Every series on the left has a common lower bound on its powers of
+\(x\).  The inverse
+\[
+ (x+t)^{-1}=\sum_{h\ge0}(-1)^h x^{-h-1}t^h
+\]
+belongs to the right side and has no such bound.  Injectivity and
+strictness follow by comparing coefficients of \(t\).
+Consequently, a fixed rational function can have collision
+coefficients with unbounded outer pole orders.
+
+Repeated binary coefficient extractions along a specified ordered
+tree remain rational functions.  Applying
+Theorem~\ref{op:thm:collision-poles} successively gives finite bounds
+at every vertex and on every final coefficient.  Full scale series
+require a common domain in addition to these finite bounds.
+For instance
+\[
+ \sum_{h\ge0}\epsilon^h\eta^{-h-1}
+ \notin k[[\epsilon,\eta]][(\epsilon\eta)^{-1}],
+\]
+because its \(\eta\)-exponents have no lower bound.  Passing through
+arbitrary intermediate Laurent completions is therefore not licensed
+by the coefficient theorem.  Formal unit specialization also needs
+care: no unital ring homomorphism from \(k[[\epsilon]]\) to \(k\)
+can send \(\epsilon\) to \(1\), since \(1-\epsilon\) is a unit.
+
+\subsection{Sharpness for actual vertex products}
+
+For the vertex-algebra realization in this subsection, assume
+\(\operatorname{char}k=0\).
+The same exponent occurs in vertex locality.  Use the mode convention
+\[
+ Y(a,z)=\sum_{n\in\mathbb Z}a_{(n)}z^{-n-1}.
+\]
+Let \(N(a,b)\) be the least nonnegative integer annihilating
+\([Y(a,z),Y(b,w)]\) after multiplication by \((z-w)^{N(a,b)}\).
+All states in the example below are even.  The product \(a_{(n)}b\)
+is the coefficient \([t^{-n-1}]Y(a,t)b\).  Roitman's quantitative
+Dong lemma gives, for \(n<A\),
+\[
+ N(a_{(n)}b,c)\le
+ \begin{cases}
+ B+C+A-n-1,&B>0,\\
+ C,&B=0,
+ \end{cases}
+\]
+when \(N(a,b)\le A\), \(N(a,c)\le B\), and
+\(N(b,c)\le C\).  See \cite{Roi02}*{Section 7, Lemma 1,
+equation (16), pp.\ 14--15 of the preprint}.
+
+Here is a realization of equality for every
+\(A,C\ge0\), \(B>0\), and \(r=A-n-1\ge0\).
+Let \(\Lambda\) have basis \(\alpha,\beta,\gamma\), with
+\[
+ (\alpha,\beta)=-A,\quad (\alpha,\gamma)=-B,\quad
+ (\beta,\gamma)=-C.
+\]
+Give each basis vector squared length \(2(A+B+C+1)\).
+The integral Gram matrix is strictly diagonally dominant and positive
+definite, with even diagonal.  Thus \(\Lambda\) is an even lattice.
+Its vertex algebra has underlying space
+\[
+ V_\Lambda=
+ \Sym\bigl(\mathfrak h\otimes z^{-1}k[z^{-1}]\bigr)
+ \otimes k_\varepsilon[\Lambda],\qquad
+ \mathfrak h=k\otimes_{\mathbb Z}\Lambda.
+\]
+The group algebra is twisted by a bimultiplicative sign
+\(\varepsilon\) satisfying
+\(\varepsilon(\lambda,\mu)/\varepsilon(\mu,\lambda)
+=(-1)^{(\lambda,\mu)}\).
+The Heisenberg modes satisfy
+\([h(m),h'(n)]=m(h,h')\delta_{m,-n}\).
+The vacuum in charge \(\lambda\) is denoted by \(e^\lambda\).
+With positive modes annihilating this vacuum, the lattice field is
+\[
+ Y(e^\lambda,z)=
+ \exp\left(\sum_{m>0}\frac{\lambda(-m)}m z^m\right)
+ \exp\left(-\sum_{m>0}\frac{\lambda(m)}m z^{-m}\right)
+ e^\lambda z^{\lambda(0)}.
+\]
+The lattice construction, vacuum products, and charge grading are
+described in \cite{Roi02}*{Section 4, pp.\ 8--10 of the preprint}.
+In particular,
+\[
+ Y(e^\alpha,t)e^\beta
+ =\varepsilon(\alpha,\beta)t^{-A}
+ \exp\left(\sum_{m>0}\frac{\alpha(-m)}m t^m\right)
+ e^{\alpha+\beta}.
+\]
+
+Let \(p_\lambda\) take the coefficient of \(e^\lambda\) and
+kill all positive oscillator levels and other charges.  Commuting
+positive modes through negative modes in the field formula gives
+\[
+ p_{\alpha+\beta+\gamma}
+\bigl(Y(e^\alpha,z_1)Y(e^\beta,z_2)e^\gamma\bigr)
+ =\epsilon_0\,\iota_{12}
+ \bigl((z_1-z_2)^{-A}z_1^{-B}z_2^{-C}\bigr),
+\]
+where \(\iota_{12}\) expands in nonnegative powers of \(z_2/z_1\),
+and \(\epsilon_0=\varepsilon(\beta,\gamma)
+\varepsilon(\alpha,\beta+\gamma)\in\{1,-1\}\).
+Indeed, the commutator of the two exponential exponents is
+the scalar series producing \((z_1-z_2)^{-A}\).
+The zero modes supply \(z_1^{-B}z_2^{-C}\), and the remaining
+negative-mode exponentials project to \(1\).
+In the rational function set \(z_1=x+t\), \(z_2=x\), then
+expand at \(t=0\) with \(x\) invertible.
+Vertex associativity identifies this expansion with the iterate
+\(Y(Y(e^\alpha,t)e^\beta,x)e^\gamma\).
+Formula~\eqref{op:eq:sharp-three-point} consequently gives
+\begin{equation}\label{op:eq:lattice-pole-witness}
+ p_{\alpha+\beta+\gamma}
+ \bigl(Y((e^\alpha)_{(A-r-1)}e^\beta,x)e^\gamma\bigr)
+ =\epsilon_0(-1)^r\binom{B+r-1}{r}x^{-B-C-r}.
+\end{equation}
+
+For completeness, the full state-valued product has no higher pole.
+A charge-\(\lambda\) vector has conformal weight
+\((\lambda,\lambda)/2+\ell\), with oscillator level \(\ell\ge0\).
+The merged state has charge \(\alpha+\beta\) and level \(r\).
+A term \(x^{-m-1}\) acting on \(e^\gamma\) therefore has level
+\(B+C+r-m-1\) in charge \(\alpha+\beta+\gamma\).
+Negative levels are absent.  Hence its pole order is at most
+\(B+C+r\), while \eqref{op:eq:lattice-pole-witness} attains that
+order.  In a vertex algebra this maximal nonzero nonnegative product
+index plus one is the locality order, by the field commutator formula.
+Thus the bound is attained by actual fields, including the residue
+example \(A=B=C=1\), \(r=0\).
+
+These coefficient and field calculations specify the filtration
+needed by a collision presentation.  They supply neither the operadic
+lift in Proposition~\ref{prop:locality-lift} nor the monoidal functor
+in Problem~\ref{prob:carrier-change}.  The Euler product below uses
+root weights and homological parity, independently of this pole
+filtration.

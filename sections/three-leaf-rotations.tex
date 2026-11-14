@@ -1,0 +1,779 @@
+\section{Three-input rotations and the divisors they retain}
+\label{sec:three-leaf-rotations}
+
+The two-chart comparison holds at a fixed separation.  Changing a
+bracketing changes which separations label the interval factors.
+Three inputs are enough to determine the necessary localization and
+to distinguish a coefficient equivalence from its action on states.
+
+\subsection{The divisors of two three-leaf trees}
+
+Let \(k\) be a field.  For three labelled positions set
+\[
+ t=z_1-z_2,\qquad x=z_2-z_3,\qquad u=z_1-z_3=t+x,
+ \qquad R=k[t,x].
+\]
+The bracketing \(((1,2),3)\), retaining position 2 at its first
+merger, uses the differences \(t,x\).  The bracketing
+\((1,(2,3))\), retaining position 3, uses \(x,u\).
+A rotation here means this change of bracketing with the spatial
+functions \(t,x,u\) fixed.  It does not mean renaming independent
+coordinates without their relation \(u=t+x\).
+
+For a nonzero \(d\in R\), write \(A_d=\mathcal I_R(d)\)
+for the interval algebra of \eqref{sb:eq:general-interval}.
+Its endpoint idempotents are \(e_0^d,e_1^d\), its overlap generator
+is \(\theta_d\), and its augmentation is denoted by \(p_d\).
+All tensor products use the cohomological Koszul sign.
+The two tree complexes are
+\[
+ E_L=A_t\otimes_R A_x,\qquad
+ E_R=A_x\otimes_R A_u.
+\]
+Their tensor factors record different interval coordinates; the
+rotation must specify a map between these actual complexes.
+
+\begin{proposition}[Failure over the original spatial ring]
+\label{tr:prop:global-obstruction}
+Over every field, \(E_L\) and \(E_R\) are not
+quasi-isomorphic as complexes of \(R\)-modules.
+\end{proposition}
+
+\begin{proof}
+Localize \(R\) at the prime ideal \((t)\).  In the local ring
+\(R_{(t)}\), both \(x\) and \(u=t+x\) are units.
+When \(d\) is a unit in a coefficient ring, the maps
+\[
+ i_d(a)=(a,a),\qquad p_d(a_0,a_1)=a_0,\qquad
+ h_d(\ell\theta_d)=(0,\ell),\quad h_d(A_d^0)=0
+\]
+satisfy \(p_di_d=\id\) and
+\(d_Ah_d+h_dd_A=\id-i_dp_d\).  Thus the localized right
+tree retracts onto \(R_{(t)}\).  The localized left tree
+retracts onto \(A_t\otimes_R R_{(t)}\), whose first
+cohomology is
+\[
+ R_{(t)}[t^{-1}]/R_{(t)}\ne0.
+\]
+The class of \(\theta_t/t\) is nonzero because \(t^{-1}\)
+is not in \(R_{(t)}\).  Localization preserves cohomology:
+an equation or a boundary in a localization can be checked after
+multiplying by one allowed denominator.  A quasi-isomorphism over
+\(R\) would therefore give a quasi-isomorphism after this
+localization, contradicting the different first cohomology groups.
+\end{proof}
+
+The same argument at \((u)\) interchanges the two trees.
+Consequently a comparison on a common open subset cannot retain
+either generic divisor \(t=0\) or \(u=0\).  This obstruction
+occurs before any state algebra, tree homotopy or completion is added.
+
+\subsection{Retaining the common collision}
+
+Invert precisely the two differing divisors and put
+\[
+ S=R[t^{-1},u^{-1}],\qquad Q=S[x^{-1}].
+\]
+Every \(A_d\) in this section is extended from \(R\) to
+\(S\).  The coefficient of \(\theta_x\) lies in \(Q\),
+while its endpoint coefficients lie in \(S\).  In particular
+\(\theta_x/x\) still represents a nonzero class in
+\(H^1(A_x)=Q/S\).  Both \(A_t\) and \(A_u\) have all
+coefficients in \(S\).
+
+Let \(D\) be any differential graded \(S\)-algebra, with
+ordered, possibly noncommutative multiplication.  Set
+\[
+ E_L(D)=A_t\otimes_S A_x\otimes_S D,
+ \qquad E_R(D)=A_x\otimes_S A_u\otimes_S D,
+ \qquad E(D)=A_x\otimes_S D.
+\]
+Let \(p_L,p_R\) evaluate the \(t\)- and \(u\)-intervals
+at their first endpoints.  Let \(i_L,i_R\) insert the unit
+of the removed factor.  They are strict algebra chain maps.
+Define
+\begin{equation}\label{tr:eq:rotation-maps}
+ r=i_Rp_L:E_L(D)\longrightarrow E_R(D),\qquad
+ l=i_Lp_R:E_R(D)\longrightarrow E_L(D).
+\end{equation}
+
+\begin{proposition}[Explicit coefficient retractions]
+\label{tr:prop:retractions}
+The maps in \eqref{tr:eq:rotation-maps} are chain homotopy
+equivalences over every field.  They are natural in strict dg
+algebra maps of \(D\), with no flatness assumption.  With
+\(F_L=i_Lp_L\), \(F_R=i_Rp_R\), their homotopies are
+\[
+ h_L=h_t\otimes\id\otimes\id,
+ \qquad
+ h_R(a\otimes b\otimes v)=(-1)^{|a|}a\otimes h_u(b)\otimes v.
+\]
+They satisfy
+\begin{equation}\label{tr:eq:coefficient-homotopy}
+ dh_T+h_Td=\id-F_T,\qquad h_T^2=h_Ti_T=p_Th_T=0,
+ \qquad T=L,R.
+\end{equation}
+Moreover, for homogeneous \(a,b\in E_T(D)\),
+\begin{equation}\label{tr:eq:twisted-derivation}
+ h_T(ab)=h_T(a)b+(-1)^{|a|}F_T(a)h_T(b).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For one invertible interval, differentiation on degree zero gives
+\(h_dd_A(a_0,a_1)=(0,a_1-a_0)\); on degree one,
+\(d_Ah_d(\ell\theta_d)=\ell\theta_d\).  These are
+\(\id-i_dp_d\).  The side identities follow directly.
+
+For \eqref{tr:eq:twisted-derivation} in one factor, two degree-zero
+inputs give zero.  A degree-zero element \(a=(a_0,a_1)\)
+and a one-form \(b=\ell\theta_d\) give
+\(h_d(ab)=(0,a_0\ell)=i_dp_d(a)h_d(b)\).
+In the reverse order the result is
+\((0,\ell b_1)=h_d(\ell\theta_d)b\).
+For two one-forms both sides vanish, because
+\((0,\ell)m\theta_d=0\).  These cases prove the identity.
+
+Tensoring with a complex preserves the displayed chain homotopy
+when the graded tensor signs are included.  In the derivation
+identity, moving a state across the degree-minus-one homotopy gives
+exactly the change in its tensor sign.  Thus the first-factor
+identity tensors with any dg algebra.  A graded permutation moves
+the \(u\)-factor to the first position and back, giving the
+stated sign for \(h_R\).  These arguments use explicit maps,
+not exactness of tensoring.  Finally \(lr=F_L\) and
+\(rl=F_R\), proving the assertion.
+\end{proof}
+
+The homotopy sends \(\theta_t/t^N\) to
+\(e_1^t/t^N\).  Its existence uses the changed endpoint ring
+\(S\); this primitive was not available over \(R\).
+No pole class on the excluded divisor is preserved by that change.
+The remaining \(x\)-collision is unchanged.
+
+\subsection{Three polynomial state inputs}
+
+An actual binary state operation determines more than its scalar
+denominators.  Let \(V\) be the one-species free state algebra
+\eqref{fs:eq:state-algebra}, with the Hasse translation
+\eqref{fs:eq:hasse-translation}.  In this section \(S\) denotes the
+localized spatial ring above, while \(V\) denotes states.
+Use the kernels \(K_{ab}\) and put
+\(P_{ab}^{ij}=P_{ij}^{ab}\), with the left odd derivatives of
+\eqref{fs:eq:pair-operators}.  Every sum is finite before translation.
+Write
+\(E_d(a\otimes b)=(\tau_da)b\).  The binary overlap operation is
+\begin{equation}\label{tr:eq:binary-state}
+ Y_d=E_d\left(1+\theta_d\sum_{a,b\ge0}K_{ab}(d)P_{ab}^{12}\right).
+\end{equation}
+The uncontracted coefficient means the same value at both endpoints.
+Coefficients precede states, and products of coefficient operators
+use the graded tensor rule.  Thus an odd \(P\) crossing a
+\(\theta\) contributes a minus sign.
+Both terms in \eqref{tr:eq:binary-state} are closed and of total
+degree zero.  The output is taken in the product of state weights,
+with a common finite spatial pole bound for each polynomial input.
+
+Set \(z_3=0,z_2=x,z_1=u=t+x\).  The left iteration first
+uses \(Y_t\) on inputs 1 and 2, then the \(x\)-interval.
+The right iteration first uses \(Y_x\) on inputs 2 and 3,
+then the \(u\)-interval.  They are initially expanded in
+different rings:
+\[
+ \iota_L:Q\longrightarrow k[x,x^{-1}]((t)),
+ \qquad
+ \iota_R:Q\longrightarrow k[u,u^{-1}]((x)),\quad t=u-x.
+\]
+The first expands \(u^{-1}=(x+t)^{-1}\) in \(t/x\),
+and the second expands \(t^{-1}=(u-x)^{-1}\) in \(x/u\).
+Both maps are injective, because their restrictions to the
+polynomial ring are injective and the denominators map to units.
+No identification of the two Laurent targets is made.
+
+\begin{example}[One odd input]
+\label{tr:ex:three-states}
+Take \(a=x_0,b=\eta_0,c=x_0\), and write
+\(E=(\tau_u x_0)(\tau_x\eta_0)x_0\).
+The first binary operation on the left is
+\(Y_t(x_0,\eta_0)=(\tau_tx_0)\eta_0+\theta_t/t\).
+The remaining contraction pairs \(\eta_0\) with the last
+\(x_0\).  Hence its rational representative is
+\[
+ Y_L(a,b,c)=E+\frac{\theta_t}{t}x_0
+                +\frac{\theta_x}{x}\tau_ux_0.
+\]
+On the right the first contraction gives \(\theta_x/x\).
+Contracting the first \(x_0\) with \(\tau_x\eta_0\)
+gives \(\sum_{j\ge0}x^ju^{-j-1}=t^{-1}\) in its
+specified right Laurent domain.  Thus
+\[
+ Y_R(a,b,c)=E+\frac{\theta_u}{t}x_0
+                +\frac{\theta_x}{x}\tau_ux_0.
+\]
+Over \(S\), the coefficient rotation satisfies
+\[
+ rY_L(a,b,c)-Y_R(a,b,c)
+ =-\frac{\theta_u}{t}x_0
+ =d\left(-\frac{e_1^u}{t}x_0\right).
+\]
+The primitive has exactly the same pole order in \(t\).
+For the inputs \(x_0,x_0,\eta_0\), even the projected
+outputs have a difference:
+\[
+ p_LY_L-p_RY_R
+ =\frac{\theta_x}{u}\tau_xx_0
+ =d\left(\frac{e_1^x}{u}\tau_xx_0\right).
+\]
+The coefficient \(u^{-1}\) is regular on the retained
+\(x\)-divisor over \(S\), so this second primitive is legal.
+\end{example}
+
+For general polynomial inputs define three odd operators
+\[
+ D_{12}=\sum_{a,b}K_{ab}(t)P_{ab}^{12},\qquad
+ D_{13}=\sum_{a,b}K_{ab}(u)P_{ab}^{13},\qquad
+ D_{23}=\sum_{a,b}K_{ab}(x)P_{ab}^{23},
+\]
+and the translated multiplication
+\(E(a\otimes b\otimes c)=(\tau_ua)(\tau_xb)c\).
+In expressions such as \(\theta_x ED_{13}\), the coefficient
+is placed first and the displayed state map acts on the three inputs.
+
+\begin{theorem}[A direct three-input rotation homotopy]
+\label{tr:thm:state-rotation}
+Over every field, the two binary iterations have the rational
+representatives
+\begin{equation}\label{tr:eq:tree-state-operations}
+ \begin{aligned}
+ Y_L&=E\bigl(1+\theta_x(D_{13}+D_{23})\bigr)
+             \bigl(1+\theta_tD_{12}\bigr),\\
+ Y_R&=E\bigl(1+\theta_u(D_{12}+D_{13})\bigr)
+             \bigl(1+\theta_xD_{23}\bigr).
+ \end{aligned}
+\end{equation}
+They are degree-zero chain maps from \(V^{\otimes3}\) to the
+weightwise outputs of \(E_L(V)\) and \(E_R(V)\) over \(S\).
+For the rotation \(r\), a degree-minus-one homotopy is
+\begin{equation}\label{tr:eq:state-rotation-homotopy}
+ \begin{aligned}
+ H={}&e_1^x ED_{13}
+      -e_1^u E(D_{12}+D_{13})\\
+     &+\theta_x e_1^u E(D_{12}+D_{13})D_{23},
+ \qquad dH+Hd_{V^{\otimes3}}=rY_L-Y_R.
+ \end{aligned}
+\end{equation}
+Every term of \(H\) uses a spatial coefficient already occurring
+in the displayed operations.  It introduces no new pole or higher
+pole exponent.  The assertion concerns polynomial inputs and their
+rational representatives, not arbitrary completed input states.
+\end{theorem}
+
+\begin{proof}
+The derivative of a product is the sum of derivatives on its factors,
+with the left-odd-derivative signs.  Thus a contraction of a merged
+left state with input 3 splits into the 13 and 23 contractions.
+Translation changes the first separation from \(x\) to \(x+t\).
+For its coefficients the required identity is
+\[
+ \sum_{m\ge0}\binom{a+m}{a}t^m K_{a+m,b}(x)
+ =K_{ab}(x+t).
+\]
+Indeed,
+\(\binom{a+m}{a}\binom{a+m+b}{a+m}
+=\binom{a+b}{a}\binom{a+b+m}{m}\), and the integer
+geometric-series formula for a negative power gives the equality.
+For the right iteration the corresponding identity is
+\[
+ \sum_{m\ge0}\binom{b+m}{b}x^m K_{a,b+m}(u)
+ =K_{ab}(u-x).
+\]
+These are formal identities in the two specified Laurent domains.
+The translation law gives \(\tau_x\tau_t=\tau_u\).
+The product rule, these two identities and the original input order
+therefore give \eqref{tr:eq:tree-state-operations}, including the
+double-contraction terms.  All identities hold over the integers
+before reduction to \(k\).
+
+First-endpoint projection kills every term containing the removed
+interval form.  Hence
+\[
+ p_LY_L-p_RY_R=\theta_x ED_{13}.
+\]
+All coefficients of \(D_{13}\) lie in \(S\), so
+\(H_0=e_1^x ED_{13}\) is defined in \(A_x\otimes V\)
+and \(dH_0=\theta_x ED_{13}\).  Each operation is closed,
+since its coefficients are diagonal constants or products of closed
+interval forms.  Proposition~\ref{tr:prop:retractions} gives
+\[
+ rY_L-Y_R=i_RdH_0-(\id-i_Rp_R)Y_R
+           =d(i_RH_0-h_RY_R).
+\]
+To compute the last expression with the factors ordered \(x,u\),
+move the odd contraction past the preceding interval form:
+\[
+ Y_R=E+\theta_x ED_{23}+\theta_u E(D_{12}+D_{13})
+       +\theta_x\theta_u E(D_{12}+D_{13})D_{23}.
+\]
+Here the operator-crossing minus and the exchange of the two forms
+cancel.  Now \(h_R(\theta_u)=e_1^u\) and
+\(h_R(\theta_x\theta_u)=-\theta_xe_1^u\).
+This gives exactly \eqref{tr:eq:state-rotation-homotopy}.
+Equivalently, differentiating its last term uses
+\(d(\theta_xe_1^u)=-\theta_x\theta_u\), which verifies
+the signed identity directly.
+
+There are at most two contractions.  Every contraction differentiates
+one of the original polynomial inputs, so only finitely many indices
+occur before translation.  Each fixed output weight receives
+finitely many translation terms.  The denominators are products of
+the displayed \(K_{ab}\).  The primitive only replaces interval
+forms by endpoint idempotents, proving the pole assertion.
+\end{proof}
+
+This state result uses the specified free algebra \(V\) and its
+binary operation.  The coefficient retractions of
+Proposition~\ref{tr:prop:retractions} allow arbitrary noncommutative
+dg state algebras; they do not prescribe a collision operation on
+an arbitrary such algebra.
+
+\subsection{Finite bar words and their homotopies}
+
+Suppose first that \(D\) is augmented over \(S\).  Give
+\(E_T(D)\) the augmentation obtained by first-endpoint evaluation
+and the augmentation of \(D\).  For any augmented dg algebra
+\(E\), write \(\bar E\) for its augmentation ideal and put
+\[
+ B(E)=\bigoplus_{n\ge0}(s\bar E)^{\otimes_S n},
+ \qquad |[a_1|\cdots|a_n]|=\sum_i|a_i|-n.
+\]
+The symbol \(s\) decreases total cohomological degree by one.
+Words are finite.  The differential \(b=b_1+b_2\) is given by
+\[
+ b_1[a]=[da],\qquad b_2[a|c]=(-1)^{|a|+1}[ac],
+\]
+with prefix sign \((-1)^{\sum_{i<j}(|a_i|-1)}\) when
+the local operator starts in position \(j\).
+The Leibniz identity cancels the mixed terms in \(b^2\).
+On three entries the two remaining terms are
+\((-1)^{|c|}[(ac)e]\) and \(-(-1)^{|c|}[a(ce)]\).
+They cancel by associativity.  Disjoint local operations cancel by
+their degree-one signs, so \(b^2=0\).
+
+Deconcatenation cuts every word into consecutive subwords:
+\[
+ \Delta[a_1|\cdots|a_n]
+ =\sum_{j=0}^n[a_1|\cdots|a_j]\otimes[a_{j+1}|\cdots|a_n].
+\]
+Two cuts choose three consecutive subwords, proving coassociativity.
+A differential or multiplication away from the cut belongs to one
+tensor factor with its original prefix sign.  A multiplication across
+a proposed cut removes that cut on both sides.  Thus \(\Delta\)
+is a chain map.
+
+\begin{theorem}[Rotation on algebraic bars]
+\label{tr:thm:bar-rotation}
+Over every field, \(B(r)\) and \(B(l)\) are mutually inverse
+chain homotopy equivalences of the finite-word bars.  They are strict
+coalgebra maps.  For \(T=L,R\), define
+\begin{equation}\label{tr:eq:bar-homotopy}
+ K_T[a_1|\cdots|a_n]
+ =\sum_{j=1}^n(-1)^{\sum_{i<j}(|a_i|-1)}
+ [F_Ta_1|\cdots|F_Ta_{j-1}|h_Ta_j|a_{j+1}|\cdots|a_n].
+\end{equation}
+Then
+\[
+ bK_T+K_Tb=\id-B(F_T),\qquad
+ \Delta K_T=(B(F_T)\otimes K_T+K_T\otimes\id)\Delta.
+\]
+The homotopies have degree minus one and preserve word length.
+\end{theorem}
+
+\begin{proof}
+The coefficient homotopy preserves the augmentation ideal because
+its first endpoint is zero.  The maps in
+\eqref{tr:eq:bar-homotopy} are therefore defined on reduced bars.
+For \(b_1K_T+K_Tb_1\), terms on different entries cancel by
+the tensor sign rule.  At the entry where \(h_T\) acts, the coefficient
+identity gives \(a_j-F_Ta_j\).  The sum telescopes from the
+word with no \(F_T\) factors to the word with all such factors.
+Its value is \(\id-B(F_T)\).
+
+For the multiplication terms, positions away from that entry
+cancel.  On two consecutive entries the remaining expression is
+\[
+ (-1)^{|a|}[h_T(a)b]+[F_T(a)h_T(b)]
+       +(-1)^{|a|+1}[h_T(ab)],
+\]
+which is zero by \eqref{tr:eq:twisted-derivation}.  The same
+prefix sign multiplies this identity inside any word.  This proves
+the chain homotopy equation in every length.
+
+For the cut identity, a cut before the entry where \(h_T\) acts contributes
+\(B(F_T)\otimes K_T\).  A cut after it contributes
+\(K_T\otimes\id\).  The degree-minus-one sign for the
+second tensor factor is the prefix sign in
+\eqref{tr:eq:bar-homotopy}.  These are all cuts.  Finally
+\(B(l)B(r)=B(F_L)\) and \(B(r)B(l)=B(F_R)\), proving
+the assertion.
+\end{proof}
+
+\subsubsection{Spatial pole bounds}
+
+For a rational scalar \(f\), measure poles on the three distinct
+prime divisors \(t,x,u\) of \(R\).  A tuple
+\(N=(N_t,N_x,N_u)\) bounds its poles when
+\[
+ f\in t^{-N_t}x^{-N_x}u^{-N_u}R.
+\]
+Use the intersection of this space with the appropriate endpoint
+or overlap coefficient module.  On a word, take the linear span of
+tensors for which the sum of the input tuples is at most \(P\).
+The span is necessary: sums can have poles on different divisors.
+
+The coefficient maps \(p,i,h\) merely evaluate endpoint
+components, insert a unit, or move a scalar from an overlap to an
+endpoint module where it is allowed.  They do not change that scalar.
+Consequently \(B(r),B(l),K_T\) preserve the total pole tuple.
+Multiplication adds tuples, so the bar differential also preserves it.
+The bound is attained by \([\theta_t/t^N]\), whose homotopy
+is \([e_1^t/t^N]\).
+
+For general state coefficients this statement uses a specified
+regular state lattice: an \(R\)-dg algebra whose scalar extension
+is \(D\), or an equivalent filtration preserved by its product
+and differential.  Take images of the displayed scalar lattices
+tensored with that state lattice.  This definition does not require
+flatness or injectivity of scalar extension.  The maps respect the
+resulting image filtration.  Without such a lattice, the chain
+comparison still exists, but an intrinsic pole order of a state
+coefficient has not been specified.
+
+\subsubsection{Module ends}
+
+Let \(M,N\) be a right and a left \(D\)-module concentrated
+in degree zero, with dg actions.  An augmentation of \(D\) is
+not required.  Let \(E_T(D)\) act through first-endpoint
+evaluation of both interval factors and the stated \(D\)-actions.
+The two-sided bar is
+\[
+ B(M,E_T(D),N)=\bigoplus_{n\ge0}
+ M\otimes_S(sE_T(D))^{\otimes_S n}\otimes_S N.
+\]
+It has the internal differential and multiplication signs above.
+The left outer face has positive sign; the right outer face has
+sign \((-1)^{\sum_i(|a_i|-1)}\).  Nonzero end actions
+require degree-zero entries.  Associativity and the module identities
+prove the face identities and hence the square-zero differential.
+
+Apply \(r,l\) to the middle entries and the identity to the
+ends.  Formula~\eqref{tr:eq:bar-homotopy} applies to the middle
+word.  The new end terms cancel because \(h_T\) has zero
+first endpoint and \(F_T\) has the same endpoint as the identity.
+Thus the same homotopy equivalences hold for these two-sided bars.
+They preserve the actual module actions.
+
+In particular, take the finite mode algebra with generators
+\(q_m,p_m\), \(m\ge1\), and relations
+\[
+ [p_m,q_n]=\kappa m\delta_{mn},\qquad
+ [p_m,p_n]=[q_m,q_n]=0.
+\]
+Its left module is \(W=k[h_0,h_1,\ldots]\), with
+\(q_m=h_{m-1}\cdot\) and
+\(p_m=\kappa m\partial_{h_{m-1}}\).  Give \(h_j\)
+weight \(j+1\).  The restricted dual
+\(M=\bigoplus_E W_E^\vee\) is a right module under
+\((\lambda a)(v)=\lambda(av)\): every finite mode word
+has a fixed weight shift, so it preserves finite weight support.
+After extension to \(S\), these are admissible ends in the
+two-sided comparison.  No character of the mode algebra is used;
+when \(\kappa\ne0\), \([p_1,q_1]=\kappa1\) forbids one.
+All entries remain finite mode words.
+
+For a degree-zero state algebra \(D\), these module bars also
+have balanced cuts through its regular module:
+\[
+ \lambda[a_1|\cdots|a_n]v\longmapsto
+ \sum_{j=0}^n\lambda[a_1|\cdots|a_j]1
+     \otimes_D1[a_{j+1}|\cdots|a_n]v.
+\]
+The target is
+\(B(M,E_T(D),D)\otimes_D B(D,E_T(D),N)\), with the
+interval factors acting on \(D\) through first-endpoint
+evaluation.  At two neighboring cuts, the last face of the left
+factor and the first face of the right factor cancel after
+balancing over \(D\).  Their nonzero endpoint actions require
+degree-zero entries, so their prefix signs are opposite.  All other
+faces lie on one side of a cut and have the same tensor signs.
+Thus the cut is a chain map.  The rotation maps commute with these
+cuts because they preserve the endpoint action and the inserted
+unit of \(D\).  The ends are not identified with scalar units.
+
+\subsection{Polynomial forms and the characteristic-zero comparison}
+
+For a divisor \(d\), the polynomial-form coefficient algebra is
+\[
+ C_d^0=\{f(s_d)\in S[d^{-1}][s_d]:f(0),f(1)\in S\},
+ \qquad C_d^1=S[d^{-1}][s_d]ds_d,
+ \qquad df=f'(s_d)ds_d.
+\]
+Products are products of forms, with \((ds_d)^2=0\).
+The augmentation evaluates the first endpoint.  For \(d=t,u\)
+this is the full polynomial de Rham algebra over \(S\).
+Define form trees \(C_L(D)=C_t\otimes C_x\otimes D\)
+and \(C_R(D)=C_x\otimes C_u\otimes D\).
+All tensor products here are over \(S\).
+
+Assume characteristic zero for the remainder of this section.
+First-endpoint projection on an invertible interval has the
+polynomial homotopy
+\[
+ h^{\Omega}(g(s)ds)=\int_0^s g(v)dv,
+ \qquad h^{\Omega}(f)=0.
+\]
+It satisfies \(dh^{\Omega}+h^{\Omega}d=\id-ip\) and
+the same side conditions as \eqref{tr:eq:coefficient-homotopy}.
+This homotopy is not a twisted derivation in general.  Its extension
+to full bars therefore needs a correction.
+
+\begin{lemma}[A finite correction on form bars]
+\label{tr:lem:form-bar-homotopy}
+Let \(H_0\) be the tensor-word formula
+\eqref{tr:eq:bar-homotopy} using \(h^{\Omega}\), and put
+\(F=B(ip)\).  On a word of length \(n\), define
+\begin{equation}\label{tr:eq:perturbed-homotopy}
+ H=H_0\sum_{j=0}^{n-1}(-b_2H_0)^j.
+\end{equation}
+Then \(bH+Hb=\id-F\).  The endpoint projections and
+unit inclusions induce mutually inverse chain homotopy equivalences
+between the two form-tree bars through \(B(C_x\otimes D)\).
+All maps are defined for arbitrary augmented dg state algebras,
+and preserve the stated total pole filtrations.
+\end{lemma}
+
+\begin{proof}
+The tensor contraction gives
+\(b_1H_0+H_0b_1=1-F\), \(H_0^2=0\), and
+\(FH_0=H_0F=0\).  Projections and inclusions are strict
+algebra maps, so \(F\) commutes with \(b_2\).
+Also \(H_0b_2F=0\) and \(Fb_2H_0=0\): use that
+\(b_2\) commutes separately with the bar inclusion and
+projection, which \(H_0\) kills on the corresponding side.
+
+Write \(d=b_1\), \(\delta=b_2\) and \(Q_0=1+\delta H_0\).
+The inverse of \(Q_0\) is a finite geometric series on each
+word, because \(\delta\) decreases length and \(H_0\)
+preserves it.  Thus \(H=H_0Q_0^{-1}\).
+The identities \(\delta^2=0\),
+\(d\delta+\delta d=0\) and
+\(dH_0+H_0d=1-F\) give
+\[
+ dQ_0-Q_0d=-\delta(1-F),\qquad
+ dQ_0^{-1}-Q_0^{-1}d=Q_0^{-1}\delta(1-F)Q_0^{-1}.
+\]
+Consequently
+\[
+ \begin{aligned}
+ (d+\delta)H+H(d+\delta)
+ &=1-F+H_0Q_0^{-1}\delta
+              \bigl(1-(1-F)Q_0^{-1}\bigr)\\
+ &=1-F+H_0Q_0^{-1}\delta(\delta H_0+F)Q_0^{-1}
+ =1-F.
+ \end{aligned}
+\]
+The final term is zero by \(\delta^2=0\) and
+\(H_0\delta F=0\).  This proves the chain identity without
+a convergence argument.  Tensoring the explicit contraction with
+\(D\) includes its differential and needs no flatness assumption.
+Every correction uses each original spatial coefficient once in a
+product.  Integration changes only the interval coordinate, so
+multiplication adds the original pole tuples and introduces no
+new divisor.  The same argument with the two outer module faces
+included in \(\delta\) gives the two-sided assertion for the
+module ends specified above.
+\end{proof}
+
+The form-to-overlap comparison can also be made compatible with the
+restricted rotation.  Its linear component on one interval is
+\[
+ I(f)=(f(0),f(1)),\qquad
+ I(g(s)ds)=\left(\int_0^1g(s)ds\right)\theta.
+\]
+For a block of \(n>1\) entries, it is zero unless every
+coefficient is a one-form.  On such a block it is
+\[
+ [g_1ds\otimes v_1|\cdots|g_nds\otimes v_n]
+ \longmapsto
+ [J_n(g_1,\ldots,g_n)\theta\otimes v_1\cdots v_n],
+\]
+where
+\[
+ J_n(g_1,\ldots,g_n)=
+ \int_{0\le s_1\le\cdots\le s_n\le1}
+                 g_1(s_1)\cdots g_n(s_n)\,ds_1\cdots ds_n.
+\]
+For monomials this is
+\(\prod_{j=1}^n(r_1+\cdots+r_j+j)^{-1}\).
+Sum over all consecutive partitions of a word, applying this map
+to each block.  Denote the resulting coalgebra map by \(\mathcal I_d\).
+
+For completeness, its chain identity reduces to one output entry.
+For all-one-form blocks, coefficient differentials and products vanish.
+For a block with one function \(f\), integration of \(f'\)
+between its neighboring variables cancels the two adjacent products.
+At the left end the surviving term uses \(f(0)\); at the
+right end it uses \(f(1)\).  These are exactly the two endpoint
+actions in \(A_d\).  Two functions reduce to endpoint
+multiplicativity in length two; all remaining higher components
+vanish.  With states, the common suspended prefix sign is
+\((-1)^{\sum_{i<j}|v_i|}\).  The sign from moving the state
+past the next form gives the multiplication sign, while a leading
+form gives the minus in its state differential.  State products
+stay ordered.  Cutting partitions commutes with partitioning cuts,
+which proves the coalgebra identity.
+
+The linear map \(I\) is a chain homotopy equivalence.  A
+reverse map is linear interpolation on functions and
+\(W(\ell\theta)=\ell ds\).  Its homotopy on one-forms is
+\(\int_0^s g-s\int_0^1g\), with zero endpoints.
+Direct differentiation gives \(IW=\id\) and
+\(dh+hd=\id-WI\).  Tensoring this explicit contraction
+and inducting on finite word length proves that \(\mathcal I_d\)
+is a quasi-isomorphism, with no flatness condition.  The proof also
+applies to genuine module ends: higher form blocks have zero first
+endpoint, and singleton endpoint actions are unchanged.
+
+Apply these comparisons in the order \(t\), then \(x\),
+on the left, and \(x\), then \(u\), on the right.  Denote
+the results by \(\mathcal I_L,\mathcal I_R\).
+Write \(r_C\) for the form-tree rotation obtained by endpoint
+projection and unit inclusion, and \(r_A=r\) for the overlap
+rotation.
+
+\begin{proposition}[Compatibility of the two presentations]
+\label{tr:prop:form-square}
+In characteristic zero, on finite bar words,
+\[
+ B(r_A)\mathcal I_L=\mathcal I_R B(r_C).
+\]
+Both maps preserve cuts and total spatial pole bounds.  The same
+identity holds with the stated module ends.
+\end{proposition}
+
+\begin{proof}
+Projecting an interval to its first endpoint kills every higher
+block, since its coefficient is \(\theta\).  The remaining
+singleton blocks are first-endpoint evaluation of the original
+forms.  Conversely, inserting a constant interval factor gives no
+higher component in that factor.  These two observations show
+\[
+ B(p_L^A)\mathcal I_L=\mathcal I_x B(p_L^C),\qquad
+ \mathcal I_R B(i_R^C)=B(i_R^A)\mathcal I_x.
+\]
+They hold term by term on consecutive partitions.  Their composition
+is the required identity.  Endpoint actions at module ends are
+unchanged by the same calculation.  Products and integrals obey the
+previously proved coefficient bounds.
+\end{proof}
+
+In characteristic \(p>0\), let
+\(f=(s_x-s_x^p)/x\in\bar C_x^0\).  Its endpoints are
+zero and \(df=ds_x/x\).  The prescribed linear comparison
+would give \(I(f)=0\) and \(I(df)=\theta_x/x\ne0\).
+Thus it fails the chain equation on the length-one word \([f]\).
+A coaugmented coalgebra map sends primitive length-one words to
+length-one words: any component of length at least two is detected
+by its first proper cut.  Higher components cannot repair the
+failure.  In addition, polynomial forms on an invertible interval
+have nonconstant closed functions \(s^p\), so endpoint
+projection is not a quasi-isomorphism there.  These obstructions
+do not affect the all-field overlap homotopies above.
+
+\subsection{The common formal domain and its limits}
+
+The ring \(S\) retains the generic divisor \(x=0\) while
+excluding \(t=0\) and \(u=0\).  A formal domain retaining
+this same collision is obtained by
+\[
+ t=\lambda,\qquad x=\epsilon\lambda,\qquad
+ u=(1+\epsilon)\lambda.
+\]
+These substitutions define
+\[
+ S\longrightarrow T=k[[\epsilon,\lambda]][\lambda^{-1}],
+ \qquad
+ Q\longrightarrow T[\epsilon^{-1}]
+       =k[[\epsilon,\lambda]][(\epsilon\lambda)^{-1}].
+\]
+Both maps are injective on the rational rings: the polynomial
+substitution is injective, and the inverted functions map to units.
+For example,
+\[
+ t^{-a}x^{-b}u^{-c}
+ =\lambda^{-a-b-c}\epsilon^{-b}(1+\epsilon)^{-c}.
+\]
+Its expansion has common finite lower bounds in both scales.
+The retained overlap algebra has endpoints in \(T\) and
+one-forms in \(T[\epsilon^{-1}]\theta_x\).
+More precisely, a scalar with pole tuple \(N\) maps into
+\[
+ \epsilon^{-N_x}\lambda^{-(N_t+N_x+N_u)}k[[\epsilon,\lambda]].
+\]
+Polynomial numerators add only nonnegative scale powers.  The
+monomial with numerator one attains both displayed bounds, since
+\((1+\epsilon)^{-N_u}\) is a unit with constant term one.
+
+For fixed polynomial inputs in
+Theorem~\ref{tr:thm:state-rotation}, only finitely many contraction
+coefficients occur before translation.  Each has the displayed
+lower bounds.  Hasse translation adds nonnegative scale powers.
+Each fixed state weight and scale coefficient receives finitely many
+terms.  Thus the state identity, coefficient homotopies and finite
+bar formulas extend coefficientwise to this specified domain.
+An \(x\)-pole of order \(b\) becomes an \(\epsilon\)-pole
+of order \(b\); powers of the invertible \(\lambda\) are
+tracked separately.
+
+This common expansion is reached from the rational representatives.
+It is not a substitution on every element of the original left
+Laurent completion.  For example,
+\[
+ \sum_{n\ge0}t^n x^{-n^2}
+ \in k[x,x^{-1}][[t]]
+\]
+would become
+\(\sum_{n\ge0}\epsilon^{-n^2}\lambda^{n-n^2}\),
+with no lower bound in either scale.  It lies outside
+\(T[\epsilon^{-1}]\).  The right and left Laurent targets
+remain distinct.  Extending scalars from \(S\) to a ring
+where \(x\) itself is a unit would also erase the retained
+class \(\theta_x/x\); such an extension is a further change
+of collision boundary.
+
+There is a separate state-completion restriction.  In the product
+of state weights, \(\eta_j\) tends to zero.  The scalar
+component of \(Y_x(x_0,\eta_j)\) is
+\(\theta_x/x^{j+1}\), which does not tend to zero in the
+discrete scalar-state coefficient space.  The construction therefore
+does not extend that binary operation continuously to all completed
+input states.
+
+The coefficient rotation and the free-state homotopy compare the
+specified three-leaf operations after changing the endpoint rings.
+They do not identify the two entire coefficient complexes over
+\(R\), by Proposition~\ref{tr:prop:global-obstruction}.
+Nor do they construct morphisms in a geometric factorization
+category.  Such morphisms must preserve collision pullbacks,
+factorization equivalences and their higher refinements.
+
+\begin{problem}[Coherent rotations with collision boundaries]
+Construct a common geometric chain carrier retaining the required
+collision strata for several binary trees.  Specify maps from the
+tree presentations and homotopies for their rotations.  For four
+inputs, compare the five bracketings and prove the boundary identity
+for the resulting pentagon of homotopies.  If additional states or
+coefficient complexes are used to retain the divisors lost over
+\(S\), give their differential and their maps to the stated
+two-chart presentations.  Neither a composition of the three-leaf
+maps nor equality of rational scalar expansions supplies these data.
+\end{problem}

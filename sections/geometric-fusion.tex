@@ -1,0 +1,794 @@
+\section{Geometric fusion and the nine-face relation}
+\label{sec:geometric-fusion}
+
+\subsection{The collision space and its actual faces}
+\label{gf:sec:gf-space}
+
+The pentagon compares bracketings of four inputs.  For five inputs,
+the next relation has nine terms.  Six terms are pentagons, and three
+are squares.  These surfaces arise as collision strata of ordered
+configurations on the real line.  Their boundary orientations determine
+the signs of the relation.
+
+For \(n\geq2\), let
+\[
+ U_n=\{(x_1,\ldots,x_n):0=x_1<x_2<\cdots<x_n=1\}.
+\]
+This is the quotient of ordered configurations by translation and
+positive dilation.  Its orientation is
+\(\omega_n=dx_2\wedge\cdots\wedge dx_{n-1}\).
+The space \(U_2\) is a positively oriented point.
+For a consecutive block \(S=[a,b]\subseteq[1,n]\), record
+\[
+ u^S_j=\frac{x_j-x_a}{x_b-x_a},\qquad a\leq j\leq b.
+\]
+The first and last entries are \(0,1\).
+Let \(\overline\Delta_{|S|-2}\) denote the closed simplex of
+nondecreasing intermediate entries between these endpoints.
+Define \(K_n\) as the closure of
+\begin{equation}\label{gf:eq:gf-ratio-closure}
+ U_n\longrightarrow
+ \prod_{\substack{S\text{ consecutive}\\|S|\geq2}}
+        \overline\Delta_{|S|-2},\qquad
+ x\longmapsto(u^S)_S.
+\end{equation}
+The factor \(S=[1,n]\) retains the original normalized positions.
+No quotient identifies different orders of the inputs.
+
+When a block collapses, its own normalized coordinates remain in
+\eqref{gf:eq:gf-ratio-closure}.  If these coordinates have a further
+collision, the ratios for the smaller block retain that configuration.
+Thus the boundary records both the collision and its internal shape.
+The ratios also recover every ordered three-point ratio, by taking
+the block between the outer two indices.  Ratios with another denominator
+follow by division and the compact values \(0,\infty\).
+Consequently this definition is the ordered one-dimensional
+configuration compactification of \cite{GF-Sinha}*{Sections 4.2--4.4}.
+
+A \emph{collision tree} is a rooted planar tree with leaves
+\(1,\ldots,n\) in their given order.  Each internal vertex has
+at least two children.  An internal edge selects the consecutive
+block of leaves below it.  Distinct selected blocks are nested or
+disjoint.  The full block corresponds to the root, rather than a
+boundary face of the normalized space.
+Write \(V(T)\) for the internal vertices and \(E(T)\) for
+the internal edges.
+
+\begin{proposition}[Collision strata]\label{gf:prop:gf-strata}
+The space \(K_n\) is a compact manifold with corners.
+Its face with collision tree \(T\) has interior and closure
+\begin{equation}\label{gf:eq:gf-stratum-product}
+ F_T^\circ\cong\prod_{v\in V(T)}U_{k_v},\qquad
+ F_T\cong\prod_{v\in V(T)}K_{k_v},
+\end{equation}
+where \(k_v\) is the number of children at \(v\).
+The codimension is the number of internal edges.
+These faces give a regular cellular decomposition of \(K_n\).
+For \(n=5\), its numbers of cells in dimensions \(0,1,2,3\)
+are \(14,21,9,1\).
+\end{proposition}
+
+\begin{proof}
+At the root, group equal limiting positions into maximal consecutive
+blocks.  In each nonsingleton block, apply the same rule to its
+retained normalized coordinates.  Endpoints \(0,1\) are distinct,
+so every vertex has at least two children.  This procedure stops
+and gives a unique tree.  The distinct child positions at each
+vertex give precisely the factors \(U_{k_v}\).
+
+Conversely, choose these vertex configurations and assign a small
+positive scale \(t_e\) to every internal edge.  Insert each child
+configuration at the corresponding parent position, multiplied by
+its scale.  Iterate from the root and normalize the final endpoints.
+As all scales approach zero, every ratio in
+\eqref{gf:eq:gf-ratio-closure} has a limit.  For a pair of indices,
+their first distinct children at the lowest common ancestor determine
+the leading nonzero difference.  Thus the limit recovers the given
+vertex configurations and is independent of relative vanishing rates
+between disjoint scales.
+
+This also describes the local corner coordinates.  One can invert
+the insertion near an open stratum by taking representative child
+separations and their ratios to the parent separation.  The separations
+at each vertex are nonzero there.  The scales are nonnegative boundary
+coordinates.  Allowing further collisions in each vertex configuration
+gives exactly the product of closures in
+\eqref{gf:eq:gf-stratum-product}.
+The manifold and regular-cell assertions agree with
+\cite{GF-Sinha}*{Theorems 4.4, 4.15, and 4.19}.
+
+Here is a direct finite description when \(n=5\).
+The gaps \(d_j=x_{j+1}-x_j\) form a tetrahedron
+\(d_j\geq0\), \(\sum_{j=1}^4d_j=1\).
+Replace the vertices for blocks \(1234,2345\) by their inward
+directions.  Then replace the proper transforms of the edges for
+blocks \(123,234,345\) in the same way.
+In local nonnegative coordinates, this replacement writes
+\((d_1,\ldots,d_r)=t(v_1,\ldots,v_r)\), with
+\(\sum v_j=1\), and retains \(v\) at \(t=0\).
+It is the real radial blowup of that corner.
+It has the same face decomposition as a sufficiently small truncation.
+This follows by replacing the radial coordinate \(t\) with a
+strictly increasing coordinate that starts at the truncation radius.
+Choose the later truncations inside the earlier coordinate collars.
+
+The resulting facets correspond to the nine proper consecutive
+blocks of lengths two, three, and four.  Their intersections
+correspond to compatible sets of such blocks.  There are \(21\)
+compatible pairs and \(14\) compatible triples.  No four are
+compatible.  A pair of incompatible overlapping blocks would require
+one leaf to have two different immediate ancestors.
+Nested or disjoint blocks give a tree and hence an intersection.
+This proves the displayed cell counts and identifies the faces
+with those of \eqref{gf:eq:gf-ratio-closure}.
+\end{proof}
+
+\subsection{Fusion of chains and the nine-face identity}
+\label{gf:sec:gf-chains}
+
+For \(p,q\geq2\), put \(n=p+q-1\), and let \(1\leq i\leq p\).
+There is a continuous collision insertion
+\begin{equation}\label{gf:eq:gf-gamma}
+ \gamma_{p,q,i}:K_p\times K_q\longrightarrow K_n.
+\end{equation}
+It replaces the \(i\)-th outer point by the infinitesimal inner
+configuration.  Its image is the face for
+\(S=[i,i+q-1]\).  Formula~\eqref{gf:eq:gf-stratum-product}
+makes \(\gamma_{p,q,i}\) a homeomorphism onto that closed face.
+At boundary points it retains all internal ratios in both factors.
+Thus it specifies a point of the compactification, even though
+several ordinary positions coincide.
+
+Write \(C_*(K_n;\mathbb Z)\) for the cellular chain complex of
+this face decomposition, with homological grading and differential
+\(\partial:C_d\to C_{d-1}\).  Orient each face by the product
+of its vertex configurations in root-first, depth-first order.
+Cellular cross product and \(\gamma_{p,q,i}\) give the chain map
+\begin{equation}\label{gf:eq:gf-chain-map}
+ \Gamma_{p,q,i}:C_*(K_p;\mathbb Z)\otimes
+ C_*(K_q;\mathbb Z)\longrightarrow C_*(K_n;\mathbb Z),
+ \qquad a\otimes b\longmapsto a\circ_i b.
+\end{equation}
+The tensor differential is
+\(\partial(a\otimes b)=\partial a\otimes b+(-1)^{|a|}a\otimes\partial b\).
+All chains are finite.  Scalar extension defines the same maps
+over any commutative coefficient ring.
+
+\begin{lemma}[Compatibility at actual corners]\label{gf:lem:gf-grafting}
+The maps \eqref{gf:eq:gf-chain-map} satisfy nested insertion
+associativity.  Interchanging two disjoint inserted chains of
+degrees \(r,s\) gives the sign \((-1)^{rs}\).
+\end{lemma}
+
+\begin{proof}
+At a nested collision, both insertion orders give the same vertex
+configurations on the same rooted tree.  Every retained ratio is
+determined by these data, so the two continuous maps agree.
+For disjoint insertions, exchanging the two factors gives that
+same map after the product permutation.  The orientation of their
+product changes by \((-1)^{rs}\).
+
+On cellular chains, a product of cells maps homeomorphically to
+the corresponding face.  Its oriented boundary is the sum of its
+factor boundaries with the tensor signs.  This proves the chain
+equation and passes both pointwise insertion identities to chains.
+No choice of singular fundamental-chain representatives is needed.
+\end{proof}
+
+Let \(m_n\in C_{n-2}(K_n;\mathbb Z)\) be the top cell with
+orientation \(\omega_n\).  The following formula fixes every sign:
+\begin{theorem}[The oriented collision boundary]\label{gf:thm:gf-boundary}
+For \(n\geq3\),
+\begin{equation}\label{gf:eq:gf-boundary}
+ \partial m_n=
+ \sum_{\substack{p,q\geq2\\p+q=n+1}}
+ \sum_{i=1}^p
+ (-1)^{\,i+(p-i)(q-2)}m_p\circ_i m_q.
+\end{equation}
+In particular, the first relation after the pentagon is
+\begin{align}\label{gf:eq:gf-nine}
+ \partial m_5={}&-m_4\circ_1m_2+m_4\circ_2m_2
+                 -m_4\circ_3m_2+m_4\circ_4m_2\notag\\
+ &-m_3\circ_1m_3-m_3\circ_2m_3-m_3\circ_3m_3\notag\\
+ &-m_2\circ_1m_4+m_2\circ_2m_4.
+\end{align}
+The nine terms have the following collision supports:
+\[
+\begin{array}{c|c|c}
+ S&\text{product of faces}&\text{sign}\\\hline
+ 12,23,34,45&K_4\times K_2&-,+,-,+\\
+ 123,234,345&K_3\times K_3&-,-,-\\
+ 1234,2345&K_2\times K_4&-,+
+\end{array}
+\]
+The boundary of the right side of \eqref{gf:eq:gf-nine} is zero
+as an integral cellular one-chain.  Each of the \(21\) edges
+occurs twice with opposite signs.
+\end{theorem}
+
+\begin{proof}
+First suppose \(i<p\).  Use normalized outer coordinates
+\(0=y_1<\cdots<y_p=1\) and inner coordinates
+\(0=u_1<\cdots<u_q=1\).  A collar of the open collision face is
+\[
+ x_j=y_j\ (j<i),\qquad
+ x_{i+a-1}=y_i+t u_a\ (1\leq a\leq q),\qquad
+ x_{j+q-1}=y_j\ (j>i),
+\]
+where \(t\geq0\) is sufficiently small.
+Use domain coordinate order
+\((t,y_2,\ldots,y_{p-1},u_2,\ldots,u_{q-1})\).
+Subtract the row for the cluster anchor from the other cluster rows.
+The pivot for \(t\) is the cluster's last point.
+Moving this row first and the inner-coordinate rows last gives
+\[
+ \omega_n=
+ (-1)^{\,i+q-3+(p-i-1)(q-2)}t^{q-2}
+ \,dt\wedge\omega_p\wedge\omega_q
+ \quad(t>0).
+\]
+The outward normal at \(t=0\) is \(-\partial_t\).
+The additional minus sign gives
+\((-1)^{i+(p-i)(q-2)}\).
+The vanishing factor \(t^{q-2}\) affects the magnitude but
+does not change the orientation for positive \(t\).
+
+For \(i=p\), keep the final endpoint fixed by using
+\(x_{p+a-1}=1+t(u_a-1)\).
+The first cluster point has derivative \(-1\) with respect to \(t\).
+Moving its row past the \(p-2\) outer rows gives determinant
+sign \((-1)^{p-1}\).  The outward-normal sign is therefore
+\((-1)^p\), which is the same formula at \(i=p\).
+Every facet is one of these collisions, so their signed sum proves
+\eqref{gf:eq:gf-boundary}.
+
+For \(n=5\), the possibilities are \((p,q)=(4,2),(3,3),(2,4)\).
+Substitution gives \eqref{gf:eq:gf-nine} and the table.
+At a codimension-two corner, choose its two inward normal coordinates
+\(s,t\).  Taking outward boundary twice in the two orders
+exchanges \(-\partial_s\) and \(-\partial_t\), giving opposite signs.
+Both orders yield the same corner map by Lemma~\ref{gf:lem:gf-grafting}.
+These are the only two facets through an open edge of this simple
+three-dimensional polytope.  Thus the \(42\) edge incidences cancel
+in \(21\) pairs.
+\end{proof}
+
+For comparison, the lower formulas in precisely this orientation are
+\begin{align*}
+ \partial m_3&=-m_2\circ_1m_2+m_2\circ_2m_2,\\
+ \partial m_4&=-m_3\circ_1m_2+m_3\circ_2m_2-m_3\circ_3m_2
+                  +m_2\circ_1m_3+m_2\circ_2m_3.
+\end{align*}
+The three squares in \eqref{gf:eq:gf-nine} compare two ternary
+homotopies.  They are required by the geometry and cannot be
+replaced by additional pentagons.
+
+\begin{example}[One square and its four actual edges]
+The face for \(S=234\) has outer points \((1,234,5)\) and
+inner points \((2,3,4)\).  It is \(K_3\times K_3\).
+Its four edge strata add, respectively, the blocks
+\(1234,2345,23,34\).  The first two collide outer points.
+The last two collide inner points.  With the product orientation,
+\[
+ \partial(m_3\circ_2m_3)
+   =(\partial m_3)\circ_2m_3-m_3\circ_2(\partial m_3).
+\]
+The minus sign follows from \(|m_3|=1\).
+It is the sign needed for cancellation against the adjacent
+pentagonal and square faces in \eqref{gf:eq:gf-nine}.
+\end{example}
+
+\subsection{Normal fusion of rational collision coefficients}
+\label{gf:sec:gf-rational}
+
+The coefficient map at a collision has a direction different from
+\eqref{gf:eq:gf-chain-map}.  Chains enter the collision space through
+its face.  Rational functions pull back to its normal neighborhood.
+Poles require a formal normal parameter before any leading restriction
+can be taken.
+
+Use rational coefficients and unnormalized positions in this section.
+Write
+\[
+ \delta_{ab}=z_b-z_a\quad(a<b),\qquad
+ R_n=\mathbb Q[z_1,\ldots,z_n],\qquad
+ L_n=R_n[\delta_{ab}^{-1}:a<b].
+\]
+The positive-distance convention changes the sign of \(z_a-z_b\),
+but preserves every pole exponent.  For a tuple
+\(N=(N_{ab})_{a<b}\) of nonnegative integers, put
+\[
+ D_N=\prod_{a<b}\delta_{ab}^{N_{ab}},\qquad
+ F_NL_n=D_N^{-1}R_n.
+\]
+Products send \(F_NL_n\otimes F_ML_n\) into \(F_{N+M}L_n\).
+
+Fix \(S=[i,i+q-1]\) and set \(p=n-q+1\).
+Let \(\pi:[1,n]\to[1,p]\) collapse this block to \(i\).
+Write \(u_1=0,u_q=1\), and set
+\[
+ B_S=\mathbb Q[y_1,\ldots,y_p,u_2,\ldots,u_{q-1}]
+       [(y_b-y_a)^{-1},(u_d-u_c)^{-1}:a<b,\ c<d].
+\]
+The substitutions
+\begin{equation}\label{gf:eq:gf-one-substitution}
+ z_{i+a-1}=y_i+t u_a\quad(1\leq a\leq q),\qquad
+ z_j=y_{\pi(j)}\quad(j\notin S)
+\end{equation}
+give the formal coefficient fusion map
+\begin{equation}\label{gf:eq:gf-one-ring}
+ \Phi_S:L_n\longrightarrow B_S[[t]][t^{-1}].
+\end{equation}
+The target consists of formal Laurent series with a finite lower
+bound in \(t\).  Its coefficients are rational functions on
+the open outer and inner configuration spaces.  It is not the
+ring of regular functions on the closed collision face.
+
+\begin{theorem}[Pole order and leading fusion]\label{gf:thm:gf-single-poles}
+The map \eqref{gf:eq:gf-one-ring} is an injective algebra map.
+For
+\(N_S=\sum_{a<b,\ a,b\in S}N_{ab}\), it satisfies
+\[
+ \Phi_S(F_NL_n)\subseteq t^{-N_S}B_S[[t]].
+\]
+The leading coefficient map
+\begin{equation}\label{gf:eq:gf-leading}
+ \sigma_{S,N}:F_NL_n\longrightarrow B_S,
+ \qquad f\longmapsto[t^0]\bigl(t^{N_S}\Phi_S(f)\bigr)
+\end{equation}
+has the explicit value
+\begin{equation}\label{gf:eq:gf-leading-formula}
+ \sigma_{S,N}(P/D_N)=
+ \frac{P(y_{\pi(1)},\ldots,y_{\pi(n)})}
+ {\displaystyle
+  \prod_{\substack{a<b\\a,b\in S}}(u_{b-i+1}-u_{a-i+1})^{N_{ab}}
+  \prod_{\substack{a<b\\\{a,b\}\not\subseteq S}}
+             (y_{\pi(b)}-y_{\pi(a)})^{N_{ab}}}.
+\end{equation}
+The bounds are exact for \(P=1\).
+Moreover,
+\(\sigma_{S,N+M}(fg)=\sigma_{S,N}(f)\sigma_{S,M}(g)\).
+\end{theorem}
+
+\begin{proof}
+An internal distance becomes
+\(t(u_{b-i+1}-u_{a-i+1})\).
+Every other distance becomes \(A+tC\), with
+\(A=y_{\pi(b)}-y_{\pi(a)}\) invertible in \(B_S\).
+Its negative powers have the unique expansion
+\begin{equation}\label{gf:eq:gf-binomial}
+ (A+tC)^{-r}
+ =A^{-r}\sum_{m\geq0}(-1)^m\binom{r+m-1}{m}(tC/A)^m
+ \qquad(r\geq1).
+\end{equation}
+This proves existence and the stated normal bound.  The polynomial
+numerator introduces only nonnegative normal powers.
+After multiplication by \(t^{N_S}\), setting \(t=0\)
+gives \eqref{gf:eq:gf-leading-formula}.
+For \(P=1\), its value is a unit of \(B_S\), so the
+normal order cannot improve.  Constant-term evaluation on power
+series is multiplicative, which gives the last assertion.
+
+The substitution is birational before expansion:
+\(y_i=z_i\), \(t=z_{i+q-1}-z_i\), and
+\(u_a=(z_{i+a-1}-z_i)/t\), with the other \(y\)'s unchanged.
+It therefore embeds \(L_n\) into the fraction field in \(y,u,t\).
+Expansion is injective on the rational functions used here, since
+their denominators are powers of \(t\) times formal units.
+Thus \(\Phi_S\) is injective.
+\end{proof}
+
+The leading maps form a multiplicative family indexed by the chosen
+pole bounds.  They are not a single evaluation homomorphism
+\(L_n\to B_S\).  For example, an internal inverse maps to
+\(t^{-1}(u_b-u_a)^{-1}\), which has no value at \(t=0\).
+Choosing a larger bound can also make a previously nonzero leading
+coefficient vanish.  The filtration index is part of the map.
+
+\subsection{Nested strata, all pair supports, and the normal domain}
+\label{gf:sec:gf-nested}
+
+Fix a collision tree \(T\).  At each vertex \(v\), give its
+children normalized coordinates
+\(u_{v,1}=0<u_{v,2}<\cdots<u_{v,k_v}=1\).
+Let \(t_e\) be the scale of an internal child relative to its parent.
+For a leaf \(a\), define its coordinate recursively by
+\[
+ X_{v,a}=
+ \begin{cases}
+ u_{v,j},&\text{if the child containing }a\text{ is that leaf},\\
+ u_{v,j}+t_eX_{w,a},&\text{if that child is the vertex }w.
+ \end{cases}
+\]
+Set \(z_a=b+\rho X_{\mathrm{root},a}\), where \(b\) is a
+translation and \(\rho\) is an outer scale.
+These coordinates use the first point of each child as its anchor.
+For small positive scales, the points retain their strict order.
+The last point is \(b+\rho V(t)\), with \(V(0)=1\).
+Thus \(\rho\) differs from the total diameter by a positive unit.
+
+For clarity, put
+\[
+ Q_T=\mathbb Q[b,\rho,(u_{v,j})_{1<j<k_v}]
+ \bigl[(u_{v,d}-u_{v,c})^{-1}:v,\ c<d\bigr],
+\]
+\begin{equation}\label{gf:eq:gf-domain}
+ \mathscr L_T=
+ Q_T[[t_e:e\in E(T)]][\rho^{-1},t_e^{-1}:e\in E(T)].
+\end{equation}
+There is one common finite lower bound for each normal exponent.
+Formal coefficients may have different orders of tangential poles.
+For a corolla, the product of normal variables is empty.
+
+\begin{theorem}[The support of every pair pole]\label{gf:thm:gf-nested-poles}
+The recursive substitution defines an injective algebra map
+\(\Phi_T:L_n\to\mathscr L_T\).
+For the block \(S_e\) below an internal edge, define
+\[
+ N_0=\sum_{a<b}N_{ab},\qquad
+ N_e=\sum_{\substack{a<b\\a,b\in S_e}}N_{ab}.
+\]
+Then
+\begin{equation}\label{gf:eq:gf-pole-bound}
+ \Phi_T(F_NL_n)\subseteq
+ \rho^{-N_0}\prod_e t_e^{-N_e}\,
+ Q_T[[t_e:e\in E(T)]].
+\end{equation}
+For \(1/D_N\), every displayed normal exponent is exact.
+After removing these monomials, restriction to all \(t_e=0\)
+is independent of the order of restriction.
+Successive collision expansions along a fixed tree agree in
+\(\mathscr L_T\) when they use these same relative scales.
+\end{theorem}
+
+\begin{proof}
+Let \(v\) be the lowest common ancestor of \(a<b\), and
+let \(c<d\) be their distinct children at \(v\).
+Subtract the two recursive coordinate expressions.
+Their common ancestral positions cancel.  Their common scales factor,
+giving the exact identity
+\begin{equation}\label{gf:eq:gf-pair-factor}
+ \Phi_T(\delta_{ab})=
+ \rho\prod_{e:\ a,b\in S_e}t_e\ U_{ab}(t),
+ \qquad U_{ab}(0)=u_{v,d}-u_{v,c}.
+\end{equation}
+The expression \(U_{ab}\) is polynomial in the normal variables.
+Its constant term is a unit of \(Q_T\).
+It therefore has a unique inverse in the simultaneous formal
+power-series ring.  Multiplying \eqref{gf:eq:gf-pair-factor} over
+all pairs gives exactly the exponents in
+\eqref{gf:eq:gf-pole-bound}.  Polynomial numerators again contribute
+no negative powers.  For numerator \(1\), the remaining factor
+is a unit even when all normal variables vanish.  The exponents
+are consequently sharp.
+
+The insertion coordinates are birational on their ordered open
+domain.  To recover a vertex scale, take the separation between
+the first leaves in its first and last children.  Divide it by
+the analogous parent separation to recover \(t_e\).
+The root separation recovers \(\rho\), and the first leaf
+recovers \(b\).  Ratios of the other child anchors recover
+all \(u_{v,j}\).  This gives the rational inverse and proves
+injectivity, as in Theorem~\ref{gf:thm:gf-single-poles}.
+
+After removing the specified negative normal monomials, every
+expression is a simultaneous power series.  Setting any subset
+of its variables to zero is defined and these evaluations commute.
+Recursive insertion uses the same affine formulas whichever
+compatible edges are processed first.  Each pair denominator has
+the unique formal inverse of the unit \(U_{ab}\).
+Uniqueness proves equality of the successive expansions in the
+specified simultaneous ring.  It does not identify arbitrary
+iterated Laurent fields with that ring.
+\end{proof}
+
+The outer scale retains the total collision as well.  In the
+translation and scale compactification, it gives the face
+\(\mathbb R\times\{\rho=0\}\times K_n\), locally up to a
+positive change of scale.  The exponent there is \(N_0\).
+The normalized associahedron omits this face because its diameter
+is fixed.  Thus the pair \((\rho,K_n)\) records the total
+collision and every nested relative collision separately.
+
+\begin{example}[A five-point nested pole]\label{gf:ex:gf-nested}
+Take the nested blocks \(234\supset23\).  The root has
+children \((1,234,5)\), with coordinates \((0,a,1)\).
+The other vertices are binary.  With scales \(t,s\), the positions are
+\[
+ (z_1,z_2,z_3,z_4,z_5)=
+ \bigl(b,\ b+\rho a,\ b+\rho(a+ts),\ b+\rho(a+t),\ b+\rho\bigr).
+\]
+The open edge stratum has \(0<a<1\).  Its two boundary normals
+are \(t,s\).  For
+\[
+ f=\frac1{\delta_{12}\delta_{23}^2\delta_{34}\delta_{45}},
+\]
+direct substitution gives
+\begin{equation}\label{gf:eq:gf-example}
+ \Phi_T(f)=\frac{\rho^{-5}t^{-3}s^{-2}}
+                  {a(1-s)(1-a-t)}.
+\end{equation}
+The formula \(N_{234}=3\), \(N_{23}=2\), \(N_0=5\)
+agrees with each exact exponent.
+The coefficient after removing those monomials and setting
+\(s=t=0\) is \(1/[a(1-a)]\), in either order.
+The coefficient of \(t^ms^\ell\) in the remaining power series is
+\[
+ \frac1{a(1-a)^{m+1}},\qquad m,\ell\geq0.
+\]
+The growing pole at \(a=1\) is a tangential pole toward the
+endpoint where the outer clusters \(234\) and \(5\) collide.
+\end{example}
+
+\subsubsection{The coefficient chain map at a collision}
+
+The leading coefficient map extends to logarithmic differential forms.
+Its target differential records the normal pole order.
+Let \(\Omega^*_{L_n/\mathbb Q}\) have cohomological grading and
+the algebraic de Rham differential \(d\).
+Inside this complex, define
+\[
+ \Omega^*_{n,N}=
+ F_NL_n\cdot
+ \bigwedge\!\langle dz_1,d\log\delta_{ab}:a<b\rangle_{R_n}.
+\]
+This denotes the image in the actual de Rham algebra, so all
+relations among these generators are imposed.
+It is a subcomplex.  Indeed,
+\(d(P/D_N)=dP/D_N-(P/D_N)\sum N_{ab}d\log\delta_{ab}\),
+and
+\(dz_j=dz_1+\delta_{1j}d\log\delta_{1j}\) for \(j>1\).
+The union over \(N\) is the full rational de Rham complex.
+
+In the target, introduce closed degree-one symbols
+\(\lambda_0,\lambda_e\), representing \(d\log\rho,d\log t_e\).
+Let \(\mathscr D_T^*\) be the exterior algebra over
+\(\mathscr L_T\) on \(db\), all intermediate \(du_{v,j}\),
+and these symbols.  Its continuous differential on coefficients is
+\[
+ d_Tf=(\partial_bf)db+
+ \sum_{v,j}(\partial_{u_{v,j}}f)du_{v,j}
+ +\rho(\partial_\rho f)\lambda_0
+ +\sum_e t_e(\partial_{t_e}f)\lambda_e.
+\]
+It kills each displayed degree-one generator.
+The commuting derivatives imply \(d_T^2=0\).
+All formal derivatives are taken coefficientwise.
+The simultaneous normal lower bounds make them well-defined.
+
+Substitution and differentiation give the cochain algebra map
+\begin{equation}\label{gf:eq:gf-dr-map}
+ \Phi_T^{\mathrm{dR}}:
+ (\Omega^*_{L_n/\mathbb Q},d)
+ \longrightarrow(\mathscr D_T^*,d_T).
+\end{equation}
+Its values on collision forms are explicit:
+\begin{equation}\label{gf:eq:gf-dlog}
+ \Phi_T^{\mathrm{dR}}(d\log\delta_{ab})=
+ \lambda_0+\sum_{e:\ a,b\in S_e}\lambda_e+d_T\log U_{ab}.
+\end{equation}
+Here \(d_T\log U\) means \(U^{-1}d_TU\), so no logarithm
+function or branch is chosen.
+Also \(\Phi_T^{\mathrm{dR}}(dz_1)=db\).
+
+Write \(A_T\) for \(Q_T\) with the generator \(\rho\) omitted,
+so \(Q_T=A_T[\rho]\).  The leading target is the graded module
+\[
+ \mathscr R_T^*=\Omega^*_{A_T[\rho,\rho^{-1}]/\mathbb Q}
+                    \otimes\bigwedge\langle\lambda_e:e\in E(T)\rangle.
+\]
+Within the de Rham factor, \(\lambda_0=d\rho/\rho\).
+Let \(d_B\) be its de Rham differential, extended by
+\(d_B\lambda_e=0\), and put
+\[
+ \omega_N=N_0\lambda_0+\sum_eN_e\lambda_e,
+ \qquad d_N\alpha=d_B\alpha-\omega_N\wedge\alpha.
+\]
+The closed one-form \(\omega_N\) has square zero, so
+\(d_N^2=0\).  For nonzero \(N\), this is a complex with a
+twisted differential, rather than a de Rham algebra differential.
+
+\begin{theorem}[Leading logarithmic fusion]\label{gf:thm:gf-leading-chain}
+The formula
+\begin{equation}\label{gf:eq:gf-leading-chain}
+ \mathcal R_{T,N}(\alpha)=
+ \left.
+ \rho^{N_0}\prod_et_e^{N_e}\,
+ \Phi_T^{\mathrm{dR}}(\alpha)\right|_{t_e=0\text{ for all }e}
+\end{equation}
+defines a cochain map
+\[
+ \mathcal R_{T,N}:(\Omega^*_{n,N},d)
+       \longrightarrow(\mathscr R_T^*,d_N).
+\]
+Evaluation in \eqref{gf:eq:gf-leading-chain} sets the coefficient
+variables \(t_e\) to zero and retains the formal symbols \(\lambda_e\).
+Restriction along several relative normal variables commutes.
+For \(\alpha\in\Omega^*_{n,N}\) and
+\(\beta\in\Omega^*_{n,M}\),
+\[
+ \mathcal R_{T,N+M}(\alpha\wedge\beta)
+     =\mathcal R_{T,N}(\alpha)\wedge\mathcal R_{T,M}(\beta).
+\]
+\end{theorem}
+
+\begin{proof}
+The universal rule \(df\mapsto d_T\Phi_T(f)\) defines
+\eqref{gf:eq:gf-dr-map} and makes it commute with differentials.
+Differentiating \eqref{gf:eq:gf-pair-factor} proves
+\eqref{gf:eq:gf-dlog}.  The coefficients of \(d_T\log U_{ab}\)
+are power series with no negative normal powers.
+Thus every form in \(\Omega^*_{n,N}\) obeys the same normal
+bound as its coefficient in Theorem~\ref{gf:thm:gf-nested-poles}.
+The right side of \eqref{gf:eq:gf-leading-chain} is therefore defined.
+
+Put \(w_N=\rho^{N_0}\prod_et_e^{N_e}\).
+The product rule gives, with no degree sign on \(w_N\),
+\[
+ d_T(w_N\Phi_T^{\mathrm{dR}}\alpha)
+  =\omega_N\wedge(w_N\Phi_T^{\mathrm{dR}}\alpha)
+       +w_N\Phi_T^{\mathrm{dR}}(d\alpha).
+\]
+The coefficient of normal degree zero in \(t_e\partial_{t_e}f\)
+vanishes for a power series \(f\).
+Hence coefficient evaluation intertwines \(d_T\) with \(d_B\)
+on these weighted forms.  The displayed identity becomes
+\(d_N\mathcal R_{T,N}(\alpha)=\mathcal R_{T,N}(d\alpha)\).
+Commutativity of the coefficient evaluations proves the restriction
+assertion.  Finally, \(w_{N+M}=w_Nw_M\) and evaluation is
+multiplicative, which proves the last formula.
+\end{proof}
+
+For the function in Example~\ref{gf:ex:gf-nested}, write
+\(h=1/[a(1-a)]\).  Denote the two relative normal symbols by
+\(\lambda_t,\lambda_s\).  The leading maps give
+\begin{gather*}
+ \mathcal R_{T,N}(df)=d_Bh-(5\lambda_0+3\lambda_t+2\lambda_s)h,\\
+ \mathcal R_{T,0}(d\log\delta_{23})=\lambda_0+\lambda_t+\lambda_s.
+\end{gather*}
+Using the ordinary differential \(d_B\) alone would omit all
+three normal contributions.
+The leading target keeps these normal directions, even when their
+coefficient variables have been set to zero.
+
+\begin{proposition}[Nonzero normal modes]\label{gf:prop:gf-normal-mode}
+If \(N_e>0\) for some relative collision edge, then
+\((\mathscr R_T^*,d_N)\) is contractible over \(\mathbb Q\).
+In particular, leading logarithmic fusion does not identify this
+complex with a coefficient interval that retains generic pole classes.
+\end{proposition}
+
+\begin{proof}
+Let \(\iota_e\) be exterior contraction with \(\lambda_e\).
+It kills base forms and the other normal symbols, and sends
+\(\lambda_e\) to \(1\).  The tensor signs give
+\(d_B\iota_e+\iota_ed_B=0\), while
+\(\omega_N\wedge\iota_e+\iota_e(\omega_N\wedge-) = N_e\).
+Thus \(h=-N_e^{-1}\iota_e\) satisfies
+\(d_Nh+hd_N=1\).
+
+For comparison, over \(R=\mathbb Q[\delta]\), the coefficient
+interval with degree-zero module \(Re_0\oplus Re_1\), degree-one
+module \(R[\delta^{-1}]\theta\), and differential
+\(\partial e_0=-\theta\), \(\partial e_1=\theta\), has
+\[
+ H^1=R[\delta^{-1}]/R,
+ \qquad [\theta/\delta]\ne0.
+\]
+Its degree-zero module does not contain \(e_1/\delta\).
+The logarithmic normal complex instead admits
+\(d(t^{-1})=-t^{-1}d\log t\).
+These are different complexes with different boundary behavior.
+\end{proof}
+
+The relative-edge hypothesis is essential.  For the corolla there
+are no relative normal symbols, and
+\(d_N=d_B-N_0\,d\log\rho\wedge\).  Multiplication by the
+invertible function \(\rho^{N_0}\) gives the chain isomorphism
+\[
+ (\mathscr R_T^*,d_B)\longrightarrow(\mathscr R_T^*,d_N),
+ \qquad \alpha\longmapsto\rho^{N_0}\alpha,
+\]
+since \(d_N(\rho^{N_0}\alpha)=\rho^{N_0}d_B\alpha\).
+Thus a positive dilation exponent alone does not imply contraction.
+
+\begin{proposition}[A necessary limit on the coefficient target]
+\label{gf:prop:gf-no-uniform-tangent}
+Even a single rational pair pole can have no uniform tangential
+pole bound across its formal normal coefficients.
+The map \(\Phi_T\) cannot in general take values in the union
+of coefficientwise products with one fixed tangential pole tuple.
+\end{proposition}
+
+\begin{proof}
+The expansion
+\[
+ (A+t)^{-1}=\sum_{m\geq0}(-1)^mA^{-m-1}t^m
+\]
+has exact pole order \(m+1\) at the irreducible divisor \(A=0\).
+No finite bound contains all its coefficients.
+The factor \((1-a-t)^{-1}\) in
+Example~\ref{gf:ex:gf-nested} realizes this phenomenon in an actual
+five-point collision chart.  The normal lower bounds remain finite,
+as \eqref{gf:eq:gf-example} shows.
+\end{proof}
+
+The restriction to the open stratum in \(Q_T\) is therefore
+substantive.  To approach its boundary, one introduces the further
+relative scales of the refined tree and applies
+\eqref{gf:eq:gf-pair-factor} there.  Bare evaluation of a pole on
+a closed face is not a defined fusion map.
+
+\subsection{An operation on chains and the representation problem}
+\label{gf:sec:gf-action}
+
+There is a concrete chain algebra in which the operation
+\(m_5\) is nonzero.  Put \(K_1=\{\mathrm{pt}\}\), with its
+point as the insertion identity, and define
+\[
+ \mathcal A=\bigoplus_{r\geq1}C_*(K_r;\mathbb Z).
+\]
+Repeated collision insertion gives maps
+\[
+ C_*(K_n;\mathbb Z)\otimes
+ \bigotimes_{j=1}^nC_*(K_{r_j};\mathbb Z)
+ \longrightarrow C_*(K_{r_1+\cdots+r_n};\mathbb Z)
+ \subseteq\mathcal A.
+\]
+Use the tensor differential and the orientation signs for every
+permutation of factors.  Lemma~\ref{gf:lem:gf-grafting} proves their
+composition identities.  These maps define an action of the
+cellular collision operad on \(\mathcal A\).
+If \(x\) is the generator of \(C_0(K_1;\mathbb Z)\), then
+\[
+ m_5(x,x,x,x,x)=m_5\in C_3(K_5;\mathbb Z)\subseteq\mathcal A.
+\]
+This is a nonzero chain.  Its boundary is the nonzero signed sum
+of the nine distinct two-cells in \eqref{gf:eq:gf-nine}.
+The cancellation occurs only after taking the next boundary.
+
+For a prescribed cochain complex \((V,d_V)\), the required action
+has a different target:
+\begin{equation}\label{gf:eq:gf-end-action}
+ C_d(K_n;\mathbb Q)\longrightarrow
+ \operatorname{Hom}^{-d}(V^{\otimes n},V).
+\end{equation}
+Here
+\(d_{\mathrm{Hom}}F=d_VF-(-1)^{|F|}F d_{V^{\otimes n}}\),
+and tensor differentials and compositions use the Koszul convention.
+An action means maps \eqref{gf:eq:gf-end-action} that respect this
+differential and every collision insertion.
+Such an action sends \(m_n\) to an operation \(M_n\) of
+degree \(2-n\).  Theorem~\ref{gf:thm:gf-boundary} then gives
+\eqref{gf:eq:gf-nine} with \(d_{\mathrm{Hom}}M_5\) on the left
+and the corresponding nine composites on the right.
+This consequence applies only when that action is specified.
+
+\begin{problem}[Collision action on polynomial states]
+\label{gf:prob:gf-native-action}
+Let \(V\) be the one-species free state algebra
+\eqref{fs:eq:state-algebra} over \(\mathbb Q\).
+Its pair contraction coefficients \(K_{rs}(z_a-z_b)\)
+have normal exponents prescribed by
+Theorem~\ref{gf:thm:gf-nested-poles}.  Construct chain operations
+over the collision strata that realize these contractions, their
+translation maps, and their interval coefficients.
+The construction must identify the state carrier over each stratum
+and give comparison maps on every nested and disjoint collision.
+Its five-input boundary must equal the nine composites in
+\eqref{gf:eq:gf-nine}, after transport into one common target complex.
+For mode-module bars, it must also preserve the two module actions
+and every balanced cut.
+\end{problem}
+
+The chain maps \(\Gamma\) and the rational maps \(\Phi\)
+provide different parts of this problem.  The first use integral
+cellular chains on closed geometric strata.  The second use rational
+germs in formal normal neighborhoods of open strata.
+Neither construction identifies interval overlap classes with chains
+on those strata.  A representation must supply that comparison.
+The nonuniform tangential poles in
+Proposition~\ref{gf:prop:gf-no-uniform-tangent} also require a stated
+topology before completed state or bar inputs are admitted.
+No interacting factorization algebra or completed bar equivalence
+is asserted by these finite geometric constructions.

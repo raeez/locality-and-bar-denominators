@@ -1,0 +1,631 @@
+\section{Free states and collision trees}
+\label{sec:free-state-trees}\label{sec:free-states}
+
+\subsection{The state left by a collision}
+
+Suppose two insertions have a contraction \((z_1-z_2)^{-1}\).
+After merging the first insertion with a nearby point, its contraction
+with a third insertion is
+\begin{equation}\label{fs:eq:first-expansion}
+ \frac1{x+t}=\frac1x-\frac{t}{x^2}+\frac{t^2}{x^3}-\cdots.
+\end{equation}
+Keeping only the state at \(t=0\) removes every later coefficient.
+The state left by the first collision must contain jets recording
+these powers of \(t\).  There is a second issue.  An order parameter
+can carry a degree-one differential form, so the contraction and the
+state must be composed with the tensor signs of complexes.
+
+We give the construction for finite polynomial inputs.  The ground
+field \(k\) is arbitrary.  Complexes are cohomological, and a degree
+\(d\) map raises degree by \(d\).  For homogeneous maps and vectors,
+\[
+ (f\otimes g)(u\otimes v)=(-1)^{|g||u|}f(u)\otimes g(v).
+\]
+All signs mean their images in \(k\).  In characteristic two we
+still impose that the square of every exterior generator is zero.
+Coordinates and scale variables have degree zero and differential zero.
+
+The result concerns a free state algebra with a specified contraction.
+It does not begin with a bulk action or a boundary condition.
+A physical realization would have to supply the stated states,
+propagator, and differential.  The distinction will matter when the
+coefficient complex changes characteristic.
+
+\subsection{Jets, translations, and the coefficient algebra}
+
+Fix a finite set of species \(a=1,\ldots,d\).  The state algebra is
+\begin{equation}\label{fs:eq:state-algebra}
+ S=k[x_{a,r}:r\ge0]\otimes\Lambda(\eta^a_r:r\ge0),
+ \qquad |x_{a,r}|=0,\quad |\eta^a_r|=1,\quad d_S=0.
+\end{equation}
+Its elements are finite polynomials.  The exterior algebra imposes
+\(\eta\eta'=-\eta'\eta\) and \(\eta^2=0\).
+The auxiliary weight of both \(x_{a,r}\) and \(\eta^a_r\) is
+\(r+1\).  Thus \(S=\bigoplus_{E\ge0}S_E\), with each \(S_E\)
+finite-dimensional.  Indeed, weight \(E\) uses at most \(E\)
+factors and only jets of index less than \(E\).
+This auxiliary grading differs from a conformal grading in which
+\(x_{a,0}\) has weight zero.  In the latter grading the independent
+states \(1,x_{a,0},x_{a,0}^2,\ldots\) all have weight zero, so
+finite-dimensionality of homogeneous pieces would fail.
+
+For a formal variable \(v\), define an algebra map
+\begin{equation}\label{fs:eq:hasse-translation}
+ \tau_v(x_{a,r})=\sum_{m\ge0}\binom{r+m}{r}x_{a,r+m}v^m,
+ \qquad
+ \tau_v(\eta^a_r)=\sum_{m\ge0}\binom{r+m}{r}\eta^a_{r+m}v^m.
+\end{equation}
+The sums are interpreted weight by weight.  Every coefficient is
+finite, and the exterior relations are preserved.  No division in
+\(k\) is used.
+
+\begin{lemma}[Translation and the jet kernel]\label{fs:lem:hasse}
+The maps satisfy \(\tau_v\tau_w=\tau_{v+w}\) and \(\tau_0=\id\).
+For \(r,s\ge0\), put
+\[
+ K_{rs}(u)=(-1)^r\binom{r+s}{r}u^{-r-s-1}.
+\]
+In \(k[u,u^{-1}][[v,w]]\),
+\begin{equation}\label{fs:eq:kernel-translation}
+ K_{rs}(u+v-w)=
+ \sum_{m,n\ge0}\binom{r+m}{r}\binom{s+n}{s}
+ K_{r+m,s+n}(u)v^mw^n.
+\end{equation}
+Also \(K_{sr}(-u)=-K_{rs}(u)\).
+\end{lemma}
+
+\begin{proof}
+The coefficient of \(v^mw^n x_{a,r+m+n}\) in the composite
+translation is
+\(\binom{r+n}{r}\binom{r+n+m}{r+n}\).
+The coefficient in \(\tau_{v+w}\) is
+\(\binom{r+m+n}{r}\binom{m+n}{m}\).
+Both integers count an ordered division of \(r+m+n\) objects
+into parts of sizes \(r,m,n\).  The same argument applies to
+\(\eta\), and multiplicativity proves the translation law.
+
+Define a Hasse derivative by
+\(\partial_z^{[r]}F(z)=[v^r]F(z+v)\).
+On a monomial it is \(\binom nr z^{n-r}\), with the integer
+binomial convention also for negative \(n\).  Coefficient extraction
+gives
+\(\partial^{[r]}\partial^{[m]}=\binom{r+m}{r}\partial^{[r+m]}\).
+The geometric expansion of \((u+v-w)^{-1}\) has coefficient
+\((-1)^r\binom{r+s}{r}u^{-r-s-1}\) at \(v^rw^s\).
+Apply the two Hasse derivatives to that expansion and use their
+composition law.  This proves \eqref{fs:eq:kernel-translation} over
+the integers, hence over \(k\).  Substitution of \(-u\) proves
+the last identity.
+\end{proof}
+
+Let \(I=\{1,\ldots,n\}\).  Write
+\[
+ R_I=k[z_i:i\in I],\qquad
+ L_I=R_I[(z_i-z_j)^{-1}:i<j].
+\]
+The polynomial differential forms on a simplex with vertex set \(V\)
+are the algebra
+\[
+ \Omega(V)=
+ k[t_v:v\in V]\otimes\Lambda(dt_v:v\in V)
+ /(\sum t_v-1,\sum dt_v),
+ \qquad d(t_v)=dt_v.
+\]
+The differential follows the graded product rule.  A face restriction
+sets the missing \(t_v,dt_v\) to zero.
+
+Take \(V=\Ord(I)\), the set of all total orders on \(I\).
+For a nonempty face \(J\subseteq\Ord(I)\), let \(R_J\) invert
+precisely the differences whose comparisons vary among orders in \(J\).
+Define \(C_I\subseteq L_I\otimes\Omega(\Ord(I))\) by requiring
+that restriction to each face have coefficients in \(R_J\).
+This is a differential graded algebra over any field.  We will test
+separately whether it computes gluing cohomology.
+
+The degree-zero order function and its kernel are
+\begin{equation}\label{fs:eq:order-kernel}
+ q_{ij}=\sum_{\sigma\in\Ord(I)}t_\sigma\,1_{i<_\sigma j},
+ \qquad c_{ij}^{rs}=dq_{ij}\,K_{rs}(z_i-z_j).
+\end{equation}
+On a face fixing the comparison, \(dq_{ij}=0\), so this formula
+means zero without inverting that difference.  On every other face
+the inverse is allowed.  Thus \(c_{ij}^{rs}\in C_I^1\), it is
+closed, and \(c_{ji}^{sr}=c_{ij}^{rs}\).
+For \(J\subseteq I\), forgetting labels gives a coefficient map
+\(C_J\to C_I\): it retains the coordinates labelled by \(J\)
+and sends a barycentric coordinate \(t_\tau\) to
+\(\sum_{\sigma|_J=\tau}t_\sigma\).
+This preserves the sum-one relation and every face condition, because
+a comparison in \(J\) varies exactly when the same comparison varies
+among the restricted orders.  Relabellings act by the corresponding
+coordinate and barycentric permutations.
+
+\subsection{Finite contractions as chain maps}
+
+The left derivative \(\partial_{\eta}\) deletes an occurrence of
+\(\eta\) with sign \((-1)^b\), where \(b\) counts the odd
+factors preceding it.  It has degree \(-1\), squares to zero,
+and satisfies the graded product rule.  Derivatives in even variables
+are ordinary polynomial derivatives of degree zero.
+
+On \(S^{\otimes I}\), put
+\begin{equation}\label{fs:eq:pair-operators}
+ P_{ij}^{rs}=\sum_a\left(
+ \partial_{x_{a,r}^{(i)}}\partial_{\eta_s^{a(j)}}+
+ \partial_{\eta_r^{a(i)}}\partial_{x_{a,s}^{(j)}}\right),
+ \qquad
+ D_{ij}=\sum_{r,s\ge0}c_{ij}^{rs}\otimes P_{ij}^{rs}.
+\end{equation}
+It is useful to separate the odd rational operator from its one-form:
+\begin{equation}\label{fs:eq:rational-pair-operator}
+ \mathsf D_{ij}=\sum_{r,s\ge0}K_{rs}(z_i-z_j)P_{ij}^{rs},
+ \qquad D_{ij}=dq_{ij}\otimes\mathsf D_{ij}.
+\end{equation}
+Composition acts from right to left.  Both \(P_{ij}^{rs}\) and
+\(\mathsf D_{ij}\) have degree \(-1\), while \(D_{ij}\) has
+degree zero.  On a fixed polynomial input all
+these sums are finite.  On coefficient-valued inputs the convention is
+\[
+ (\alpha\otimes P)(\beta\otimes v)
+ =(-1)^{|P||\beta|}\alpha\beta\otimes P(v).
+\]
+
+\begin{lemma}[Commuting square-zero pair operations]\label{fs:lem:square-zero}
+One has \(D_{ij}^2=0\), \(D_{ij}D_{kl}=D_{kl}D_{ij}\), and
+\([d,D_{ij}]=0\).  These identities hold in every characteristic.
+\end{lemma}
+
+\begin{proof}
+Each summand of a \(P\) contains one odd derivative and commuting
+even derivatives.  Two such summands anticommute.  If they use the
+same odd derivative their product is zero.  Hence all the \(P\)'s
+anticommute, including shared-label cases.
+All coefficients of \(D_{ij}\) contain the same one-form
+\(dq_{ij}\), whose square is zero.  This proves \(D_{ij}^2=0\).
+For different pairs, both the coefficient one-forms and the odd
+operators anticommute.  The tensor composition contributes one
+additional minus sign in either order.  The two products are equal.
+The coefficients are closed and the state differential is zero,
+which proves the chain identity.  The argument uses exterior
+relations, so it also applies in characteristic two.
+\end{proof}
+
+Let \(E_z:S^{\otimes I}\to\prod_E(R_I\otimes S_E)\) translate
+the \(i\)-th factor by \(\tau_{z_i}\), then multiply in label order.
+The Koszul sign appears whenever odd factors are reordered.
+For a pole tuple \(N=(N_{ij})\), set
+\[
+ D_I(N)=\left(\prod_{i<j}(z_i-z_j)^{-N_{ij}}\right)R_I.
+\]
+The target \(\mathscr M_I\) consists of elements of
+\(\prod_E(C_I\otimes S_E)\) whose coefficients lie in
+\(D_I(N)\otimes\Omega(\Ord(I))\) for one common finite tuple \(N\).
+The product is over the auxiliary state weight, with coefficient
+spaces discrete.  Thus state weights may grow, but a single input
+has a finite common denominator before collision expansion.
+
+\begin{theorem}[The free state operation]\label{fs:thm:free-operation}
+The formula
+\begin{equation}\label{fs:eq:free-operation}
+ Y_I=E_z\prod_{i<j}(1+D_{ij}):S^{\otimes I}\longrightarrow\mathscr M_I
+\end{equation}
+defines a degree-zero chain map over every field.
+The product is independent of its pair ordering.
+It commutes with permutations with their Koszul signs, and deleting
+a unit input deletes the corresponding label.  The unary operation
+is \(\tau_z\), and the empty operation is the state \(1\).
+
+For polynomial inputs, set \(N_{ij}\) equal to the largest
+\(r+s+1\) among opposite-parity, same-species factors available
+at sites \(i,j\), or zero if there is none.  Every output
+coefficient has pole order at most \(N_{ij}\) on that diagonal.
+\end{theorem}
+
+\begin{proof}
+The product contains finitely many pair factors.  Derivatives remove
+factors, so every evaluation contains only finitely many contraction
+choices.  A nonzero choice uses at most one contraction on each
+pair.  Its denominator on that pair has exponent \(r+s+1\).
+Translations of the remaining factors have polynomial coefficients
+in each fixed state weight and introduce no poles.  This proves
+the target and the stated bounds.
+Lemma~\ref{fs:lem:square-zero} proves order independence and the chain
+property.  Face restriction commutes with the construction: a forbidden
+pair coefficient restricts to zero by \eqref{fs:eq:order-kernel}.
+The remaining contractions have legal denominators on that face.
+
+Relabelling sends the pair kernel to the same kernel and the odd
+derivatives to their signed tensor permutations.  Multiplication in
+the graded commutative state algebra has exactly these signs.
+This proves permutation compatibility.  Every derivative of a unit
+input vanishes, and \(\tau_z(1)=1\), proving the unit statements.
+\end{proof}
+
+In characteristic zero, the product is the exponential of
+\(\sum D_{ij}\).  This follows by expanding the exponential and
+using commuting square-zero factors.  Formula~\eqref{fs:eq:free-operation}
+is the definition in arbitrary characteristic.
+
+\begin{example}[A nonzero two-form and a vanishing jet kernel]
+With two species, use the three inputs
+\(x_{1,0},x_{2,0},\eta^1_0\eta^2_0\).
+The scalar-state component is \(c_{13}^{00}c_{23}^{00}\).
+Deleting \(\eta^2_0\) after the first contraction crosses its
+coefficient one-form; moving the second one-form back to pair order
+gives a second minus sign.  The resulting coefficient is positive.
+On the face with orders \(123,312,132\), write the first two
+barycentric coordinates as \(a,b\).  Then
+\(q_{13}=1-b\), \(q_{23}=a\), and this component is
+\[
+ \frac{da\,db}{(z_1-z_3)(z_2-z_3)}.
+\]
+It is nonzero over every field and has exactly the two displayed
+simple divisorial poles.  On the binary tree \((12)3\), both order
+differentials become the outer \(dq\), and this component vanishes.
+
+Individual jet contractions can instead vanish for arithmetic reasons.
+For the binary inputs \(x_r,\eta_s\), the contracted component is
+\(dq\,K_{rs}(u)\).  Its pole order is exactly \(r+s+1\)
+if \(\binom{r+s}{r}\ne0\) in \(k\), and it is zero otherwise.
+For instance \(K_{11}(u)=-2u^{-3}\) vanishes in characteristic two,
+whereas \(K_{10}(u)=-u^{-2}\) survives in every characteristic.
+\end{example}
+
+\subsection{A common tree domain and its insertion identity}
+
+A finite rooted tree has labelled leaves.  Each internal vertex has
+a finite set of children, local child coordinates, and an order simplex
+on those children.  Fix one child coordinate equal to zero at each
+vertex.  For every nonroot internal vertex \(v\), introduce a
+scale \(\epsilon_v\).  The physical displacement inside that vertex
+is multiplied by the product of scales along the path from the root.
+The coordinate of a leaf is the sum of its displacements along that
+path.  For example,
+\[
+ z_{a,b,c}=Z_a+\epsilon_a U_{a,b}
+                  +\epsilon_a\epsilon_{a,b}V_{a,b,c}.
+\]
+Leaf orders are formed by replacing each child in its local order
+with the recursively ordered leaves of that subtree.
+
+For chosen nonempty faces at all vertices, let \(B_T\) be the
+tensor product over \(k\) of their coordinate overlap rings and
+their polynomial-form algebras.  The common scale ring is
+\begin{equation}\label{fs:eq:tree-ring}
+ B_T[[\epsilon_v]][(\prod_v\epsilon_v)^{-1}].
+\end{equation}
+We then take a product over the state weights, retaining a common
+finite lower bound in each scale for a fixed original polynomial input.
+Coefficients at a specified scale multiindex and state weight are finite.
+
+\begin{lemma}[Coordinate and order pullbacks]\label{fs:lem:tree-pullback}
+The tree coordinate substitution sends every permitted rational
+coefficient to \eqref{fs:eq:tree-ring}.
+The leaf barycentric coordinate \(t_\sigma\) pulls back to the
+product of the vertex barycentric coordinates producing \(\sigma\),
+or to zero if no such choices exist.  Differentiation defines the
+pullback on forms.  Under this map \(q_{ij}\) becomes the order
+function of the two children at the lowest common ancestor of
+leaves \(i,j\).
+\end{lemma}
+
+\begin{proof}
+At their lowest common ancestor \(v\), the leaf difference has form
+\[
+ z_i-z_j=\lambda_v(u_a-u_b+h),
+\]
+where \(\lambda_v\) is the ancestor-scale monomial and \(h\)
+has positive degree in the descendant scales.  If the leaf comparison
+varies, the corresponding child comparison varies at \(v\), so
+\(u_a-u_b\) is a unit in the chosen overlap ring.  Geometric
+inversion gives a power series after the finite factor
+\(\lambda_v^{-1}\).  Finitely many original denominators give
+common finite lower bounds in all scales.
+
+The vertex choices producing a compatible leaf order are unique,
+by restriction to consecutive subtrees.  Summing their products
+over all leaf orders gives the product of the vertex sums, which
+is one.  Hence the barycentric relations and their differentials
+are preserved.  In the sum defining \(q_{ij}\), the comparison
+depends only on the two children at \(v\).  The sums over all
+other choices are one, proving the last assertion.
+\end{proof}
+
+\begin{theorem}[Finite-tree state insertion]\label{fs:thm:tree-insertion}
+Take polynomial leaf states in \(S\).  At each vertex apply
+\eqref{fs:eq:free-operation} to its child states using their physical
+relative displacements and that vertex's order functions.  Expand
+all rational factors in the common ring \eqref{fs:eq:tree-ring}.
+The resulting state-valued series equals the tree pullback of
+\(Y_I\).  This equality holds in every characteristic and is
+compatible with grafting finite trees.
+The domain consists of series generated in this way from the fixed
+polynomial leaf states, not arbitrary completed intermediate states.
+\end{theorem}
+
+\begin{proof}
+Expand the finite pair product before applying translations.
+A term chooses contracted pairs of individual factors and leaves
+the other factors uncontracted.  Each factor can be used at most
+once, because it is deleted by its derivative.  Multiplicities from
+repeated even factors count the choices of their occurrences.
+The derivative definition assigns the Koszul sign to this matching.
+
+Partition a matching by the lowest common ancestor of each contracted
+pair.  This assigns it uniquely to the vertices where the iterated
+operation must perform those contractions.  Conversely, contractions
+at vertices choose disjoint surviving factors and reconstruct the
+leaf matching.  If two contractions use the same child pair at a
+vertex, their common \(dq\) squares to zero.  The direct pullback
+of that matching is also zero.  Thus the same terms vanish on
+both sides.
+
+For a contraction between translated child states, expand their
+translations by \eqref{fs:eq:hasse-translation}.  Identity
+\eqref{fs:eq:kernel-translation} sums exactly these jet contractions
+to the expansion of the original leaf kernel.  It includes the
+physical scale factors because the arguments are the actual relative
+displacements.  The uncontracted factors agree by
+\(\tau_v\tau_w=\tau_{v+w}\).
+Every intermediate operation has total degree zero.  Moving its
+coefficient form to the left contributes the tensor sign of its
+odd deleted factors.  Hence the iterated sign is the sign obtained
+by deleting the same matching in the original ordered tensor.
+Equivalently, one may interchange successive pair contractions using
+Lemma~\ref{fs:lem:square-zero}, which preserves their signs.
+
+At a fixed state weight, finitely many uncontracted jet indices occur.
+For contracted jets at a vertex with scale monomial \(\lambda\),
+write a child displacement as \(\lambda v\).  The factor
+\(\lambda^m v^m\) from its extra jet index cancels the factor
+\(\lambda^{-m}\) from the outer jet kernel.  The remaining
+\(v^m\) has positive descendant-scale degree.  A specified scale
+coefficient therefore uses finitely many extra indices after the
+fixed negative shifts from the original poles.  The denominator calculation in
+Lemma~\ref{fs:lem:tree-pullback} gives those common lower bounds.
+Thus the matching equality holds coefficientwise in the stated
+common ring.  Grafting groups the same matchings by a longer path
+of lowest common ancestors.  The same partition and translation
+identities prove compatibility.
+\end{proof}
+
+For a single collision \(z_1=z_2+t\), put
+\(A=N_{12}\), \(B_j=N_{1j}\), \(C_j=N_{2j}\).
+Each state-weight coefficient has a polynomial numerator after its
+common denominator is cleared.  Its coefficient of \(t^q\) is
+zero for \(q<-A\).  For \(m=q+A\ge0\), it is a sum of terms
+with merged pole exponents
+\begin{equation}\label{fs:eq:state-pole-budget}
+ B_j+C_j+h_j,\qquad \sum_jh_j\le m,\qquad h_j=0\text{ if }B_j=0.
+\end{equation}
+To prove this, expand the polynomial numerator and
+\((x_j+t)^{-B_j}\).  A term of numerator degree \(\ell\)
+and cross Taylor degrees \(h_j\) satisfies
+\(\ell+\sum h_j=m\).  The coefficients are the integers
+\((-1)^{h_j}\binom{B_j+h_j-1}{h_j}\), reduced in \(k\).
+This proves the bound without a characteristic restriction.
+Successive use gives a finite bound at every vertex of a fixed tree.
+Cancellation among states or exterior forms can make it strict.
+
+\subsection{Two three-input mergers and a chain homotopy}
+
+Work on the fully separated rational carrier
+\[
+ B=k[t,x,t^{-1},x^{-1},(x+t)^{-1}]
+       \otimes k[p,q]\otimes\Lambda(dp,dq).
+\]
+Its differential differentiates only \(p,q\).
+Put \(z_1=x+t\), \(z_2=x\), \(z_3=0\), and write
+\(X(v)=\tau_v(x_0)\), \(H(v)=\tau_v(\eta_0)\) for one species.
+Use the product over state weights as above.
+The order pullbacks for the two binary trees are
+\[
+ \begin{array}{c|ccc}
+ &q_{12}&q_{13}&q_{23}\\\hline
+ (12)3&p&q&q\\
+ 1(23)&q&q&p.
+ \end{array}
+\]
+In both cases \(p\) orders the inner pair and \(q\) orders
+the two outer blocks.  These are different maps of order parameters,
+even before one chooses Laurent expansions.
+The symbols \(Y_L,Y_R\) below denote rational representatives:
+their expansions give the iterated operations in the two respective
+tree rings.  Their comparison is made in \(B\), without identifying
+the two Laurent-series domains.
+
+\begin{example}[Three states with one odd factor]\label{fs:ex:three-even-even-odd}
+For \(x_0\otimes x_0\otimes\eta_0\), the two operations are
+\[
+ \begin{aligned}
+ Y_L&=X(x+t)X(x)\eta_0+
+       \frac{dq}{x+t}X(x)+\frac{dq}{x}X(x+t),\\
+ Y_R&=X(x+t)X(x)\eta_0+
+       \frac{dq}{x+t}X(x)+\frac{dp}{x}X(x+t).
+ \end{aligned}
+\]
+Thus they are generally unequal, but
+\begin{equation}\label{fs:eq:first-homotopy}
+ Y_R-Y_L=d\left(\frac{p-q}{x}X(x+t)\right).
+\end{equation}
+Both the pole and the primitive have exact order one along \(x=0\),
+detected by their \(x_0\)-coefficient.  The primitive is a degree
+\(-1\) operation on these degree-one inputs.
+All formulas hold in characteristic two as well.
+\end{example}
+
+\begin{example}[The sign from two odd factors]\label{fs:ex:three-odd}
+For \(\eta_0\otimes x_0\otimes\eta_0\), one obtains
+\[
+ \begin{aligned}
+ Y_L&=H(x+t)X(x)\eta_0+\frac{dp}{t}\eta_0-
+                                      \frac{dq}{x}H(x+t),\\
+ Y_R&=H(x+t)X(x)\eta_0+\frac{dq}{t}\eta_0-
+                                      \frac{dp}{x}H(x+t).
+ \end{aligned}
+\]
+Deleting the last odd factor crosses the first odd factor and produces
+the minus sign.  Their difference is
+\[
+ Y_R-Y_L=d\left((q-p)
+                  \left(\frac{\eta_0}{t}+\frac{H(x+t)}{x}\right)\right).
+\]
+The two poles are simple and exact on their respective generic divisors.
+In characteristic two the displayed minuses become pluses, while
+the exterior squares remain zero.
+\end{example}
+
+\begin{proposition}[Jets cannot be discarded]\label{fs:prop:jet-obstruction}
+Replacing \(\tau_v\) by the identity on \(k[x_0]\otimes\Lambda\eta_0\),
+while retaining the kernel \(dq/(z_i-z_j)\), fails binary-tree insertion.
+The failure occurs on the three nonunit inputs of
+Example~\ref{fs:ex:three-even-even-odd} over every field.
+\end{proposition}
+
+\begin{proof}
+Merge the first two inputs.  With no jets the inner output is
+\(x_0^2\), and the outer binary formula is
+\[
+ x_0^2\eta_0+\frac{2dq}{x}x_0.
+\]
+The direct three-input formula pulled to the same order square is
+\[
+ x_0^2\eta_0+dq\left(\frac1{x+t}+\frac1x\right)x_0.
+\]
+After expansion at \(t=0\), its coefficient of \(t\) is
+\(-dq\,x_0/x^2\), whereas the iterated expression has coefficient
+zero.  This is nonzero over every field, including characteristic two.
+In \(S\), the coefficient \(x_1\) of \(\tau_t(x_0)\) gives
+the missing contraction \(K_{10}(x)=-x^{-2}\).
+\end{proof}
+
+\subsection{Integral higher comparisons on the separated carrier}
+
+Let \(B_0\) be a commutative differential graded \(k\)-algebra
+of order parameters and put \(B=L_I\otimes_k B_0\), with
+differential zero on \(L_I\).  Choose two degree-zero order functions
+\(q_e^0,q_e^1\in B_0\) for each pair \(e\); in particular,
+they introduce no spatial poles.  No geometric meaning
+of these arbitrary choices is assumed.  Set
+\[
+ L_e=\sum_{r,s}K_{rs}(z_i-z_j)P_{ij}^{rs},\qquad
+ F_e^a=1+dq_e^a\otimes L_e,\qquad
+ H_e=(q_e^1-q_e^0)\otimes L_e.
+\]
+Here \(L_e,H_e\) have degree \(-1\), and \(F_e^a\) has degree zero.
+For an operator \(T\) of degree \(h\), write
+\(\partial T=dT-(-1)^hTd\).  The product rule gives
+\(\partial H_e=F_e^1-F_e^0\) and \(\partial F_e^a=0\).
+These formulas are defined on polynomial state inputs.
+
+\begin{theorem}[Cubical chain comparisons]\label{fs:thm:cubical}
+Order the finitely many pairs as \(e_1,\ldots,e_M\).
+The two operations \(E_z\prod_jF_{e_j}^0\) and
+\(E_z\prod_jF_{e_j}^1\) are chain homotopic by
+\begin{equation}\label{fs:eq:telescoping-homotopy}
+ H=E_z\sum_{j=1}^M
+ \left(\prod_{i<j}F_{e_i}^1\right)H_{e_j}
+ \left(\prod_{i>j}F_{e_i}^0\right).
+\end{equation}
+All products and homotopies satisfy the same pairwise pole bounds
+as the corresponding finite contraction terms.
+There are compatible higher homotopies for every face of the
+\(M\)-dimensional cube, over every field.
+\end{theorem}
+
+\begin{proof}
+Apply \(\partial\) to \eqref{fs:eq:telescoping-homotopy}.
+All \(F\)'s are closed and have degree zero.  The resulting sum
+telescopes to
+\(E_z(\prod F^1-\prod F^0)\), proving the chain-homotopy identity.
+Each \(H_e\) has the same spatial kernel as its pair contraction.
+Changing \(dq_e\) to \(q_e^1-q_e^0\) introduces no additional
+spatial denominator.
+
+For completeness, a cube face specifies some coordinates as endpoints
+zero or one and a set \(J\) of varying coordinates.  Assign to it
+the ordered product with factor \(H_{e_j}\) for \(j\in J\)
+and factor \(F_{e_j}^{a_j}\) at an endpoint, followed by \(E_z\).
+This map has degree \(-|J|\).  If
+\(J=\{j_1<\cdots<j_r\}\), the product rule gives its differential
+as the sum
+\[
+ \sum_{\nu=1}^r(-1)^{\nu-1}
+ \bigl(\text{map on the face }a_{j_\nu}=1
+       -\text{map on the face }a_{j_\nu}=0\bigr).
+\]
+This is the oriented boundary formula for the cube.
+Its boundary squares to zero because the two orders of fixing a
+pair of coordinates occur with opposite signs.
+Hence the assigned maps are coherent higher chain homotopies.
+No integration or division is used.
+\end{proof}
+
+The separated coefficient ring is essential here.  For example,
+the primitive in \eqref{fs:eq:first-homotopy} has coefficient
+\(1/x\) at the order-square vertex \((p,q)=(1,0)\).
+At an order vertex the permitted coefficient ring contains only
+regular coordinate functions.  Thus this homotopy need not preserve
+the order-face restrictions.  A comparison after full localization
+is an actual chain comparison, but it does not prove one before
+localization.
+
+\subsection*{Changing the coefficient complex}
+
+The pair operation uses polynomial forms on order simplices.
+Its formulas make sense over every field, but this does not identify
+that coefficient complex with derived gluing coefficients.
+The binary interval already distinguishes them: in characteristic
+\(p>0\), the form \(u^{-1}ds\) is the differential of
+\(u^{-1}(s-s^p)\), whose endpoint values are zero.
+The overlap interval of Section~\ref{sb:sec:two-chart}
+retains the nonzero class \([u^{-1}\theta]\), where \(\theta\)
+is its degree-one overlap generator.
+Proposition~\ref{sb:prop:coefficient-comparison} gives the precise comparison
+and its characteristic-zero hypothesis.
+
+\subsection{The remaining extension problem}
+
+The finite-polynomial domain is part of the construction.
+For the energy completion \(\widehat S=\prod_ES_E\), the states
+\(\eta_r\) tend to zero as \(r\to\infty\).
+Nevertheless, the scalar-form component of the binary operation on
+\(x_0\otimes\eta_r\) is
+\[
+ \frac{dq}{u^{r+1}},
+\]
+because \(K_{0r}(u)=u^{-r-1}\).
+These nonzero terms lie in the same discrete state-weight-zero
+coefficient space.  They do not tend to zero.
+Thus the operation has no continuous extension to all of
+\(\widehat S\) with this topology.  A simultaneous pole and
+state completion requires an additional continuity theorem.
+
+For a general finite order atlas, one possible integral coefficient
+carrier is the ordered overlap complex: degree \(r\) is the
+direct sum of the coordinate rings on intersections of \(r+1\)
+distinct charts, with alternating restriction differential.
+Fixing an order on charts defines its cup product by multiplying
+the first \(a+1\) and last \(b+1\) restrictions on an
+\((a+b+1)\)-fold intersection.  The common chart occurs once.
+Splitting the alternating omission sum at the common chart proves
+the differential product rule: the two terms at that chart cancel
+with opposite signs.  Cancellation of double omissions proves \(d^2=0\).
+This associative complex is defined over every field,
+but its cup product is not strictly graded commutative.
+
+\begin{problem}[State operations on integral gluing coefficients]
+Construct multilinear operations on the overlap complexes that retain
+the binary class \([u^{-1}\theta]\), commute with Hasse
+translation, and satisfy the finite-tree identities with their full
+chain homotopies.  The maps must preserve every allowed overlap ring.
+Any extension to completed state spaces must specify a joint
+pole-state topology and prove continuity of every insertion.
+\end{problem}
+
+The free polynomial-form operations and the separated cubical
+comparisons above are explicit chain-level constructions.
+The lost-class calculation identifies why they cannot be transported
+to the integral gluing carrier by a pole-preserving chain map from
+the same polynomial-form model.  A construction on that corrected
+carrier must retain the overlap class from the start.

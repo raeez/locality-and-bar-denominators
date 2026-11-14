@@ -1,0 +1,478 @@
+\section{A balanced vacuum and its Lie--chiral comparison}
+\label{bv:sec}
+
+The ordinary calculation of Proposition~\ref{prop:sl2} suggests a
+cohomology class in degree three, but a comparison of vertex objects
+must also preserve translation and every mode product.  An explicit
+example is obtained by coupling two universal Virasoro vacua of charges
+\(a\) and \(26-a\) to free ghosts.  The charge balance makes the
+differential square-zero.  A weight contraction then reduces both the
+balanced complex and a smaller cochain vertex algebra to the same four
+states.  The resulting maps also compare their Lie--chiral Chevalley
+coalgebras, with every word length retained.
+
+\subsection{Universal vacua, ghosts and the differential}
+
+Let \(R\) be a nonzero commutative \(\mathbb Q\)-algebra and
+\(a\in R\).  All state spaces in this subsection and the next three
+are algebraic direct sums of their integral weight spaces.  Cohomological
+degree supplies the parity.  Write
+\[
+ Y(u,z)=\sum_{n\in\mathbb Z}u_{(n)}z^{-n-1},\qquad
+ {:}uv{:}=u_{(-1)}v,\qquad
+ [u_\lambda v]=\sum_{n\geq0}\frac{\lambda^n}{n!}u_{(n)}v.
+\]
+The translation operator \(T\) has cohomological degree zero and
+raises weight by one.
+
+The universal Virasoro vacuum vertex algebra \(V_R^a\) has an even
+stress tensor \(L\), of degree zero and weight two, satisfying
+\[
+ [L_\lambda L]=(T+2\lambda)L+\frac a{12}\lambda^3\unit.
+\]
+In physical mode notation \(L_n=L_{(n+1)}\), the vacuum is killed by
+\(L_n\) for \(n\geq-1\).  The universal induced vacuum has PBW basis
+\[
+ L_{-n_1}\cdots L_{-n_s}\unit,
+ \qquad n_1\geq\cdots\geq n_s\geq2.
+\]
+In particular, its weight-zero space is \(R\unit\), its weight-one
+space is zero, and every weight space is finite free over \(R\).
+This is the universal vacuum, including at charges where it has a
+proper vertex ideal.
+
+The free odd ghost vertex algebra has generators \(b,\gamma\), with
+degrees \(-1,1\), weights \(2,-1\), and brackets
+\[
+ [b_\lambda\gamma]=[\gamma_\lambda b]=\unit,
+ \qquad [b_\lambda b]=[\gamma_\lambda\gamma]=0.
+\]
+Its states are the exterior PBW monomials in \(T^rb,T^r\gamma\),
+\(r\geq0\).  Put \(\gamma_r=T^r\gamma\).  The subalgebra generated
+by the \(\gamma_r\) is the commutative vertex algebra
+\[
+ G_R=\Lambda_R(\gamma_r:r\geq0),\qquad
+ Y(u,z)v=(e^{zT}u)v,
+ \qquad |\gamma_r|=1,\quad \operatorname{wt}\gamma_r=r-1.
+\]
+It has differential \(d\gamma_r=T^r(\gamma_0\gamma_1)\), extended as
+an odd derivation.  Indeed \(d\) commutes with \(T\), and
+\(d^2\gamma_0=0\) by the exterior relations, so \(d^2=0\).
+
+Use \(L'\) for the stress tensor of \(V_R^{26-a}\).  On
+\[
+ K_{R,a}=V_R^a\otimes_R V_R^{26-a}\otimes_R bc
+\]
+define the ghost stress tensor and the odd zero-mode operator
+\begin{equation}\label{bv:eq:charge}
+ \begin{split}
+ L_{\mathrm{gh}}&=-{:}(Tb)\gamma{:}-2{:}bT\gamma{:},\\
+ Q&=\bigl({:}\gamma(L+L'){:}+{:}b\gamma T\gamma{:}\bigr)_{(0)}.
+ \end{split}
+\end{equation}
+The notation \(bc\) denotes the free ghost algebra just specified;
+its second field is denoted by \(\gamma\).  A zero mode is a
+derivation of every vertex product and commutes with \(T\).
+
+\begin{lemma}[The balanced differential]\label{bv:lem:differential}
+The operator \(Q\) has degree one, preserves weight and satisfies
+\(Q^2=0\).  Write \((L^{(1)},L^{(2)})=(L,L')\) and
+\((a_1,a_2)=(a,26-a)\).  Its values on the generating fields are
+\begin{equation}\label{bv:eq:generators}
+ \begin{split}
+ Q\gamma&=\gamma T\gamma,\qquad
+ Qb=L+L'+L_{\mathrm{gh}},\\
+ QL^{(i)}&=\gamma TL^{(i)}+2(T\gamma)L^{(i)}+\frac{a_i}{12}T^3\gamma,
+ \qquad i=1,2.
+ \end{split}
+\end{equation}
+If \(H_K\) denotes total weight on \(K_{R,a}\), then
+\begin{equation}\label{bv:eq:cartan-K}
+ Qb_{(1)}+b_{(1)}Q=H_K.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Single contractions in \eqref{bv:eq:charge} give
+\eqref{bv:eq:generators}.  The ghost stress tensor has charge \(-26\):
+the four complete double contractions in
+\(L_{\mathrm{gh}}(z)L_{\mathrm{gh}}(w)\) contribute
+\(-1,-4,-4,-4\) to the fourth pole, whose sum is \(-13\).
+The single contractions give weights two and minus one on \(b\)
+and \(\gamma\), respectively.
+
+The scalar terms in the differential of the ghost stress tensor must
+also be retained.  Wick expansion gives
+\[
+ \begin{aligned}
+ {:}(TL_{\mathrm{gh}})\gamma{:}
+   &=3{:}(Tb)\gamma T\gamma{:}
+       +2{:}b\gamma T^2\gamma{:}+\frac56T^3\gamma,\\
+ {:}L_{\mathrm{gh}}T\gamma{:}
+   &=-{:}(Tb)\gamma T\gamma{:}+\frac23T^3\gamma.
+ \end{aligned}
+\]
+For example, before expanding the uncontracted field, the contraction
+part of \(L_{\mathrm{gh}}(z)\gamma(w)\) is
+\[
+ -\frac{\gamma(z)}{(z-w)^2}+\frac{2T\gamma(z)}{z-w}.
+\]
+Differentiation in \(z\) and extraction of the regular coefficient
+give \((1/3-3/2+2)T^3\gamma=5T^3\gamma/6\).
+Differentiation in \(w\) gives
+\((-1/3+1)T^3\gamma=2T^3\gamma/3\).
+Substituting the two identities into \(QL_{\mathrm{gh}}\) cancels
+the cubic ghost terms and yields
+\[
+ QL_{\mathrm{gh}}
+ =-\gamma T(L+L')-2(T\gamma)(L+L')-\frac{26}{12}T^3\gamma.
+\]
+Thus \(Q^2b=0\).  Substitution in
+\eqref{bv:eq:generators} gives \(Q^2\gamma=Q^2L=Q^2L'=0\): the
+coefficients of \(\gamma(T\gamma)TL^{(i)}\),
+\(\gamma T^2\gamma L^{(i)}\), \(\gamma T^4\gamma\) and
+\((T\gamma)T^3\gamma\) cancel separately.  These fields generate
+\(K_{R,a}\), so the square of the derivation vanishes everywhere.
+Finally, the coefficient of mode one in
+\([Q,Y(b,z)]_+=Y(Qb,z)\) is \eqref{bv:eq:cartan-K}, since
+\((L+L'+L_{\mathrm{gh}})_{(1)}\) is total weight.
+Every displayed identity has rational coefficients, so it holds over
+the stated ring \(R\).
+\end{proof}
+
+\subsection{The strict inclusion and all coefficient changes}
+
+The vertex subalgebra
+\(Z_{R,a}=V_R^a\otimes_R G_R\) of \(K_{R,a}\) uses the vacuum in
+the second matter factor.  Formula~\eqref{bv:eq:generators} shows
+that it is \(Q\)-stable.  Write \(d\) for the restricted differential;
+in particular,
+\[
+ dL=\gamma_0TL+2\gamma_1L+\frac a{12}\gamma_3.
+\]
+It is also the continuous Chevalley cochain complex of the Virasoro
+modes \(L_n\), \(n\geq-1\), acting on \(V_R^a\): the ghost dual
+to \(L_n\) is \(\gamma_{n+1}/(n+1)!\), and cochains use finite
+exterior monomials.  Here continuity means finite dependence on mode
+coordinates, with the vacuum module discrete.  The action sum is
+finite on each vacuum state.
+
+\begin{theorem}[Balanced vacuum comparison]\label{bv:thm:inclusion}
+The inclusion
+\begin{equation}\label{bv:eq:inclusion}
+ I_{R,a}:Z_{R,a}\longrightarrow K_{R,a},
+ \qquad v\otimes g\longmapsto v\otimes\unit\otimes g,
+\end{equation}
+is a strict unital dg vertex quasi-isomorphism.  Both complexes have
+cohomology
+\[
+ R\unit\oplus R\vartheta,
+ \qquad |\vartheta|=3,\qquad \vartheta^2=0,\qquad
+ \vartheta=[\gamma_0\gamma_1\gamma_2].
+\]
+The comparison and this identification are natural under every map
+of commutative rational coefficient rings, including nonflat maps.
+\end{theorem}
+
+\begin{proof}
+The tensor inclusion preserves the vacuum, translation and every mode.
+Its compatibility with the differential follows on the generators
+from \eqref{bv:eq:generators}, and hence on all states.
+
+Let \(\iota_0\) be left exterior differentiation with respect to
+\(\gamma_1\), extended by zero on the matter states.  On the image
+of \(I_{R,a}\), the free ghost contractions identify \(b_{(1)}\)
+with \(\iota_0\).  Indeed
+\([b_\lambda T^r\gamma]=\lambda^r\unit\), and \(b\) has no
+contraction with matter.  Restricting \eqref{bv:eq:cartan-K} therefore
+gives
+\[
+ d\iota_0+\iota_0d=H_Z,
+\]
+where \(H_Z\) is total weight on \(Z_{R,a}\).  On \(G_R\) this can
+also be checked directly: the two terms containing \(\gamma_1\)
+in \(T^r(\gamma_0\gamma_1)\) give
+\((d\iota_0+\iota_0d)\gamma_r=(r-1)\gamma_r\).
+The operator \(\iota_0\) is used as a chain homotopy; it is not
+asserted to commute with translation.
+
+For every nonzero integral weight \(w\), the operators
+\(\iota_0/w\) and \(b_{(1)}/w\) contract the respective weight
+complexes.  They are defined on every algebraic state without an
+infinite sum.  The only negative-weight generator is \(\gamma_0\),
+which occurs at most once.  Matter creators and \(b\)-creators have
+weight at least two.  Consequently both weight-zero complexes are
+exactly
+\begin{equation}\label{bv:eq:four-states}
+ R\{\unit,\gamma_1,\gamma_0\gamma_2,
+                         \gamma_0\gamma_1\gamma_2\},
+ \qquad d\gamma_1=\gamma_0\gamma_2,
+\end{equation}
+with every other differential zero.  The inclusion is the identity
+on these four states.  This proves the cohomology assertion.  The top
+state has square zero because ghost products have no mutual
+contractions and are exterior products.
+
+The contractions are \(R\)-linear.  In weight zero the additional
+homotopy sends \(\gamma_0\gamma_2\) to \(\gamma_1\) and kills the
+other basis states.  Thus both complexes split onto
+\(R\unit\oplus R\vartheta\) by formulas preserved by any coefficient
+map.  PBW identifies their scalar extensions with the same universal
+constructions over the new ring.  This proves base change directly,
+without requiring tensoring to preserve arbitrary quasi-isomorphisms.
+\end{proof}
+
+Taking \(R=\mathbb Q[t]\) and \(a=t\) gives a single family covering
+all charges.  Its contraction uses no inverse Gram determinant.
+The algebraic weight sum is essential to the stated carrier; no
+completion by arbitrary infinite state sums has been introduced.
+
+\subsection{The ghost quotient and the cubic normalization}
+
+The inclusion \(G_R\to Z_{R,a}\) is a strict dg vertex map.  The
+same contraction and four-state calculation make it a
+quasi-isomorphism.  To obtain a strict map from a constant vertex
+algebra, first take the quotient
+\[
+ E_R=G_R/(\gamma_r:r\geq3).
+\]
+The ideal is stable under \(T\) and \(d\).  At the only possible
+low-jet exception,
+\(d\gamma_3=2\gamma_1\gamma_3+\gamma_0\gamma_4\), since
+\(\gamma_2^2=0\).  For \(r\geq4\), every term of
+\(T^r(\gamma_0\gamma_1)\) contains a jet of order at least three.
+Explicitly,
+\begin{equation}\label{bv:eq:three-jets}
+ \begin{gathered}
+ E_R=\Lambda_R(\gamma_0,\gamma_1,\gamma_2),\qquad
+ d\gamma_0=\gamma_0\gamma_1,\quad
+ d\gamma_1=\gamma_0\gamma_2,\quad
+ d\gamma_2=\gamma_1\gamma_2,\\
+ T\gamma_0=\gamma_1,\qquad T\gamma_1=\gamma_2,\qquad T\gamma_2=0.
+ \end{gathered}
+\end{equation}
+Its differential from degree one to degree two is an isomorphism;
+the differentials out of degrees zero and two vanish.
+
+\begin{corollary}[A strict vertex zigzag]\label{bv:cor:zigzag}
+Let \(\Lambda_R(\vartheta_3)\) have zero differential and zero
+translation.  There is a natural zigzag of strict unital dg vertex
+quasi-isomorphisms
+\begin{equation}\label{bv:eq:zigzag}
+ K_{R,a}\xleftarrow{I_{R,a}}Z_{R,a}
+ \xleftarrow{}G_R\xrightarrow{}E_R
+ \xleftarrow{\ \vartheta_3\mapsto\gamma_0\gamma_1\gamma_2\ }
+ \Lambda_R(\vartheta_3).
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+The quotient \(G_R\to E_R\) preserves the two surviving
+weight-zero classes and is a quasi-isomorphism.  In \(E_R\) the top
+state is killed by both \(d\) and \(T\), and has square zero.
+Its assignment from the constant exterior algebra therefore preserves
+all vertex operations.  It induces both cohomology generators.
+The other arrows were proved above.
+\end{proof}
+
+The quotient is needed for this last strict arrow.  In \(G_R\), and
+hence in its image in \(K_{R,a}\),
+\begin{equation}\label{bv:eq:translation-defect}
+ T(\gamma_0\gamma_1\gamma_2)
+ =\gamma_0\gamma_1\gamma_3
+ =d(-\gamma_0\gamma_3)\ne0.
+\end{equation}
+The cohomology class is translation-invariant, but this representative
+cannot be the image of a generator with zero translation under a
+vertex map to the unquotiented algebra.
+
+The factorial normalization also matters.  With
+\[
+ c_{-1}=\gamma_0,\qquad c_0=\gamma_1,\qquad c_1=\gamma_2/2,
+ \qquad \omega_3=[c_{-1}c_0c_1],
+\]
+one has \(\vartheta=2\omega_3\).  To compare with the exact basis in
+Proposition~\ref{prop:sl2}, set
+\[
+ e=L_{-1},\qquad f=-L_1,\qquad h=2L_0.
+\]
+The Virasoro relation gives its three \(\mathfrak{sl}_2\) brackets,
+and the dual forms are
+\(e^\vee=c_{-1}\), \(f^\vee=-c_1\), \(h^\vee=c_0/2\).
+Their differentials agree with that proposition.  Thus its generator
+has the precise image
+\begin{equation}\label{bv:eq:normalization}
+ c_3=[e^\vee f^\vee h^\vee]
+ =\frac12\omega_3=\frac14\vartheta.
+\end{equation}
+This identifies the ordinary three-mode cochain algebra with
+\(E_R\) after the displayed extension of coefficients and choice of
+translation.  It supplies no map from the ordinary enveloping-algebra
+bar to a Virasoro chiral bar.
+
+\subsection{Relative cohomology and the charge condition}
+
+The relative complexes impose weight zero and the kernel of
+\(\iota_0\) on \(Z_{R,a}\), or of \(b_{(1)}\) on \(K_{R,a}\).
+The Cartan identities make these kernels subcomplexes at weight zero.
+The inclusion identifies them exactly:
+\begin{equation}\label{bv:eq:relative}
+ R\unit\oplus R\omega,\qquad
+ \omega=\gamma_0\gamma_2,\qquad |\omega|=2,\qquad
+ d=0,\quad \omega^2=0.
+\end{equation}
+Indeed left exterior differentiation kills these two states and sends
+\(\gamma_1\) to \(\unit\) and
+\(\gamma_0\gamma_1\gamma_2\) to \(-\omega\).  In the absolute
+complex \(\omega=d\gamma_1\), while the cubic representative is
+not relative.  The product in \eqref{bv:eq:relative} is the
+zero-weight exterior-state product.  It does not make this complex a
+vertex subalgebra, since
+\[
+ T\omega=\gamma_1\gamma_2+\gamma_0\gamma_3
+\]
+is a nonzero state of weight one.
+
+Charge balance is equally exact.  Replacing the second charge by
+\(26-a+\epsilon\) in \eqref{bv:eq:charge} changes the same Wick
+calculation to
+\[
+ Q^2b=\frac\epsilon{12}\gamma_3.
+\]
+For every nonzero \(\epsilon\in R\), even a nonzero nilpotent,
+this state is nonzero: \(R\gamma_3\) is a free PBW summand.
+The four-state differential is another essential datum.  Replacing
+it by zero would create false absolute classes in degrees one and
+two, in addition to the unit and cubic class.
+
+\subsection{The geometric carrier and every word length}
+
+Now let \(k\) be a field of characteristic zero and
+\(X=\mathbb A^1_k\) with its fixed coordinate.  Use the derived
+category of right \(D\)-modules on the nonempty Ran space.  Its chiral
+tensor is formed from external products by restriction to disjoint
+configurations, direct image from that open set, and union of the
+configurations.  More explicitly, for a partition
+\(I=\bigsqcup_{j\in J}I_j\), let
+\(j_I:U_I\hookrightarrow X^I\) exclude collisions between different
+blocks.  The tensor operation on these components is
+\[
+ (M_j)_{j\in J}\longmapsto
+ (j_I)_*(j_I)^*\left(\boxtimes_{j\in J}M_j\right).
+\]
+Passage to Ran uses the union maps and the compatible diagonal
+pullbacks.  All these functors are derived.  We use this ambient
+symmetric monoidal category, its colimit-preserving tensor and exact
+filtered colimits as geometric inputs
+\cite{FG12}*{Sections 1.4 and 2.1--2.4}.
+
+For a dg vertex algebra \(V\), write \(\mathfrak a(V)\) for its
+coordinate chiral Lie object, supported on the singleton diagonal in
+Ran.  On \(X\) its underlying right \(D\)-module has
+\(\mathcal O_X\)-module \(V\otimes_k\omega_X\), with connection
+determined by translation and chiral operation determined by the full
+vertex operation.  This is the coordinate vertex--chiral
+correspondence \cite{BD04}*{Section 0.15}.  A strict dg vertex map
+induces a chiral map.  Its underlying complex construction is exact
+over \(k\), so a vertex quasi-isomorphism induces a chiral
+quasi-isomorphism.  No derived equivalence of arbitrary module
+categories is needed here.
+
+For coaugmentation, formally adjoin the empty-configuration sector;
+denote its tensor unit by \(\unit_{\varnothing}\).  The vertex vacuum
+remains an element of \(\mathfrak a(V)\), supported on the singleton
+diagonal, and is distinct from this empty-sector unit.
+
+Let \(A\) be a dg Lie object for the chiral tensor.  Define its
+direct-sum Chevalley object by
+\begin{equation}\label{bv:eq:CE}
+ \CE_{\oplus}^{\mathrm{ch}}(A)
+ =\unit_{\varnothing}\oplus
+   \bigoplus_{r\geq1}\Sym_{\mathrm{ch}}^r(A[1]).
+\end{equation}
+Tensor products and finite symmetric-group coinvariants are derived.
+For a homogeneous element \(a\), write \(sa\) for its copy in
+\(A[1]\), of degree \(|a|-1\).  The internal differential and the
+suspended bracket have corestrictions
+\[
+ q_1(sa)=-s(da),\qquad
+ q_2(sa\,sb)=(-1)^{|a|}s[a,b].
+\]
+Extend \(q_1\) to each word and sum \(q_2\) over all unordered
+pairs, moving that pair together with its Koszul sign.  The resulting
+differential preserves or lowers word length.  The coproduct is the
+sum over all unshuffles, including the empty subword.
+
+The differential squares to zero: the chain identity for the bracket
+cancels the mixed terms; disjoint pair contractions cancel in the two
+orders; and contractions sharing an input sum to the shifted Jacobi
+identity.  Performing an unshuffle before or after a pair contraction
+gives the same terms, so the differential is a coderivation.  Each
+word has finitely many inputs, and its sufficiently iterated reduced
+coproduct is zero.  Thus \eqref{bv:eq:CE} is a conilpotent chiral
+coalgebra.
+
+\begin{proposition}[Direct-sum Chevalley invariance]
+\label{bv:prop:CE}
+A quasi-isomorphism \(f:A\to B\) of these dg Lie objects induces a
+quasi-isomorphism of coaugmented conilpotent chiral coalgebras
+\[
+ \CE_{\oplus}^{\mathrm{ch}}(f):
+ \CE_{\oplus}^{\mathrm{ch}}(A)\longrightarrow
+ \CE_{\oplus}^{\mathrm{ch}}(B).
+\]
+There is no boundedness assumption on their cohomological degrees.
+\end{proposition}
+
+\begin{proof}
+Filter by the finite sums
+\[
+ F_r\CE_{\oplus}^{\mathrm{ch}}(A)
+ =\bigoplus_{0\leq j\leq r}\Sym_{\mathrm{ch}}^j(A[1]),
+ \qquad \Sym_{\mathrm{ch}}^0(A[1])=\unit_{\varnothing}.
+\]
+They are subcomplexes, since the bracket lowers length.  The quotient
+\(F_r/F_{r-1}\) is \(\Sym_{\mathrm{ch}}^r(A[1])\) with its internal
+differential.  Derived tensors and derived finite-group coinvariants
+preserve equivalences; hence the map on each quotient is an
+equivalence.  Starting with the identity on \(F_0\), the exact
+triangle for two consecutive stages proves the assertion for every
+\(F_r\).  Exact filtered colimit gives it for the direct sum.
+Naturality preserves every unshuffle and the bracket differential,
+which proves the coalgebra assertion.
+\end{proof}
+
+Apply \(\mathfrak a\) and then \(\CE_{\oplus}^{\mathrm{ch}}\) to
+each arrow of \eqref{bv:eq:zigzag}, with \(R=k\).  The resulting
+zigzag compares the balanced vacuum with
+\(\Lambda_k(\vartheta_3)\) as conilpotent chiral coalgebras, in every
+word length and every ghost degree.  The proof uses finite increasing
+stages and their exact union, rather than convergence of an unbounded
+spectral sequence.
+
+At the constant exterior endpoint the singular Lie conformal bracket
+vanishes, but the geometric chiral operation retains the regular
+product.  In its coordinate residue description, a simple pole with
+coefficient \(u\otimes v\) gives the product \(uv\) on the diagonal;
+the vacuum product is already nonzero.  Discarding these products
+would change the chiral object
+\cite{BD04}*{Sections 3.3.2--3.3.3}.
+
+The direction of the filtration also fixes the scope.  For a nonzero
+bracket, a word of length \(r+1\) can have a differential component
+of length \(r\).  The naive projection \(F_{r+1}\to F_r\) is then
+not a chain map.  A completed product requires a different compatible
+filtration and its own convergence argument.  Likewise, the chiral
+tensor in \eqref{bv:eq:CE} is not the diagonal tensor used for the
+ordered associative bar.  An identification with that bar requires
+an additional comparison of the tensors and their operations.
+
+Finally, the first matter stress tensor satisfies
+\(QL=\gamma TL+2(T\gamma)L+(a/12)T^3\gamma\ne0\).
+Thus the matter embedding from \(V_k^a\) with zero differential is
+not a dg map.  The unmarked zigzag does not supply a marked boundary
+resolution, a compatible action of a transverse monoid, or a finality
+property for such actions.  Its positive conclusion is the explicit
+vertex and Lie--chiral comparison above; the ordered collision action
+and the root-graded comparison retain their separate construction
+problems.
